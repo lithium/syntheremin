@@ -26,18 +26,19 @@ enum {
 @interface Vco : Oscillator {
     double frequency;
     Oscillator *lfo;
-    int modulationType;
-    double modulationDepth;
+    double frequencyModulation;
+    double amplitudeModulation;
     double rangeMultiplier;
     double detuneMultiplier;
 }
 
-@property int modulationType;
-@property double modulationDepth;
-@property double rangeMultiplier;
+@property double frequencyModulation;
+@property double amplitudeModulation;
+
 
 - (id)init;
 
+- (void)setRange :(int)octave; 
 - (void)setDetuneInCents :(int)cents;
 - (void)setLfoWaveshape :(int)waveShape;
 - (void)setLfoFrequency :(double)frequency;

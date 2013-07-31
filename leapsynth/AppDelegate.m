@@ -9,7 +9,13 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize osc1_shape;
+@synthesize osc1_range;
+@synthesize osc1_detune;
+@synthesize osc2_shape;
 @synthesize osc2_freq;
+@synthesize osc2_fm;
+@synthesize osc2_am;
 
 @synthesize window = _window;
 
@@ -33,11 +39,10 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     OSStatus status;
     
     vco = [[Vco alloc] init];
-    [vco setWaveShape:kWaveSine];
-    [vco setModulationType:kModulationTypeFrequency];
-    [vco setLfoFrequency:10];
-    [vco setLfoWaveshape:kWaveSine];
-    [vco setModulationDepth:0.05];
+    [vco setWaveShape:kWaveSquare];
+//    [vco setModulationType:kModulationTypeFrequency];
+//    [vco setLfoFrequency:10];
+//    [vco setLfoWaveshape:kWaveSine];
     [vco setFrequency:440];
         
     AudioStreamBasicDescription fmt = {0};
@@ -68,14 +73,54 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
 }
 
+- (void)primeBuffers
+{
+    for (int i=0; i < kNumBuffers; i++) {
+        AudioQueueBuffer *buffer = mQueueBuffers[i];
+        audio_queue_output_callback((__bridge void*)vco, mAudioQueue, mQueueBuffers[i]);
+    }
+}
+
 - (void)windowWillClose:(NSNotification *)notification
 {
     AudioQueueStop(mAudioQueue, true);
 }
 
 
-- (IBAction)takeIntValueForFrequencyFrom:(id)sender {
-    int freq = [sender intValue];
-    [vco setFrequency:freq];
+- (IBAction)setVcoShape:(id)sender {
+    [vco setWaveShape:[osc1_shape intValue]];
+    AudioQueueStop(mAudioQueue, true);
+    [self primeBuffers];
+    AudioQueueStart(mAudioQueue, NULL);
+
+
+}
+
+- (IBAction)setVcoRange:(id)sender {
+    int value = [osc1_range intValue];
+    [vco setRange:(2 - value)];
+}
+
+- (IBAction)setVcoDetune:(id)sender {
+    int value = [osc1_detune intValue];
+    [vco setDetuneInCents:value];
+}
+
+- (IBAction)setLfoShape:(id)sender {
+    int shape = [osc2_shape intValue];
+    [vco setLfoWaveshape:shape];
+}
+
+- (IBAction)setLfoFrequency:(id)sender {
+    [vco setLfoFrequency:[osc2_freq doubleValue]];
+}
+
+- (IBAction)setFmDepth:(id)sender {
+    [vco setFrequencyModulation:[osc2_fm doubleValue]];
+    
+}
+
+- (IBAction)setAmDepth:(id)sender {
+    [vco setAmplitudeModulation:[osc2_am doubleValue]];
 }
 @end

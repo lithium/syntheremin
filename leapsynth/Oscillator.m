@@ -19,20 +19,23 @@
     return self;
 }
 
-- (void) setFrequency :(int)frequency
+- (void) setFrequency :(double)frequency
 {
+    if (frequency == 0) {
+        samplesPerPeriod = 0;
+        return;
+    }
     samplesPerPeriod = (long)(kSampleRate / frequency);
 }
 
 - (double) getSample
 {
+    if (samplesPerPeriod == 0)
+        return 0;
+    
     double value;
     double x = sampleStep / (double)samplesPerPeriod;
     switch (waveShape) {
-        default:
-        case kWaveSine:
-            value = sin(2.0 * M_PI * x);
-            break;
             
         case kWaveSquare:
             if (sampleStep < (samplesPerPeriod/2)) {
@@ -45,6 +48,12 @@
         case kWaveSaw:
             value = 2.0 * (x - floor(x + 0.5));
             break;
+            
+        default:
+        case kWaveSine:
+            value = sin(2.0 * M_PI * x);
+            break;
+
             
     }
     sampleStep = (sampleStep+1) % samplesPerPeriod;

@@ -10,9 +10,8 @@
 
 @implementation Vco
 
-@synthesize modulationType;
-@synthesize modulationDepth;
-@synthesize rangeMultiplier;
+@synthesize frequencyModulation;
+@synthesize amplitudeModulation;
 
 
 - (id)init
@@ -20,13 +19,35 @@
     lfo = [[Oscillator alloc] init];
     rangeMultiplier = 1.0;
     detuneMultiplier = 1.0;
-    modulationType = kModulationTypeNone;
+    frequencyModulation = 0.0;
+    amplitudeModulation = 0.0;
     return self;
 }
 
 
+- (void)setRange :(int)octave
+{
+    switch (octave) {
+        case -2:
+            rangeMultiplier = 0.25;
+            break;
+        case -1:
+            rangeMultiplier = 0.5;
+            break;
+        default:
+        case 0:
+            rangeMultiplier = 1.0;
+            break;
+        case 1:
+            rangeMultiplier = 2.0;
+            break;
+        case 2:
+            rangeMultiplier = 4.0;
+            break;
+    }
+}
 
-- (void)setFrequency :(int)frequencyInHz
+- (void)setFrequency :(double)frequencyInHz
 {
     frequency = frequencyInHz;
 }
@@ -40,7 +61,7 @@
     else if (cents > kCentsDetuneMax)
         detuneMultiplier = kCentsDetuneMax;
         
-    detuneMultiplier = pow(2.0, (double)(cents / kCentsPerOctave));
+    detuneMultiplier = pow(2.0, (double)((double)cents / kCentsPerOctave));
 }
 
 - (void)setLfoWaveshape :(int)shape
@@ -57,20 +78,20 @@
 - (double)getSample
 {
     double freq = frequency;
-    if ((modulationType == kModulationTypeFrequency) && (modulationDepth != 0)) {
-        double lfoSample = [lfo getSample] * modulationDepth;
+    if (frequencyModulation > 0) {
+        double lfoSample = [lfo getSample] * frequencyModulation;
         freq *= pow(2.0, lfoSample);
     }
     
     freq *= rangeMultiplier;
-    freq *= detuneMultiplier;
+    freq /= detuneMultiplier;
     
     [super setFrequency:freq];
     double sample = [super getSample];
     
-    if (modulationType == kModulationTypeAmplitude) {
+    if (amplitudeModulation > 0) {
         double lfoOffset = ([lfo getSample] + 1.0) / 2.0;
-        double m = 1.0 - (modulationDepth * lfoOffset);
+        double m = 1.0 - (amplitudeModulation * lfoOffset);
         sample *= m;
     }
     

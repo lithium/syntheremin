@@ -19,9 +19,26 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
-- (IBAction)takeIntValueForFrequencyFrom:(id)sender;
-@property (weak) IBOutlet NSSlider *osc2_freq;
 
+
+//OSC1
+- (IBAction)setVcoShape:(id)sender;
+- (IBAction)setVcoRange:(id)sender;
+- (IBAction)setVcoDetune:(id)sender;
+@property (weak) IBOutlet NSSlider *osc1_shape;
+@property (weak) IBOutlet NSSlider *osc1_range;
+@property (weak) IBOutlet NSSlider *osc1_detune;
+
+
+//OSC2
+- (IBAction)setLfoShape:(id)sender;
+- (IBAction)setLfoFrequency:(id)sender;
+- (IBAction)setFmDepth:(id)sender;
+- (IBAction)setAmDepth:(id)sender;
+@property (weak) IBOutlet NSSlider *osc2_shape;
+@property (weak) IBOutlet NSSlider *osc2_freq;
+@property (weak) IBOutlet NSSlider *osc2_fm;
+@property (weak) IBOutlet NSSlider *osc2_am;
 
 
 @end

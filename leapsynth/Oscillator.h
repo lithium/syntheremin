@@ -10,9 +10,9 @@
 #import "Defines.h"
 
 enum  {
-    kWaveSquare,
-    kWaveSine,
-    kWaveSaw
+    kWaveSquare=0,
+    kWaveSine=1,
+    kWaveSaw=2,
 };
 
 @interface Oscillator : NSObject {
@@ -24,7 +24,7 @@ enum  {
 @property int waveShape;
 
 - (id) init;
-- (void) setFrequency :(int)freq;
+- (void) setFrequency :(double)freq;
 - (int) getSamples :(short *)samples :(int)numSamples;
 - (double) getSample;
 
