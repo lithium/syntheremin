@@ -51,7 +51,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     fmt.mBytesPerPacket = fmt.mBytesPerFrame*fmt.mFramesPerPacket;
     
     
-    
     status = AudioQueueNewOutput(&fmt, audio_queue_output_callback, &mWaveform, NULL, NULL, 0, &mAudioQueue);
     
     for (int i=0; i < kNumBuffers; i++) {
@@ -80,6 +79,5 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     mWaveform.phase = 0;
     mWaveform.frequency = freq;
     mWaveform.step = 2 * M_PI * mWaveform.frequency / kSampleRate;
-
 }
 @end

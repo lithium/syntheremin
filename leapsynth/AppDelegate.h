@@ -8,14 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "AudioToolbox/AudioQueue.h"
-
-
-enum {
-    kSampleRate = 44100,
-    kNumBuffers = 3,
-    kBufferSize = 2000,
-};
-#define kPhaseIncrement (2*M_PI*450/kSampleRate)
+#import "Defines.h"
 
 typedef struct {
     float phase;
