@@ -17,16 +17,12 @@
 void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQueueBufferRef buffer_ref)
 {
     OSStatus ret;
-    WaveData *wave = userdata;
+    Vco *vco = (__bridge Vco *)userdata;
     AudioQueueBuffer *buffer = buffer_ref;
     int num_samples = buffer->mAudioDataByteSize / 2;
-    short *sample = buffer->mAudioData;
+    short *samples = buffer->mAudioData;
     
-    int i;
-    for (i=0; i < num_samples; i++) {
-       sample[i] = (int)(sinf(wave->phase) * 32767.0);
-        wave->phase += wave->step;
-    }
+    [vco getSamples:samples :num_samples];
     ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
 }
 
@@ -36,10 +32,14 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 {
     OSStatus status;
     
-    mWaveform.phase = 0;
-    mWaveform.frequency = 220;
-    mWaveform.step = 2 * M_PI * mWaveform.frequency / kSampleRate;
-    
+    vco = [[Vco alloc] init];
+    [vco setWaveShape:kWaveSine];
+    [vco setModulationType:kModulationTypeFrequency];
+    [vco setLfoFrequency:10];
+    [vco setLfoWaveshape:kWaveSine];
+    [vco setModulationDepth:0.05];
+    [vco setFrequency:440];
+        
     AudioStreamBasicDescription fmt = {0};
     fmt.mSampleRate = kSampleRate;
     fmt.mFormatID = kAudioFormatLinearPCM;
@@ -51,13 +51,13 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     fmt.mBytesPerPacket = fmt.mBytesPerFrame*fmt.mFramesPerPacket;
     
     
-    status = AudioQueueNewOutput(&fmt, audio_queue_output_callback, &mWaveform, NULL, NULL, 0, &mAudioQueue);
+    status = AudioQueueNewOutput(&fmt, audio_queue_output_callback, (__bridge void*)vco, NULL, NULL, 0, &mAudioQueue);
     
     for (int i=0; i < kNumBuffers; i++) {
         status = AudioQueueAllocateBuffer(mAudioQueue, kBufferSize, &mQueueBuffers[i]);
         AudioQueueBuffer *buffer = mQueueBuffers[i];
         buffer->mAudioDataByteSize = kBufferSize;
-        audio_queue_output_callback(&mWaveform, mAudioQueue, mQueueBuffers[i]);
+        audio_queue_output_callback((__bridge void*)vco, mAudioQueue, mQueueBuffers[i]);
     }
     
     status = AudioQueueSetParameter (mAudioQueue, kAudioQueueParam_Volume, 1.0);
@@ -76,8 +76,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)takeIntValueForFrequencyFrom:(id)sender {
     int freq = [sender intValue];
-    mWaveform.phase = 0;
-    mWaveform.frequency = freq;
-    mWaveform.step = 2 * M_PI * mWaveform.frequency / kSampleRate;
+    [vco setFrequency:freq];
 }
 @end

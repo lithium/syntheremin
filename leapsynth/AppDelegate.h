@@ -9,16 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "AudioToolbox/AudioQueue.h"
 #import "Defines.h"
-
-typedef struct {
-    float phase;
-    float frequency;
-    float step;
-} WaveData;
+#import "Vco.h"
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-    WaveData mWaveform;
+    Vco *vco;
     AudioQueueRef mAudioQueue;
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
 }

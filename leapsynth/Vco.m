@@ -64,9 +64,9 @@
     
     freq *= rangeMultiplier;
     freq *= detuneMultiplier;
-    [self setFrequency :freq];
     
-    double sample = [self getSample];
+    [super setFrequency:freq];
+    double sample = [super getSample];
     
     if (modulationType == kModulationTypeAmplitude) {
         double lfoOffset = ([lfo getSample] + 1.0) / 2.0;

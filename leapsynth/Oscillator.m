@@ -15,6 +15,7 @@
 
 - (id) init
 {
+    [self setFrequency:440];
     return self;
 }
 
