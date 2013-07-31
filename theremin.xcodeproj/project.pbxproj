@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
+		127DBD3D17A76D16007C68FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 127DBD3B17A76D16007C68FF /* InfoPlist.strings */; };
+		127DBD3F17A76D16007C68FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 127DBD3E17A76D16007C68FF /* main.m */; };
+		127DBD4317A76D16007C68FF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 127DBD4117A76D16007C68FF /* Credits.rtf */; };
+		127DBD4617A76D16007C68FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 127DBD4517A76D16007C68FF /* AppDelegate.m */; };
+		127DBD4917A76D17007C68FF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 127DBD4717A76D17007C68FF /* MainMenu.xib */; };
+		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		127DBD2E17A76D16007C68FF /* theremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		127DBD3617A76D16007C68FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		127DBD3717A76D16007C68FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		127DBD3A17A76D16007C68FF /* theremin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "theremin-Info.plist"; sourceTree = "<group>"; };
+		127DBD3C17A76D16007C68FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		127DBD3E17A76D16007C68FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		127DBD4017A76D16007C68FF /* theremin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "theremin-Prefix.pch"; sourceTree = "<group>"; };
+		127DBD4217A76D16007C68FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		127DBD4417A76D16007C68FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		127DBD4517A76D16007C68FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		127DBD4817A76D17007C68FF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		127DBD4F17A81437007C68FF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		127DBD2B17A76D16007C68FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */,
+				127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		127DBD2317A76D16007C68FF = {
+			isa = PBXGroup;
+			children = (
+				127DBD3817A76D16007C68FF /* theremin */,
+				127DBD3117A76D16007C68FF /* Frameworks */,
+				127DBD2F17A76D16007C68FF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		127DBD2F17A76D16007C68FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				127DBD2E17A76D16007C68FF /* theremin.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		127DBD3117A76D16007C68FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				127DBD3217A76D16007C68FF /* Cocoa.framework */,
+				127DBD3417A76D16007C68FF /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		127DBD3417A76D16007C68FF /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				127DBD4F17A81437007C68FF /* AudioToolbox.framework */,
+				127DBD3517A76D16007C68FF /* AppKit.framework */,
+				127DBD3617A76D16007C68FF /* CoreData.framework */,
+				127DBD3717A76D16007C68FF /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		127DBD3817A76D16007C68FF /* theremin */ = {
+			isa = PBXGroup;
+			children = (
+				127DBD4417A76D16007C68FF /* AppDelegate.h */,
+				127DBD4517A76D16007C68FF /* AppDelegate.m */,
+				127DBD4717A76D17007C68FF /* MainMenu.xib */,
+				127DBD3917A76D16007C68FF /* Supporting Files */,
+			);
+			path = theremin;
+			sourceTree = "<group>";
+		};
+		127DBD3917A76D16007C68FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				127DBD3A17A76D16007C68FF /* theremin-Info.plist */,
+				127DBD3B17A76D16007C68FF /* InfoPlist.strings */,
+				127DBD3E17A76D16007C68FF /* main.m */,
+				127DBD4017A76D16007C68FF /* theremin-Prefix.pch */,
+				127DBD4117A76D16007C68FF /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		127DBD2D17A76D16007C68FF /* theremin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 127DBD4C17A76D17007C68FF /* Build configuration list for PBXNativeTarget "theremin" */;
+			buildPhases = (
+				127DBD2A17A76D16007C68FF /* Sources */,
+				127DBD2B17A76D16007C68FF /* Frameworks */,
+				127DBD2C17A76D16007C68FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = theremin;
+			productName = theremin;
+			productReference = 127DBD2E17A76D16007C68FF /* theremin.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		127DBD2517A76D16007C68FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 127DBD2817A76D16007C68FF /* Build configuration list for PBXProject "theremin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 127DBD2317A76D16007C68FF;
+			productRefGroup = 127DBD2F17A76D16007C68FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				127DBD2D17A76D16007C68FF /* theremin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		127DBD2C17A76D16007C68FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				127DBD3D17A76D16007C68FF /* InfoPlist.strings in Resources */,
+				127DBD4317A76D16007C68FF /* Credits.rtf in Resources */,
+				127DBD4917A76D17007C68FF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		127DBD2A17A76D16007C68FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				127DBD3F17A76D16007C68FF /* main.m in Sources */,
+				127DBD4617A76D16007C68FF /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		127DBD3B17A76D16007C68FF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				127DBD3C17A76D16007C68FF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		127DBD4117A76D16007C68FF /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				127DBD4217A76D16007C68FF /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		127DBD4717A76D17007C68FF /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				127DBD4817A76D17007C68FF /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		127DBD4A17A76D17007C68FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		127DBD4B17A76D17007C68FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		127DBD4D17A76D17007C68FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "theremin/theremin-Prefix.pch";
+				INFOPLIST_FILE = "theremin/theremin-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		127DBD4E17A76D17007C68FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "theremin/theremin-Prefix.pch";
+				INFOPLIST_FILE = "theremin/theremin-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		127DBD2817A76D16007C68FF /* Build configuration list for PBXProject "theremin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				127DBD4A17A76D17007C68FF /* Debug */,
+				127DBD4B17A76D17007C68FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		127DBD4C17A76D17007C68FF /* Build configuration list for PBXNativeTarget "theremin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				127DBD4D17A76D17007C68FF /* Debug */,
+				127DBD4E17A76D17007C68FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 127DBD2517A76D16007C68FF /* Project object */;
+}
