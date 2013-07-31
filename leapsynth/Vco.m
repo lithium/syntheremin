@@ -10,50 +10,70 @@
 
 @implementation Vco
 
-@synthesize waveShape;
+@synthesize modulationType;
+@synthesize modulationDepth;
+@synthesize rangeMultiplier;
 
-- (void) setFrequency :(int)freq
+
+- (id)init
 {
-    samplesPerPeriod = (long)(kSampleRate / freq);
+    lfo = [[Oscillator alloc] init];
+    rangeMultiplier = 1.0;
+    detuneMultiplier = 1.0;
+    modulationType = kModulationTypeNone;
+    return self;
 }
 
-- (double) getSample
+
+
+- (void)setFrequency :(int)frequencyInHz
 {
-    double value;
-    double x = sampleStep / (double)samplesPerPeriod;
-    switch (waveShape) {
-        default:
-        case kWaveSine:
-            value = sin(2.0 * M_PI * x);
-            break;
-            
-        case kWaveSquare:
-            if (sampleStep < (samplesPerPeriod/2)) {
-                value = 1.0;
-            } else {
-                value = -1.0;
-            }
-            break;
+    frequency = frequencyInHz;
+}
+
+- (void)setDetuneInCents :(int)cents
+{
+    if (cents == 0)
+        detuneMultiplier = 1.0;
+    else if (cents < kCentsDetuneMin)
+        detuneMultiplier = kCentsDetuneMin;
+    else if (cents > kCentsDetuneMax)
+        detuneMultiplier = kCentsDetuneMax;
         
-        case kWaveSaw:
-            value = 2.0 * (x - floor(x + 0.5));
-            break;
-            
-    }
-    sampleStep = (sampleStep+1) % samplesPerPeriod;
-    return value;
+    detuneMultiplier = pow(2.0, (double)(cents / kCentsPerOctave));
 }
 
-- (int) getSamples :(short *)samples :(int)numSamples
+- (void)setLfoWaveshape :(int)shape
 {
-    int index=0;
-    for (int i=0; i < numSamples; i++) {
-        double ds = [self getSample] * 32767.0;
-        short ss = (short)round(ds);
-        samples[index++] = ss;
-    }
-    return numSamples;
+    [lfo setWaveShape :shape];
+
 }
 
+- (void)setLfoFrequency :(double)frequencyInHz
+{
+    [lfo setFrequency :frequencyInHz];
+}
 
+- (double)getSample
+{
+    double freq = frequency;
+    if ((modulationType == kModulationTypeFrequency) && (modulationDepth != 0)) {
+        double lfoSample = [lfo getSample] * modulationDepth;
+        freq *= pow(2.0, lfoSample);
+    }
+    
+    freq *= rangeMultiplier;
+    freq *= detuneMultiplier;
+    [self setFrequency :freq];
+    
+    double sample = [self getSample];
+    
+    if (modulationType == kModulationTypeAmplitude) {
+        double lfoOffset = ([lfo getSample] + 1.0) / 2.0;
+        double m = 1.0 - (modulationDepth * lfoOffset);
+        sample *= m;
+    }
+    
+    return sample;
+}
 @end

@@ -15,7 +15,8 @@
 		12BB469517A98944009D7B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BB469417A98944009D7B5C /* main.m */; };
 		12BB469717A98950009D7B5C /* leapsynth-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469617A98950009D7B5C /* leapsynth-Info.plist */; };
 		12BB469B17A98979009D7B5C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469917A98979009D7B5C /* Credits.rtf */; };
-		12CDBF7117A9A5A800C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Vco.m */; };
+		12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Oscillator.m */; };
+		12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7517A9AC3F00C72104 /* Vco.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +34,11 @@
 		12BB469A17A98979009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = leapsynth/en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		12C0D40217A9883C001323FA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = leapsynth/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		12C0D40317A9883C001323FA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = leapsynth/AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		12CDBF6F17A9A5A800C72104 /* Vco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vco.h; sourceTree = "<group>"; };
-		12CDBF7017A9A5A800C72104 /* Vco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vco.m; sourceTree = "<group>"; };
+		12CDBF6F17A9A5A800C72104 /* Oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Oscillator.h; sourceTree = "<group>"; };
+		12CDBF7017A9A5A800C72104 /* Oscillator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Oscillator.m; sourceTree = "<group>"; };
 		12CDBF7317A9A9C100C72104 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		12CDBF7417A9AC3F00C72104 /* Vco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vco.h; sourceTree = "<group>"; };
+		12CDBF7517A9AC3F00C72104 /* Vco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vco.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +95,10 @@
 			isa = PBXGroup;
 			children = (
 				12BB468B17A988E4009D7B5C /* MainMenu.xib */,
-				12C0D40217A9883C001323FA /* AppDelegate.h */,
-				12CDBF7317A9A9C100C72104 /* Defines.h */,
+				12CDBF7717A9AC5300C72104 /* Headers */,
 				12C0D40317A9883C001323FA /* AppDelegate.m */,
-				12CDBF6F17A9A5A800C72104 /* Vco.h */,
-				12CDBF7017A9A5A800C72104 /* Vco.m */,
+				12CDBF7017A9A5A800C72104 /* Oscillator.m */,
+				12CDBF7517A9AC3F00C72104 /* Vco.m */,
 				127DBD3917A76D16007C68FF /* Supporting Files */,
 			);
 			path = leapsynth;
@@ -112,6 +114,17 @@
 				12BB469117A9890D009D7B5C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		12CDBF7717A9AC5300C72104 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				12C0D40217A9883C001323FA /* AppDelegate.h */,
+				12CDBF7317A9A9C100C72104 /* Defines.h */,
+				12CDBF6F17A9A5A800C72104 /* Oscillator.h */,
+				12CDBF7417A9AC3F00C72104 /* Vco.h */,
+			);
+			name = Headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +193,8 @@
 			files = (
 				12BB468E17A988ED009D7B5C /* AppDelegate.m in Sources */,
 				12BB469517A98944009D7B5C /* main.m in Sources */,
-				12CDBF7117A9A5A800C72104 /* Vco.m in Sources */,
+				12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */,
+				12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

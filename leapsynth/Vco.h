@@ -7,23 +7,40 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Defines.h"
+#import "Oscillator.h"
 
-enum  {
-    kWaveSquare,
-    kWaveSine,
-    kWaveSaw
+enum {
+    kCentsPerOctave = 1200,
+    
+    kCentsDetuneMin = 0,
+    kCentsDetuneMax = kCentsPerOctave,
+
 };
 
-@interface Vco : NSObject {
-    int waveShape;
-    long samplesPerPeriod;
-    long sampleStep;
+enum {
+    kModulationTypeNone=0,
+    kModulationTypeAmplitude,
+    kModulationTypeFrequency,
+};
+
+@interface Vco : Oscillator {
+    double frequency;
+    Oscillator *lfo;
+    int modulationType;
+    double modulationDepth;
+    double rangeMultiplier;
+    double detuneMultiplier;
 }
 
-@property int waveShape;
+@property int modulationType;
+@property double modulationDepth;
+@property double rangeMultiplier;
 
-- (void) setFrequency :(int)freq;
-- (int) getSamples :(short *)samples :(int)numSamples;
+- (id)init;
+
+- (void)setDetuneInCents :(int)cents;
+- (void)setLfoWaveshape :(int)waveShape;
+- (void)setLfoFrequency :(double)frequency;
+
 
 @end
