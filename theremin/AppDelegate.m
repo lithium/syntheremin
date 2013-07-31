@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize osc2_freq;
 
 @synthesize window = _window;
 
@@ -16,17 +17,16 @@
 void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQueueBufferRef buffer_ref)
 {
     OSStatus ret;
-    PhaseData *pd = userdata;
+    WaveData *wave = userdata;
     AudioQueueBuffer *buffer = buffer_ref;
     int num_samples = buffer->mAudioDataByteSize / 2;
     short *sample = buffer->mAudioData;
     
     int i;
     for (i=0; i < num_samples; i++) {
-        sample[i] = (int)(60000.0 * sin(pd->phase));
-        pd->phase += kPhaseIncrement;
+       sample[i] = (int)(sinf(wave->phase) * 32767.0);
+        wave->phase += wave->step;
     }
-    pd->count++;
     ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
 }
 
@@ -35,6 +35,10 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     OSStatus status;
+    
+    mWaveform.phase = 0;
+    mWaveform.frequency = 220;
+    mWaveform.step = 2 * M_PI * mWaveform.frequency / kSampleRate;
     
     AudioStreamBasicDescription fmt = {0};
     fmt.mSampleRate = kSampleRate;
@@ -48,13 +52,13 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
     
     
-    status = AudioQueueNewOutput(&fmt, audio_queue_output_callback, &mPhase, NULL, NULL, 0, &mAudioQueue);
+    status = AudioQueueNewOutput(&fmt, audio_queue_output_callback, &mWaveform, NULL, NULL, 0, &mAudioQueue);
     
     for (int i=0; i < kNumBuffers; i++) {
-        status = AudioQueueAllocateBuffer(mAudioQueue, 20000, &mQueueBuffers[i]);
+        status = AudioQueueAllocateBuffer(mAudioQueue, kBufferSize, &mQueueBuffers[i]);
         AudioQueueBuffer *buffer = mQueueBuffers[i];
-        buffer->mAudioDataByteSize = 20000;
-        audio_queue_output_callback(&mPhase, mAudioQueue, mQueueBuffers[i]);
+        buffer->mAudioDataByteSize = kBufferSize;
+        audio_queue_output_callback(&mWaveform, mAudioQueue, mQueueBuffers[i]);
     }
     
     status = AudioQueueSetParameter (mAudioQueue, kAudioQueueParam_Volume, 1.0);
@@ -71,5 +75,11 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 }
 
 
+- (IBAction)takeIntValueForFrequencyFrom:(id)sender {
+    int freq = [sender intValue];
+    mWaveform.phase = 0;
+    mWaveform.frequency = freq;
+    mWaveform.step = 2 * M_PI * mWaveform.frequency / kSampleRate;
 
+}
 @end

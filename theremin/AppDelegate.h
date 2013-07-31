@@ -13,22 +13,27 @@
 enum {
     kSampleRate = 44100,
     kNumBuffers = 3,
+    kBufferSize = 2000,
 };
 #define kPhaseIncrement (2*M_PI*450/kSampleRate)
 
 typedef struct {
-    double phase;
-    int count;
-    double freq;
-} PhaseData;
+    float phase;
+    float frequency;
+    float step;
+} WaveData;
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-    PhaseData mPhase;
+    WaveData mWaveform;
     AudioQueueRef mAudioQueue;
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
 }
 
 @property (assign) IBOutlet NSWindow *window;
+- (IBAction)takeIntValueForFrequencyFrom:(id)sender;
+@property (weak) IBOutlet NSSlider *osc2_freq;
+
+
 
 @end
