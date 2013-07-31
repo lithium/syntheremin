@@ -93,7 +93,7 @@
 				127DBD3917A76D16007C68FF /* Supporting Files */,
 			);
 			name = leapsynth;
-			path = theremin;
+			path = leapsynth;
 			sourceTree = "<group>";
 		};
 		127DBD3917A76D16007C68FF /* Supporting Files */ = {
