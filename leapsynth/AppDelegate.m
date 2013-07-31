@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  theremin
+//  leapsynth
 //
 //  Created by Wiggins on 7/29/13.
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.

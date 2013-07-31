@@ -1,0 +1,303 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
+		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
+		12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BB468B17A988E4009D7B5C /* MainMenu.xib */; };
+		12BB468E17A988ED009D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D40317A9883C001323FA /* AppDelegate.m */; };
+		12BB469317A9890D009D7B5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469117A9890D009D7B5C /* InfoPlist.strings */; };
+		12BB469517A98944009D7B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BB469417A98944009D7B5C /* main.m */; };
+		12BB469717A98950009D7B5C /* leapsynth-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469617A98950009D7B5C /* leapsynth-Info.plist */; };
+		12BB469B17A98979009D7B5C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469917A98979009D7B5C /* Credits.rtf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		127DBD2E17A76D16007C68FF /* leapsynth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leapsynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		127DBD3617A76D16007C68FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		127DBD3717A76D16007C68FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		127DBD4F17A81437007C68FF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		12BB468C17A988E4009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = leapsynth/en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
+		12BB469217A9890D009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = leapsynth/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		12BB469417A98944009D7B5C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = leapsynth/main.m; sourceTree = SOURCE_ROOT; };
+		12BB469617A98950009D7B5C /* leapsynth-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "leapsynth-Info.plist"; path = "leapsynth/leapsynth-Info.plist"; sourceTree = SOURCE_ROOT; };
+		12BB469817A98960009D7B5C /* leapsynth-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "leapsynth-Prefix.pch"; path = "leapsynth/leapsynth-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		12BB469A17A98979009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = leapsynth/en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
+		12C0D40217A9883C001323FA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = leapsynth/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		12C0D40317A9883C001323FA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = leapsynth/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		127DBD2B17A76D16007C68FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */,
+				127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		127DBD2317A76D16007C68FF = {
+			isa = PBXGroup;
+			children = (
+				127DBD3817A76D16007C68FF /* leapsynth */,
+				127DBD3117A76D16007C68FF /* Frameworks */,
+				127DBD2F17A76D16007C68FF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		127DBD2F17A76D16007C68FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				127DBD2E17A76D16007C68FF /* leapsynth.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		127DBD3117A76D16007C68FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				127DBD3217A76D16007C68FF /* Cocoa.framework */,
+				127DBD3417A76D16007C68FF /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		127DBD3417A76D16007C68FF /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				127DBD4F17A81437007C68FF /* AudioToolbox.framework */,
+				127DBD3517A76D16007C68FF /* AppKit.framework */,
+				127DBD3617A76D16007C68FF /* CoreData.framework */,
+				127DBD3717A76D16007C68FF /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		127DBD3817A76D16007C68FF /* leapsynth */ = {
+			isa = PBXGroup;
+			children = (
+				12BB468B17A988E4009D7B5C /* MainMenu.xib */,
+				12C0D40217A9883C001323FA /* AppDelegate.h */,
+				12C0D40317A9883C001323FA /* AppDelegate.m */,
+				127DBD3917A76D16007C68FF /* Supporting Files */,
+			);
+			name = leapsynth;
+			path = theremin;
+			sourceTree = "<group>";
+		};
+		127DBD3917A76D16007C68FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				12BB469917A98979009D7B5C /* Credits.rtf */,
+				12BB469817A98960009D7B5C /* leapsynth-Prefix.pch */,
+				12BB469617A98950009D7B5C /* leapsynth-Info.plist */,
+				12BB469417A98944009D7B5C /* main.m */,
+				12BB469117A9890D009D7B5C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		127DBD2D17A76D16007C68FF /* leapsynth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 127DBD4C17A76D17007C68FF /* Build configuration list for PBXNativeTarget "leapsynth" */;
+			buildPhases = (
+				127DBD2A17A76D16007C68FF /* Sources */,
+				127DBD2B17A76D16007C68FF /* Frameworks */,
+				127DBD2C17A76D16007C68FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = leapsynth;
+			productName = theremin;
+			productReference = 127DBD2E17A76D16007C68FF /* leapsynth.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		127DBD2517A76D16007C68FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 127DBD2817A76D16007C68FF /* Build configuration list for PBXProject "leapsynth" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 127DBD2317A76D16007C68FF;
+			productRefGroup = 127DBD2F17A76D16007C68FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				127DBD2D17A76D16007C68FF /* leapsynth */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		127DBD2C17A76D16007C68FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */,
+				12BB469317A9890D009D7B5C /* InfoPlist.strings in Resources */,
+				12BB469717A98950009D7B5C /* leapsynth-Info.plist in Resources */,
+				12BB469B17A98979009D7B5C /* Credits.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		127DBD2A17A76D16007C68FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12BB468E17A988ED009D7B5C /* AppDelegate.m in Sources */,
+				12BB469517A98944009D7B5C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		12BB468B17A988E4009D7B5C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12BB468C17A988E4009D7B5C /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		12BB469117A9890D009D7B5C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12BB469217A9890D009D7B5C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		12BB469917A98979009D7B5C /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12BB469A17A98979009D7B5C /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		127DBD4A17A76D17007C68FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		127DBD4B17A76D17007C68FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		127DBD4D17A76D17007C68FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "leapsynth/leapsynth-Prefix.pch";
+				INFOPLIST_FILE = "leapsynth/leapsynth-Info.plist";
+				PRODUCT_NAME = leapsynth;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		127DBD4E17A76D17007C68FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "leapsynth/leapsynth-Prefix.pch";
+				INFOPLIST_FILE = "leapsynth/leapsynth-Info.plist";
+				PRODUCT_NAME = leapsynth;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		127DBD2817A76D16007C68FF /* Build configuration list for PBXProject "leapsynth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				127DBD4A17A76D17007C68FF /* Debug */,
+				127DBD4B17A76D17007C68FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		127DBD4C17A76D17007C68FF /* Build configuration list for PBXNativeTarget "leapsynth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				127DBD4D17A76D17007C68FF /* Debug */,
+				127DBD4E17A76D17007C68FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 127DBD2517A76D16007C68FF /* Project object */;
+}
