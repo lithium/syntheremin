@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize keyboard_1;
+@synthesize keyboard_2;
 @synthesize osc1_shape;
 @synthesize osc1_range;
 @synthesize osc1_detune;
@@ -41,7 +43,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     vco = [[Vco alloc] init];
     [vco setWaveShape:kWaveSquare];
 //    [vco setModulationType:kModulationTypeFrequency];
-//    [vco setLfoFrequency:10];
+//    [vco setLfoFrequency:0];
 //    [vco setLfoWaveshape:kWaveSine];
     [vco setFrequency:440];
         
@@ -71,7 +73,11 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
     
+    
+    [keyboard_1 setDelegate:self];
+    [keyboard_2 setDelegate:self];
 }
+
 
 - (void)primeBuffers
 {
@@ -117,10 +123,20 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)setFmDepth:(id)sender {
     [vco setFrequencyModulation:[osc2_fm doubleValue]];
-    
 }
 
 - (IBAction)setAmDepth:(id)sender {
     [vco setAmplitudeModulation:[osc2_am doubleValue]];
 }
+
+
+- (void)mouseDown:(NSEvent *)evt :(int)tag {
+    NSLog(@"%d note on", tag);
+
+}
+- (void)mouseUp:(NSEvent *)evt :(int)tag {
+    NSLog(@"%d note off", tag);
+
+}
+
 @end

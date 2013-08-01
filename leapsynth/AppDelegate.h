@@ -10,9 +10,10 @@
 #import "AudioToolbox/AudioQueue.h"
 #import "Defines.h"
 #import "Vco.h"
+#import "DownUpButton.h"
 
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate> {
     Vco *vco;
     AudioQueueRef mAudioQueue;
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
@@ -40,5 +41,11 @@
 @property (weak) IBOutlet NSSlider *osc2_fm;
 @property (weak) IBOutlet NSSlider *osc2_am;
 
+- (IBAction)clickKey:(id)sender;
+@property (weak) IBOutlet DownUpButton *keyboard_1;
+@property (weak) IBOutlet DownUpButton *keyboard_2;
+
+- (void)mouseDown:(NSEvent *)evt :(int)tag;
+- (void)mouseUp:(NSEvent *)evt :(int)tag;
 
 @end
