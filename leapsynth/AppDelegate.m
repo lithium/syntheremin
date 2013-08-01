@@ -11,6 +11,14 @@
 @implementation AppDelegate
 @synthesize keyboard_1;
 @synthesize keyboard_2;
+@synthesize keyboard_3;
+@synthesize keyboard_4;
+@synthesize keyboard_5;
+@synthesize cv_1;
+@synthesize cv_2;
+@synthesize cv_3;
+@synthesize cv_4;
+@synthesize cv_5;
 @synthesize osc1_shape;
 @synthesize osc1_range;
 @synthesize osc1_detune;
@@ -69,13 +77,16 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
     status = AudioQueueSetParameter (mAudioQueue, kAudioQueueParam_Volume, 1.0);
 
-    status = AudioQueueStart(mAudioQueue, NULL);
+//    status = AudioQueueStart(mAudioQueue, NULL);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
     
-    
     [keyboard_1 setDelegate:self];
     [keyboard_2 setDelegate:self];
+    [keyboard_3 setDelegate:self];
+    [keyboard_4 setDelegate:self];
+    [keyboard_5 setDelegate:self];
+
 }
 
 
@@ -97,7 +108,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [vco setWaveShape:[osc1_shape intValue]];
     AudioQueueStop(mAudioQueue, true);
     [self primeBuffers];
-    AudioQueueStart(mAudioQueue, NULL);
+//    AudioQueueStart(mAudioQueue, NULL);
 
 
 }
@@ -132,10 +143,35 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (void)mouseDown:(NSEvent *)evt :(int)tag {
     NSLog(@"%d note on", tag);
+    double freq=440;
+    switch (tag) {
+        case 100:
+            freq += [cv_1 intValue]; 
+            break;
+        case 101:
+            freq += [cv_2 intValue]; 
+            break;
+        case 102:
+            freq += [cv_3 intValue]; 
+            break;
+        case 103:
+            freq += [cv_4 intValue]; 
+            break;
+        case 104:
+            freq += [cv_5 intValue]; 
+            break;
+    }
+    [vco setFrequency:freq];
+    AudioQueueStop(mAudioQueue, true);
+    [self primeBuffers];
+    AudioQueueStart(mAudioQueue, NULL);
+
 
 }
 - (void)mouseUp:(NSEvent *)evt :(int)tag {
     NSLog(@"%d note off", tag);
+    AudioQueueStop(mAudioQueue, true);
+
 
 }
 

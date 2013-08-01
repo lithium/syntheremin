@@ -41,9 +41,16 @@
 @property (weak) IBOutlet NSSlider *osc2_fm;
 @property (weak) IBOutlet NSSlider *osc2_am;
 
-- (IBAction)clickKey:(id)sender;
 @property (weak) IBOutlet DownUpButton *keyboard_1;
 @property (weak) IBOutlet DownUpButton *keyboard_2;
+@property (weak) IBOutlet DownUpButton *keyboard_3;
+@property (weak) IBOutlet DownUpButton *keyboard_4;
+@property (weak) IBOutlet DownUpButton *keyboard_5;
+@property (weak) IBOutlet NSSlider *cv_1;
+@property (weak) IBOutlet NSSlider *cv_2;
+@property (weak) IBOutlet NSSlider *cv_3;
+@property (weak) IBOutlet NSSlider *cv_4;
+@property (weak) IBOutlet NSSlider *cv_5;
 
 - (void)mouseDown:(NSEvent *)evt :(int)tag;
 - (void)mouseUp:(NSEvent *)evt :(int)tag;
