@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Adsr.h"
 
-@interface Vca : NSObject
+@interface Vca : Adsr
+
+- (int) modifySamples :(short *)samples :(int)numSamples;
 
 @end
