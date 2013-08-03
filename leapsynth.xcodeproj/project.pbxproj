@@ -18,6 +18,7 @@
 		12BB469B17A98979009D7B5C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469917A98979009D7B5C /* Credits.rtf */; };
 		12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Oscillator.m */; };
 		12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7517A9AC3F00C72104 /* Vco.m */; };
+		12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2A17AAE53C00E84D98 /* Adsr.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		12CDBF7317A9A9C100C72104 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		12CDBF7417A9AC3F00C72104 /* Vco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vco.h; sourceTree = "<group>"; };
 		12CDBF7517A9AC3F00C72104 /* Vco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vco.m; sourceTree = "<group>"; };
+		12EFCD2917AAE53C00E84D98 /* Adsr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adsr.h; sourceTree = "<group>"; };
+		12EFCD2A17AAE53C00E84D98 /* Adsr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adsr.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,7 @@
 				128646CD17A9E99A00CE0420 /* DownUpButton.m */,
 				12CDBF7017A9A5A800C72104 /* Oscillator.m */,
 				12CDBF7517A9AC3F00C72104 /* Vco.m */,
+				12EFCD2A17AAE53C00E84D98 /* Adsr.m */,
 				127DBD3917A76D16007C68FF /* Supporting Files */,
 			);
 			path = leapsynth;
@@ -123,11 +127,12 @@
 		12CDBF7717A9AC5300C72104 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
-				12C0D40217A9883C001323FA /* AppDelegate.h */,
 				12CDBF7317A9A9C100C72104 /* Defines.h */,
+				12C0D40217A9883C001323FA /* AppDelegate.h */,
+				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
 				12CDBF6F17A9A5A800C72104 /* Oscillator.h */,
 				12CDBF7417A9AC3F00C72104 /* Vco.h */,
+				12EFCD2917AAE53C00E84D98 /* Adsr.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */,
 				12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */,
 				128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */,
+				12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
