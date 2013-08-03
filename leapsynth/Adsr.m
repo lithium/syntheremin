@@ -7,6 +7,7 @@
 //
 
 #import "Adsr.h"
+#import "Defines.h"
 
 @implementation Adsr
 
@@ -23,7 +24,7 @@
 {
     ms = MAX(MIN(ms, kMsMax), kMsMin);
     
-    double temp = (0.001*ms)/sampleTime;
+    double temp = (0.001*ms) / (1.0/kSampleRate);
     attackCount = (int)temp;
     attackSlope = 1.0/temp;
 }
@@ -31,7 +32,7 @@
 - (void)setDecayTimeInMs:(int) ms
 {
     decayMS = MAX(MIN(ms, kMsMax), kMsMin);
-    double temp = (0.001*decayMS)/sampleTime;
+    double temp = (0.001*decayMS)/(1.0/kSampleRate);
     decayCount = (int)temp;
     decaySlope = (1.0 - sustainLevel) / temp;
 }
@@ -46,7 +47,7 @@
 - (void)setReleaseTimeInMs:(int) ms
 {
     releaseMS = MAX(MIN(ms, kMsMax), kMsMin);
-    double temp = (0.001*releaseMS)/sampleTime;
+    double temp = (0.001*releaseMS)/(1.0/kSampleRate);
     releaseCount = (int)temp;
     releaseSlope = sustainLevel / temp;
 }

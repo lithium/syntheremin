@@ -55,4 +55,15 @@
 - (void)mouseDown:(NSEvent *)evt :(int)tag;
 - (void)mouseUp:(NSEvent *)evt :(int)tag;
 
+
+//VCA
+@property (weak) IBOutlet NSSlider *vca_attack;
+@property (weak) IBOutlet NSSlider *vca_decay;
+@property (weak) IBOutlet NSSlider *vca_sustain;
+@property (weak) IBOutlet NSSlider *vca_release;
+- (IBAction)setVcaAttack:(id)sender;
+- (IBAction)setVcaDecay:(id)sender;
+- (IBAction)setVcaSustain:(id)sender;
+- (IBAction)setVcaRelease:(id)sender;
+
 @end

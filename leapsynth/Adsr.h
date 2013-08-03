@@ -32,7 +32,6 @@ enum {
     double decaySlope;
     
     double sustainLevel;
-    double sampleTime;
     
     int releaseMS;
     int releaseCount;

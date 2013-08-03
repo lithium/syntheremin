@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize vca_attack;
+@synthesize vca_decay;
+@synthesize vca_sustain;
+@synthesize vca_release;
 @synthesize keyboard_1;
 @synthesize keyboard_2;
 @synthesize keyboard_3;
@@ -102,11 +106,9 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)setVcoShape:(id)sender {
     [[synth vco] setWaveShape:[osc1_shape intValue]];
-//    AudioQueueStop(mAudioQueue, true);
+    AudioQueueStop(mAudioQueue, true);
     [self primeBuffers];
-//    AudioQueueStart(mAudioQueue, NULL);
-
-
+    AudioQueueStart(mAudioQueue, NULL);
 }
 
 - (IBAction)setVcoRange:(id)sender {
@@ -136,9 +138,30 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [[synth vco] setAmplitudeModulation:[osc2_am doubleValue]];
 }
 
+- (IBAction)setVcaAttack:(id)sender
+{
+    [[synth vca] setAttackTimeInMs:[vca_attack intValue]];
+}
+
+- (IBAction)setVcaDecay:(id)sender
+{
+    [[synth vca] setDecayTimeInMs:[vca_decay intValue]];
+
+}
+
+- (IBAction)setVcaSustain:(id)sender
+{
+    [[synth vca] setSustainLevel:[vca_sustain doubleValue]];
+
+}
+- (IBAction)setVcaRelease:(id)sender
+{
+    [[synth vca] setReleaseTimeInMs:[vca_release intValue]];
+
+}
+
 
 - (void)mouseDown:(NSEvent *)evt :(int)tag {
-    NSLog(@"%d note on", tag);
     double freq=440;
     switch (tag) {
         case 100:
@@ -163,15 +186,13 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 }
 - (void)mouseUp:(NSEvent *)evt :(int)tag {
-    NSLog(@"%d note off", tag);
-//    AudioQueueStop(mAudioQueue, true);
     [self noteOff];
 }
 
 - (void)noteOn
-{    
-    [[synth vca] noteOn];
+{        
     AudioQueueStop(mAudioQueue, true);
+    [[synth vca] noteOn];
     [self primeBuffers];
     AudioQueueStart(mAudioQueue, NULL);
 }
@@ -179,7 +200,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (void)noteOff
 {
     [[synth vca] noteOff];
-//    AudioQueueStop(mAudioQueue, true);
 }
 
 @end
