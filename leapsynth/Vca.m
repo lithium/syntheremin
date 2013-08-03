@@ -24,7 +24,8 @@
     int index=0;
     int i;
     for (i=0; i < numSamples; i++) {
-        samples[i] *= [self getValue];
+        double value = [self getValue];
+        samples[i] *= value;
     }
     return numSamples;
 }

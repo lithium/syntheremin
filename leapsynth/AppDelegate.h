@@ -9,12 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "AudioToolbox/AudioQueue.h"
 #import "Defines.h"
-#import "Vco.h"
+#import "Synth.h"
 #import "DownUpButton.h"
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate> {
-    Vco *vco;
+    Synth *synth;
     AudioQueueRef mAudioQueue;
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
 }

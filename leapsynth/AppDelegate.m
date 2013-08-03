@@ -33,12 +33,12 @@
 void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQueueBufferRef buffer_ref)
 {
     OSStatus ret;
-    Vco *vco = (__bridge Vco *)userdata;
+    Synth *synth = (__bridge Synth *)userdata;
     AudioQueueBuffer *buffer = buffer_ref;
     int num_samples = buffer->mAudioDataByteSize / 2;
     short *samples = buffer->mAudioData;
     
-    [vco getSamples:samples :num_samples];
+    [synth getSamples:samples :num_samples];
     ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
 }
 
@@ -48,12 +48,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 {
     OSStatus status;
     
-    vco = [[Vco alloc] init];
-    [vco setWaveShape:kWaveSquare];
-//    [vco setModulationType:kModulationTypeFrequency];
-//    [vco setLfoFrequency:0];
-//    [vco setLfoWaveshape:kWaveSine];
-    [vco setFrequency:440];
+    synth = [[Synth alloc] init];
         
     AudioStreamBasicDescription fmt = {0};
     fmt.mSampleRate = kSampleRate;
@@ -66,18 +61,17 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     fmt.mBytesPerPacket = fmt.mBytesPerFrame*fmt.mFramesPerPacket;
     
     
-    status = AudioQueueNewOutput(&fmt, audio_queue_output_callback, (__bridge void*)vco, NULL, NULL, 0, &mAudioQueue);
+    status = AudioQueueNewOutput(&fmt, audio_queue_output_callback, (__bridge void*)synth, NULL, NULL, 0, &mAudioQueue);
     
     for (int i=0; i < kNumBuffers; i++) {
         status = AudioQueueAllocateBuffer(mAudioQueue, kBufferSize, &mQueueBuffers[i]);
         AudioQueueBuffer *buffer = mQueueBuffers[i];
         buffer->mAudioDataByteSize = kBufferSize;
-        audio_queue_output_callback((__bridge void*)vco, mAudioQueue, mQueueBuffers[i]);
     }
+    [self primeBuffers];
     
     status = AudioQueueSetParameter (mAudioQueue, kAudioQueueParam_Volume, 1.0);
 
-//    status = AudioQueueStart(mAudioQueue, NULL);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
     
@@ -86,6 +80,9 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [keyboard_3 setDelegate:self];
     [keyboard_4 setDelegate:self];
     [keyboard_5 setDelegate:self];
+    
+    AudioQueueStart(mAudioQueue, NULL);
+
 
 }
 
@@ -93,8 +90,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (void)primeBuffers
 {
     for (int i=0; i < kNumBuffers; i++) {
-        AudioQueueBuffer *buffer = mQueueBuffers[i];
-        audio_queue_output_callback((__bridge void*)vco, mAudioQueue, mQueueBuffers[i]);
+        audio_queue_output_callback((__bridge void*)synth, mAudioQueue, mQueueBuffers[i]);
     }
 }
 
@@ -105,8 +101,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 
 - (IBAction)setVcoShape:(id)sender {
-    [vco setWaveShape:[osc1_shape intValue]];
-    AudioQueueStop(mAudioQueue, true);
+    [[synth vco] setWaveShape:[osc1_shape intValue]];
+//    AudioQueueStop(mAudioQueue, true);
     [self primeBuffers];
 //    AudioQueueStart(mAudioQueue, NULL);
 
@@ -115,29 +111,29 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)setVcoRange:(id)sender {
     int value = [osc1_range intValue];
-    [vco setRange:(2 - value)];
+    [[synth vco] setRange:(2 - value)];
 }
 
 - (IBAction)setVcoDetune:(id)sender {
     int value = [osc1_detune intValue];
-    [vco setDetuneInCents:value];
+    [[synth vco] setDetuneInCents:value];
 }
 
 - (IBAction)setLfoShape:(id)sender {
     int shape = [osc2_shape intValue];
-    [vco setLfoWaveshape:shape];
+    [[synth vco] setLfoWaveshape:shape];
 }
 
 - (IBAction)setLfoFrequency:(id)sender {
-    [vco setLfoFrequency:[osc2_freq doubleValue]];
+    [[synth vco] setLfoFrequency:[osc2_freq doubleValue]];
 }
 
 - (IBAction)setFmDepth:(id)sender {
-    [vco setFrequencyModulation:[osc2_fm doubleValue]];
+    [[synth vco] setFrequencyModulation:[osc2_fm doubleValue]];
 }
 
 - (IBAction)setAmDepth:(id)sender {
-    [vco setAmplitudeModulation:[osc2_am doubleValue]];
+    [[synth vco] setAmplitudeModulation:[osc2_am doubleValue]];
 }
 
 
@@ -161,18 +157,29 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             freq += [cv_5 intValue]; 
             break;
     }
-    [vco setFrequency:freq];
-    AudioQueueStop(mAudioQueue, true);
-    [self primeBuffers];
-    AudioQueueStart(mAudioQueue, NULL);
-
+    [[synth vco] setFrequency:freq];
+    
+    [self noteOn];
 
 }
 - (void)mouseUp:(NSEvent *)evt :(int)tag {
     NSLog(@"%d note off", tag);
+//    AudioQueueStop(mAudioQueue, true);
+    [self noteOff];
+}
+
+- (void)noteOn
+{    
+    [[synth vca] noteOn];
     AudioQueueStop(mAudioQueue, true);
+    [self primeBuffers];
+    AudioQueueStart(mAudioQueue, NULL);
+}
 
-
+- (void)noteOff
+{
+    [[synth vca] noteOff];
+//    AudioQueueStop(mAudioQueue, true);
 }
 
 @end

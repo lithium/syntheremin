@@ -10,6 +10,14 @@
 
 @implementation Adsr
 
+- (void)noteOn
+{
+    self->noteOn = true;
+}
+- (void)noteOff
+{
+    self->noteOff = true;
+}
 
 - (void)setAttackTimeInMs:(int) ms
 {

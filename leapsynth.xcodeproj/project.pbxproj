@@ -19,6 +19,9 @@
 		12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Oscillator.m */; };
 		12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7517A9AC3F00C72104 /* Vco.m */; };
 		12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2A17AAE53C00E84D98 /* Adsr.m */; };
+		12EFCD2F17AD429F00E84D98 /* Vca.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2E17AD429F00E84D98 /* Vca.m */; };
+		12EFCD3217AD490200E84D98 /* Synth.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD3117AD490200E84D98 /* Synth.m */; };
+		12EFCD3517AD493100E84D98 /* Vcf.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD3417AD493100E84D98 /* Vcf.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,12 @@
 		12CDBF7517A9AC3F00C72104 /* Vco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vco.m; sourceTree = "<group>"; };
 		12EFCD2917AAE53C00E84D98 /* Adsr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adsr.h; sourceTree = "<group>"; };
 		12EFCD2A17AAE53C00E84D98 /* Adsr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adsr.m; sourceTree = "<group>"; };
+		12EFCD2D17AD429F00E84D98 /* Vca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vca.h; sourceTree = "<group>"; };
+		12EFCD2E17AD429F00E84D98 /* Vca.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vca.m; sourceTree = "<group>"; };
+		12EFCD3017AD490200E84D98 /* Synth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Synth.h; sourceTree = "<group>"; };
+		12EFCD3117AD490200E84D98 /* Synth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Synth.m; sourceTree = "<group>"; };
+		12EFCD3317AD493100E84D98 /* Vcf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vcf.h; sourceTree = "<group>"; };
+		12EFCD3417AD493100E84D98 /* Vcf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vcf.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +116,9 @@
 				12CDBF7017A9A5A800C72104 /* Oscillator.m */,
 				12CDBF7517A9AC3F00C72104 /* Vco.m */,
 				12EFCD2A17AAE53C00E84D98 /* Adsr.m */,
+				12EFCD2E17AD429F00E84D98 /* Vca.m */,
+				12EFCD3417AD493100E84D98 /* Vcf.m */,
+				12EFCD3117AD490200E84D98 /* Synth.m */,
 				127DBD3917A76D16007C68FF /* Supporting Files */,
 			);
 			path = leapsynth;
@@ -133,6 +145,9 @@
 				12CDBF6F17A9A5A800C72104 /* Oscillator.h */,
 				12CDBF7417A9AC3F00C72104 /* Vco.h */,
 				12EFCD2917AAE53C00E84D98 /* Adsr.h */,
+				12EFCD2D17AD429F00E84D98 /* Vca.h */,
+				12EFCD3317AD493100E84D98 /* Vcf.h */,
+				12EFCD3017AD490200E84D98 /* Synth.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -207,6 +222,9 @@
 				12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */,
 				128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */,
 				12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */,
+				12EFCD2F17AD429F00E84D98 /* Vca.m in Sources */,
+				12EFCD3217AD490200E84D98 /* Synth.m in Sources */,
+				12EFCD3517AD493100E84D98 /* Vcf.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

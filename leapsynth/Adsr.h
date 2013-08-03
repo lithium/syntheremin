@@ -46,4 +46,8 @@ enum {
 - (void)setReleaseTimeInMs:(int) ms;
 
 - (double)getValue;
+
+- (void)noteOn;
+- (void)noteOff;
+
 @end
