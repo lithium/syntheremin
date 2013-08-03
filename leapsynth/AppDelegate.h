@@ -66,4 +66,22 @@
 - (IBAction)setVcaSustain:(id)sender;
 - (IBAction)setVcaRelease:(id)sender;
 
+//VCF
+@property (weak) IBOutlet NSSlider *vcf_attack;
+@property (weak) IBOutlet NSSlider *vcf_decay;
+@property (weak) IBOutlet NSSlider *vcf_sustain;
+@property (weak) IBOutlet NSSlider *vcf_release;
+@property (weak) IBOutlet NSSlider *vcf_cutoff;
+@property (weak) IBOutlet NSSlider *vcf_resonance;
+@property (weak) IBOutlet NSSlider *vcf_depth;
+- (IBAction)setVcfAttack:(id)sender;
+- (IBAction)setVcfDecay:(id)sender;
+- (IBAction)setVcfSustain:(id)sender;
+- (IBAction)setVcfRelease:(id)sender;
+- (IBAction)setVcfCutoff:(id)sender;
+- (IBAction)setVcfResonance:(id)sender;
+- (IBAction)setVcfDepth:(id)sender;
+- (IBAction)toggleFilter:(id)sender;
+@property (weak) IBOutlet NSButton *vcf_enable;
+
 @end

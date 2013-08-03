@@ -12,7 +12,8 @@
 
 @synthesize vco;
 @synthesize vca;
-
+@synthesize vcf;
+@synthesize vcfEnabled;
 
 - (id)init
 {
@@ -26,6 +27,13 @@
     [vca setSustainLevel:0.2];
     [vca setReleaseTimeInMs:1000];
     
+    vcf = [[Vcf alloc] init];
+    [vcf  setCutoffFrequencyInHz:1000];
+    [vcf setResonance:0.85];
+    [vcf setDepth:2.0];
+    
+    vcfEnabled = false;
+    
     return self;
 }
 
@@ -33,9 +41,24 @@
 {
     [vco getSamples:samples :numSamples];
     
-    
+    if (vcfEnabled) {
+        [vcf modifySamples:samples :numSamples];
+    }
     [vca modifySamples:samples :numSamples];
+    
+    return numSamples;
 }
 
+- (void)noteOn
+{
+    [vca noteOn];
+    [vcf noteOn];
+}
+
+- (void)noteOff
+{
+    [vca noteOff];
+    [vcf noteOff];
+}
 
 @end

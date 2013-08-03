@@ -9,18 +9,25 @@
 #import <Foundation/Foundation.h>
 #import "Vco.h"
 #import "Vca.h"
+#import "Vcf.h"
 
 @interface Synth : NSObject {
     Vco *vco;
     Vca *vca;
+    Vcf *vcf;
+    
+    bool vcfEnabled;
 }
 
 @property Vco *vco;
 @property Vca *vca;
-
+@property Vcf *vcf;
+@property bool vcfEnabled;
 
 - (id)init;
 - (int) getSamples :(short *)samples :(int)numSamples;
 
+- (void)noteOn;
+- (void)noteOff;
 
 @end

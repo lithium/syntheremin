@@ -9,6 +9,14 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize vcf_enable;
+@synthesize vcf_cutoff;
+@synthesize vcf_resonance;
+@synthesize vcf_depth;
+@synthesize vcf_attack;
+@synthesize vcf_decay;
+@synthesize vcf_sustain;
+@synthesize vcf_release;
 @synthesize vca_attack;
 @synthesize vca_decay;
 @synthesize vca_sustain;
@@ -160,6 +168,45 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 }
 
+- (IBAction)setVcfAttack:(id)sender
+{
+    [[synth vcf] setAttackTimeInMs:[vcf_attack intValue]];
+}
+
+- (IBAction)setVcfDecay:(id)sender
+{
+    [[synth vcf] setDecayTimeInMs:[vcf_decay intValue]];
+    
+}
+
+- (IBAction)setVcfSustain:(id)sender
+{
+    [[synth vcf] setSustainLevel:[vcf_sustain doubleValue]];
+    
+}
+- (IBAction)setVcfRelease:(id)sender
+{
+    [[synth vcf] setReleaseTimeInMs:[vcf_release intValue]];
+    
+}
+- (IBAction)setVcfCutoff:(id)sender
+{
+    [[synth vcf] setCutoffFrequencyInHz:[vcf_cutoff intValue]];
+}
+- (IBAction)setVcfResonance:(id)sender
+{
+    [[synth vcf] setResonance:[vcf_resonance doubleValue]];
+}
+- (IBAction)setVcfDepth:(id)sender
+{
+    double depth = [vcf_depth doubleValue];
+    [[synth vcf] setDepth:depth];
+}
+
+- (IBAction)toggleFilter:(id)sender {
+    int state = [vcf_enable state];
+    [synth setVcfEnabled:state];
+}
 
 - (void)mouseDown:(NSEvent *)evt :(int)tag {
     double freq=440;
@@ -192,14 +239,14 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (void)noteOn
 {        
     AudioQueueStop(mAudioQueue, true);
-    [[synth vca] noteOn];
+    [synth noteOn];
     [self primeBuffers];
     AudioQueueStart(mAudioQueue, NULL);
 }
 
 - (void)noteOff
 {
-    [[synth vca] noteOff];
+    [synth noteOff];
 }
 
 @end
