@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
+		126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */; };
+		126C4D6E17B2B42F00598323 /* LeapObjectiveC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */; };
 		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
 		128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 128646CD17A9E99A00CE0420 /* DownUpButton.m */; };
@@ -45,6 +47,8 @@
 		126C4D6617B29FCB00598323 /* LeapMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LeapMath.h; path = LeapSDK/include/LeapMath.h; sourceTree = "<group>"; };
 		126C4D6717B29FCB00598323 /* LeapObjectiveC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LeapObjectiveC.h; path = LeapSDK/include/LeapObjectiveC.h; sourceTree = "<group>"; };
 		126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = LeapObjectiveC.mm; path = LeapSDK/include/LeapObjectiveC.mm; sourceTree = "<group>"; };
+		126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapSyntheremin.h; sourceTree = "<group>"; };
+		126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapSyntheremin.m; sourceTree = "<group>"; };
 		127DBD2E17A76D16007C68FF /* leapsynth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leapsynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -146,6 +150,7 @@
 				12BB468B17A988E4009D7B5C /* MainMenu.xib */,
 				12CDBF7717A9AC5300C72104 /* Headers */,
 				12C0D40317A9883C001323FA /* AppDelegate.m */,
+				126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */,
 				128646CD17A9E99A00CE0420 /* DownUpButton.m */,
 				12CDBF7017A9A5A800C72104 /* Oscillator.m */,
 				12CDBF7517A9AC3F00C72104 /* Vco.m */,
@@ -173,6 +178,7 @@
 		12CDBF7717A9AC5300C72104 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
 				12CDBF7317A9A9C100C72104 /* Defines.h */,
 				12C0D40217A9883C001323FA /* AppDelegate.h */,
 				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
@@ -251,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126C4D6E17B2B42F00598323 /* LeapObjectiveC.mm in Sources */,
 				12BB468E17A988ED009D7B5C /* AppDelegate.m in Sources */,
 				12BB469517A98944009D7B5C /* main.m in Sources */,
 				12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */,
@@ -260,6 +267,7 @@
 				12EFCD2F17AD429F00E84D98 /* Vca.m in Sources */,
 				12EFCD3217AD490200E84D98 /* Synth.m in Sources */,
 				12EFCD3517AD493100E84D98 /* Vcf.m in Sources */,
+				126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

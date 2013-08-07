@@ -11,12 +11,15 @@
 #import "Defines.h"
 #import "Synth.h"
 #import "DownUpButton.h"
-
+#import "LeapSyntheremin.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate> {
     Synth *synth;
     AudioQueueRef mAudioQueue;
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
+    
+    LeapSyntheremin *mSyntheremin;
+    
 }
 
 @property (assign) IBOutlet NSWindow *window;

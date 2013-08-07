@@ -96,6 +96,9 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [keyboard_5 setDelegate:self];
     
     AudioQueueStart(mAudioQueue, NULL);
+    
+    
+    mSyntheremin = [[LeapSyntheremin alloc] init];
 
 
 }
