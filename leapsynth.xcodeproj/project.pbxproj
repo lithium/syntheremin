@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
+		126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
 		128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 128646CD17A9E99A00CE0420 /* DownUpButton.m */; };
@@ -24,7 +26,25 @@
 		12EFCD3517AD493100E84D98 /* Vcf.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD3417AD493100E84D98 /* Vcf.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		126C4D6217B29F9400598323 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		126C4D5F17B29F8700598323 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = LeapSDK/lib/libLeap.dylib; sourceTree = "<group>"; };
+		126C4D6517B29FCB00598323 /* Leap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Leap.h; path = LeapSDK/include/Leap.h; sourceTree = "<group>"; };
+		126C4D6617B29FCB00598323 /* LeapMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LeapMath.h; path = LeapSDK/include/LeapMath.h; sourceTree = "<group>"; };
+		126C4D6717B29FCB00598323 /* LeapObjectiveC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LeapObjectiveC.h; path = LeapSDK/include/LeapObjectiveC.h; sourceTree = "<group>"; };
+		126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = LeapObjectiveC.mm; path = LeapSDK/include/LeapObjectiveC.mm; sourceTree = "<group>"; };
 		127DBD2E17A76D16007C68FF /* leapsynth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leapsynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -61,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */,
 				127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */,
 				127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */,
 			);
@@ -69,10 +90,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		126C4D6417B29FA900598323 /* LeapSDK */ = {
+			isa = PBXGroup;
+			children = (
+				126C4D5F17B29F8700598323 /* libLeap.dylib */,
+				126C4D6517B29FCB00598323 /* Leap.h */,
+				126C4D6617B29FCB00598323 /* LeapMath.h */,
+				126C4D6717B29FCB00598323 /* LeapObjectiveC.h */,
+				126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */,
+			);
+			name = LeapSDK;
+			sourceTree = "<group>";
+		};
 		127DBD2317A76D16007C68FF = {
 			isa = PBXGroup;
 			children = (
 				127DBD3817A76D16007C68FF /* leapsynth */,
+				126C4D6417B29FA900598323 /* LeapSDK */,
 				127DBD3117A76D16007C68FF /* Frameworks */,
 				127DBD2F17A76D16007C68FF /* Products */,
 			);
@@ -162,6 +196,7 @@
 				127DBD2A17A76D16007C68FF /* Sources */,
 				127DBD2B17A76D16007C68FF /* Frameworks */,
 				127DBD2C17A76D16007C68FF /* Resources */,
+				126C4D6217B29F9400598323 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -311,6 +346,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "leapsynth/leapsynth-Prefix.pch";
 				INFOPLIST_FILE = "leapsynth/leapsynth-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LeapSDK/lib\"",
+				);
 				PRODUCT_NAME = leapsynth;
 				WRAPPER_EXTENSION = app;
 			};
@@ -322,6 +361,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "leapsynth/leapsynth-Prefix.pch";
 				INFOPLIST_FILE = "leapsynth/leapsynth-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LeapSDK/lib\"",
+				);
 				PRODUCT_NAME = leapsynth;
 				WRAPPER_EXTENSION = app;
 			};
