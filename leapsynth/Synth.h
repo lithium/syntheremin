@@ -17,12 +17,15 @@
     Vcf *vcf;
     
     bool vcfEnabled;
+    bool vcaEnabled;
 }
 
 @property Vco *vco;
 @property Vca *vca;
 @property Vcf *vcf;
 @property bool vcfEnabled;
+@property bool vcaEnabled;
+
 
 - (id)init;
 - (int) getSamples :(short *)samples :(int)numSamples;

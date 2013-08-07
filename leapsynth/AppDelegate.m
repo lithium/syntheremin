@@ -9,7 +9,14 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize vca_master;
 @synthesize vcf_enable;
+@synthesize lefthand_x;
+@synthesize lefthand_y;
+@synthesize lefthand_z;
+@synthesize righthand_x;
+@synthesize righthand_y;
+@synthesize righthand_z;
 @synthesize vcf_cutoff;
 @synthesize vcf_resonance;
 @synthesize vcf_depth;
@@ -99,6 +106,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
     
     mSyntheremin = [[LeapSyntheremin alloc] init];
+    [mSyntheremin setDelegate:self];
 
 
 }
@@ -151,6 +159,10 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [[synth vco] setAmplitudeModulation:[osc2_am doubleValue]];
 }
 
+- (IBAction)setVcaMaster:(id)sender;
+{
+    [[synth vca] setMasterVolume:[vca_master doubleValue]];
+}
 - (IBAction)setVcaAttack:(id)sender
 {
     [[synth vca] setAttackTimeInMs:[vca_attack intValue]];
@@ -240,6 +252,41 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (void)mouseUp:(NSEvent *)evt :(int)tag {
     [self noteOff];
 }
+
+- (double)translateMinMax:(double)pos :(double)min :(double)max
+{
+    return (abs(pos) + abs(min))/(abs(min)+abs(max));
+}
+
+//
+//X: -200 ..  0  .. 200
+//Y:   50 .. 175 .. 400
+//Z: -120 ..  0  .. 120
+- (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)position
+{
+    double x = fabs([position x]/200.0);
+    double y = fabs(([position y]-50)/350.0);
+    double z = fabs([position z]/120.0);
+
+    [lefthand_x setDoubleValue:x];
+    [lefthand_y setDoubleValue:y];
+    [lefthand_z setDoubleValue:z];
+    
+}
+- (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
+{
+//    NSLog(@"Right hand: %f,%f,%f", [position x], [position y], [position z]);
+    double x = fabs([position x]/200.0);
+    double y = fabs(([position y]-50)/350.0);
+    double z = fabs([position z]/120.0);
+    
+    [righthand_x setDoubleValue:x];
+    [righthand_y setDoubleValue:y];
+    [righthand_z setDoubleValue:z];
+
+}
+
+
 
 - (void)noteOn
 {        

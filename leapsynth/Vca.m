@@ -9,6 +9,8 @@
 #import "Vca.h"
 
 @implementation Vca
+@synthesize envelopeEnabled;
+@synthesize masterVolume;
 
 - (id)init
 {
@@ -16,7 +18,18 @@
     [self setDecayTimeInMs:1000];
     [self setSustainLevel:0.5];
     [self setReleaseTimeInMs:2000];
+    
+    masterVolume = 1.0;
     return self;
+}
+
+- (double)getValue
+{
+    double value = masterVolume;
+    if (envelopeEnabled) {
+        value *= [super getValue];
+    }
+    return value;
 }
 
 - (int) modifySamples :(short *)samples :(int)numSamples

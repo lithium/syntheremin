@@ -18,7 +18,11 @@
 @interface Vcf : Adsr {
     double resonance, depth, cutoff, cutoffFrequencyInHz;
     double x, r, p, k, y1, y2, y3, y4, oldx, oldy1, oldy2, oldy3;
+    
+    bool envelopeEnabled;
 }
+
+@property bool envelopeEnabled;
 
 - (id)init;
 

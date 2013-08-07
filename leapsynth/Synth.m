@@ -32,7 +32,12 @@
     [vcf setResonance:0.85];
     [vcf setDepth:2.0];
     
-    vcfEnabled = false;
+    
+    vcaEnabled = true;
+    vcfEnabled = true;
+    [vca setEnvelopeEnabled:false];
+    [vcf setEnvelopeEnabled:false];
+
     
     return self;
 }
@@ -44,7 +49,9 @@
     if (vcfEnabled) {
         [vcf modifySamples:samples :numSamples];
     }
-    [vca modifySamples:samples :numSamples];
+    if (vcaEnabled) {
+        [vca modifySamples:samples :numSamples];
+    }
     
     return numSamples;
 }

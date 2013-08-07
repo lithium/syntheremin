@@ -13,7 +13,7 @@
 #import "DownUpButton.h"
 #import "LeapSyntheremin.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate, LeapSynthereminDelegate> {
     Synth *synth;
     AudioQueueRef mAudioQueue;
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
@@ -68,6 +68,8 @@
 - (IBAction)setVcaDecay:(id)sender;
 - (IBAction)setVcaSustain:(id)sender;
 - (IBAction)setVcaRelease:(id)sender;
+@property (weak) IBOutlet NSSlider *vca_master;
+- (IBAction)setVcaMaster:(id)sender;
 
 //VCF
 @property (weak) IBOutlet NSSlider *vcf_attack;
@@ -86,5 +88,13 @@
 - (IBAction)setVcfDepth:(id)sender;
 - (IBAction)toggleFilter:(id)sender;
 @property (weak) IBOutlet NSButton *vcf_enable;
+
+
+@property (weak) IBOutlet NSLevelIndicator *lefthand_x;
+@property (weak) IBOutlet NSLevelIndicator *lefthand_y;
+@property (weak) IBOutlet NSLevelIndicator *lefthand_z;
+@property (weak) IBOutlet NSLevelIndicator *righthand_x;
+@property (weak) IBOutlet NSLevelIndicator *righthand_y;
+@property (weak) IBOutlet NSLevelIndicator *righthand_z;
 
 @end

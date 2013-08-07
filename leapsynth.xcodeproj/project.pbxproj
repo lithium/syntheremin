@@ -150,7 +150,6 @@
 				12BB468B17A988E4009D7B5C /* MainMenu.xib */,
 				12CDBF7717A9AC5300C72104 /* Headers */,
 				12C0D40317A9883C001323FA /* AppDelegate.m */,
-				126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */,
 				128646CD17A9E99A00CE0420 /* DownUpButton.m */,
 				12CDBF7017A9A5A800C72104 /* Oscillator.m */,
 				12CDBF7517A9AC3F00C72104 /* Vco.m */,
@@ -158,6 +157,7 @@
 				12EFCD2E17AD429F00E84D98 /* Vca.m */,
 				12EFCD3417AD493100E84D98 /* Vcf.m */,
 				12EFCD3117AD490200E84D98 /* Synth.m */,
+				126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */,
 				127DBD3917A76D16007C68FF /* Supporting Files */,
 			);
 			path = leapsynth;
@@ -178,7 +178,6 @@
 		12CDBF7717A9AC5300C72104 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
 				12CDBF7317A9A9C100C72104 /* Defines.h */,
 				12C0D40217A9883C001323FA /* AppDelegate.h */,
 				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
@@ -188,6 +187,7 @@
 				12EFCD2D17AD429F00E84D98 /* Vca.h */,
 				12EFCD3317AD493100E84D98 /* Vcf.h */,
 				12EFCD3017AD490200E84D98 /* Synth.h */,
+				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";

@@ -11,8 +11,11 @@
 
 @implementation Vcf
 
+@synthesize envelopeEnabled;
+
 - (id)init
 {
+    envelopeEnabled = true;
     return self;
 }
 - (void)setCutoffFrequencyInHz:(double)cutoff
@@ -69,7 +72,10 @@
     int i;
     for (i=0; i < numSamples; i++) {
         double value = [self getValue];
-        cutoff = cutoffFrequencyInHz * pow(2.0, depth*value);
+        cutoff = cutoffFrequencyInHz;
+        if (envelopeEnabled) {
+            cutoff *= pow(2.0, depth*value);
+        }
         [self recalculate];
         samples[i] = [self processSample:samples[i]];
     }
