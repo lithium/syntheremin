@@ -13,12 +13,24 @@
 #import "DownUpButton.h"
 #import "LeapSyntheremin.h"
 
+enum {
+    kParameterNone=0,
+    kParameterPitch=1,
+    kParameterVolume=2,
+    kParameterFrequency=3,
+    kParameterResonance=4,
+};
+#define kFrequencyMin 20
+#define kFrequencyMax 2093
+
 @interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate, LeapSynthereminDelegate> {
     Synth *synth;
     AudioQueueRef mAudioQueue;
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
     
     LeapSyntheremin *mSyntheremin;
+    int leftParamX, leftParamY, leftParamZ;
+    int rightParamX, rightParamY, rightParamZ;
     
 }
 
@@ -96,5 +108,13 @@
 @property (weak) IBOutlet NSLevelIndicator *righthand_x;
 @property (weak) IBOutlet NSLevelIndicator *righthand_y;
 @property (weak) IBOutlet NSLevelIndicator *righthand_z;
+@property (weak) IBOutlet NSPopUpButton *lefthand_x_popup;
+@property (weak) IBOutlet NSPopUpButton *lefthand_y_popup;
+@property (weak) IBOutlet NSPopUpButton *lefthand_z_popup;
+@property (weak) IBOutlet NSPopUpButton *righthand_x_popup;
+@property (weak) IBOutlet NSPopUpButton *righthand_y_popup;
+@property (weak) IBOutlet NSPopUpButton *righthand_z_popup;
+- (IBAction)setParameter:(id)sender;
+
 
 @end

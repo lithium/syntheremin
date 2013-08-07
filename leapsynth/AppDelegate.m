@@ -17,6 +17,13 @@
 @synthesize righthand_x;
 @synthesize righthand_y;
 @synthesize righthand_z;
+@synthesize lefthand_x_popup;
+@synthesize lefthand_y_popup;
+@synthesize lefthand_z_popup;
+@synthesize righthand_x_popup;
+@synthesize righthand_y_popup;
+@synthesize righthand_z_popup;
+
 @synthesize vcf_cutoff;
 @synthesize vcf_resonance;
 @synthesize vcf_depth;
@@ -107,8 +114,50 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
     mSyntheremin = [[LeapSyntheremin alloc] init];
     [mSyntheremin setDelegate:self];
+    
+    
+    [self setLeftParamX:kParameterNone];
+    [self setLeftParamY:kParameterVolume];
+    [self setLeftParamZ:kParameterNone];
+
+    [self setRightParamX:kParameterPitch];
+    [self setRightParamY:kParameterNone];
+    [self setRightParamZ:kParameterNone];
 
 
+
+
+}
+
+- (void)setLeftParamX:(int)param
+{
+    leftParamX = param;    
+    [lefthand_x_popup selectItemWithTag:param];
+}
+- (void)setLeftParamY:(int)param
+{
+    leftParamY = param;    
+    [lefthand_y_popup selectItemWithTag:param];
+}
+- (void)setLeftParamZ:(int)param
+{
+    leftParamZ = param;    
+    [lefthand_z_popup selectItemWithTag:param];
+}
+- (void)setRightParamX:(int)param
+{
+    rightParamX = param;    
+    [righthand_x_popup selectItemWithTag:param];
+}
+- (void)setRightParamY:(int)param
+{
+    rightParamY = param;    
+    [righthand_y_popup selectItemWithTag:param];
+}
+- (void)setRightParamZ:(int)param
+{
+    rightParamZ = param;    
+    [righthand_z_popup selectItemWithTag:param];
 }
 
 
@@ -272,6 +321,10 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [lefthand_y setDoubleValue:y];
     [lefthand_z setDoubleValue:z];
     
+    [self applyParameter:leftParamX :x];
+    [self applyParameter:leftParamY :y];
+    [self applyParameter:leftParamZ :z];
+    
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
 {
@@ -283,10 +336,61 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [righthand_x setDoubleValue:x];
     [righthand_y setDoubleValue:y];
     [righthand_z setDoubleValue:z];
+    
+    [self applyParameter:rightParamX :x];
+    [self applyParameter:rightParamY :y];
+    [self applyParameter:rightParamZ :z];
 
 }
 
+- (void)applyParameter:(int)param :(double)value
+{
+    switch (param) {
+        case kParameterVolume:
+            [[synth vca] setMasterVolume:value];
+            break;
+        case kParameterPitch: {
+            double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
+            [[synth vco] setFrequency:freq];
+            break;
+        }
+        case kParameterFrequency: {
+            double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
+            [[synth vcf] setCutoffFrequencyInHz:freq];
+            break;
+        }
+        case kParameterResonance: {
+            [[synth vcf] setResonance:value];
+            break;
+        }
+    }
+}
 
+- (IBAction)setParameter:(id)sender
+{
+    switch ([sender tag]) {
+        case 1:    
+            leftParamX = [sender selectedTag];
+            break;
+        case 2:    
+            leftParamY = [sender selectedTag];
+            break;
+        case 3:    
+            leftParamZ = [sender selectedTag];
+            break;
+        case 4:    
+            rightParamX = [sender selectedTag];
+            break;
+        case 5:    
+            rightParamY = [sender selectedTag];
+            break;
+        case 6:    
+            rightParamZ = [sender selectedTag];
+            break;
+
+    }
+
+}
 
 - (void)noteOn
 {        
