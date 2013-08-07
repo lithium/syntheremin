@@ -58,8 +58,10 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    OSStatus status;
+    [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
     
+    OSStatus status;
+        
     synth = [[Synth alloc] init];
         
     AudioStreamBasicDescription fmt = {0};
