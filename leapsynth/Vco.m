@@ -10,8 +10,8 @@
 
 @implementation Vco
 
-@synthesize frequencyModulation;
-@synthesize amplitudeModulation;
+@synthesize modulationType;
+@synthesize modulationAmount;
 
 
 - (id)init
@@ -19,8 +19,8 @@
     lfo = [[Oscillator alloc] init];
     rangeMultiplier = 1.0;
     detuneMultiplier = 1.0;
-    frequencyModulation = 0.0;
-    amplitudeModulation = 0.0;
+    modulationAmount = 0.0;
+    modulationType = kModulationTypeNone;
     return self;
 }
 
@@ -78,8 +78,8 @@
 - (double)getSample
 {
     double freq = frequency;
-    if (frequencyModulation > 0) {
-        double lfoSample = [lfo getSample] * frequencyModulation;
+    if (modulationType == kModulationTypeFrequency) {
+        double lfoSample = [lfo getSample] * modulationAmount;
         freq *= pow(2.0, lfoSample);
     }
     
@@ -89,9 +89,9 @@
     [super setFrequency:freq];
     double sample = [super getSample];
     
-    if (amplitudeModulation > 0) {
+    if (modulationType == kModulationTypeAmplitude) {
         double lfoOffset = ([lfo getSample] + 1.0) / 2.0;
-        double m = 1.0 - (amplitudeModulation * lfoOffset);
+        double m = 1.0 - (modulationAmount * lfoOffset);
         sample *= m;
     }
     

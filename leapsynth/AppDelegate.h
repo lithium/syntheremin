@@ -19,9 +19,13 @@ enum {
     kParameterVolume=2,
     kParameterFrequency=3,
     kParameterResonance=4,
+    kParameterLfoSpeed=5,
+    KParameterLfoAmount=6,
 };
 #define kFrequencyMin 20
 #define kFrequencyMax 2093
+#define kLfoFrequencyMin 1
+#define kLfoFrequencyMax 20
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate, LeapSynthereminDelegate> {
     Synth *synth;
@@ -47,14 +51,14 @@ enum {
 
 
 //OSC2
+- (IBAction)setLfoAmount:(id)sender;
+- (IBAction)setLfoType:(id)sender;
 - (IBAction)setLfoShape:(id)sender;
 - (IBAction)setLfoFrequency:(id)sender;
-- (IBAction)setFmDepth:(id)sender;
-- (IBAction)setAmDepth:(id)sender;
 @property (weak) IBOutlet NSSlider *osc2_shape;
 @property (weak) IBOutlet NSSlider *osc2_freq;
-@property (weak) IBOutlet NSSlider *osc2_fm;
-@property (weak) IBOutlet NSSlider *osc2_am;
+@property (weak) IBOutlet NSSlider *osc2_amount;
+@property (weak) IBOutlet NSSlider *osc2_type;
 
 @property (weak) IBOutlet DownUpButton *keyboard_1;
 @property (weak) IBOutlet DownUpButton *keyboard_2;

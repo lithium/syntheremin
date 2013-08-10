@@ -26,14 +26,14 @@ enum {
 @interface Vco : Oscillator {
     double frequency;
     Oscillator *lfo;
-    double frequencyModulation;
-    double amplitudeModulation;
+    int modulationType;
+    double modulationAmount;
     double rangeMultiplier;
     double detuneMultiplier;
 }
 
-@property double frequencyModulation;
-@property double amplitudeModulation;
+@property double modulationAmount;
+@property int modulationType;
 
 
 - (id)init;

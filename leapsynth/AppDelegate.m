@@ -50,8 +50,8 @@
 @synthesize osc1_detune;
 @synthesize osc2_shape;
 @synthesize osc2_freq;
-@synthesize osc2_fm;
-@synthesize osc2_am;
+@synthesize osc2_amount;
+@synthesize osc2_type;
 
 @synthesize window = _window;
 
@@ -200,12 +200,13 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [[synth vco] setLfoFrequency:[osc2_freq doubleValue]];
 }
 
-- (IBAction)setFmDepth:(id)sender {
-    [[synth vco] setFrequencyModulation:[osc2_fm doubleValue]];
+- (IBAction)setLfoType:(id)sender {
+    [[synth vco] setModulationType:[osc2_type intValue]];
 }
 
-- (IBAction)setAmDepth:(id)sender {
-    [[synth vco] setAmplitudeModulation:[osc2_am doubleValue]];
+- (IBAction)setLfoAmount:(id)sender {
+    [[synth vco] setModulationAmount:[osc2_amount doubleValue]];
+
 }
 
 - (IBAction)setVcaMaster:(id)sender;
@@ -389,6 +390,13 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             [vcf_resonance setDoubleValue:value];
             break;
         }
+        case kParameterLfoSpeed: {
+            double freq = value*(kLfoFrequencyMax-kLfoFrequencyMin)+kLfoFrequencyMin;
+            [[synth vco] setLfoFrequency:freq];
+            [osc2_freq setDoubleValue:freq];
+            break;
+        }
+            
     }
 }
 

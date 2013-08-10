@@ -965,6 +965,32 @@
 												<int key="NSSliderType">1</int>
 											</object>
 										</object>
+										<object class="NSSlider" id="796523771">
+											<reference key="NSNextResponder" ref="402751483"/>
+											<int key="NSvFlags">268</int>
+											<string key="NSFrame">{{25, 19}, {32, 34}}</string>
+											<reference key="NSSuperview" ref="402751483"/>
+											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="60793369"/>
+											<string key="NSReuseIdentifierKey">_NS:993</string>
+											<bool key="NSEnabled">YES</bool>
+											<object class="NSSliderCell" key="NSCell" id="608439225">
+												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags2">0</int>
+												<string key="NSContents"/>
+												<string key="NSCellIdentifier">_NS:993</string>
+												<reference key="NSControlView" ref="796523771"/>
+												<double key="NSMaxValue">3</double>
+												<double key="NSMinValue">0.0</double>
+												<double key="NSValue">0.0</double>
+												<double key="NSAltIncValue">0.0</double>
+												<int key="NSNumberOfTickMarks">3</int>
+												<int key="NSTickMarkPosition">1</int>
+												<bool key="NSAllowsTickMarkValuesOnly">YES</bool>
+												<bool key="NSVertical">NO</bool>
+												<int key="NSSliderType">1</int>
+											</object>
+										</object>
 										<object class="NSTextField" id="126314757">
 											<reference key="NSNextResponder" ref="402751483"/>
 											<int key="NSvFlags">268</int>
@@ -1031,7 +1057,7 @@
 											<string key="NSFrame">{{12, 9}, {23, 17}}</string>
 											<reference key="NSSuperview" ref="402751483"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="60793369"/>
+											<reference key="NSNextKeyView" ref="796523771"/>
 											<string key="NSReuseIdentifierKey">_NS:1505</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="850736453">
@@ -1097,7 +1123,7 @@
 											<string key="NSFrame">{{20, 101}, {42, 17}}</string>
 											<reference key="NSSuperview" ref="402751483"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="370998766"/>
+											<reference key="NSNextKeyView" ref="926065433"/>
 											<string key="NSReuseIdentifierKey">_NS:1505</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="975865691">
@@ -1111,54 +1137,29 @@
 												<reference key="NSTextColor" ref="351471177"/>
 											</object>
 										</object>
-										<object class="NSSlider" id="370998766">
+										<object class="NSSlider" id="926065433">
 											<reference key="NSNextResponder" ref="402751483"/>
 											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{13, 28}, {21, 62}}</string>
-											<reference key="NSSuperview" ref="402751483"/>
-											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="317801794"/>
-											<string key="NSReuseIdentifierKey">_NS:9</string>
-											<bool key="NSEnabled">YES</bool>
-											<object class="NSSliderCell" key="NSCell" id="54295274">
-												<int key="NSCellFlags">67501824</int>
-												<int key="NSCellFlags2">0</int>
-												<string key="NSContents"/>
-												<string key="NSCellIdentifier">_NS:9</string>
-												<reference key="NSControlView" ref="370998766"/>
-												<double key="NSMaxValue">1</double>
-												<double key="NSMinValue">0.0</double>
-												<double key="NSValue">0.0</double>
-												<double key="NSAltIncValue">0.0</double>
-												<int key="NSNumberOfTickMarks">0</int>
-												<int key="NSTickMarkPosition">0</int>
-												<bool key="NSAllowsTickMarkValuesOnly">NO</bool>
-												<bool key="NSVertical">YES</bool>
-											</object>
-										</object>
-										<object class="NSSlider" id="317801794">
-											<reference key="NSNextResponder" ref="402751483"/>
-											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{47, 28}, {21, 62}}</string>
+											<string key="NSFrame">{{3, 67}, {75, 21}}</string>
 											<reference key="NSSuperview" ref="402751483"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="906930915"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
-											<object class="NSSliderCell" key="NSCell" id="121364454">
-												<int key="NSCellFlags">67501824</int>
+											<object class="NSSliderCell" key="NSCell" id="249457470">
+												<int key="NSCellFlags">67239424</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
-												<reference key="NSControlView" ref="317801794"/>
+												<reference key="NSControlView" ref="926065433"/>
 												<double key="NSMaxValue">1</double>
 												<double key="NSMinValue">0.0</double>
 												<double key="NSValue">0.0</double>
 												<double key="NSAltIncValue">0.0</double>
 												<int key="NSNumberOfTickMarks">0</int>
-												<int key="NSTickMarkPosition">0</int>
+												<int key="NSTickMarkPosition">1</int>
 												<bool key="NSAllowsTickMarkValuesOnly">NO</bool>
-												<bool key="NSVertical">YES</bool>
+												<bool key="NSVertical">NO</bool>
 											</object>
 										</object>
 									</array>
@@ -2783,38 +2784,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">setFmDepth:</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="370998766"/>
-					</object>
-					<int key="connectionID">2084</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">setAmDepth:</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="317801794"/>
-					</object>
-					<int key="connectionID">2085</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">osc2_am</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="317801794"/>
-					</object>
-					<int key="connectionID">2086</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">osc2_fm</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="370998766"/>
-					</object>
-					<int key="connectionID">2087</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">setVcoDetune:</string>
 						<reference key="source" ref="976324537"/>
 						<reference key="destination" ref="104392429"/>
@@ -3268,6 +3237,38 @@
 						<reference key="destination" ref="1059641501"/>
 					</object>
 					<int key="connectionID">2444</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">osc2_amount</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="926065433"/>
+					</object>
+					<int key="connectionID">2452</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">osc2_type</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="796523771"/>
+					</object>
+					<int key="connectionID">2453</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">setLfoType:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="796523771"/>
+					</object>
+					<int key="connectionID">2456</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">setLfoAmount:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="926065433"/>
+					</object>
+					<int key="connectionID">2457</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3806,10 +3807,10 @@
 							<reference ref="870303244"/>
 							<reference ref="906930915"/>
 							<reference ref="60793369"/>
-							<reference ref="370998766"/>
-							<reference ref="317801794"/>
 							<reference ref="790197613"/>
 							<reference ref="518063160"/>
+							<reference ref="796523771"/>
+							<reference ref="926065433"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -4022,45 +4023,6 @@
 						<int key="objectID">2019</int>
 						<reference key="object" ref="975865691"/>
 						<reference key="parent" ref="870303244"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2021</int>
-						<reference key="object" ref="60793369"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="378440887"/>
-						</array>
-						<reference key="parent" ref="673556284"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2022</int>
-						<reference key="object" ref="378440887"/>
-						<reference key="parent" ref="60793369"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2025</int>
-						<reference key="object" ref="370998766"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="54295274"/>
-						</array>
-						<reference key="parent" ref="673556284"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2026</int>
-						<reference key="object" ref="54295274"/>
-						<reference key="parent" ref="370998766"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2027</int>
-						<reference key="object" ref="317801794"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="121364454"/>
-						</array>
-						<reference key="parent" ref="673556284"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2028</int>
-						<reference key="object" ref="121364454"/>
-						<reference key="parent" ref="317801794"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">2035</int>
@@ -4756,6 +4718,45 @@
 						<reference key="object" ref="548142257"/>
 						<reference key="parent" ref="414175746"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">2445</int>
+						<reference key="object" ref="796523771"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="608439225"/>
+						</array>
+						<reference key="parent" ref="673556284"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">2446</int>
+						<reference key="object" ref="608439225"/>
+						<reference key="parent" ref="796523771"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">2021</int>
+						<reference key="object" ref="60793369"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="378440887"/>
+						</array>
+						<reference key="parent" ref="673556284"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">2022</int>
+						<reference key="object" ref="378440887"/>
+						<reference key="parent" ref="60793369"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">2450</int>
+						<reference key="object" ref="926065433"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="249457470"/>
+						</array>
+						<reference key="parent" ref="673556284"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">2451</int>
+						<reference key="object" ref="249457470"/>
+						<reference key="parent" ref="926065433"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4812,10 +4813,6 @@
 				<string key="2019.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2021.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2022.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="2025.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="2026.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="2027.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="2028.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2033.CustomClassName">DownUpButton</string>
 				<object class="NSMutableDictionary" key="2033.IBAttributePlaceholdersKey">
 					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
@@ -5001,6 +4998,10 @@
 				<string key="2415.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2416.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2417.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="2445.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="2446.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="2450.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="2451.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="295.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="296.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5063,7 +5064,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2444</int>
+			<int key="maxID">2457</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5071,10 +5072,10 @@
 					<string key="className">AppDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="setAmDepth:">id</string>
-						<string key="setFmDepth:">id</string>
+						<string key="setLfoAmount:">id</string>
 						<string key="setLfoFrequency:">id</string>
 						<string key="setLfoShape:">id</string>
+						<string key="setLfoType:">id</string>
 						<string key="setParameter:">id</string>
 						<string key="setVcaAttack:">id</string>
 						<string key="setVcaDecay:">id</string>
@@ -5094,12 +5095,8 @@
 						<string key="toggleFilter:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="setAmDepth:">
-							<string key="name">setAmDepth:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="setFmDepth:">
-							<string key="name">setFmDepth:</string>
+						<object class="IBActionInfo" key="setLfoAmount:">
+							<string key="name">setLfoAmount:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="setLfoFrequency:">
@@ -5108,6 +5105,10 @@
 						</object>
 						<object class="IBActionInfo" key="setLfoShape:">
 							<string key="name">setLfoShape:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setLfoType:">
+							<string key="name">setLfoType:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="setParameter:">
@@ -5199,10 +5200,10 @@
 						<string key="osc1_detune">NSSlider</string>
 						<string key="osc1_range">NSSlider</string>
 						<string key="osc1_shape">NSSlider</string>
-						<string key="osc2_am">NSSlider</string>
-						<string key="osc2_fm">NSSlider</string>
+						<string key="osc2_amount">NSSlider</string>
 						<string key="osc2_freq">NSSlider</string>
 						<string key="osc2_shape">NSSlider</string>
+						<string key="osc2_type">NSSlider</string>
 						<string key="righthand_x">NSLevelIndicator</string>
 						<string key="righthand_x_popup">NSPopUpButton</string>
 						<string key="righthand_y">NSLevelIndicator</string>
@@ -5301,12 +5302,8 @@
 							<string key="name">osc1_shape</string>
 							<string key="candidateClassName">NSSlider</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="osc2_am">
-							<string key="name">osc2_am</string>
-							<string key="candidateClassName">NSSlider</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="osc2_fm">
-							<string key="name">osc2_fm</string>
+						<object class="IBToOneOutletInfo" key="osc2_amount">
+							<string key="name">osc2_amount</string>
 							<string key="candidateClassName">NSSlider</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="osc2_freq">
@@ -5315,6 +5312,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="osc2_shape">
 							<string key="name">osc2_shape</string>
+							<string key="candidateClassName">NSSlider</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="osc2_type">
+							<string key="name">osc2_type</string>
 							<string key="candidateClassName">NSSlider</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="righthand_x">
