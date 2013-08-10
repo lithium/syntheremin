@@ -749,7 +749,7 @@
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:993</string>
 												<reference key="NSControlView" ref="1059641501"/>
-												<double key="NSMaxValue">8000</double>
+												<double key="NSMaxValue">2093</double>
 												<double key="NSMinValue">20</double>
 												<double key="NSValue">1000</double>
 												<double key="NSAltIncValue">0.0</double>
@@ -3046,14 +3046,6 @@
 					<int key="connectionID">2139</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">vcf_cutoff</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="1059641501"/>
-					</object>
-					<int key="connectionID">2143</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">setVcfCutoff:</string>
 						<reference key="source" ref="976324537"/>
@@ -3268,6 +3260,14 @@
 						<reference key="destination" ref="864571240"/>
 					</object>
 					<int key="connectionID">2441</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">vcf_cutoff</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1059641501"/>
+					</object>
+					<int key="connectionID">2444</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -5063,7 +5063,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2443</int>
+			<int key="maxID">2444</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

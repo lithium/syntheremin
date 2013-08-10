@@ -371,6 +371,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     switch (param) {
         case kParameterVolume:
             [[synth vca] setMasterVolume:value];
+            [vca_master setDoubleValue:value];
             break;
         case kParameterPitch: {
             double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
@@ -380,10 +381,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
         case kParameterFrequency: {
             double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
             [[synth vcf] setCutoffFrequencyInHz:freq];
+            [vcf_cutoff setDoubleValue:freq];
             break;
         }
         case kParameterResonance: {
             [[synth vcf] setResonance:value];
+            [vcf_resonance setDoubleValue:value];
             break;
         }
     }
