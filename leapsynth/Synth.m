@@ -14,6 +14,7 @@
 @synthesize vca;
 @synthesize vcf;
 @synthesize vcfEnabled;
+@synthesize vcaEnabled;
 
 - (id)init
 {

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+
 @synthesize vca_master;
 @synthesize vcf_enable;
 @synthesize lefthand_x;
@@ -394,6 +395,11 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             double freq = value*(kLfoFrequencyMax-kLfoFrequencyMin)+kLfoFrequencyMin;
             [[synth vco] setLfoFrequency:freq];
             [osc2_freq setDoubleValue:freq];
+            break;
+        }
+        case KParameterLfoAmount: {
+            [[synth vco] setModulationAmount:value];
+            [osc2_amount setDoubleValue:value];
             break;
         }
             
