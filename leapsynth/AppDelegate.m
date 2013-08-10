@@ -49,6 +49,7 @@
 @synthesize osc1_shape;
 @synthesize osc1_range;
 @synthesize osc1_detune;
+@synthesize osc1_freq;
 @synthesize osc2_shape;
 @synthesize osc2_freq;
 @synthesize osc2_amount;
@@ -117,13 +118,13 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [mSyntheremin setDelegate:self];
     
     
-    [self setLeftParamX:kParameterNone];
+    [self setLeftParamX:kParameterFrequency];
     [self setLeftParamY:kParameterVolume];
-    [self setLeftParamZ:kParameterNone];
+    [self setLeftParamZ:kParameterResonance];
 
     [self setRightParamX:kParameterPitch];
-    [self setRightParamY:kParameterNone];
-    [self setRightParamZ:kParameterNone];
+    [self setRightParamY:KParameterLfoAmount];
+    [self setRightParamZ:kParameterLfoSpeed];
 
 
 
@@ -378,6 +379,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
         case kParameterPitch: {
             double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
             [[synth vco] setFrequency:freq];
+            [osc1_freq setDoubleValue:freq];
             break;
         }
         case kParameterFrequency: {

@@ -48,6 +48,7 @@ enum {
 @property (weak) IBOutlet NSSlider *osc1_shape;
 @property (weak) IBOutlet NSSlider *osc1_range;
 @property (weak) IBOutlet NSSlider *osc1_detune;
+@property (weak) IBOutlet NSSlider *osc1_freq;
 
 
 //OSC2
