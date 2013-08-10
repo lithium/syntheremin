@@ -63,18 +63,18 @@
         }
     }
     
-    if (leftHandId != -1 && !leftFound) {
-        if ([delegate respondsToSelector:@selector(leftHandGone:)]) {
-            [delegate leftHandGone:leftHandId];
-        }
-        leftHandId = -1;
-    }
-    if (rightHandId != -1 && !rightFound) {
-        if ([delegate respondsToSelector:@selector(rightHandGone:)]) {
-            [delegate rightHandGone:rightHandId];
-        }
-        rightHandId = -1;
-    }
+//    if (leftHandId != -1 && !leftFound) {
+//        if ([delegate respondsToSelector:@selector(leftHandGone:)]) {
+//            [delegate leftHandGone:leftHandId];
+//        }
+//        leftHandId = -1;
+//    }
+//    if (rightHandId != -1 && !rightFound) {
+//        if ([delegate respondsToSelector:@selector(rightHandGone:)]) {
+//            [delegate rightHandGone:rightHandId];
+//        }
+//        rightHandId = -1;
+//    }
 
     
 //    NSLog(@"Frame id: %lld, timestamp: %lld, hands: %ld, fingers: %ld, tools: %ld, gestures: %ld",

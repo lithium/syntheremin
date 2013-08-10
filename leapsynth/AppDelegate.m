@@ -311,16 +311,40 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 //X: -200 ..  0  .. 200
 //Y:   50 .. 175 .. 400
 //Z: -120 ..  0  .. 120
+
+#define kLeftXMin -200
+#define kLeftXMax -70
+
+#define kLeftYMin 80
+#define kLeftYMax 450
+
+#define kLeftZMin -120
+#define kLeftZMax 0
+
+#define kRightXMin 70
+#define kRightXMax 200
+
+#define kRightYMin 60
+#define kRightYMax 450
+
+#define kRightZMin -120
+#define kRightZMax 0
+
+
+
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)position
 {
-    double x = fabs([position x]/200.0);
-    double y = fabs(([position y]-50)/350.0);
-    double z = fabs([position z]/120.0);
+    double x = (MAX(MIN([position x], kLeftXMax), kLeftXMin) - kLeftXMin)/(kLeftXMax - kLeftXMin);
+    double y = (MAX(MIN([position y], kLeftYMax), kLeftYMin) - kLeftYMin)/(kLeftYMax - kLeftYMin);
+    double z = (MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
+
+//    NSLog(@"x,y,z = %f,%f,%f",[position x],[position y],[position z]);
+//    NSLog(@"x,y,z = %f,%f,%f\n",x,y,z);
 
     [lefthand_x setDoubleValue:x];
     [lefthand_y setDoubleValue:y];
     [lefthand_z setDoubleValue:z];
-    
+        
     [self applyParameter:leftParamX :x];
     [self applyParameter:leftParamY :y];
     [self applyParameter:leftParamZ :z];
@@ -328,10 +352,9 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
 {
-//    NSLog(@"Right hand: %f,%f,%f", [position x], [position y], [position z]);
-    double x = fabs([position x]/200.0);
-    double y = fabs(([position y]-50)/350.0);
-    double z = fabs([position z]/120.0);
+    double x = (MAX(MIN([position x], kRightXMax), kRightXMin) - kRightXMin)/(kRightXMax - kRightXMin);
+    double y = (MAX(MIN([position y], kRightYMax), kRightYMin) - kRightYMin)/(kRightYMax - kRightYMin);
+    double z = (MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
     
     [righthand_x setDoubleValue:x];
     [righthand_y setDoubleValue:y];
