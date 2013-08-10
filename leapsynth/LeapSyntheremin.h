@@ -13,6 +13,8 @@
     - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)position;
     - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position;
 
+    - (void)leftHandGone:(int32_t)hand_id;
+    - (void)rightHandGone:(int32_t)hand_id;
 @end
 
 @interface LeapSyntheremin : NSObject<LeapListener>
