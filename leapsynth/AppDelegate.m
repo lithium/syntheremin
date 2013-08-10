@@ -318,8 +318,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 #define kLeftYMin 80
 #define kLeftYMax 450
 
-#define kLeftZMin -120
-#define kLeftZMax 0
+#define kLeftZMin 0
+#define kLeftZMax 120
 
 #define kRightXMin 70
 #define kRightXMax 200
@@ -327,8 +327,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 #define kRightYMin 60
 #define kRightYMax 450
 
-#define kRightZMin -120
-#define kRightZMax 0
+#define kRightZMin 0
+#define kRightZMax 120
 
 
 
@@ -336,14 +336,14 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 {
     double x = (MAX(MIN([position x], kLeftXMax), kLeftXMin) - kLeftXMin)/(kLeftXMax - kLeftXMin);
     double y = (MAX(MIN([position y], kLeftYMax), kLeftYMin) - kLeftYMin)/(kLeftYMax - kLeftYMin);
-    double z = (MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
+    double z = 1.0-(MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
 
 //    NSLog(@"x,y,z = %f,%f,%f",[position x],[position y],[position z]);
 //    NSLog(@"x,y,z = %f,%f,%f\n",x,y,z);
 
-    [lefthand_x setDoubleValue:x];
-    [lefthand_y setDoubleValue:y];
-    [lefthand_z setDoubleValue:z];
+    [lefthand_x setDoubleValue:(leftParamX == kParameterNone) ? 0 : x];
+    [lefthand_y setDoubleValue:(leftParamY == kParameterNone) ? 0 : y];
+    [lefthand_z setDoubleValue:(leftParamZ == kParameterNone) ? 0 : z];
         
     [self applyParameter:leftParamX :x];
     [self applyParameter:leftParamY :y];
@@ -354,11 +354,11 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 {
     double x = (MAX(MIN([position x], kRightXMax), kRightXMin) - kRightXMin)/(kRightXMax - kRightXMin);
     double y = (MAX(MIN([position y], kRightYMax), kRightYMin) - kRightYMin)/(kRightYMax - kRightYMin);
-    double z = (MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
+    double z = 1.0-(MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
     
-    [righthand_x setDoubleValue:x];
-    [righthand_y setDoubleValue:y];
-    [righthand_z setDoubleValue:z];
+    [righthand_x setDoubleValue:(rightParamX == kParameterNone) ? 0 : x];
+    [righthand_y setDoubleValue:(rightParamY == kParameterNone) ? 0 : y];
+    [righthand_z setDoubleValue:(rightParamZ == kParameterNone) ? 0 : z];
     
     [self applyParameter:rightParamX :x];
     [self applyParameter:rightParamY :y];
