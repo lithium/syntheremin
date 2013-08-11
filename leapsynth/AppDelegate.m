@@ -281,12 +281,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)toggleFilter:(id)sender {
     int state = [vcf_enable state];
-    [synth setVcfEnabled:state];
+    [[synth vcf] setEnvelopeEnabled:state];
 }
 
 - (IBAction)toggleVcaEnvelope:(id)sender {
     int state = [vca_enable state];
-    [synth setVcaEnabled:state];
+    [[synth vca] setEnvelopeEnabled:state];
 }
 - (IBAction)toggleVcaNote:(id)sender {
     int state = [vca_note state];
