@@ -125,7 +125,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [self setLeftParamZ:kParameterResonance];
 
     [self setRightParamX:kParameterPitch];
-    [self setRightParamY:KParameterLfoAmount];
+    [self setRightParamY:kParameterLfoAmount];
     [self setRightParamZ:kParameterLfoSpeed];
 
 
@@ -420,12 +420,25 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             [osc2_freq setDoubleValue:freq];
             break;
         }
-        case KParameterLfoAmount: {
+        case kParameterLfoAmount: {
             [[synth vco] setModulationAmount:value];
             [osc2_amount setDoubleValue:value];
             break;
         }
-            
+        case kParameterNote: {
+            if (value > kNoteThreshold) {
+                if (!paramNoteOn) { 
+                    [self noteOn];
+                    paramNoteOn = true;
+                }
+            } else {
+                if (paramNoteOn) {
+                    [self noteOff];
+                    paramNoteOn = false;
+                }
+            }
+            break;
+        }
     }
 }
 

@@ -20,12 +20,14 @@ enum {
     kParameterFrequency=3,
     kParameterResonance=4,
     kParameterLfoSpeed=5,
-    KParameterLfoAmount=6,
+    kParameterLfoAmount=6,
+    kParameterNote=7,
 };
 #define kFrequencyMin 20
 #define kFrequencyMax 2093
 #define kLfoFrequencyMin 1
 #define kLfoFrequencyMax 20
+#define kNoteThreshold 0.90
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate, LeapSynthereminDelegate> {
     Synth *synth;
@@ -35,7 +37,7 @@ enum {
     LeapSyntheremin *mSyntheremin;
     int leftParamX, leftParamY, leftParamZ;
     int rightParamX, rightParamY, rightParamZ;
-    
+    bool paramNoteOn;
 }
 
 @property (assign) IBOutlet NSWindow *window;
