@@ -52,6 +52,7 @@
     }
     if (vcaEnabled) {
         [vca modifySamples:samples :numSamples];
+        [vca setEnvelopeEnabled:true];
     }
     
     return numSamples;

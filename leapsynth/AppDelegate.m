@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize vca_note;
+@synthesize vca_enable;
 
 @synthesize vca_master;
 @synthesize vcf_enable;
@@ -192,7 +194,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     int value = [osc1_detune intValue];
     [[synth vco] setDetuneInCents:value];
 }
+- (IBAction)setVcoFrequency:(id)sender
+{
+    double freq = [osc1_freq doubleValue];
+    [[synth vco] setFrequency:freq];
 
+}
 - (IBAction)setLfoShape:(id)sender {
     int shape = [osc2_shape intValue];
     [[synth vco] setLfoWaveshape:shape];
@@ -275,6 +282,20 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (IBAction)toggleFilter:(id)sender {
     int state = [vcf_enable state];
     [synth setVcfEnabled:state];
+}
+
+- (IBAction)toggleVcaEnvelope:(id)sender {
+    int state = [vca_enable state];
+    [synth setVcaEnabled:state];
+}
+- (IBAction)toggleVcaNote:(id)sender {
+    int state = [vca_note state];
+    if ((bool)state) {
+        [self noteOn];
+    }
+    else {
+        [self noteOff];
+    }
 }
 
 - (void)mouseDown:(NSEvent *)evt :(int)tag {
@@ -440,11 +461,15 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [synth noteOn];
     [self primeBuffers];
     AudioQueueStart(mAudioQueue, NULL);
+    
+    [vca_note setState:true];
 }
 
 - (void)noteOff
 {
     [synth noteOff];
+    [vca_note setState:false];
+
 }
 
 @end

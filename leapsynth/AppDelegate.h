@@ -49,6 +49,7 @@ enum {
 @property (weak) IBOutlet NSSlider *osc1_range;
 @property (weak) IBOutlet NSSlider *osc1_detune;
 @property (weak) IBOutlet NSSlider *osc1_freq;
+- (IBAction)setVcoFrequency:(id)sender;
 
 
 //OSC2
@@ -87,6 +88,10 @@ enum {
 - (IBAction)setVcaRelease:(id)sender;
 @property (weak) IBOutlet NSSlider *vca_master;
 - (IBAction)setVcaMaster:(id)sender;
+@property (weak) IBOutlet NSButton *vca_enable;
+- (IBAction)toggleVcaEnvelope:(id)sender;
+@property (weak) IBOutlet NSButton *vca_note;
+- (IBAction)toggleVcaNote:(id)sender;
 
 //VCF
 @property (weak) IBOutlet NSSlider *vcf_attack;
