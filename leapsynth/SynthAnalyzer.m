@@ -24,15 +24,22 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    @autoreleasepool {
-
     NSGraphicsContext *ctx = [NSGraphicsContext currentContext];
     [ctx saveGraphicsState];
+    
+
+        
+
 
     NSRect bounds = [self bounds];
     NSBezierPath *path = [[NSBezierPath alloc] init];
-
     
+    [[NSColor blackColor] set];
+    NSRectFill(bounds);
+    [[NSColor greenColor] set];
+    [path setLineWidth:2.0];
+
+     
     [path moveToPoint:NSMakePoint(0,bounds.size.height/2)];
     
     float step = bounds.size.width/samplesInBuffer;
@@ -49,7 +56,7 @@
     
 
     [ctx restoreGraphicsState];
-    }
+    
 }
 
 - (void) receiveSamples :(short *)samples :(int)numSamples

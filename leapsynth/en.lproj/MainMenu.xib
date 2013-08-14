@@ -378,7 +378,7 @@
 				<string key="NSName">_NSMainMenu</string>
 			</object>
 			<object class="NSWindowTemplate" id="972006081">
-				<int key="NSWindowStyleMask">271</int>
+				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{709, 349}, {911, 586}}</string>
 				<int key="NSWTFlags">1954021376</int>
@@ -808,7 +808,6 @@
 											<string key="NSFrame">{{172, 28}, {21, 96}}</string>
 											<reference key="NSSuperview" ref="576570795"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="164758807">
@@ -1545,6 +1544,7 @@
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="515458096"/>
+							<bool key="NSViewCanDrawConcurrently">YES</bool>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSClassName">SynthAnalyzer</string>
 						</object>
@@ -2912,7 +2912,6 @@
 								<string key="NSFrame">{{365, 13}, {65, 19}}</string>
 								<reference key="NSSuperview" ref="796292291"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="691594068">

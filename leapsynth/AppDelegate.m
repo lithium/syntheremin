@@ -127,8 +127,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [self setLeftParamZ:kParameterResonance];
 
     [self setRightParamX:kParameterPitch];
-    [self setRightParamY:kParameterLfoAmount];
-    [self setRightParamZ:kParameterLfoSpeed];
+    [self setRightParamY:kParameterLfoSpeed];
+    [self setRightParamZ:kParameterLfoAmount];
 
     [[synth vco] setWaveShape:kWaveSaw];
     [[synth vco] setModulationType:kModulationTypeFrequency];
