@@ -14,6 +14,7 @@
 @synthesize vca_enable;
 
 @synthesize vca_master;
+@synthesize vcf_envelope_enable;
 @synthesize vcf_enable;
 @synthesize lefthand_x;
 @synthesize lefthand_y;
@@ -284,7 +285,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 }
 
 - (IBAction)toggleFilter:(id)sender {
-    int state = [vcf_enable state];
+    int state = [vcf_envelope_enable state];
     [[synth vcf] setEnvelopeEnabled:state];
 }
 
@@ -489,4 +490,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 }
 
+- (IBAction)toggleVcfEnable:(id)sender {
+    int state = [vcf_enable state];
+    [synth setVcfEnabled:state];
+}
 @end

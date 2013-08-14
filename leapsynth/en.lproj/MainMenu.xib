@@ -1682,7 +1682,7 @@
 							<string key="NSFrame">{{329, 140}, {176, 16}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="849178302"/>
+							<reference key="NSNextKeyView" ref="20957001"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSLevelIndicatorCell" key="NSCell" id="417444041">
@@ -2733,15 +2733,37 @@
 								<reference key="NSTextColor" ref="351471177"/>
 							</object>
 						</object>
-						<object class="NSCustomView" id="849178302">
+						<object class="NSCustomView" id="20957001">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 20}, {485, 96}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSClassName">SynthAnalyzer</string>
+						</object>
+						<object class="NSButton" id="646523568">
+							<reference key="NSNextResponder" ref="439893737"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{263, 421}, {35, 32}}</string>
+							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="885168069">
+								<int key="NSCellFlags">-2080244224</int>
+								<int key="NSCellFlags2">134217728</int>
+								<string key="NSContents"/>
+								<reference key="NSSupport" ref="1054268657"/>
+								<string key="NSCellIdentifier">_NS:9</string>
+								<reference key="NSControlView" ref="646523568"/>
+								<int key="NSButtonFlags">-1232715521</int>
+								<int key="NSButtonFlags2">129</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">200</int>
+								<int key="NSPeriodicInterval">25</int>
+							</object>
 						</object>
 					</array>
 					<string key="NSFrameSize">{525, 617}</string>
@@ -2978,7 +3000,6 @@
 								<string key="NSFrame">{{365, 13}, {65, 19}}</string>
 								<reference key="NSSuperview" ref="796292291"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="691594068">
@@ -3436,14 +3457,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">vcf_enable</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="240281573"/>
-					</object>
-					<int key="connectionID">2157</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">lefthand_x</string>
 						<reference key="source" ref="976324537"/>
 						<reference key="destination" ref="1005241021"/>
@@ -3846,9 +3859,33 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">synthAnalyzer</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="849178302"/>
+						<reference key="destination" ref="20957001"/>
 					</object>
 					<int key="connectionID">3194</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">vcf_envelope_enable</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="240281573"/>
+					</object>
+					<int key="connectionID">3198</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">vcf_enable</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="646523568"/>
+					</object>
+					<int key="connectionID">3199</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleVcfEnable:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="646523568"/>
+					</object>
+					<int key="connectionID">3200</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4139,7 +4176,8 @@
 							<reference ref="123525779"/>
 							<reference ref="1033247909"/>
 							<reference ref="1052393539"/>
-							<reference ref="849178302"/>
+							<reference ref="20957001"/>
+							<reference ref="646523568"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -5643,8 +5681,21 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">3193</int>
-						<reference key="object" ref="849178302"/>
+						<reference key="object" ref="20957001"/>
 						<reference key="parent" ref="439893737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3195</int>
+						<reference key="object" ref="646523568"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="885168069"/>
+						</array>
+						<reference key="parent" ref="439893737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3196</int>
+						<reference key="object" ref="885168069"/>
+						<reference key="parent" ref="646523568"/>
 					</object>
 				</array>
 			</object>
@@ -5947,6 +5998,8 @@
 				<string key="3153.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3154.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3193.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="3195.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="3196.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersHorizontal"/>
 				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersVertical"/>
 				<string key="371.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -6002,7 +6055,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">3194</int>
+			<int key="maxID">3200</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -6034,6 +6087,7 @@
 						<string key="toggleFilter:">id</string>
 						<string key="toggleVcaEnvelope:">id</string>
 						<string key="toggleVcaNote:">id</string>
+						<string key="toggleVcfEnable:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="setLfoAmount:">
@@ -6132,6 +6186,10 @@
 							<string key="name">toggleVcaNote:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="toggleVcfEnable:">
+							<string key="name">toggleVcfEnable:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="cv_1">NSSlider</string>
@@ -6177,6 +6235,7 @@
 						<string key="vcf_decay">NSSlider</string>
 						<string key="vcf_depth">NSSlider</string>
 						<string key="vcf_enable">NSButton</string>
+						<string key="vcf_envelope_enable">NSButton</string>
 						<string key="vcf_release">NSSlider</string>
 						<string key="vcf_resonance">NSSlider</string>
 						<string key="vcf_sustain">NSSlider</string>
@@ -6353,6 +6412,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="vcf_enable">
 							<string key="name">vcf_enable</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="vcf_envelope_enable">
+							<string key="name">vcf_envelope_enable</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="vcf_release">
