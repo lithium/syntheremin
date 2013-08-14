@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code here.
+        buffer = [[NSMutableData alloc] initWithCapacity:2048*sizeof(short)];
     }
     
     return self;
@@ -23,7 +24,8 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    // Drawing code here.
+    @autoreleasepool {
+
     NSGraphicsContext *ctx = [NSGraphicsContext currentContext];
     [ctx saveGraphicsState];
 
@@ -35,20 +37,24 @@
     
     float step = bounds.size.width/samplesInBuffer;
     int i;
+    short *samples = (short*)[buffer bytes];
     for (i=0; i < samplesInBuffer; i++) {
-        short sample = buffer[i];
+        short sample = samples[i];
         float r = (float)(sample - SHRT_MIN)/(float)(SHRT_MAX-SHRT_MIN);
         float y = r * (float)bounds.size.height;
         [path lineToPoint:NSMakePoint(i*step,y)];
     }
     [path stroke];
+    
+    
 
     [ctx restoreGraphicsState];
+    }
 }
 
 - (void) receiveSamples :(short *)samples :(int)numSamples
 {
-    memcpy(buffer, samples, sizeof(short)*numSamples);
+    [buffer replaceBytesInRange:NSMakeRange(0,numSamples*sizeof(short)) withBytes:samples];
     samplesInBuffer = numSamples;
     [self setNeedsDisplay:true];
 }

@@ -55,8 +55,10 @@
         [vca modifySamples:samples :numSamples];
     }
     
-    if (analyzer) {
-        [analyzer receiveSamples:samples :numSamples];
+    @autoreleasepool {
+        if (analyzer) {
+            [analyzer receiveSamples:samples :numSamples];
+        }
     }
     return numSamples;
 }

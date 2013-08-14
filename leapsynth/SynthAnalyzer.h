@@ -11,8 +11,8 @@
 
 @interface SynthAnalyzer : NSView
 {
-    short buffer[2048];
     int samplesInBuffer;
+    NSMutableData *buffer;
 }
 
 - (void) receiveSamples :(short *)samples :(int)numSamples;
