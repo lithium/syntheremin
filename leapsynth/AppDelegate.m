@@ -286,44 +286,61 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)toggleVcfEnable:(id)sender {
     int state = [vcf_enable state];
-    [synth setVcfEnabled:state];
-    
-    [vcf_cutoff setEnabled:state];
-    [vcf_resonance setEnabled:state];
-    [vcf_envelope_enable setEnabled:state];
-    [vcf_attack setEnabled:state];
-    [vcf_decay setEnabled:state];
-    [vcf_sustain setEnabled:state];
-    [vcf_release setEnabled:state];
-    [vcf_depth setEnabled:state];
+    [self setVcfEnvelopeEnabled:state];
 }
 
 - (IBAction)toggleFilterEnvelope:(id)sender {
     int state = [vcf_envelope_enable state];
-    [[synth vcf] setEnvelopeEnabled:state];
-    [vcf_attack setEnabled:state];
-    [vcf_decay setEnabled:state];
-    [vcf_sustain setEnabled:state];
-    [vcf_release setEnabled:state];
-    [vcf_depth setEnabled:state];
+    [self setVcfEnvelopeEnabled:state];
 }
 
 - (IBAction)toggleVcaEnvelope:(id)sender {
     int state = [vca_enable state];
-    [[synth vca] setEnvelopeEnabled:state];
-    [vca_attack setEnabled:state];
-    [vca_decay setEnabled:state];
-    [vca_sustain setEnabled:state];
-    [vca_release setEnabled:state];
+    [self setVcaEnvelopeEnabled:state];
 }
 - (IBAction)toggleVcaNote:(id)sender {
     int state = [vca_note state];
-    if ((bool)state) {
+    [self setNoteOn:state];
+}
+
+- (void)setVcaEnvelopeEnabled:(bool)enabled 
+{
+    [[synth vca] setEnvelopeEnabled:enabled];
+    [vca_attack setEnabled:enabled];
+    [vca_decay setEnabled:enabled];
+    [vca_sustain setEnabled:enabled];
+    [vca_release setEnabled:enabled];
+}
+- (void)setVcfEnvelopeEnabled:(bool)enabled
+{
+    [[synth vcf] setEnvelopeEnabled:enabled];
+    [vcf_attack setEnabled:enabled];
+    [vcf_decay setEnabled:enabled];
+    [vcf_sustain setEnabled:enabled];
+    [vcf_release setEnabled:enabled];
+    [vcf_depth setEnabled:enabled];
+}
+- (void)setVcfEnabled:(bool)enabled
+{
+    [synth setVcfEnabled:enabled];
+    [vcf_cutoff setEnabled:enabled];
+    [vcf_resonance setEnabled:enabled];
+    [vcf_envelope_enable setEnabled:enabled];
+    [vcf_attack setEnabled:enabled];
+    [vcf_decay setEnabled:enabled];
+    [vcf_sustain setEnabled:enabled];
+    [vcf_release setEnabled:enabled];
+    [vcf_depth setEnabled:enabled];
+}
+- (void)setNoteOn:(bool)noteOn
+{
+    if ((bool)noteOn) {
         [self noteOn];
     }
     else {
         [self noteOff];
     }
+
 }
 
 - (void)mouseDown:(NSEvent *)evt :(int)tag {
@@ -420,10 +437,14 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {
     NSLog(@"left tap!");
+    
+    [self applyParameter:leftParamTap :0];
 }
 - (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {
-    NSLog(@"right tap!");    
+    NSLog(@"right tap!");
+    [self applyParameter:rightParamTap :0];
+
 }
 
 - (void)applyParameter:(int)param :(double)value
@@ -475,6 +496,25 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             }
             break;
         }
+        case kParameterVcaEnvelope: {
+            bool state = ![vca_enable state];
+            [self setVcaEnvelopeEnabled:state];
+            [vca_enable setState:state];
+            break;
+        }
+        case kParameterFilterEnable: {
+            bool state = ![vcf_enable state];
+            [self setVcfEnabled:state];
+            [vcf_enable setState:state];
+            break;
+        }
+        case kParameterFilterEnvelope: {
+            bool state = ![vcf_envelope_enable state];
+            [self setVcfEnvelopeEnabled:state];
+            [vcf_envelope_enable setState:state];
+            break;
+        }
+
     }
 }
 
@@ -498,6 +538,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             break;
         case 6:    
             rightParamZ = [sender selectedTag];
+            break;
+        case 7:
+            leftParamTap = [sender selectedTag];
+            break;
+        case 8:
+            rightParamTap = [sender selectedTag];
             break;
 
     }

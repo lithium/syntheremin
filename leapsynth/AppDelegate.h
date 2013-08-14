@@ -22,6 +22,12 @@ enum {
     kParameterLfoSpeed=5,
     kParameterLfoAmount=6,
     kParameterNote=7,
+    kParameterVcaEnvelope=8,
+    kParameterFilterEnable=9,
+    kParameterFilterEnvelope=10,
+    kParameterVcoWavehape=11,
+    kParameterLfoWaveshape=12,
+    kParameterLfoModulation=13,
 };
 #define kFrequencyMin 20
 #define kFrequencyMax 2093
@@ -29,14 +35,15 @@ enum {
 #define kLfoFrequencyMax 20
 #define kNoteThreshold 0.90
 
+
 @interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate, LeapSynthereminDelegate> {
     Synth *synth;
     AudioQueueRef mAudioQueue;
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
     
     LeapSyntheremin *mSyntheremin;
-    int leftParamX, leftParamY, leftParamZ;
-    int rightParamX, rightParamY, rightParamZ;
+    int leftParamX, leftParamY, leftParamZ, leftParamTap;
+    int rightParamX, rightParamY, rightParamZ, rightParamTap;
     bool paramNoteOn;
 }
 
