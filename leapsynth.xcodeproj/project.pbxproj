@@ -50,7 +50,7 @@
 		126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = LeapObjectiveC.mm; path = LeapSDK/include/LeapObjectiveC.mm; sourceTree = "<group>"; };
 		126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapSyntheremin.h; sourceTree = "<group>"; };
 		126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapSyntheremin.m; sourceTree = "<group>"; };
-		127DBD2E17A76D16007C68FF /* leapsynth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leapsynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		127DBD2E17A76D16007C68FF /* Syntheremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syntheremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		127DBD3617A76D16007C68FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -122,7 +122,7 @@
 		127DBD2F17A76D16007C68FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				127DBD2E17A76D16007C68FF /* leapsynth.app */,
+				127DBD2E17A76D16007C68FF /* Syntheremin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,9 +216,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		127DBD2D17A76D16007C68FF /* leapsynth */ = {
+		127DBD2D17A76D16007C68FF /* Syntheremin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 127DBD4C17A76D17007C68FF /* Build configuration list for PBXNativeTarget "leapsynth" */;
+			buildConfigurationList = 127DBD4C17A76D17007C68FF /* Build configuration list for PBXNativeTarget "Syntheremin" */;
 			buildPhases = (
 				127DBD2A17A76D16007C68FF /* Sources */,
 				127DBD2B17A76D16007C68FF /* Frameworks */,
@@ -229,9 +229,9 @@
 			);
 			dependencies = (
 			);
-			name = leapsynth;
+			name = Syntheremin;
 			productName = theremin;
-			productReference = 127DBD2E17A76D16007C68FF /* leapsynth.app */;
+			productReference = 127DBD2E17A76D16007C68FF /* Syntheremin.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -254,7 +254,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				127DBD2D17A76D16007C68FF /* leapsynth */,
+				127DBD2D17A76D16007C68FF /* Syntheremin */,
 			);
 		};
 /* End PBXProject section */
@@ -380,7 +380,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/LeapSDK/lib\"",
 				);
-				PRODUCT_NAME = leapsynth;
+				PRODUCT_NAME = Syntheremin;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -395,7 +395,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/LeapSDK/lib\"",
 				);
-				PRODUCT_NAME = leapsynth;
+				PRODUCT_NAME = Syntheremin;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -412,7 +412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		127DBD4C17A76D17007C68FF /* Build configuration list for PBXNativeTarget "leapsynth" */ = {
+		127DBD4C17A76D17007C68FF /* Build configuration list for PBXNativeTarget "Syntheremin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				127DBD4D17A76D17007C68FF /* Debug */,

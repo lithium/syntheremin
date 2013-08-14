@@ -117,12 +117,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [keyboard_4 setDelegate:self];
     [keyboard_5 setDelegate:self];
     
-    AudioQueueStart(mAudioQueue, NULL);
     
     
     mSyntheremin = [[LeapSyntheremin alloc] init];
     [mSyntheremin setDelegate:self];
     
+    [self setVcaEnvelopeEnabled:YES];
     
     [self setLeftParamX:kParameterFrequency];
     [self setLeftParamY:kParameterVolume];
@@ -139,6 +139,9 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [[synth vco] setLfoWaveshape:kWaveSine];
 
     [synth setAnalyzer:synthAnalyzer];
+    
+    AudioQueueStart(mAudioQueue, NULL);
+
 
 }
 
