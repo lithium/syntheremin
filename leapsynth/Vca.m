@@ -34,7 +34,6 @@
 
 - (int) modifySamples :(short *)samples :(int)numSamples
 {
-    int index=0;
     int i;
     for (i=0; i < numSamples; i++) {
         double value = [self getValue];

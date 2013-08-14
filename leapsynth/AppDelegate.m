@@ -144,6 +144,11 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 
 }
+- (void)windowWillClose:(NSNotification *)notification
+{
+    AudioQueueStop(mAudioQueue, true);
+    [NSApp terminate:self];
+}
 
 - (void)setLeftParamX:(int)param
 {
@@ -194,10 +199,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     }
 }
 
-- (void)windowWillClose:(NSNotification *)notification
-{
-    AudioQueueStop(mAudioQueue, true);
-}
 
 
 - (IBAction)setVcoShape:(id)sender {
