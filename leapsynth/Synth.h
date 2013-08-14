@@ -10,6 +10,11 @@
 #import "Vco.h"
 #import "Vca.h"
 #import "Vcf.h"
+#import "SynthAnalyzer.h"
+
+@protocol AnalyzerDelegate <NSObject>
+- (void) receiveSamples :(short *)samples :(int)numSamples;
+@end
 
 @interface Synth : NSObject {
     Vco *vco;
@@ -25,10 +30,12 @@
 @property Vcf *vcf;
 @property bool vcfEnabled;
 @property bool vcaEnabled;
+@property (weak) id <AnalyzerDelegate> analyzer;
 
 
 - (id)init;
 - (int) getSamples :(short *)samples :(int)numSamples;
+
 
 - (void)noteOn;
 - (void)noteOff;

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize synthAnalyzer;
 @synthesize vca_note;
 @synthesize vca_enable;
 
@@ -132,6 +133,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [[synth vco] setModulationType:kModulationTypeFrequency];
     [[synth vco] setLfoWaveshape:kWaveSine];
 
+    [synth setAnalyzer:synthAnalyzer];
 
 }
 

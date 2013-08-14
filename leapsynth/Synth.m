@@ -15,6 +15,7 @@
 @synthesize vcf;
 @synthesize vcfEnabled;
 @synthesize vcaEnabled;
+@synthesize analyzer;
 
 - (id)init
 {
@@ -54,6 +55,9 @@
         [vca modifySamples:samples :numSamples];
     }
     
+    if (analyzer) {
+        [analyzer receiveSamples:samples :numSamples];
+    }
     return numSamples;
 }
 

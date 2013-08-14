@@ -128,5 +128,6 @@ enum {
 @property (weak) IBOutlet NSPopUpButton *righthand_z_popup;
 - (IBAction)setParameter:(id)sender;
 
+@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
 
 @end
