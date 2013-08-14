@@ -206,7 +206,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)setVcoRange:(id)sender {
     int value = [osc1_range intValue];
-    [[synth vco] setRange:(2 - value)];
+    [[synth vco] setRange:( value)];
 }
 
 - (IBAction)setVcoDetune:(id)sender {
@@ -525,8 +525,56 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             [vcf_envelope_enable setState:state];
             break;
         }
+        case kParameterVcoWaveshape: {
+            int value = [self incrementAndClampSlider:osc1_shape];
+            [[synth vco] setWaveShape:value];
+            break;
+        }
+        case kParameterLfoWaveshape: {
+            int value = [self incrementAndClampSlider:osc2_shape];
+            [[synth vco] setLfoWaveshape:value];
+            break;
+        }
+        case kParameterLfoModulation: {
+            int value = [self incrementAndClampSlider:osc2_type];
+            [[synth vco] setModulationType:value];
+            break;
+        }
+        case kParameterRangeUp: {
+            int value = [self incrementAndClampSlider:osc1_range];
+            [[synth vco] setRange:value];
+            break;
+        }
+        case kParameterRangeDown: {
+            int value = [self decrementAndClampSlider:osc1_range];
+            [[synth vco] setRange: value];
+            break;
+        }
 
     }
+}
+
+- (int)incrementAndClampSlider:(NSSlider *)slider
+{
+    int value = [slider intValue]+1;
+    int max = [slider maxValue];
+    int min = [slider minValue];
+    if (value >= max) 
+        value = min;
+    [slider setIntValue:value];
+    return value;
+
+}
+- (int)decrementAndClampSlider:(NSSlider *)slider
+{
+    int value = [slider intValue]-1;
+    int max = [slider maxValue];
+    int min = [slider minValue];
+    if (value < min) 
+        value = max-1;
+    [slider setIntValue:value];
+    return value;
+    
 }
 
 - (IBAction)setParameter:(id)sender

@@ -28,6 +28,8 @@ enum {
     kParameterVcoWaveshape=11,
     kParameterLfoWaveshape=12,
     kParameterLfoModulation=13,
+    kParameterRangeUp=14,
+    kParameterRangeDown=15,
 };
 #define kFrequencyMin 20
 #define kFrequencyMax 2093
