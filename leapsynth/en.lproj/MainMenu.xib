@@ -434,14 +434,14 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="682909508">
-												<int key="NSCellFlags">67501824</int>
+												<int key="NSCellFlags">604372736</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
 												<reference key="NSControlView" ref="97914579"/>
-												<double key="NSMaxValue">1</double>
+												<double key="NSMaxValue">5000</double>
 												<double key="NSMinValue">0.0</double>
-												<double key="NSValue">1</double>
+												<double key="NSValue">600</double>
 												<double key="NSAltIncValue">0.0</double>
 												<int key="NSNumberOfTickMarks">0</int>
 												<int key="NSTickMarkPosition">0</int>
@@ -459,7 +459,7 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="835597045">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">604110336</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -484,7 +484,7 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="559205147">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">604110336</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -505,11 +505,11 @@
 											<string key="NSFrame">{{149, 28}, {21, 96}}</string>
 											<reference key="NSSuperview" ref="379894938"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="646523568"/>
+											<reference key="NSNextKeyView" ref="853380783"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="907387685">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">604110336</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -737,7 +737,7 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="244068012">
-												<int key="NSCellFlags">-2080244224</int>
+												<int key="NSCellFlags">-1543373312</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -762,7 +762,7 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="513099588">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">604110336</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -787,7 +787,7 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="863083058">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">604110336</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -812,7 +812,7 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="164758807">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">604110336</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -889,14 +889,14 @@
 											<string key="NSReuseIdentifierKey">_NS:993</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="233982060">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">604372736</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:993</string>
 												<reference key="NSControlView" ref="269513936"/>
 												<double key="NSMaxValue">2</double>
 												<double key="NSMinValue">-2</double>
-												<double key="NSValue">0.0</double>
+												<double key="NSValue">1</double>
 												<double key="NSAltIncValue">0.0</double>
 												<int key="NSNumberOfTickMarks">1</int>
 												<int key="NSTickMarkPosition">0</int>
@@ -1166,7 +1166,7 @@
 											<string key="NSFrame">{{137, 54}, {25, 17}}</string>
 											<reference key="NSSuperview" ref="402751483"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
+											<reference key="NSNextKeyView" ref="518205981"/>
 											<string key="NSReuseIdentifierKey">_NS:1505</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="643062474">
@@ -1270,7 +1270,7 @@
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="49787456">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">67501824</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -1291,11 +1291,11 @@
 											<string key="NSFrame">{{185, 11}, {21, 89}}</string>
 											<reference key="NSSuperview" ref="402751483"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="853380783"/>
+											<reference key="NSNextKeyView" ref="646523568"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="636196091">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">67501824</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents"/>
 												<string key="NSCellIdentifier">_NS:9</string>
@@ -1487,7 +1487,7 @@
 											<string key="NSFrame">{{16, 18}, {191, 21}}</string>
 											<reference key="NSSuperview" ref="223653505"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="553084050"/>
+											<reference key="NSNextKeyView" ref="673556284"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSliderCell" key="NSCell" id="949055082">
@@ -2175,7 +2175,7 @@
 											<string key="NSFrame">{{146, 15}, {276, 16}}</string>
 											<reference key="NSSuperview" ref="626739032"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="673556284"/>
+											<reference key="NSNextKeyView" ref="553084050"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSLevelIndicatorCell" key="NSCell" id="417444041">
@@ -3329,14 +3329,6 @@
 					<int key="connectionID">2155</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleFilter:</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="240281573"/>
-					</object>
-					<int key="connectionID">2156</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">vcf_cutoff</string>
 						<reference key="source" ref="976324537"/>
@@ -3783,6 +3775,14 @@
 						<reference key="destination" ref="368399122"/>
 					</object>
 					<int key="connectionID">3537</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleFilterEnvelope:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="240281573"/>
+					</object>
+					<int key="connectionID">3538</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -5842,7 +5842,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">3537</int>
+			<int key="maxID">3538</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5871,7 +5871,7 @@
 						<string key="setVcoFrequency:">id</string>
 						<string key="setVcoRange:">id</string>
 						<string key="setVcoShape:">id</string>
-						<string key="toggleFilter:">id</string>
+						<string key="toggleFilterEnvelope:">id</string>
 						<string key="toggleVcaEnvelope:">id</string>
 						<string key="toggleVcaNote:">id</string>
 						<string key="toggleVcfEnable:">id</string>
@@ -5961,8 +5961,8 @@
 							<string key="name">setVcoShape:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="toggleFilter:">
-							<string key="name">toggleFilter:</string>
+						<object class="IBActionInfo" key="toggleFilterEnvelope:">
+							<string key="name">toggleFilterEnvelope:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="toggleVcaEnvelope:">

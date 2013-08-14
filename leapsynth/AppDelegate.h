@@ -110,7 +110,7 @@ enum {
 - (IBAction)setVcfCutoff:(id)sender;
 - (IBAction)setVcfResonance:(id)sender;
 - (IBAction)setVcfDepth:(id)sender;
-- (IBAction)toggleFilter:(id)sender;
+- (IBAction)toggleFilterEnvelope:(id)sender;
 @property (weak) IBOutlet NSButton *vcf_envelope_enable;
 @property (weak) IBOutlet NSButton *vcf_enable;
 - (IBAction)toggleVcfEnable:(id)sender;

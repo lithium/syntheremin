@@ -284,14 +284,37 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [[synth vcf] setDepth:depth];
 }
 
-- (IBAction)toggleFilter:(id)sender {
+- (IBAction)toggleVcfEnable:(id)sender {
+    int state = [vcf_enable state];
+    [synth setVcfEnabled:state];
+    
+    [vcf_cutoff setEnabled:state];
+    [vcf_resonance setEnabled:state];
+    [vcf_envelope_enable setEnabled:state];
+    [vcf_attack setEnabled:state];
+    [vcf_decay setEnabled:state];
+    [vcf_sustain setEnabled:state];
+    [vcf_release setEnabled:state];
+    [vcf_depth setEnabled:state];
+}
+
+- (IBAction)toggleFilterEnvelope:(id)sender {
     int state = [vcf_envelope_enable state];
     [[synth vcf] setEnvelopeEnabled:state];
+    [vcf_attack setEnabled:state];
+    [vcf_decay setEnabled:state];
+    [vcf_sustain setEnabled:state];
+    [vcf_release setEnabled:state];
+    [vcf_depth setEnabled:state];
 }
 
 - (IBAction)toggleVcaEnvelope:(id)sender {
     int state = [vca_enable state];
     [[synth vca] setEnvelopeEnabled:state];
+    [vca_attack setEnabled:state];
+    [vca_decay setEnabled:state];
+    [vca_sustain setEnabled:state];
+    [vca_release setEnabled:state];
 }
 - (IBAction)toggleVcaNote:(id)sender {
     int state = [vca_note state];
@@ -490,8 +513,4 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 }
 
-- (IBAction)toggleVcfEnable:(id)sender {
-    int state = [vcf_enable state];
-    [synth setVcfEnabled:state];
-}
 @end
