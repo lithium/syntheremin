@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize lefthand_tap_popup;
+@synthesize righthand_tap_popup;
 @synthesize synthAnalyzer;
 @synthesize vca_note;
 @synthesize vca_enable;
@@ -125,10 +127,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [self setLeftParamX:kParameterFrequency];
     [self setLeftParamY:kParameterVolume];
     [self setLeftParamZ:kParameterResonance];
+    [self setLeftParamTap:kParameterVcoWaveshape];
 
     [self setRightParamX:kParameterPitch];
     [self setRightParamY:kParameterLfoSpeed];
     [self setRightParamZ:kParameterLfoAmount];
+    [self setRightParamTap:kParameterNote];
 
     [[synth vco] setWaveShape:kWaveSaw];
     [[synth vco] setModulationType:kModulationTypeFrequency];
@@ -153,6 +157,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     leftParamZ = param;    
     [lefthand_z_popup selectItemWithTag:param];
 }
+- (void)setLeftParamTap:(int)param
+{
+    leftParamTap = param;    
+    [lefthand_tap_popup selectItemWithTag:param];
+}
+
 - (void)setRightParamX:(int)param
 {
     rightParamX = param;    
@@ -168,7 +178,11 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     rightParamZ = param;    
     [righthand_z_popup selectItemWithTag:param];
 }
-
+- (void)setRightParamTap:(int)param
+{
+    rightParamTap = param;    
+    [righthand_tap_popup selectItemWithTag:param];
+}
 
 - (void)primeBuffers
 {
@@ -286,7 +300,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)toggleVcfEnable:(id)sender {
     int state = [vcf_enable state];
-    [self setVcfEnvelopeEnabled:state];
+    [self setVcfEnabled:state];
 }
 
 - (IBAction)toggleFilterEnvelope:(id)sender {
@@ -435,15 +449,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
-{
-    NSLog(@"left tap!");
-    
-    [self applyParameter:leftParamTap :0];
+{   
+    [self applyParameter:leftParamTap :!paramNoteOn];
 }
 - (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {
-    NSLog(@"right tap!");
-    [self applyParameter:rightParamTap :0];
+    [self applyParameter:rightParamTap :!paramNoteOn];
 
 }
 

@@ -20,7 +20,7 @@
 - (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
 @end
 
-#define kDebounceTimeInSecs 0.5
+#define kDebounceTimeInSecs 0.250
 
 @interface LeapSyntheremin : NSObject<LeapListener>
 {

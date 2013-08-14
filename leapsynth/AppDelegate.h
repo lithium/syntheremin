@@ -25,7 +25,7 @@ enum {
     kParameterVcaEnvelope=8,
     kParameterFilterEnable=9,
     kParameterFilterEnvelope=10,
-    kParameterVcoWavehape=11,
+    kParameterVcoWaveshape=11,
     kParameterLfoWaveshape=12,
     kParameterLfoModulation=13,
 };
@@ -136,6 +136,8 @@ enum {
 @property (weak) IBOutlet NSPopUpButton *righthand_y_popup;
 @property (weak) IBOutlet NSPopUpButton *righthand_z_popup;
 - (IBAction)setParameter:(id)sender;
+@property (weak) IBOutlet NSPopUpButton *lefthand_tap_popup;
+@property (weak) IBOutlet NSPopUpButton *righthand_tap_popup;
 
 @property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
 
