@@ -417,6 +417,14 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [self applyParameter:rightParamZ :z];
 
 }
+- (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
+{
+    NSLog(@"left tap!");
+}
+- (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture
+{
+    NSLog(@"right tap!");    
+}
 
 - (void)applyParameter:(int)param :(double)value
 {

@@ -21,6 +21,8 @@
     leapController = [[LeapController alloc] init];
     [leapController addListener:self];
     
+    [leapController enableGesture:LEAP_GESTURE_TYPE_KEY_TAP enable:YES];
+    [leapController enableGesture:LEAP_GESTURE_TYPE_SCREEN_TAP enable:YES];
     return self;
 }
 
@@ -81,6 +83,42 @@
 //          [frame id], [frame timestamp], [[frame hands] count],
 //          [[frame fingers] count], [[frame tools] count], [[frame gestures:nil] count]);
 
+    
+    NSArray *gestures = [frame gestures:nil];
+    double now = CFAbsoluteTimeGetCurrent();
+    for (int i = 0; i < [gestures count]; i++) {
+        LeapGesture *gesture = [gestures objectAtIndex:i];
+        for (LeapHand *hand in [gesture hands]) {
+            int32_t hand_id = [hand id];
+            LeapVector *pos = [hand palmPosition];
+
+            if (hand_id != leftHandId && hand_id != rightHandId) {
+                if ([pos x] < 0) {
+                    leftHandId = hand_id;
+                    leftFound = true;
+                } else {
+                    rightHandId = hand_id;
+                    rightFound = true;
+                }
+            }
+            if (hand_id == leftHandId && (now-leftTapDebounce)>kDebounceTimeInSecs ) {
+                leftTapDebounce = now;
+                if ([delegate respondsToSelector:@selector(leftHandTap::)]) {
+                    [delegate leftHandTap:hand :gesture];
+                }
+                
+            }
+            else if (hand_id == rightHandId && (now-rightTapDebounce)>kDebounceTimeInSecs) {
+                rightTapDebounce = now;
+                if ([delegate respondsToSelector:@selector(rightHandTap::)]) {
+                    [delegate rightHandTap:hand :gesture];
+                }
+            }
+
+        }
+
+    }
 }
+
 
 @end

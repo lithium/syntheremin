@@ -154,8 +154,8 @@
 				1291C77317BC0C430055761E /* Soft Synth */,
 				12CDBF7717A9AC5300C72104 /* Headers */,
 				12C0D40317A9883C001323FA /* AppDelegate.m */,
-				128646CD17A9E99A00CE0420 /* DownUpButton.m */,
 				126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */,
+				128646CD17A9E99A00CE0420 /* DownUpButton.m */,
 				1291C76417BB423D0055761E /* SynthAnalyzer.m */,
 				127DBD3917A76D16007C68FF /* Supporting Files */,
 			);
@@ -204,11 +204,11 @@
 		12CDBF7717A9AC5300C72104 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				1291C76317BB423D0055761E /* SynthAnalyzer.h */,
 				12CDBF7317A9A9C100C72104 /* Defines.h */,
 				12C0D40217A9883C001323FA /* AppDelegate.h */,
-				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
 				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
+				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
+				1291C76317BB423D0055761E /* SynthAnalyzer.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
