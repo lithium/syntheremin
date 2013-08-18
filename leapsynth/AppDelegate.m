@@ -220,7 +220,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (IBAction)setVcoFrequency:(id)sender
 {
     double freq = [osc1_freq doubleValue];
-    [[synth vco] setFrequency:freq];
+//    [[synth vco] setFrequency:freq];
+    [[synth vco] setDetuneInCents:kCentsPerOctave-freq];
 
 }
 - (IBAction)setLfoShape:(id)sender {
@@ -470,9 +471,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             [vca_master setDoubleValue:value];
             break;
         case kParameterPitch: {
-            double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
-            [[synth vco] setFrequency:freq];
-            [osc1_freq setDoubleValue:freq];
+            double detune = (value*kCentsPerOctave);
+            [[synth vco] setDetuneInCents:kCentsPerOctave-detune];
+            [osc1_freq setDoubleValue:detune];
+//            double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
+//            [[synth vco] setFrequency:freq];
+//            [osc1_freq setDoubleValue:freq];
             break;
         }
         case kParameterFrequency: {
