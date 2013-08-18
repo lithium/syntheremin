@@ -17,6 +17,8 @@
     if (self) {
         // Initialization code here.
         buffer = [[NSMutableData alloc] initWithCapacity:2048*sizeof(short)];
+        color = [NSColor colorWithSRGBRed:19.0/255.0 green:0 blue:1.0 alpha:1.0];
+        
     }
     
     return self;
@@ -36,10 +38,10 @@
     
     [[NSColor blackColor] set];
     NSRectFill(bounds);
-    [[NSColor greenColor] set];
-    [path setLineWidth:2.0];
+//    [[NSColor greenColor] set];
+    [color set];
 
-     
+    [path setLineWidth:3.0];
     [path moveToPoint:NSMakePoint(0,bounds.size.height/2)];
     
     float step = bounds.size.width/samplesInBuffer;

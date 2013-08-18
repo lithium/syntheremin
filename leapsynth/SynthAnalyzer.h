@@ -13,6 +13,7 @@
 {
     int samplesInBuffer;
     NSMutableData *buffer;
+    NSColor *color;
 }
 
 - (void) receiveSamples :(short *)samples :(int)numSamples;
