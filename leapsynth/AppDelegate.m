@@ -12,6 +12,9 @@
 @synthesize lefthand_tap_popup;
 @synthesize righthand_tap_popup;
 @synthesize synthAnalyzer;
+@synthesize lefthand_box;
+@synthesize righthand_box;
+@synthesize noleap_label;
 @synthesize vca_note;
 @synthesize vca_enable;
 
@@ -460,6 +463,20 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {
     [self applyParameter:rightParamTap :!paramNoteOn];
+
+}
+- (void)onConnect
+{
+    [lefthand_box setHidden:NO];
+    [righthand_box setHidden:NO];
+    [noleap_label setHidden:YES];
+}
+- (void)onDisconnect
+{
+    [lefthand_box setHidden:YES];
+    [righthand_box setHidden:YES];
+    
+    [noleap_label setHidden:NO];
 
 }
 

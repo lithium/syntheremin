@@ -13,7 +13,6 @@
 @synthesize delegate;
 
 
-
 - (id)init
 {
     leftHandId = rightHandId = -1;
@@ -21,9 +20,25 @@
     leapController = [[LeapController alloc] init];
     [leapController addListener:self];
     
+    return self;
+}
+
+- (void)onConnect:(NSNotification *)notification
+{
     [leapController enableGesture:LEAP_GESTURE_TYPE_KEY_TAP enable:YES];
     [leapController enableGesture:LEAP_GESTURE_TYPE_SCREEN_TAP enable:YES];
-    return self;
+    
+    if ([delegate respondsToSelector:@selector(onConnect)]) {
+        [delegate onConnect];
+    }
+
+}
+
+- (void)onDisconnect:(NSNotification *)notification
+{
+    if ([delegate respondsToSelector:@selector(onDisconnect)]) {
+        [delegate onDisconnect];
+    }
 }
 
 

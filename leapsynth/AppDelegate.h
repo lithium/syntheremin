@@ -44,6 +44,7 @@ enum {
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
     
     LeapSyntheremin *mSyntheremin;
+    
     int leftParamX, leftParamY, leftParamZ, leftParamTap;
     int rightParamX, rightParamY, rightParamZ, rightParamTap;
     bool paramNoteOn;
@@ -142,5 +143,8 @@ enum {
 @property (weak) IBOutlet NSPopUpButton *righthand_tap_popup;
 
 @property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
+@property (weak) IBOutlet NSBox *lefthand_box;
+@property (weak) IBOutlet NSBox *righthand_box;
+@property (weak) IBOutlet NSTextField *noleap_label;
 
 @end

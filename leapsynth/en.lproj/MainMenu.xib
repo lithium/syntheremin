@@ -1462,7 +1462,7 @@
 						</object>
 						<object class="NSBox" id="515458096">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">6</int>
+							<int key="NSvFlags">-2147483642</int>
 							<array class="NSMutableArray" key="NSSubviews">
 								<object class="NSView" id="401049723">
 									<reference key="NSNextResponder" ref="515458096"/>
@@ -2005,7 +2005,7 @@
 											<string key="NSFrame">{{45, 12}, {139, 26}}</string>
 											<reference key="NSSuperview" ref="401049723"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="529610928"/>
+											<reference key="NSNextKeyView" ref="751481174"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<int key="NSTag">7</int>
 											<bool key="NSEnabled">YES</bool>
@@ -2188,7 +2188,7 @@
 						</object>
 						<object class="NSBox" id="529610928">
 							<reference key="NSNextResponder" ref="439893737"/>
-							<int key="NSvFlags">3</int>
+							<int key="NSvFlags">-2147483645</int>
 							<array class="NSMutableArray" key="NSSubviews">
 								<object class="NSView" id="626739032">
 									<reference key="NSNextResponder" ref="529610928"/>
@@ -2911,6 +2911,26 @@
 							<int key="NSTitlePosition">2</int>
 							<bool key="NSTransparent">NO</bool>
 						</object>
+						<object class="NSTextField" id="751481174">
+							<reference key="NSNextResponder" ref="439893737"/>
+							<int key="NSvFlags">261</int>
+							<string key="NSFrame">{{372, 233}, {166, 17}}</string>
+							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="529610928"/>
+							<string key="NSReuseIdentifierKey">_NS:1505</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="228026735">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">272630784</int>
+								<string key="NSContents">No Leap Motion detected.</string>
+								<reference key="NSSupport" ref="776293554"/>
+								<string key="NSCellIdentifier">_NS:1505</string>
+								<reference key="NSControlView" ref="751481174"/>
+								<reference key="NSBackgroundColor" ref="476500003"/>
+								<reference key="NSTextColor" ref="351471177"/>
+							</object>
+						</object>
 					</array>
 					<string key="NSFrameSize">{911, 616}</string>
 					<reference key="NSSuperview"/>
@@ -3241,6 +3261,28 @@
 				<reference key="NSMixedImage" ref="502551668"/>
 				<string key="NSAction">_popUpItemAction:</string>
 				<int key="NSTag">13</int>
+			</object>
+			<object class="NSButton" id="513167723">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">268</int>
+				<string key="NSFrameSize">{82, 32}</string>
+				<reference key="NSSuperview"/>
+				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<bool key="NSEnabled">YES</bool>
+				<object class="NSButtonCell" key="NSCell" id="63975049">
+					<int key="NSCellFlags">67239424</int>
+					<int key="NSCellFlags2">134217728</int>
+					<string key="NSContents">Button</string>
+					<reference key="NSSupport" ref="776293554"/>
+					<string key="NSCellIdentifier">_NS:9</string>
+					<reference key="NSControlView" ref="513167723"/>
+					<int key="NSButtonFlags">-2038284033</int>
+					<int key="NSButtonFlags2">129</int>
+					<string key="NSAlternateContents"/>
+					<string key="NSKeyEquivalent"/>
+					<int key="NSPeriodicDelay">200</int>
+					<int key="NSPeriodicInterval">25</int>
+				</object>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -3981,6 +4023,30 @@
 					</object>
 					<int key="connectionID">3571</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">lefthand_box</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="515458096"/>
+					</object>
+					<int key="connectionID">3578</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">righthand_box</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="529610928"/>
+					</object>
+					<int key="connectionID">3579</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">noleap_label</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="751481174"/>
+					</object>
+					<int key="connectionID">3584</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -4169,12 +4235,13 @@
 						<reference key="object" ref="439893737"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="20957001"/>
-							<reference ref="515458096"/>
 							<reference ref="553084050"/>
 							<reference ref="282768328"/>
 							<reference ref="673556284"/>
 							<reference ref="853380783"/>
 							<reference ref="646523568"/>
+							<reference ref="751481174"/>
+							<reference ref="515458096"/>
 							<reference ref="529610928"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
@@ -5811,6 +5878,32 @@
 						<reference key="object" ref="610624053"/>
 						<reference key="parent" ref="81881797"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3580</int>
+						<reference key="object" ref="513167723"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="63975049"/>
+						</array>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3581</int>
+						<reference key="object" ref="63975049"/>
+						<reference key="parent" ref="513167723"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3582</int>
+						<reference key="object" ref="751481174"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="228026735"/>
+						</array>
+						<reference key="parent" ref="439893737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">3583</int>
+						<reference key="object" ref="228026735"/>
+						<reference key="parent" ref="751481174"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -6124,6 +6217,10 @@
 				<string key="3574.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3575.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3576.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="3580.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="3581.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="3582.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="3583.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersHorizontal"/>
 				<boolean value="YES" key="371.IBNSWindowAutoPositionCentersVertical"/>
 				<string key="371.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -6172,7 +6269,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">3576</int>
+			<int key="maxID">3584</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -6319,6 +6416,7 @@
 						<string key="keyboard_3">DownUpButton</string>
 						<string key="keyboard_4">DownUpButton</string>
 						<string key="keyboard_5">DownUpButton</string>
+						<string key="lefthand_box">NSBox</string>
 						<string key="lefthand_tap_popup">NSPopUpButton</string>
 						<string key="lefthand_x">NSLevelIndicator</string>
 						<string key="lefthand_x_popup">NSPopUpButton</string>
@@ -6326,6 +6424,7 @@
 						<string key="lefthand_y_popup">NSPopUpButton</string>
 						<string key="lefthand_z">NSLevelIndicator</string>
 						<string key="lefthand_z_popup">NSPopUpButton</string>
+						<string key="noleap_label">NSTextField</string>
 						<string key="osc1_detune">NSSlider</string>
 						<string key="osc1_freq">NSSlider</string>
 						<string key="osc1_range">NSSlider</string>
@@ -6334,6 +6433,7 @@
 						<string key="osc2_freq">NSSlider</string>
 						<string key="osc2_shape">NSSlider</string>
 						<string key="osc2_type">NSSlider</string>
+						<string key="righthand_box">NSBox</string>
 						<string key="righthand_tap_popup">NSPopUpButton</string>
 						<string key="righthand_x">NSLevelIndicator</string>
 						<string key="righthand_x_popup">NSPopUpButton</string>
@@ -6401,6 +6501,10 @@
 							<string key="name">keyboard_5</string>
 							<string key="candidateClassName">DownUpButton</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="lefthand_box">
+							<string key="name">lefthand_box</string>
+							<string key="candidateClassName">NSBox</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="lefthand_tap_popup">
 							<string key="name">lefthand_tap_popup</string>
 							<string key="candidateClassName">NSPopUpButton</string>
@@ -6428,6 +6532,10 @@
 						<object class="IBToOneOutletInfo" key="lefthand_z_popup">
 							<string key="name">lefthand_z_popup</string>
 							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="noleap_label">
+							<string key="name">noleap_label</string>
+							<string key="candidateClassName">NSTextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="osc1_detune">
 							<string key="name">osc1_detune</string>
@@ -6460,6 +6568,10 @@
 						<object class="IBToOneOutletInfo" key="osc2_type">
 							<string key="name">osc2_type</string>
 							<string key="candidateClassName">NSSlider</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="righthand_box">
+							<string key="name">righthand_box</string>
+							<string key="candidateClassName">NSBox</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="righthand_tap_popup">
 							<string key="name">righthand_tap_popup</string>

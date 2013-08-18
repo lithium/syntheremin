@@ -13,11 +13,14 @@
     - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)position;
     - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position;
 
-    - (void)leftHandGone:(int32_t)hand_id;
-    - (void)rightHandGone:(int32_t)hand_id;
+//    - (void)leftHandGone:(int32_t)hand_id;
+//    - (void)rightHandGone:(int32_t)hand_id;
 
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
 - (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
+
+- (void)onConnect;
+- (void)onDisconnect;
 @end
 
 #define kDebounceTimeInSecs 0.250
@@ -31,6 +34,7 @@
     
     double leftTapDebounce;
     double rightTapDebounce;
+    
 }
 
 @property (weak) id <LeapSynthereminDelegate> delegate;
