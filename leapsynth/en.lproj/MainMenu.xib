@@ -1648,7 +1648,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">7</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
@@ -1781,7 +1780,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">7</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
@@ -1914,7 +1912,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">7</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
@@ -2151,7 +2148,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">-1</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
@@ -2377,7 +2373,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">7</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
@@ -2510,7 +2505,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">7</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
@@ -2643,7 +2637,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">-1</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
@@ -2752,9 +2745,9 @@
 												<string key="NSKeyEquivalent"/>
 												<int key="NSPeriodicDelay">400</int>
 												<int key="NSPeriodicInterval">75</int>
-												<object class="NSMenuItem" key="NSMenuItem" id="570075405">
+												<object class="NSMenuItem" key="NSMenuItem" id="541710184">
 													<reference key="NSMenu" ref="81881797"/>
-													<string key="NSTitle">Note On/Off</string>
+													<string key="NSTitle">None</string>
 													<string key="NSKeyEquiv"/>
 													<int key="NSKeyEquivModMask">1048576</int>
 													<int key="NSMnemonicLoc">2147483647</int>
@@ -2762,25 +2755,25 @@
 													<reference key="NSOnImage" ref="35465992"/>
 													<reference key="NSMixedImage" ref="502551668"/>
 													<string key="NSAction">_popUpItemAction:</string>
-													<int key="NSTag">7</int>
 													<reference key="NSTarget" ref="520278000"/>
 												</object>
 												<bool key="NSMenuItemRespectAlignment">YES</bool>
 												<object class="NSMenu" key="NSMenu" id="81881797">
 													<string key="NSTitle">OtherViews</string>
 													<array class="NSMutableArray" key="NSMenuItems">
-														<object class="NSMenuItem" id="541710184">
+														<reference ref="541710184"/>
+														<object class="NSMenuItem" id="570075405">
 															<reference key="NSMenu" ref="81881797"/>
-															<string key="NSTitle">None</string>
+															<string key="NSTitle">Note On/Off</string>
 															<string key="NSKeyEquiv"/>
 															<int key="NSKeyEquivModMask">1048576</int>
 															<int key="NSMnemonicLoc">2147483647</int>
 															<reference key="NSOnImage" ref="35465992"/>
 															<reference key="NSMixedImage" ref="502551668"/>
 															<string key="NSAction">_popUpItemAction:</string>
+															<int key="NSTag">7</int>
 															<reference key="NSTarget" ref="520278000"/>
 														</object>
-														<reference ref="570075405"/>
 														<object class="NSMenuItem" id="96669649">
 															<reference key="NSMenu" ref="81881797"/>
 															<string key="NSTitle">VCA Envelope</string>
@@ -2859,7 +2852,6 @@
 															<string key="NSKeyEquiv"/>
 															<int key="NSKeyEquivModMask">1048576</int>
 															<int key="NSMnemonicLoc">2147483647</int>
-															<int key="NSState">1</int>
 															<reference key="NSOnImage" ref="35465992"/>
 															<reference key="NSMixedImage" ref="502551668"/>
 															<string key="NSAction">_popUpItemAction:</string>
@@ -2881,7 +2873,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">8</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
