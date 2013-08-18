@@ -7,6 +7,8 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
+	<string>syntheremin</string>
+	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>com.concentricsky.leapmotion.osx.${PRODUCT_NAME:rfc1034identifier}</string>

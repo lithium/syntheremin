@@ -15,6 +15,7 @@
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
 		128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 128646CD17A9E99A00CE0420 /* DownUpButton.m */; };
 		1291C76517BB423D0055761E /* SynthAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1291C76417BB423D0055761E /* SynthAnalyzer.m */; };
+		12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */ = {isa = PBXBuildFile; fileRef = 12B235D717C0698D00FA7E5C /* syntheremin.icns */; };
 		12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BB468B17A988E4009D7B5C /* MainMenu.xib */; };
 		12BB468E17A988ED009D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D40317A9883C001323FA /* AppDelegate.m */; };
 		12BB469317A9890D009D7B5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469117A9890D009D7B5C /* InfoPlist.strings */; };
@@ -59,6 +60,7 @@
 		128646CD17A9E99A00CE0420 /* DownUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownUpButton.m; sourceTree = "<group>"; };
 		1291C76317BB423D0055761E /* SynthAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthAnalyzer.h; sourceTree = "<group>"; };
 		1291C76417BB423D0055761E /* SynthAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynthAnalyzer.m; sourceTree = "<group>"; };
+		12B235D717C0698D00FA7E5C /* syntheremin.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = syntheremin.icns; sourceTree = SOURCE_ROOT; };
 		12BB468C17A988E4009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = leapsynth/en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		12BB469217A9890D009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = leapsynth/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		12BB469417A98944009D7B5C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = leapsynth/main.m; sourceTree = SOURCE_ROOT; };
@@ -164,6 +166,7 @@
 		127DBD3917A76D16007C68FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				12B235D717C0698D00FA7E5C /* syntheremin.icns */,
 				12BB469917A98979009D7B5C /* Credits.rtf */,
 				12BB469817A98960009D7B5C /* leapsynth-Prefix.pch */,
 				12BB469617A98950009D7B5C /* leapsynth-Info.plist */,
@@ -266,6 +269,7 @@
 				12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */,
 				12BB469317A9890D009D7B5C /* InfoPlist.strings in Resources */,
 				12BB469B17A98979009D7B5C /* Credits.rtf in Resources */,
+				12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
