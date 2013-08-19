@@ -11,6 +11,7 @@
 		126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */; };
 		126C4D6E17B2B42F00598323 /* LeapObjectiveC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */; };
+		12751A3417C1FA0800A57258 /* logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 12751A3317C1FA0800A57258 /* logo-white.png */; };
 		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
 		128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 128646CD17A9E99A00CE0420 /* DownUpButton.m */; };
@@ -50,6 +51,7 @@
 		126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = LeapObjectiveC.mm; path = LeapSDK/include/LeapObjectiveC.mm; sourceTree = "<group>"; };
 		126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapSyntheremin.h; sourceTree = "<group>"; };
 		126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapSyntheremin.m; sourceTree = "<group>"; };
+		12751A3317C1FA0800A57258 /* logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-white.png"; path = "img/logo-white.png"; sourceTree = SOURCE_ROOT; };
 		127DBD2E17A76D16007C68FF /* Syntheremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syntheremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -166,6 +168,7 @@
 		127DBD3917A76D16007C68FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				12751A3317C1FA0800A57258 /* logo-white.png */,
 				12B235D717C0698D00FA7E5C /* syntheremin.icns */,
 				12BB469917A98979009D7B5C /* Credits.rtf */,
 				12BB469817A98960009D7B5C /* leapsynth-Prefix.pch */,
@@ -270,6 +273,7 @@
 				12BB469317A9890D009D7B5C /* InfoPlist.strings in Resources */,
 				12BB469B17A98979009D7B5C /* Credits.rtf in Resources */,
 				12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */,
+				12751A3417C1FA0800A57258 /* logo-white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
