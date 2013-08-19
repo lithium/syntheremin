@@ -454,6 +454,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [self applyParameter:inputParams[kInputLeftHandZ] :z];
 
     
+    [synthAnalyzer setLeftHand:x :y :z];
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
 {
@@ -468,6 +469,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [self applyParameter:inputParams[kInputRightHandX] :x];
     [self applyParameter:inputParams[kInputRightHandY] :y];
     [self applyParameter:inputParams[kInputRightHandZ] :z];
+
+    [synthAnalyzer setRightHand:x :y :z];
 
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
@@ -616,47 +619,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
 }
 
-- (IBAction)setParameter:(id)sender
-{
-    switch ([sender tag]) {
-        case 1:    
-            leftParamX = [sender selectedTag];
-            break;
-        case 2:    
-            leftParamY = [sender selectedTag];
-            break;
-        case 3:    
-            leftParamZ = [sender selectedTag];
-            break;
-        case 4:    
-            rightParamX = [sender selectedTag];
-            break;
-        case 5:    
-            rightParamY = [sender selectedTag];
-            break;
-        case 6:    
-            rightParamZ = [sender selectedTag];
-            break;
-        case 7:
-            leftParamTap = [sender selectedTag];
-            break;
-        case 8:
-            rightParamTap = [sender selectedTag];
-            break;
-
-    }
-
-}
 
 
-- (void)setInputParameter:(int)input :(int)parameter
-{
-    switch (input) {
-        case kInputLeftHandX:
-            leftParamX = parameter;
-            break;
-    }
-}
 
 
 - (void)noteOn
@@ -679,10 +643,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)changePredicate:(id)sender {
     
-
-
-    
-    NSPredicate *pred = [patch_predicateeditor predicate];
     memset(inputParams, 0, kInputEnumSize);
     for (int i=0; i < [patch_predicateeditor numberOfRows]; i++) {
         NSArray *values = [patch_predicateeditor displayValuesForRow:i];
@@ -690,9 +650,9 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             continue;
         int input = [kInputTypeArray indexOfObject:[values objectAtIndex:0]];
         int param = [kParameterTypeArray indexOfObject:[values objectAtIndex:2]];
-
-        inputParams[input] = param;
-        NSLog(@"predicate%d input=%d param=%d", i, input, param);
+        if (input != -1 && input < kInputEnumSize) {
+            inputParams[input] = param;
+        }
     }
 }
 @end
