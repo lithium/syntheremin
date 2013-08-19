@@ -91,7 +91,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     OSStatus status;
         
     synth = [[Synth alloc] init];
-        
+    [[synth vca] setMasterVolume:0];
+
     AudioStreamBasicDescription fmt = {0};
     fmt.mSampleRate = kSampleRate;
     fmt.mFormatID = kAudioFormatLinearPCM;
@@ -138,7 +139,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [[synth vco] setWaveShape:kWaveSaw];
     [[synth vco] setModulationType:kModulationTypeFrequency];
     [[synth vco] setLfoWaveshape:kWaveSine];
-    [self setVcaEnvelopeEnabled:YES];
+    [self setVcaEnvelopeEnabled:NO];
 
     [synth setAnalyzer:synthAnalyzer];
     
@@ -147,7 +148,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" \
                                 AND \"Right Hand X\" = \"Pitch\"\
                                 AND \"Right Hand Z\" = \"Cutoff Frequency\"\
-                                AND \"Left Hand Tap\" = \"Note On/Off\"\
                               "];
     [patch_predicateeditor setObjectValue:predicate];
     [self changePredicate:self];
