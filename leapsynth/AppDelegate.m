@@ -131,7 +131,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [self setVcaEnvelopeEnabled:YES];
     
     
-    memset(inputParams, kParameterNone, kInputEnumSize);
+    memset(inputParams, kParameterNone, kInputEnumSize*sizeof(int));
     kParameterTypeArray = [[NSArray alloc] initWithObjects:kParameterTypeNamesArray];
     kInputTypeArray = [[NSArray alloc] initWithObjects:kInputTypeNamesArray];
 
@@ -573,7 +573,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)changePredicate:(id)sender {
     
-    memset(inputParams, 0, kInputEnumSize);
+    memset(inputParams, 0, kInputEnumSize*sizeof(int));
     for (int i=0; i < [patch_predicateeditor numberOfRows]; i++) {
         NSArray *values = [patch_predicateeditor displayValuesForRow:i];
         if ([values count] < 3)
