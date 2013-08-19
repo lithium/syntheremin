@@ -59,10 +59,7 @@ enum {
     AudioQueueBufferRef mQueueBuffers[kNumBuffers];
     
     LeapSyntheremin *mSyntheremin;
-    
-    int leftParamX, leftParamY, leftParamZ, leftParamTap;
-    int rightParamX, rightParamY, rightParamZ, rightParamTap;
-    
+        
     NSArray *kParameterTypeArray;
     NSArray *kInputTypeArray;
     int inputParams[kInputEnumSize];
@@ -71,6 +68,7 @@ enum {
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSDrawer *drawer;
 
 
 //OSC1

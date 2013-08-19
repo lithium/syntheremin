@@ -66,6 +66,7 @@
 @synthesize osc2_type;
 
 @synthesize window = _window;
+@synthesize drawer;
 
 
 void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQueueBufferRef buffer_ref)
@@ -134,17 +135,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     kParameterTypeArray = [[NSArray alloc] initWithObjects:kParameterTypeNamesArray];
     kInputTypeArray = [[NSArray alloc] initWithObjects:kInputTypeNamesArray];
 
-    
-    [self setLeftParamX:kParameterFrequency];
-    [self setLeftParamY:kParameterVolume];
-    [self setLeftParamZ:kParameterResonance];
-    [self setLeftParamTap:kParameterVcoWaveshape];
-
-    [self setRightParamX:kParameterPitch];
-    [self setRightParamY:kParameterLfoSpeed];
-    [self setRightParamZ:kParameterLfoAmount];
-    [self setRightParamTap:kParameterNote];
-
     [[synth vco] setWaveShape:kWaveSaw];
     [[synth vco] setModulationType:kModulationTypeFrequency];
     [[synth vco] setLfoWaveshape:kWaveSine];
@@ -153,7 +143,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
     AudioQueueStart(mAudioQueue, NULL);
 
-    [patch_predicateeditor addRow:self];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" AND \"Right Hand X\" = \"Pitch\""];
+    [patch_predicateeditor setObjectValue:predicate];
+    [self changePredicate:self];
+    
+    [drawer toggle:self];
+    
 
 }
 - (void)windowWillClose:(NSNotification *)notification
@@ -162,47 +157,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [NSApp terminate:self];
 }
 
-- (void)setLeftParamX:(int)param
-{
-    leftParamX = param;    
-    [lefthand_x_popup selectItemWithTag:param];
-}
-- (void)setLeftParamY:(int)param
-{
-    leftParamY = param;    
-    [lefthand_y_popup selectItemWithTag:param];
-}
-- (void)setLeftParamZ:(int)param
-{
-    leftParamZ = param;    
-    [lefthand_z_popup selectItemWithTag:param];
-}
-- (void)setLeftParamTap:(int)param
-{
-    leftParamTap = param;    
-    [lefthand_tap_popup selectItemWithTag:param];
-}
-
-- (void)setRightParamX:(int)param
-{
-    rightParamX = param;    
-    [righthand_x_popup selectItemWithTag:param];
-}
-- (void)setRightParamY:(int)param
-{
-    rightParamY = param;    
-    [righthand_y_popup selectItemWithTag:param];
-}
-- (void)setRightParamZ:(int)param
-{
-    rightParamZ = param;    
-    [righthand_z_popup selectItemWithTag:param];
-}
-- (void)setRightParamTap:(int)param
-{
-    rightParamTap = param;    
-    [righthand_tap_popup selectItemWithTag:param];
-}
 
 - (void)primeBuffers
 {
@@ -232,7 +186,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 - (IBAction)setVcoFrequency:(id)sender
 {
     double freq = [osc1_freq doubleValue];
-//    [[synth vco] setFrequency:freq];
     [[synth vco] setDetuneInCents:kCentsPerOctave-freq];
 
 }
@@ -407,10 +360,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     return (abs(pos) + abs(min))/(abs(min)+abs(max));
 }
 
-//
-//X: -200 ..  0  .. 200
-//Y:   50 .. 175 .. 400
-//Z: -120 ..  0  .. 120
 
 #define kLeftXMin -200
 #define kLeftXMax -70
@@ -437,22 +386,10 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     double x = (MAX(MIN([position x], kLeftXMax), kLeftXMin) - kLeftXMin)/(kLeftXMax - kLeftXMin);
     double y = (MAX(MIN([position y], kLeftYMax), kLeftYMin) - kLeftYMin)/(kLeftYMax - kLeftYMin);
     double z = 1.0-(MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
-
-//    NSLog(@"x,y,z = %f,%f,%f",[position x],[position y],[position z]);
-//    NSLog(@"x,y,z = %f,%f,%f\n",x,y,z);
-
-    [lefthand_x setDoubleValue:(leftParamX == kParameterNone) ? 0 : x];
-    [lefthand_y setDoubleValue:(leftParamY == kParameterNone) ? 0 : y];
-    [lefthand_z setDoubleValue:(leftParamZ == kParameterNone) ? 0 : z];
-        
-//    [self applyParameter:leftParamX :x];
-//    [self applyParameter:leftParamY :y];
-//    [self applyParameter:leftParamZ :z];
     
     [self applyParameter:inputParams[kInputLeftHandX] :x];
     [self applyParameter:inputParams[kInputLeftHandY] :y];
     [self applyParameter:inputParams[kInputLeftHandZ] :z];
-
     
     [synthAnalyzer setLeftHand:x :y :z];
 }
@@ -461,10 +398,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     double x = (MAX(MIN([position x], kRightXMax), kRightXMin) - kRightXMin)/(kRightXMax - kRightXMin);
     double y = (MAX(MIN([position y], kRightYMax), kRightYMin) - kRightYMin)/(kRightYMax - kRightYMin);
     double z = 1.0-(MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
-    
-    [righthand_x setDoubleValue:(rightParamX == kParameterNone) ? 0 : x];
-    [righthand_y setDoubleValue:(rightParamY == kParameterNone) ? 0 : y];
-    [righthand_z setDoubleValue:(rightParamZ == kParameterNone) ? 0 : z];
     
     [self applyParameter:inputParams[kInputRightHandX] :x];
     [self applyParameter:inputParams[kInputRightHandY] :y];
@@ -508,9 +441,6 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             double detune = (value*kCentsPerOctave);
             [[synth vco] setDetuneInCents:kCentsPerOctave-detune];
             [osc1_freq setDoubleValue:detune];
-//            double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
-//            [[synth vco] setFrequency:freq];
-//            [osc1_freq setDoubleValue:freq];
             break;
         }
         case kParameterFrequency: {
