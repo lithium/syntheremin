@@ -369,8 +369,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 #define kLeftXMin -200
 #define kLeftXMax -70
 
-#define kLeftYMin 80
-#define kLeftYMax 450
+#define kLeftYMin 150
+#define kLeftYMax 500
 
 #define kLeftZMin 0
 #define kLeftZMax 120
@@ -378,8 +378,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 #define kRightXMin 70
 #define kRightXMax 200
 
-#define kRightYMin 60
-#define kRightYMax 450
+#define kRightYMin 150
+#define kRightYMax 500
 
 #define kRightZMin 0
 #define kRightZMax 120
@@ -392,6 +392,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     double y = (MAX(MIN([position y], kLeftYMax), kLeftYMin) - kLeftYMin)/(kLeftYMax - kLeftYMin);
     double z = 1.0-(MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
     
+//    NSLog(@"left x,y,z: %f,%f,%f",[position x],[position y],[position z]);
+    
     [self applyParameter:inputParams[kInputLeftHandX] :x];
     [self applyParameter:inputParams[kInputLeftHandY] :y];
     [self applyParameter:inputParams[kInputLeftHandZ] :z];
@@ -403,7 +405,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     double x = (MAX(MIN([position x], kRightXMax), kRightXMin) - kRightXMin)/(kRightXMax - kRightXMin);
     double y = (MAX(MIN([position y], kRightYMax), kRightYMin) - kRightYMin)/(kRightYMax - kRightYMin);
     double z = 1.0-(MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
-    
+//    NSLog(@"right x,y,z: %f,%f,%f",[position x],[position y],[position z]);
+
     [self applyParameter:inputParams[kInputRightHandX] :x];
     [self applyParameter:inputParams[kInputRightHandY] :y];
     [self applyParameter:inputParams[kInputRightHandZ] :z];
