@@ -21,7 +21,8 @@
         leftDotColor = [NSColor colorWithSRGBRed:48/255.0 green:176/255.0 blue:196/255.0 alpha:0.6];
         rightDotColor = [NSColor colorWithSRGBRed:195/255.0 green:50/255.0 blue:62/255.0 alpha:0.6];
         
-        axisColor = [NSColor colorWithSRGBRed:0.8 green:0.8 blue:0.8 alpha:0.8];
+        majorAxisColor = [NSColor colorWithSRGBRed:0.8 green:0.8 blue:0.8 alpha:1];
+        minorAxisColor = [NSColor colorWithSRGBRed:0 green:1 blue:0 alpha:0.5];
     }
     
     return self;
@@ -38,14 +39,39 @@
     NSRectFill(bounds);
     
     // draw axis
-    NSBezierPath *axisPath = [[NSBezierPath alloc] init];
-    [axisPath setLineWidth:0.5];
-    [axisColor set];
-    [axisPath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
-    [axisPath lineToPoint:NSMakePoint(bounds.size.width,bounds.size.height/2)];
-    [axisPath moveToPoint:NSMakePoint(bounds.size.width/2,0)];
-    [axisPath lineToPoint:NSMakePoint(bounds.size.width/2,bounds.size.height)];
-    [axisPath stroke];
+    NSBezierPath *minorAxisPath = [[NSBezierPath alloc] init];
+    [minorAxisPath setLineWidth:0.2];
+
+    NSBezierPath *majorAxisPath = [[NSBezierPath alloc] init];
+    [majorAxisPath setLineWidth:0.5];
+
+    
+    // draw minor axis ticks
+
+    int numTicks = 12;
+    double step = (bounds.size.height/2) / numTicks;
+    double j;
+    
+    for (j=0; j < bounds.size.height; j += step) {
+        [minorAxisPath moveToPoint:NSMakePoint(0,j)];
+        [minorAxisPath lineToPoint:NSMakePoint(bounds.size.width,j)];
+        
+    }
+    step = (bounds.size.width/2) / numTicks;
+    for (j=0; j < bounds.size.width; j += step) {
+        [minorAxisPath moveToPoint:NSMakePoint(j,0)];
+        [minorAxisPath lineToPoint:NSMakePoint(j,bounds.size.height)];
+    }
+    [minorAxisColor set];
+    [minorAxisPath stroke];
+
+    // draw major axis
+    [majorAxisPath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
+    [majorAxisPath lineToPoint:NSMakePoint(bounds.size.width,bounds.size.height/2)];
+    [majorAxisPath moveToPoint:NSMakePoint(bounds.size.width/2,0)];
+    [majorAxisPath lineToPoint:NSMakePoint(bounds.size.width/2,bounds.size.height)];
+    [majorAxisColor set];
+    [majorAxisPath stroke];
 
 
     // draw waveform
@@ -53,7 +79,7 @@
     [wavePath setLineWidth:3.0];
     [wavePath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
     
-    float step = bounds.size.width/samplesInBuffer;
+    step = bounds.size.width/samplesInBuffer;
     int i;
     short *samples = (short*)[buffer bytes];
     for (i=0; i < samplesInBuffer; i++) {

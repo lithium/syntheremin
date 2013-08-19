@@ -19,7 +19,7 @@ typedef struct Point3 {
 {
     int samplesInBuffer;
     NSMutableData *buffer;
-    NSColor *waveColor,*leftDotColor,*rightDotColor,*axisColor;
+    NSColor *waveColor,*leftDotColor,*rightDotColor,*majorAxisColor,*minorAxisColor;
     
     Point3 leftHand,rightHand;
 }
