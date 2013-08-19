@@ -31,6 +31,21 @@ enum {
     kParameterRangeUp=14,
     kParameterRangeDown=15,
 };
+#define kParameterTypeNamesArray @"None",@"Pitch",@"Volume",@"Cutoff Frequency",@"Resonance",@"LFO Speed",@"LFO Amount",@"Note On/Off",nil
+
+enum {
+    kInputLeftHandX,
+    kInputLeftHandY,
+    kInputLeftHandZ,
+    kInputLeftHandTap,
+    kInputRightHandX,
+    kInputRightHandY,
+    kInputRightHandZ,
+    kInputRightHandTap,
+    kInputEnumSize,
+};
+#define kInputTypeNamesArray @"Left Hand X",@"Left Hand Y",@"Left Hand Z",@"Left Hand Tap",@"Right Hand X",@"Right Hand Y",@"Right Hand Z",@"Right Hand Tap",nil
+
 #define kFrequencyMin 20
 #define kFrequencyMax 2093
 #define kLfoFrequencyMin 1
@@ -47,6 +62,11 @@ enum {
     
     int leftParamX, leftParamY, leftParamZ, leftParamTap;
     int rightParamX, rightParamY, rightParamZ, rightParamTap;
+    
+    NSArray *kParameterTypeArray;
+    NSArray *kInputTypeArray;
+    int inputParams[kInputEnumSize];
+    
     bool paramNoteOn;
 }
 
@@ -147,4 +167,6 @@ enum {
 @property (weak) IBOutlet NSBox *righthand_box;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
+@property (weak) IBOutlet NSPredicateEditor *patch_predicateeditor;
+- (IBAction)changePredicate:(id)sender;
 @end

@@ -15,6 +15,7 @@
 @synthesize lefthand_box;
 @synthesize righthand_box;
 @synthesize noleap_label;
+@synthesize patch_predicateeditor;
 @synthesize vca_note;
 @synthesize vca_enable;
 
@@ -83,6 +84,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
     
     OSStatus status;
@@ -127,6 +129,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
     [self setVcaEnvelopeEnabled:YES];
     
+    
+    memset(inputParams, kParameterNone, kInputEnumSize);
+    kParameterTypeArray = [[NSArray alloc] initWithObjects:kParameterTypeNamesArray];
+    kInputTypeArray = [[NSArray alloc] initWithObjects:kInputTypeNamesArray];
+
+    
     [self setLeftParamX:kParameterFrequency];
     [self setLeftParamY:kParameterVolume];
     [self setLeftParamZ:kParameterResonance];
@@ -145,6 +153,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     
     AudioQueueStart(mAudioQueue, NULL);
 
+    [patch_predicateeditor addRow:self];
 
 }
 - (void)windowWillClose:(NSNotification *)notification
@@ -436,9 +445,14 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [lefthand_y setDoubleValue:(leftParamY == kParameterNone) ? 0 : y];
     [lefthand_z setDoubleValue:(leftParamZ == kParameterNone) ? 0 : z];
         
-    [self applyParameter:leftParamX :x];
-    [self applyParameter:leftParamY :y];
-    [self applyParameter:leftParamZ :z];
+//    [self applyParameter:leftParamX :x];
+//    [self applyParameter:leftParamY :y];
+//    [self applyParameter:leftParamZ :z];
+    
+    [self applyParameter:inputParams[kInputLeftHandX] :x];
+    [self applyParameter:inputParams[kInputLeftHandY] :y];
+    [self applyParameter:inputParams[kInputLeftHandZ] :z];
+
     
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
@@ -451,18 +465,18 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [righthand_y setDoubleValue:(rightParamY == kParameterNone) ? 0 : y];
     [righthand_z setDoubleValue:(rightParamZ == kParameterNone) ? 0 : z];
     
-    [self applyParameter:rightParamX :x];
-    [self applyParameter:rightParamY :y];
-    [self applyParameter:rightParamZ :z];
+    [self applyParameter:inputParams[kInputRightHandX] :x];
+    [self applyParameter:inputParams[kInputRightHandY] :y];
+    [self applyParameter:inputParams[kInputRightHandZ] :z];
 
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {   
-    [self applyParameter:leftParamTap :!paramNoteOn];
+    [self applyParameter:inputParams[kInputLeftHandTap] :!paramNoteOn];
 }
 - (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {
-    [self applyParameter:rightParamTap :!paramNoteOn];
+    [self applyParameter:inputParams[kInputRightHandTap] :!paramNoteOn];
 
 }
 - (void)onConnect
@@ -634,6 +648,17 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 }
 
+
+- (void)setInputParameter:(int)input :(int)parameter
+{
+    switch (input) {
+        case kInputLeftHandX:
+            leftParamX = parameter;
+            break;
+    }
+}
+
+
 - (void)noteOn
 {        
     AudioQueueStop(mAudioQueue, true);
@@ -651,4 +676,23 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 }
 
+
+- (IBAction)changePredicate:(id)sender {
+    
+
+
+    
+    NSPredicate *pred = [patch_predicateeditor predicate];
+    memset(inputParams, 0, kInputEnumSize);
+    for (int i=0; i < [patch_predicateeditor numberOfRows]; i++) {
+        NSArray *values = [patch_predicateeditor displayValuesForRow:i];
+        if ([values count] < 3)
+            continue;
+        int input = [kInputTypeArray indexOfObject:[values objectAtIndex:0]];
+        int param = [kParameterTypeArray indexOfObject:[values objectAtIndex:2]];
+
+        inputParams[input] = param;
+        NSLog(@"predicate%d input=%d param=%d", i, input, param);
+    }
+}
 @end
