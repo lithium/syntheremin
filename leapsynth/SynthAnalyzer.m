@@ -21,8 +21,7 @@
         leftDotColor = [NSColor redColor];
         rightDotColor = [NSColor greenColor];
         
-        axisColor = [NSColor grayColor];
-
+        axisColor = [NSColor colorWithSRGBRed:0.8 green:0.8 blue:0.8 alpha:0.8];
     }
     
     return self;
@@ -40,30 +39,14 @@
     
     // draw axis
     NSBezierPath *axisPath = [[NSBezierPath alloc] init];
+    [axisPath setLineWidth:0.5];
+    [axisColor set];
     [axisPath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
     [axisPath lineToPoint:NSMakePoint(bounds.size.width,bounds.size.height/2)];
     [axisPath moveToPoint:NSMakePoint(bounds.size.width/2,0)];
     [axisPath lineToPoint:NSMakePoint(bounds.size.width/2,bounds.size.height)];
-    [axisColor set];
     [axisPath stroke];
 
-    // draw waveform
-    NSBezierPath *wavePath = [[NSBezierPath alloc] init];
-    [wavePath setLineWidth:3.0];
-    [wavePath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
-    
-    float step = bounds.size.width/samplesInBuffer;
-    int i;
-    short *samples = (short*)[buffer bytes];
-    for (i=0; i < samplesInBuffer; i++) {
-        short sample = samples[i];
-        float r = (float)(sample - SHRT_MIN)/(float)(SHRT_MAX-SHRT_MIN);
-        float y = r * (float)bounds.size.height;
-        [wavePath lineToPoint:NSMakePoint(i*step,y)];
-    }
-    [waveColor set];
-    [wavePath stroke];
-    
     
     // draw left hand
     NSBezierPath *leftDotPath = [[NSBezierPath alloc] init];
@@ -84,6 +67,23 @@
     [rightDotColor set];
     [rightDotPath fill];
 
+    // draw waveform
+    NSBezierPath *wavePath = [[NSBezierPath alloc] init];
+    [wavePath setLineWidth:3.0];
+    [wavePath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
+    
+    float step = bounds.size.width/samplesInBuffer;
+    int i;
+    short *samples = (short*)[buffer bytes];
+    for (i=0; i < samplesInBuffer; i++) {
+        short sample = samples[i];
+        float r = (float)(sample - SHRT_MIN)/(float)(SHRT_MAX-SHRT_MIN);
+        float y = r * (float)bounds.size.height;
+        [wavePath lineToPoint:NSMakePoint(i*step,y)];
+    }
+    [waveColor set];
+    [wavePath stroke];
+    
 
     [ctx restoreGraphicsState];
     
