@@ -128,22 +128,27 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     mSyntheremin = [[LeapSyntheremin alloc] init];
     [mSyntheremin setDelegate:self];
     
-    [self setVcaEnvelopeEnabled:YES];
     
     
     memset(inputParams, kParameterNone, kInputEnumSize*sizeof(int));
     kParameterTypeArray = [[NSArray alloc] initWithObjects:kParameterTypeNamesArray];
     kInputTypeArray = [[NSArray alloc] initWithObjects:kInputTypeNamesArray];
 
+    
     [[synth vco] setWaveShape:kWaveSaw];
     [[synth vco] setModulationType:kModulationTypeFrequency];
     [[synth vco] setLfoWaveshape:kWaveSine];
+    [self setVcaEnvelopeEnabled:YES];
 
     [synth setAnalyzer:synthAnalyzer];
     
     AudioQueueStart(mAudioQueue, NULL);
 
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" AND \"Right Hand X\" = \"Pitch\""];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" \
+                                AND \"Right Hand X\" = \"Pitch\"\
+                                AND \"Right Hand Z\" = \"Cutoff Frequency\"\
+                                AND \"Left Hand Tap\" = \"Note On/Off\"\
+                              "];
     [patch_predicateeditor setObjectValue:predicate];
     [self changePredicate:self];
     

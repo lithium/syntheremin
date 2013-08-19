@@ -17,9 +17,9 @@
         // Initialization code here.
         buffer = [[NSMutableData alloc] initWithCapacity:2048*sizeof(short)];
         
-        waveColor = [NSColor colorWithSRGBRed:19.0/255.0 green:0 blue:1.0 alpha:1.0];
-        leftDotColor = [NSColor redColor];
-        rightDotColor = [NSColor greenColor];
+        waveColor = [NSColor colorWithSRGBRed:0/255.0 green:34/255.0 blue:216/255.0 alpha:1.0];
+        leftDotColor = [NSColor colorWithSRGBRed:48/255.0 green:176/255.0 blue:196/255.0 alpha:0.6];
+        rightDotColor = [NSColor colorWithSRGBRed:195/255.0 green:50/255.0 blue:62/255.0 alpha:0.6];
         
         axisColor = [NSColor colorWithSRGBRed:0.8 green:0.8 blue:0.8 alpha:0.8];
     }
@@ -47,6 +47,24 @@
     [axisPath lineToPoint:NSMakePoint(bounds.size.width/2,bounds.size.height)];
     [axisPath stroke];
 
+
+    // draw waveform
+    NSBezierPath *wavePath = [[NSBezierPath alloc] init];
+    [wavePath setLineWidth:3.0];
+    [wavePath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
+    
+    float step = bounds.size.width/samplesInBuffer;
+    int i;
+    short *samples = (short*)[buffer bytes];
+    for (i=0; i < samplesInBuffer; i++) {
+        short sample = samples[i];
+        float r = (float)(sample - SHRT_MIN)/(float)(SHRT_MAX-SHRT_MIN);
+        float y = r * (float)bounds.size.height;
+        [wavePath lineToPoint:NSMakePoint(i*step,y)];
+    }
+    [waveColor set];
+    [wavePath stroke];
+    
     
     // draw left hand
     NSBezierPath *leftDotPath = [[NSBezierPath alloc] init];
@@ -66,24 +84,6 @@
     [rightDotPath appendBezierPathWithOvalInRect:NSMakeRect(right_x,right_y,right_radius,right_radius)];
     [rightDotColor set];
     [rightDotPath fill];
-
-    // draw waveform
-    NSBezierPath *wavePath = [[NSBezierPath alloc] init];
-    [wavePath setLineWidth:3.0];
-    [wavePath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
-    
-    float step = bounds.size.width/samplesInBuffer;
-    int i;
-    short *samples = (short*)[buffer bytes];
-    for (i=0; i < samplesInBuffer; i++) {
-        short sample = samples[i];
-        float r = (float)(sample - SHRT_MIN)/(float)(SHRT_MAX-SHRT_MIN);
-        float y = r * (float)bounds.size.height;
-        [wavePath lineToPoint:NSMakePoint(i*step,y)];
-    }
-    [waveColor set];
-    [wavePath stroke];
-    
 
     [ctx restoreGraphicsState];
     
