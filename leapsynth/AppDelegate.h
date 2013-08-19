@@ -31,7 +31,7 @@ enum {
     kParameterRangeUp=14,
     kParameterRangeDown=15,
 };
-#define kParameterTypeNamesArray @"None",@"Pitch",@"Volume",@"Cutoff Frequency",@"Resonance",@"LFO Speed",@"LFO Amount",@"Note On/Off",nil
+#define kParameterTypeNamesArray @"None",@"Pitch",@"Volume",@"Cutoff Frequency",@"Resonance",@"LFO Speed",@"LFO Amount",@"Toggle Note On/Off",@"Toggle Amplifier Envelope",@"Toggle Filter",@"Toggle Filter Envelope",@"Change Oscillator Waveshape",@"Change LFO Waveshape",@"Change LFO Modulation",@"Range Up",@"Range Down", nil
 
 enum {
     kInputLeftHandX,
