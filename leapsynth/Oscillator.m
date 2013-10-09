@@ -49,6 +49,10 @@
             value = 2.0 * (x - floor(x + 0.5));
             break;
             
+        case kWaveTriangle:
+            value = fabs( 2.0 * (x - floor(x + 0.5))) - 0.5;   // Thanks to Tom Hall! @t-hall
+            break;
+            
         default:
         case kWaveSine:
             value = sin(2.0 * M_PI * x);

@@ -13,6 +13,7 @@ enum  {
     kWaveSquare=0,
     kWaveSine=1,
     kWaveSaw=2,
+    kWaveTriangle=3,
 };
 
 @interface Oscillator : NSObject {
