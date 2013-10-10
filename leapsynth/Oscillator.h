@@ -27,6 +27,8 @@ enum  {
 - (id) init;
 - (void) setFrequency :(double)freq;
 - (int) getSamples :(short *)samples :(int)numSamples;
+- (int) mixSamples :(short *)samples :(int)numSamples;
+
 - (double) getSample;
 
 @end

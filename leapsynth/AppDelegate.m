@@ -22,6 +22,7 @@
 @synthesize vca_master;
 @synthesize vcf_envelope_enable;
 @synthesize vcf_enable;
+@synthesize osc2_enable;
 @synthesize lefthand_x;
 @synthesize lefthand_y;
 @synthesize lefthand_z;
@@ -61,9 +62,12 @@
 @synthesize osc1_detune;
 @synthesize osc1_freq;
 @synthesize osc2_shape;
+@synthesize osc2_range;
 @synthesize osc2_freq;
-@synthesize osc2_amount;
-@synthesize osc2_type;
+@synthesize lfo_shape;
+@synthesize lfo_freq;
+@synthesize lfo_amount;
+@synthesize lfo_type;
 
 @synthesize window = _window;
 @synthesize drawer;
@@ -136,9 +140,9 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     kInputTypeArray = [[NSArray alloc] initWithObjects:kInputTypeNamesArray];
 
     
-    [[synth vco] setWaveShape:kWaveSaw];
-    [[synth vco] setModulationType:kModulationTypeFrequency];
-    [[synth vco] setLfoWaveshape:kWaveSine];
+    [[synth osc1] setWaveShape:kWaveSaw];
+    [[synth osc1] setModulationType:kModulationTypeFrequency];
+    [[synth osc1] setLfoWaveshape:kWaveSine];
     [self setVcaEnvelopeEnabled:NO];
 
     [synth setAnalyzer:synthAnalyzer];
@@ -173,7 +177,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 
 - (IBAction)setVcoShape:(id)sender {
-    [[synth vco] setWaveShape:[osc1_shape intValue]];
+    [[synth osc1] setWaveShape:[osc1_shape intValue]];
     AudioQueueStop(mAudioQueue, true);
     [self primeBuffers];
     AudioQueueStart(mAudioQueue, NULL);
@@ -181,34 +185,56 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (IBAction)setVcoRange:(id)sender {
     int value = [osc1_range intValue];
-    [[synth vco] setRange:( value)];
+    [[synth osc1] setRange:( value)];
 }
 
 - (IBAction)setVcoDetune:(id)sender {
     int value = [osc1_detune intValue];
-    [[synth vco] setDetuneInCents:value];
+    [[synth osc1] setDetuneInCents:value];
 }
 - (IBAction)setVcoFrequency:(id)sender
 {
     double freq = [osc1_freq doubleValue];
-    [[synth vco] setDetuneInCents:kCentsPerOctave-freq];
+    [[synth osc1] setDetuneInCents:kCentsPerOctave-freq];
 
 }
+- (IBAction)setVco2Shape:(id)sender {
+    [[synth osc2] setWaveShape:[osc2_shape intValue]];
+    AudioQueueStop(mAudioQueue, true);
+    [self primeBuffers];
+    AudioQueueStart(mAudioQueue, NULL);
+}
+
+- (IBAction)setVco2Range:(id)sender {
+    int value = [osc2_range intValue];
+    [[synth osc2] setRange:( value)];
+}
+
+//- (IBAction)setVco2Detune:(id)sender {
+//    int value = [osc2_detune intValue];
+//    [[synth osc2] setDetuneInCents:value];
+//}
+- (IBAction)setVco2Frequency:(id)sender
+{
+    double freq = [osc2_freq doubleValue];
+    [[synth osc2] setDetuneInCents:kCentsPerOctave-freq];
+}
+
 - (IBAction)setLfoShape:(id)sender {
-    int shape = [osc2_shape intValue];
-    [[synth vco] setLfoWaveshape:shape];
+    int shape = [lfo_shape intValue];
+    [[synth osc1] setLfoWaveshape:shape];
 }
 
 - (IBAction)setLfoFrequency:(id)sender {
-    [[synth vco] setLfoFrequency:[osc2_freq doubleValue]];
+    [[synth osc1] setLfoFrequency:[lfo_freq doubleValue]];
 }
 
 - (IBAction)setLfoType:(id)sender {
-    [[synth vco] setModulationType:[osc2_type intValue]];
+    [[synth osc1] setModulationType:[lfo_type intValue]];
 }
 
 - (IBAction)setLfoAmount:(id)sender {
-    [[synth vco] setModulationAmount:[osc2_amount doubleValue]];
+    [[synth osc1] setModulationAmount:[lfo_amount doubleValue]];
 
 }
 
@@ -278,6 +304,12 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [self setVcfEnabled:state];
 }
 
+- (IBAction)toggleOsc2:(id)sender {
+    int state = [osc2_enable state];
+    [self setOsc2Enabled:state];
+
+}
+
 - (IBAction)toggleFilterEnvelope:(id)sender {
     int state = [vcf_envelope_enable state];
     [self setVcfEnvelopeEnabled:state];
@@ -321,6 +353,11 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
     [vcf_release setEnabled:enabled];
     [vcf_depth setEnabled:enabled];
 }
+- (void)setOsc2Enabled:(bool)enabled
+{
+    [synth setOsc2Enabled:enabled];
+}
+
 - (void)setNoteOn:(bool)noteOn
 {
     if ((bool)noteOn) {
@@ -351,7 +388,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             freq += [cv_5 intValue]; 
             break;
     }
-    [[synth vco] setFrequency:freq];
+    [[synth osc1] setFrequency:freq];
     
     [self noteOn];
 
@@ -447,7 +484,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
             break;
         case kParameterPitch: {
             double detune = (value*kCentsPerOctave);
-            [[synth vco] setDetuneInCents:kCentsPerOctave-detune];
+            [[synth osc1] setDetuneInCents:kCentsPerOctave-detune];
             [osc1_freq setDoubleValue:detune];
             break;
         }
@@ -464,13 +501,13 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
         }
         case kParameterLfoSpeed: {
             double freq = value*(kLfoFrequencyMax-kLfoFrequencyMin)+kLfoFrequencyMin;
-            [[synth vco] setLfoFrequency:freq];
-            [osc2_freq setDoubleValue:freq];
+            [[synth osc1] setLfoFrequency:freq];
+            [lfo_freq setDoubleValue:freq];
             break;
         }
         case kParameterLfoAmount: {
-            [[synth vco] setModulationAmount:value];
-            [osc2_amount setDoubleValue:value];
+            [[synth osc1] setModulationAmount:value];
+            [lfo_amount setDoubleValue:value];
             break;
         }
         case kParameterNote: {
@@ -507,27 +544,27 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
         }
         case kParameterVcoWaveshape: {
             int value = [self incrementAndClampSlider:osc1_shape];
-            [[synth vco] setWaveShape:value];
+            [[synth osc1] setWaveShape:value];
             break;
         }
         case kParameterLfoWaveshape: {
-            int value = [self incrementAndClampSlider:osc2_shape];
-            [[synth vco] setLfoWaveshape:value];
+            int value = [self incrementAndClampSlider:lfo_shape];
+            [[synth osc1] setLfoWaveshape:value];
             break;
         }
         case kParameterLfoModulation: {
-            int value = [self incrementAndClampSlider:osc2_type];
-            [[synth vco] setModulationType:value];
+            int value = [self incrementAndClampSlider:lfo_type];
+            [[synth osc1] setModulationType:value];
             break;
         }
         case kParameterRangeUp: {
             int value = [self incrementAndClampSlider:osc1_range];
-            [[synth vco] setRange:value];
+            [[synth osc1] setRange:value];
             break;
         }
         case kParameterRangeDown: {
             int value = [self decrementAndClampSlider:osc1_range];
-            [[synth vco] setRange: value];
+            [[synth osc1] setRange: value];
             break;
         }
 

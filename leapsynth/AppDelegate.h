@@ -81,16 +81,24 @@ enum {
 @property (weak) IBOutlet NSSlider *osc1_freq;
 - (IBAction)setVcoFrequency:(id)sender;
 
-
 //OSC2
+- (IBAction)setVco2Shape:(id)sender;
+- (IBAction)setVco2Range:(id)sender;
+@property (weak) IBOutlet NSSlider *osc2_shape;
+@property (weak) IBOutlet NSSlider *osc2_range;
+@property (weak) IBOutlet NSSlider *osc2_freq;
+- (IBAction)setVco2Frequency:(id)sender;
+
+
+//LFO
 - (IBAction)setLfoAmount:(id)sender;
 - (IBAction)setLfoType:(id)sender;
 - (IBAction)setLfoShape:(id)sender;
 - (IBAction)setLfoFrequency:(id)sender;
-@property (weak) IBOutlet NSSlider *osc2_shape;
-@property (weak) IBOutlet NSSlider *osc2_freq;
-@property (weak) IBOutlet NSSlider *osc2_amount;
-@property (weak) IBOutlet NSSlider *osc2_type;
+@property (weak) IBOutlet NSSlider *lfo_shape;
+@property (weak) IBOutlet NSSlider *lfo_freq;
+@property (weak) IBOutlet NSSlider *lfo_amount;
+@property (weak) IBOutlet NSSlider *lfo_type;
 
 @property (weak) IBOutlet DownUpButton *keyboard_1;
 @property (weak) IBOutlet DownUpButton *keyboard_2;
@@ -143,6 +151,8 @@ enum {
 @property (weak) IBOutlet NSButton *vcf_enable;
 - (IBAction)toggleVcfEnable:(id)sender;
 
+- (IBAction)toggleOsc2:(id)sender;
+@property (weak) IBOutlet NSButton *osc2_enable;
 
 @property (weak) IBOutlet NSLevelIndicator *lefthand_x;
 @property (weak) IBOutlet NSLevelIndicator *lefthand_y;

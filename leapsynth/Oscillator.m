@@ -50,7 +50,9 @@
             break;
             
         case kWaveTriangle:
-            value = fabs( 2.0 * (x - floor(x + 0.5))) - 0.5;   // Thanks to Tom Hall! @t-hall
+//            value = fabs( 2.0 * (x - floor(x + 0.5))) - 0.5;   // Thanks to Tom Hall! @t-hall
+            value = fabs(x - floor(x + 0.5))*4 - 1;   // 
+
             break;
             
         default:
@@ -64,6 +66,7 @@
     return value;
 }
 
+
 - (int) getSamples :(short *)samples :(int)numSamples
 {
     int index=0;
@@ -75,5 +78,15 @@
     return numSamples;
 }
 
+- (int) mixSamples :(short *)samples :(int)numSamples
+{
+    int index=0;
+    for (int i=0; i < numSamples; i++) {
+        double ds = [self getSample] * 32767.0;
+        short ss = (short)round(ds);
+        samples[index++] *= ss;
+    }
+    return numSamples;
+}
 
 @end

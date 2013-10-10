@@ -10,18 +10,25 @@
 
 @implementation Synth
 
-@synthesize vco;
+@synthesize osc1;
+@synthesize osc2;
 @synthesize vca;
 @synthesize vcf;
 @synthesize vcfEnabled;
 @synthesize vcaEnabled;
+@synthesize osc2Enabled;
 @synthesize analyzer;
 
 - (id)init
 {
-    vco = [[Vco alloc] init];
-    [vco setWaveShape:kWaveSquare];
-    [vco setFrequency:440];
+    osc1 = [[Vco alloc] init];
+    [osc1 setWaveShape:kWaveSquare];
+    [osc1 setFrequency:440];
+    
+    osc2 = [[Vco alloc] init];
+    [osc2 setWaveShape:kWaveSquare];
+    [osc2 setFrequency:880];
+
 
     vca = [[Vca alloc] init];
     [vca setAttackTimeInMs:600];
@@ -46,7 +53,11 @@
 
 - (int) getSamples :(short *)samples :(int)numSamples
 {
-    [vco getSamples:samples :numSamples];
+    [osc1 getSamples:samples :numSamples];
+    
+    if (osc2Enabled) {
+        [osc2 mixSamples:samples :numSamples];
+    }
     
     if (vcfEnabled) {
         [vcf modifySamples:samples :numSamples];
