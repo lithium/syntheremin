@@ -9,15 +9,14 @@
 #import "Vca.h"
 
 @implementation Vca
-@synthesize envelopeEnabled;
 @synthesize masterVolume;
 
 - (id)init
 {
-    [self setAttackTimeInMs:1];
-    [self setDecayTimeInMs:1000];
-    [self setReleaseTimeInMs:1000];
-    [self setSustainLevel:0.5];
+    [self setAttackTimeInMs:0];
+    [self setDecayTimeInMs:0];
+    [self setReleaseTimeInMs:0];
+    [self setSustainLevel:1.0];
     
     masterVolume = 1.0;
     return self;
@@ -26,9 +25,7 @@
 - (double)getValue
 {
     double value = masterVolume;
-    if (envelopeEnabled) {
-        value *= [super getValue];
-    }
+    value *= [super getValue];
     return value;
 }
 

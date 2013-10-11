@@ -38,9 +38,9 @@
 
     
     
-    vcaEnabled = true;
+//    vcaEnabled = true;
     vcfEnabled = true;
-    [vca setEnvelopeEnabled:false];
+//    [vca setEnvelopeEnabled:false];
     [vcf setEnvelopeEnabled:false];
 
     

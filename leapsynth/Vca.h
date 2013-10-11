@@ -12,10 +12,8 @@
 @interface Vca : Adsr
 {
     double masterVolume;
-    bool envelopeEnabled;
 }
 
-@property bool envelopeEnabled;
 @property double masterVolume;
 
 - (int) modifySamples :(short *)samples :(int)numSamples;

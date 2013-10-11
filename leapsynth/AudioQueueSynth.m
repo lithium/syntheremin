@@ -34,9 +34,9 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
         if (synth->vcfEnabled) {
             [synth->vcfN[args->whichOsc] modifySamples:samples :num_samples];
         }
-        if (synth->vcaEnabled) {
+//        if (synth->vcaEnabled) {
             [synth->vca modifySamples:samples :num_samples];
-        }
+//        }
     } 
 
     ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
@@ -57,12 +57,7 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
         fmt.mBytesPerPacket = fmt.mBytesPerFrame*fmt.mFramesPerPacket;
         OSStatus status;
 
-        vca = [[Vca alloc] init];
-        [vca setAttackTimeInMs:600];
-        [vca setDecayTimeInMs:200];
-        [vca setReleaseTimeInMs:200];
-        [vca setSustainLevel:0.2];
-        
+        vca = [[Vca alloc] init];        
 
         for (int i=0; i < kNumOscillators; i++) {
             oscN[i] = [[Vco alloc] init];

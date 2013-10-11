@@ -112,7 +112,6 @@
         [[synth oscN:i] setWaveShape:kWaveSaw];
         [[synth oscN:i] setModulationType:kModulationTypeNone];
         [[synth oscN:i] setRange:i];
-
     }
 
     
@@ -258,23 +257,23 @@
     [self setVcfEnvelopeEnabled:state];
 }
 
-- (IBAction)toggleVcaEnvelope:(id)sender {
-    int state = [vca_enable state];
-    [self setVcaEnvelopeEnabled:state];
-}
+//- (IBAction)toggleVcaEnvelope:(id)sender {
+//    int state = [vca_enable state];
+//    [self setVcaEnvelopeEnabled:state];
+//}
 //- (IBAction)toggleVcaNote:(id)sender {
 //    int state = [vca_note state];
 //    [self setNoteOn:state];
 //}
 
-- (void)setVcaEnvelopeEnabled:(bool)enabled 
-{
-    [[synth vca] setEnvelopeEnabled:enabled];
-    [vca_attack setEnabled:enabled];
-    [vca_decay setEnabled:enabled];
-    [vca_sustain setEnabled:enabled];
-    [vca_release setEnabled:enabled];
-}
+//- (void)setVcaEnvelopeEnabled:(bool)enabled 
+//{
+//    [[synth vca] setEnvelopeEnabled:enabled];
+//    [vca_attack setEnabled:enabled];
+//    [vca_decay setEnabled:enabled];
+//    [vca_sustain setEnabled:enabled];
+//    [vca_release setEnabled:enabled];
+//}
 - (void)setVcfEnvelopeEnabled:(bool)enabled
 {
     [synth setVcfEnvelopeEnabled:enabled];
