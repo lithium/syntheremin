@@ -75,9 +75,9 @@ enum {
 //OSC1
 - (IBAction)setVcoShape:(id)sender;
 - (IBAction)setVcoRange:(id)sender;
-@property (weak) IBOutlet NSSlider *osc1_shape;
-@property (weak) IBOutlet NSSlider *osc1_range;
-@property (weak) IBOutlet NSSlider *osc1_freq;
+//@property (weak) IBOutlet NSSlider *osc1_shape;
+//@property (weak) IBOutlet NSSlider *osc1_range;
+//@property (weak) IBOutlet NSSlider *osc1_freq;
 - (IBAction)setVcoFrequency:(id)sender;
 
 //OSC2
@@ -127,6 +127,18 @@ enum {
 
 @property (weak) IBOutlet NSSlider *vca_master;
 - (IBAction)setVcaMaster:(id)sender;
+@property (weak) IBOutlet NSSlider *osc1_volume;
+@property (weak) IBOutlet NSSlider *osc2_volume;
+@property (weak) IBOutlet NSSlider *osc3_volume;
+@property (weak) IBOutlet NSButton *osc1_enable;
+@property (weak) IBOutlet NSButton *osc2_enable;
+@property (weak) IBOutlet NSButton *osc3_enable;
+- (IBAction)setOsc1Volume:(id)sender;
+- (IBAction)setOsc2Volume:(id)sender;
+- (IBAction)setOsc3Volume:(id)sender;
+- (IBAction)toggleOsc1Enabled:(id)sender;
+- (IBAction)toggleOsc2Enabled:(id)sender;
+- (IBAction)toggleOsc3Enabled:(id)sender;
 
 @property (weak) IBOutlet NSButton *vca_enable;
 - (IBAction)toggleVcaEnvelope:(id)sender;
@@ -153,8 +165,6 @@ enum {
 @property (weak) IBOutlet NSButton *vcf_enable;
 - (IBAction)toggleVcfEnable:(id)sender;
 
-- (IBAction)toggleOsc2:(id)sender;
-@property (weak) IBOutlet NSButton *osc2_enable;
 
 @property (weak) IBOutlet NSLevelIndicator *lefthand_x;
 @property (weak) IBOutlet NSLevelIndicator *lefthand_y;

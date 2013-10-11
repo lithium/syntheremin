@@ -16,13 +16,18 @@
 @synthesize righthand_box;
 @synthesize noleap_label;
 @synthesize patch_predicateeditor;
-@synthesize vca_note;
+//@synthesize vca_note;
+@synthesize osc1_volume;
+@synthesize osc2_volume;
+@synthesize osc3_volume;
+@synthesize osc1_enable;
+@synthesize osc2_enable;
+@synthesize osc3_enable;
 @synthesize vca_enable;
 
 @synthesize vca_master;
 @synthesize vcf_envelope_enable;
 @synthesize vcf_enable;
-@synthesize osc2_enable;
 @synthesize lefthand_x;
 @synthesize lefthand_y;
 @synthesize lefthand_z;
@@ -57,13 +62,13 @@
 @synthesize cv_3;
 @synthesize cv_4;
 @synthesize cv_5;
-@synthesize osc1_shape;
-@synthesize osc1_range;
-@synthesize osc2_detune;
-@synthesize osc1_freq;
-@synthesize osc2_shape;
-@synthesize osc2_range;
-@synthesize osc2_freq;
+//@synthesize osc1_shape;
+//@synthesize osc1_range;
+//@synthesize osc2_detune;
+//@synthesize osc1_freq;
+//@synthesize osc2_shape;
+//@synthesize osc2_range;
+//@synthesize osc2_freq;
 @synthesize lfo_shape;
 @synthesize lfo_freq;
 @synthesize lfo_amount;
@@ -102,11 +107,18 @@
 
     
     synth = [[AudioQueueSynth alloc] init];
-    [[synth osc1] setWaveShape:kWaveSaw];
-    [[synth osc1] setModulationType:kModulationTypeFrequency];
-    [[synth osc1] setLfoWaveshape:kWaveSine];
-    [self setVcaEnvelopeEnabled:NO];
-    [synth setAnalyzer:synthAnalyzer];
+
+    for (int i=0; i < kNumOscillators; i++) {
+        [[synth oscN:i] setWaveShape:kWaveSaw];
+        [[synth oscN:i] setModulationType:kModulationTypeNone];
+        [[synth oscN:i] setRange:i];
+
+    }
+
+    
+//    [self setVcaEnvelopeEnabled:NO];
+//    [synth setAnalyzer:synthAnalyzer];
+    
     [synth start];
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" \
@@ -135,63 +147,44 @@
 
 
 - (IBAction)setVcoShape:(id)sender {
-    [[synth osc1] setWaveShape:[osc1_shape intValue]];
+    int tag = [sender tag];
+    [[synth oscN:tag] setWaveShape:[sender intValue]];
     [synth stop];
     [synth primeBuffers];
     [synth start];
 }
 
 - (IBAction)setVcoRange:(id)sender {
-    int value = [osc1_range intValue];
-    [[synth osc1] setRange:( value)];
+    int tag = [sender tag];
+    int value = [sender intValue];
+    [[synth oscN:tag] setRange:value];
 }
 
 - (IBAction)setVcoFrequency:(id)sender
-{
-    double freq = [osc1_freq doubleValue];
-    [[synth osc1] setDetuneInCents:kCentsPerOctave-freq];
-
-}
-- (IBAction)setVco2Shape:(id)sender {
-    [[synth osc2] setWaveShape:[osc2_shape intValue]];
-    [synth stop];
-    [synth primeBuffers];
-    [synth start];
+{    
+    int tag = [sender tag];
+    double freq = [sender doubleValue];
+    [[synth oscN:tag] setDetuneInCents:kCentsPerOctave-freq];
 
 }
 
-- (IBAction)setVco2Range:(id)sender {
-    int value = [osc2_range intValue];
-    [[synth osc2] setRange:( value)];
-}
-
-- (IBAction)setVco2Detune:(id)sender {
-    double freq = [osc2_detune doubleValue];
-    [[synth osc2] setDetuneInCents:kCentsPerOctave-freq];
-}
-//- (IBAction)setVco2Frequency:(id)sender
-//{
-//    double freq = [osc2_freq doubleValue];
-//    [[synth osc2] setDetuneInCents:kCentsPerOctave-freq];
+//- (IBAction)setLfoShape:(id)sender {
+//    int shape = [lfo_shape intValue];
+//    [[synth osc1] setLfoWaveshape:shape];
 //}
-
-- (IBAction)setLfoShape:(id)sender {
-    int shape = [lfo_shape intValue];
-    [[synth osc1] setLfoWaveshape:shape];
-}
-
-- (IBAction)setLfoFrequency:(id)sender {
-    [[synth osc1] setLfoFrequency:[lfo_freq doubleValue]];
-}
-
-- (IBAction)setLfoType:(id)sender {
-    [[synth osc1] setModulationType:[lfo_type intValue]];
-}
-
-- (IBAction)setLfoAmount:(id)sender {
-    [[synth osc1] setModulationAmount:[lfo_amount doubleValue]];
-
-}
+//
+//- (IBAction)setLfoFrequency:(id)sender {
+//    [[synth osc1] setLfoFrequency:[lfo_freq doubleValue]];
+//}
+//
+//- (IBAction)setLfoType:(id)sender {
+//    [[synth osc1] setModulationType:[lfo_type intValue]];
+//}
+//
+//- (IBAction)setLfoAmount:(id)sender {
+//    [[synth osc1] setModulationAmount:[lfo_amount doubleValue]];
+//
+//}
 
 - (IBAction)setVcaMaster:(id)sender;
 {
@@ -221,37 +214,37 @@
 
 - (IBAction)setVcfAttack:(id)sender
 {
-    [[synth vcf] setAttackTimeInMs:[vcf_attack intValue]];
+    [synth setVcfAttackTimeInMs:[vcf_attack intValue]];
 }
 
 - (IBAction)setVcfDecay:(id)sender
 {
-    [[synth vcf] setDecayTimeInMs:[vcf_decay intValue]];
+    [synth setVcfDecayTimeInMs:[vcf_decay intValue]];
     
 }
 
 - (IBAction)setVcfSustain:(id)sender
 {
-    [[synth vcf] setSustainLevel:[vcf_sustain doubleValue]];
+    [synth setVcfSustainLevel:[vcf_sustain doubleValue]];
     
 }
-- (IBAction)setVcfRelease:(id)sender
-{
-    [[synth vcf] setReleaseTimeInMs:[vcf_release intValue]];
-    
-}
+//- (IBAction)setVcfRelease:(id)sender
+//{
+//    [synth setVcfReleaseTimeInMs:[vcf_release intValue]];
+//    
+//}
 - (IBAction)setVcfCutoff:(id)sender
 {
-    [[synth vcf] setCutoffFrequencyInHz:[vcf_cutoff intValue]];
+    [synth setVcfCutoffInHz:[vcf_cutoff intValue]];
 }
 - (IBAction)setVcfResonance:(id)sender
 {
-    [[synth vcf] setResonance:[vcf_resonance doubleValue]];
+    [synth setVcfResonance:[vcf_resonance doubleValue]];
 }
 - (IBAction)setVcfDepth:(id)sender
 {
     double depth = [vcf_depth doubleValue];
-    [[synth vcf] setDepth:depth];
+    [synth setVcfDepth:depth];
 }
 
 - (IBAction)toggleVcfEnable:(id)sender {
@@ -259,11 +252,6 @@
     [self setVcfEnabled:state];
 }
 
-- (IBAction)toggleOsc2:(id)sender {
-    int state = [osc2_enable state];
-    [self setOsc2Enabled:state];
-
-}
 
 - (IBAction)toggleFilterEnvelope:(id)sender {
     int state = [vcf_envelope_enable state];
@@ -274,10 +262,10 @@
     int state = [vca_enable state];
     [self setVcaEnvelopeEnabled:state];
 }
-- (IBAction)toggleVcaNote:(id)sender {
-    int state = [vca_note state];
-    [self setNoteOn:state];
-}
+//- (IBAction)toggleVcaNote:(id)sender {
+//    int state = [vca_note state];
+//    [self setNoteOn:state];
+//}
 
 - (void)setVcaEnvelopeEnabled:(bool)enabled 
 {
@@ -289,7 +277,7 @@
 }
 - (void)setVcfEnvelopeEnabled:(bool)enabled
 {
-    [[synth vcf] setEnvelopeEnabled:enabled];
+    [synth setVcfEnvelopeEnabled:enabled];
     [vcf_attack setEnabled:enabled];
     [vcf_decay setEnabled:enabled];
     [vcf_sustain setEnabled:enabled];
@@ -307,10 +295,6 @@
     [vcf_sustain setEnabled:enabled];
     [vcf_release setEnabled:enabled];
     [vcf_depth setEnabled:enabled];
-}
-- (void)setOsc2Enabled:(bool)enabled
-{
-    [synth setOsc2Enabled:enabled];
 }
 
 - (void)setNoteOn:(bool)noteOn
@@ -343,7 +327,7 @@
             freq += [cv_5 intValue]; 
             break;
     }
-    [[synth osc1] setFrequency:freq];
+    [synth setFrequencyInHz:freq];
     
     [self noteOn];
 
@@ -432,98 +416,98 @@
 
 - (void)applyParameter:(int)param :(double)value
 {
-    switch (param) {
-        case kParameterVolume:
-            [[synth vca] setMasterVolume:value];
-            [vca_master setDoubleValue:value];
-            break;
-        case kParameterPitch: {
-            double detune = (value*kCentsPerOctave);
-            [[synth osc1] setDetuneInCents:kCentsPerOctave-detune];
-            [osc1_freq setDoubleValue:detune];
-            break;
-        }
-        case kParameterFrequency: {
-            double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
-            [[synth vcf] setCutoffFrequencyInHz:freq];
-            [vcf_cutoff setDoubleValue:freq];
-            break;
-        }
-        case kParameterResonance: {
-            [[synth vcf] setResonance:value];
-            [vcf_resonance setDoubleValue:value];
-            break;
-        }
-        case kParameterLfoSpeed: {
-            double freq = value*(kLfoFrequencyMax-kLfoFrequencyMin)+kLfoFrequencyMin;
-            [[synth osc1] setLfoFrequency:freq];
-            [lfo_freq setDoubleValue:freq];
-            break;
-        }
-        case kParameterLfoAmount: {
-            [[synth osc1] setModulationAmount:value];
-            [lfo_amount setDoubleValue:value];
-            break;
-        }
-        case kParameterNote: {
-            if (value > kNoteThreshold) {
-                if (!paramNoteOn) { 
-                    [self noteOn];
-                    paramNoteOn = true;
-                }
-            } else {
-                if (paramNoteOn) {
-                    [self noteOff];
-                    paramNoteOn = false;
-                }
-            }
-            break;
-        }
-        case kParameterVcaEnvelope: {
-            bool state = ![vca_enable state];
-            [self setVcaEnvelopeEnabled:state];
-            [vca_enable setState:state];
-            break;
-        }
-        case kParameterFilterEnable: {
-            bool state = ![vcf_enable state];
-            [self setVcfEnabled:state];
-            [vcf_enable setState:state];
-            break;
-        }
-        case kParameterFilterEnvelope: {
-            bool state = ![vcf_envelope_enable state];
-            [self setVcfEnvelopeEnabled:state];
-            [vcf_envelope_enable setState:state];
-            break;
-        }
-        case kParameterVcoWaveshape: {
-            int value = [self incrementAndClampSlider:osc1_shape];
-            [[synth osc1] setWaveShape:value];
-            break;
-        }
-        case kParameterLfoWaveshape: {
-            int value = [self incrementAndClampSlider:lfo_shape];
-            [[synth osc1] setLfoWaveshape:value];
-            break;
-        }
-        case kParameterLfoModulation: {
-            int value = [self incrementAndClampSlider:lfo_type];
-            [[synth osc1] setModulationType:value];
-            break;
-        }
-        case kParameterRangeUp: {
-            int value = [self incrementAndClampSlider:osc1_range];
-            [[synth osc1] setRange:value];
-            break;
-        }
-        case kParameterRangeDown: {
-            int value = [self decrementAndClampSlider:osc1_range];
-            [[synth osc1] setRange: value];
-            break;
-        }
-
-    }
+//    switch (param) {
+//        case kParameterVolume:
+//            [[synth vca] setMasterVolume:value];
+//            [vca_master setDoubleValue:value];
+//            break;
+//        case kParameterPitch: {
+//            double detune = (value*kCentsPerOctave);
+//            [[synth osc1] setDetuneInCents:kCentsPerOctave-detune];
+//            [osc1_freq setDoubleValue:detune];
+//            break;
+//        }
+//        case kParameterFrequency: {
+//            double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
+//            [[synth vcf] setCutoffFrequencyInHz:freq];
+//            [vcf_cutoff setDoubleValue:freq];
+//            break;
+//        }
+//        case kParameterResonance: {
+//            [[synth vcf] setResonance:value];
+//            [vcf_resonance setDoubleValue:value];
+//            break;
+//        }
+//        case kParameterLfoSpeed: {
+//            double freq = value*(kLfoFrequencyMax-kLfoFrequencyMin)+kLfoFrequencyMin;
+//            [[synth osc1] setLfoFrequency:freq];
+//            [lfo_freq setDoubleValue:freq];
+//            break;
+//        }
+//        case kParameterLfoAmount: {
+//            [[synth osc1] setModulationAmount:value];
+//            [lfo_amount setDoubleValue:value];
+//            break;
+//        }
+//        case kParameterNote: {
+//            if (value > kNoteThreshold) {
+//                if (!paramNoteOn) { 
+//                    [self noteOn];
+//                    paramNoteOn = true;
+//                }
+//            } else {
+//                if (paramNoteOn) {
+//                    [self noteOff];
+//                    paramNoteOn = false;
+//                }
+//            }
+//            break;
+//        }
+//        case kParameterVcaEnvelope: {
+//            bool state = ![vca_enable state];
+//            [self setVcaEnvelopeEnabled:state];
+//            [vca_enable setState:state];
+//            break;
+//        }
+//        case kParameterFilterEnable: {
+//            bool state = ![vcf_enable state];
+//            [self setVcfEnabled:state];
+//            [vcf_enable setState:state];
+//            break;
+//        }
+//        case kParameterFilterEnvelope: {
+//            bool state = ![vcf_envelope_enable state];
+//            [self setVcfEnvelopeEnabled:state];
+//            [vcf_envelope_enable setState:state];
+//            break;
+//        }
+//        case kParameterVcoWaveshape: {
+//            int value = [self incrementAndClampSlider:osc1_shape];
+//            [[synth osc1] setWaveShape:value];
+//            break;
+//        }
+//        case kParameterLfoWaveshape: {
+//            int value = [self incrementAndClampSlider:lfo_shape];
+//            [[synth osc1] setLfoWaveshape:value];
+//            break;
+//        }
+//        case kParameterLfoModulation: {
+//            int value = [self incrementAndClampSlider:lfo_type];
+//            [[synth osc1] setModulationType:value];
+//            break;
+//        }
+//        case kParameterRangeUp: {
+//            int value = [self incrementAndClampSlider:osc1_range];
+//            [[synth osc1] setRange:value];
+//            break;
+//        }
+//        case kParameterRangeDown: {
+//            int value = [self decrementAndClampSlider:osc1_range];
+//            [[synth osc1] setRange: value];
+//            break;
+//        }
+//
+//    }
 }
 
 - (int)incrementAndClampSlider:(NSSlider *)slider
@@ -560,13 +544,13 @@
 //    [self primeBuffers];
 //    AudioQueueStart(mAudioQueue, NULL);
     
-    [vca_note setState:true];
+//    [vca_note setState:true];
 }
 
 - (void)noteOff
 {
     [synth noteOff];
-    [vca_note setState:false];
+//    [vca_note setState:false];
 
 }
 
@@ -585,4 +569,27 @@
         }
     }
 }
+- (IBAction)setOsc1Volume:(id)sender {
+    [synth setOscVolume:0 :[osc1_volume doubleValue]];
+}
+
+- (IBAction)setOsc2Volume:(id)sender {
+    [synth setOscVolume:1 :[osc2_volume doubleValue]];
+}
+- (IBAction)setOsc3Volume:(id)sender {
+    [synth setOscVolume:2 :[osc3_volume doubleValue]];
+}
+- (IBAction)toggleOsc1Enabled:(id)sender {
+    int state = [osc1_enable state];
+    [synth setOscEnabled:0 :(bool)state];
+}
+- (IBAction)toggleOsc2Enabled:(id)sender {
+    int state = [osc2_enable state];
+    [synth setOscEnabled:1 :state];
+}
+- (IBAction)toggleOsc3Enabled:(id)sender {
+    int state = [osc3_enable state];
+    [synth setOscEnabled:2 :state];
+}
+
 @end

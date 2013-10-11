@@ -20,9 +20,11 @@ enum  {
     int waveShape;
     long samplesPerPeriod;
     long sampleStep;
+    double level;
 }
 
 @property int waveShape;
+@property double level;
 
 - (id) init;
 - (void) setFrequency :(double)freq;

@@ -18,24 +18,21 @@
 
 @interface Synth : NSObject {
     Vco *osc1;
-    Vco *osc2;
     Vca *vca;
     Vcf *vcf;
-    Vcf *vcf2;
     
     bool vcfEnabled;
     bool vcaEnabled;
-    bool osc2Enabled;
+    bool osc1Enabled;
 }
 
 @property Vco *osc1;
-@property Vco *osc2;
 @property Vca *vca;
 @property Vcf *vcf;
-@property Vcf *vcf2;
+
 @property bool vcfEnabled;
 @property bool vcaEnabled;
-@property bool osc2Enabled;
+@property bool osc1Enabled;
 @property (weak) id <AnalyzerDelegate> analyzer;
 
 

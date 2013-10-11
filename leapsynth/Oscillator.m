@@ -11,11 +11,17 @@
 @implementation Oscillator
 
 @synthesize waveShape;
+@synthesize level;
 
 
 - (id) init
 {
-    [self setFrequency:0];
+    if (self) {
+        [self setFrequency:0];
+        level = 1.0;
+        
+    }
+    
     return self;
 }
 
@@ -50,9 +56,7 @@
             break;
             
         case kWaveTriangle:
-//            value = fabs( 2.0 * (x - floor(x + 0.5))) - 0.5;   // Thanks to Tom Hall! @t-hall
-            value = fabs(x - floor(x + 0.5))*4 - 1;   // 
-
+            value = fabs( 2.0 * (x - floor(x + 0.5))) - 0.5;   // Thanks to Tom Hall! @t-hall
             break;
             
         default:
@@ -71,22 +75,12 @@
 {
     int index=0;
     for (int i=0; i < numSamples; i++) {
-        double ds = [self getSample] * 32767.0;
+        double ds = [self getSample]*level * 32767.0;
         short ss = (short)round(ds);
         samples[index++] = ss;
     }
     return numSamples;
 }
 
-- (int) mixSamples :(short *)samples :(int)numSamples
-{
-    int index=0;
-    for (int i=0; i < numSamples; i++) {
-        double ds = [self getSample] * 32767.0;
-        short ss = (short)round(ds);
-        samples[index++] *= ss;
-    }
-    return numSamples;
-}
 
 @end

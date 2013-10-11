@@ -16,8 +16,8 @@
 {
     [self setAttackTimeInMs:1];
     [self setDecayTimeInMs:1000];
+    [self setReleaseTimeInMs:1000];
     [self setSustainLevel:0.5];
-    [self setReleaseTimeInMs:2000];
     
     masterVolume = 1.0;
     return self;
