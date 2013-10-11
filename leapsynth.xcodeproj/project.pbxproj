@@ -23,6 +23,8 @@
 		12BB469517A98944009D7B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BB469417A98944009D7B5C /* main.m */; };
 		12BB469B17A98979009D7B5C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469917A98979009D7B5C /* Credits.rtf */; };
 		12C3940A1807598B0035BEFF /* AudioQueueSynth.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C394091807598B0035BEFF /* AudioQueueSynth.m */; };
+		12C3940E18087F710035BEFF /* Looper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C3940D18087F710035BEFF /* Looper.m */; };
+		12C39411180899E90035BEFF /* Loop.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C39410180899E90035BEFF /* Loop.m */; };
 		12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Oscillator.m */; };
 		12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7517A9AC3F00C72104 /* Vco.m */; };
 		12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2A17AAE53C00E84D98 /* Adsr.m */; };
@@ -74,6 +76,10 @@
 		12C0D40317A9883C001323FA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = leapsynth/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		12C394081807598B0035BEFF /* AudioQueueSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueSynth.h; sourceTree = "<group>"; };
 		12C394091807598B0035BEFF /* AudioQueueSynth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioQueueSynth.m; sourceTree = "<group>"; };
+		12C3940C18087F700035BEFF /* Looper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Looper.h; sourceTree = "<group>"; };
+		12C3940D18087F710035BEFF /* Looper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Looper.m; sourceTree = "<group>"; };
+		12C3940F180899E90035BEFF /* Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loop.h; sourceTree = "<group>"; };
+		12C39410180899E90035BEFF /* Loop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loop.m; sourceTree = "<group>"; };
 		12CDBF6F17A9A5A800C72104 /* Oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Oscillator.h; sourceTree = "<group>"; };
 		12CDBF7017A9A5A800C72104 /* Oscillator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Oscillator.m; sourceTree = "<group>"; };
 		12CDBF7317A9A9C100C72104 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -159,6 +165,10 @@
 				12BB468B17A988E4009D7B5C /* MainMenu.xib */,
 				1291C77317BC0C430055761E /* Soft Synth */,
 				12CDBF7317A9A9C100C72104 /* Defines.h */,
+				12C3940C18087F700035BEFF /* Looper.h */,
+				12C3940D18087F710035BEFF /* Looper.m */,
+				12C3940F180899E90035BEFF /* Loop.h */,
+				12C39410180899E90035BEFF /* Loop.m */,
 				12C0D40217A9883C001323FA /* AppDelegate.h */,
 				12C0D40317A9883C001323FA /* AppDelegate.m */,
 				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
@@ -286,6 +296,8 @@
 				126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */,
 				1291C76517BB423D0055761E /* SynthAnalyzer.m in Sources */,
 				12C3940A1807598B0035BEFF /* AudioQueueSynth.m in Sources */,
+				12C3940E18087F710035BEFF /* Looper.m in Sources */,
+				12C39411180899E90035BEFF /* Loop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
