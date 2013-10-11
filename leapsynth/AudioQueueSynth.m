@@ -34,9 +34,7 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
         if (synth->vcfEnabled) {
             [synth->vcfN[args->whichOsc] modifySamples:samples :num_samples];
         }
-//        if (synth->vcaEnabled) {
-            [synth->vca modifySamples:samples :num_samples];
-//        }
+        [synth->vca modifySamples:samples :num_samples];
     } 
 
     ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
@@ -187,13 +185,14 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
 
 - (void)noteOn
 {        
-    [self stop];
+    for (int i=0; i < kNumOscillators; i++) {
+        AudioQueueFlush(queueOsc[i]);
+    }
+
     [vca noteOn];
     for (int i=0; i < kNumOscillators; i++) {
         [vcfN[i] noteOn];
     }
-    [self primeBuffers];
-    [self start];
 }
 
 - (void)noteOff
