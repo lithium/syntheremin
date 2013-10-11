@@ -59,7 +59,7 @@
 @synthesize cv_5;
 @synthesize osc1_shape;
 @synthesize osc1_range;
-@synthesize osc1_detune;
+@synthesize osc2_detune;
 @synthesize osc1_freq;
 @synthesize osc2_shape;
 @synthesize osc2_range;
@@ -73,18 +73,6 @@
 @synthesize drawer;
 
 
-//void audioqueue_vco_callback(void *userdata, AudioQueueRef queue_ref, AudioQueueBufferRef buffer_ref)
-//{
-//    OSStatus ret;
-//    Synth *synth = (__bridge Synth *)userdata;
-//    AudioQueueBuffer *buffer = buffer_ref;
-//    int num_samples = buffer->mAudioDataByteSize / 2;
-//    short *samples = buffer->mAudioData;
-//    
-//    [synth getSamples:samples :num_samples];
-//    ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
-//}
-
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -92,7 +80,6 @@
     
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
             
-    synth = [[AudioQueueSynth alloc] init];
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
@@ -109,19 +96,17 @@
     [mSyntheremin setDelegate:self];
     
     
-    
     memset(inputParams, kParameterNone, kInputEnumSize*sizeof(int));
     kParameterTypeArray = [[NSArray alloc] initWithObjects:kParameterTypeNamesArray];
     kInputTypeArray = [[NSArray alloc] initWithObjects:kInputTypeNamesArray];
 
     
+    synth = [[AudioQueueSynth alloc] init];
     [[synth osc1] setWaveShape:kWaveSaw];
     [[synth osc1] setModulationType:kModulationTypeFrequency];
     [[synth osc1] setLfoWaveshape:kWaveSine];
     [self setVcaEnvelopeEnabled:NO];
-
     [synth setAnalyzer:synthAnalyzer];
-    
     [synth start];
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" \
@@ -161,10 +146,6 @@
     [[synth osc1] setRange:( value)];
 }
 
-- (IBAction)setVcoDetune:(id)sender {
-    int value = [osc1_detune intValue];
-    [[synth osc1] setDetuneInCents:value];
-}
 - (IBAction)setVcoFrequency:(id)sender
 {
     double freq = [osc1_freq doubleValue];
@@ -184,15 +165,15 @@
     [[synth osc2] setRange:( value)];
 }
 
-//- (IBAction)setVco2Detune:(id)sender {
-//    int value = [osc2_detune intValue];
-//    [[synth osc2] setDetuneInCents:value];
-//}
-- (IBAction)setVco2Frequency:(id)sender
-{
-    double freq = [osc2_freq doubleValue];
+- (IBAction)setVco2Detune:(id)sender {
+    double freq = [osc2_detune doubleValue];
     [[synth osc2] setDetuneInCents:kCentsPerOctave-freq];
 }
+//- (IBAction)setVco2Frequency:(id)sender
+//{
+//    double freq = [osc2_freq doubleValue];
+//    [[synth osc2] setDetuneInCents:kCentsPerOctave-freq];
+//}
 
 - (IBAction)setLfoShape:(id)sender {
     int shape = [lfo_shape intValue];
