@@ -21,6 +21,7 @@
     Vco *osc2;
     Vca *vca;
     Vcf *vcf;
+    Vcf *vcf2;
     
     bool vcfEnabled;
     bool vcaEnabled;
@@ -31,6 +32,7 @@
 @property Vco *osc2;
 @property Vca *vca;
 @property Vcf *vcf;
+@property Vcf *vcf2;
 @property bool vcfEnabled;
 @property bool vcaEnabled;
 @property bool osc2Enabled;

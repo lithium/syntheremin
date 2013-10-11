@@ -12,6 +12,7 @@
 #import "Synth.h"
 #import "DownUpButton.h"
 #import "LeapSyntheremin.h"
+#import "AudioQueueSynth.h"
 
 enum {
     kParameterNone=0,
@@ -54,9 +55,9 @@ enum {
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate, LeapSynthereminDelegate> {
-    Synth *synth;
-    AudioQueueRef mAudioQueue;
-    AudioQueueBufferRef mQueueBuffers[kNumBuffers];
+    AudioQueueSynth *synth;
+//    AudioQueueRef mAudioQueue;
+//    AudioQueueBufferRef mQueueBuffers[kNumBuffers];
     
     LeapSyntheremin *mSyntheremin;
         

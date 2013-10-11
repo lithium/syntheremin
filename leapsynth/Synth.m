@@ -21,13 +21,18 @@
 
 - (id)init
 {
+    
+    
+    
+    
+    
     osc1 = [[Vco alloc] init];
     [osc1 setWaveShape:kWaveSquare];
     [osc1 setFrequency:440];
     
     osc2 = [[Vco alloc] init];
     [osc2 setWaveShape:kWaveSquare];
-    [osc2 setFrequency:880];
+    [osc2 setFrequency:440];
 
 
     vca = [[Vca alloc] init];
@@ -40,6 +45,12 @@
     [vcf  setCutoffFrequencyInHz:1000];
     [vcf setResonance:0.85];
     [vcf setDepth:2.0];
+    
+    vcf2 = [[Vcf alloc] init];
+    [vcf2  setCutoffFrequencyInHz:1000];
+    [vcf2 setResonance:0.85];
+    [vcf2 setDepth:2.0];
+
     
     
     vcaEnabled = true;

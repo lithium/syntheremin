@@ -73,17 +73,17 @@
 @synthesize drawer;
 
 
-void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQueueBufferRef buffer_ref)
-{
-    OSStatus ret;
-    Synth *synth = (__bridge Synth *)userdata;
-    AudioQueueBuffer *buffer = buffer_ref;
-    int num_samples = buffer->mAudioDataByteSize / 2;
-    short *samples = buffer->mAudioData;
-    
-    [synth getSamples:samples :num_samples];
-    ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
-}
+//void audioqueue_vco_callback(void *userdata, AudioQueueRef queue_ref, AudioQueueBufferRef buffer_ref)
+//{
+//    OSStatus ret;
+//    Synth *synth = (__bridge Synth *)userdata;
+//    AudioQueueBuffer *buffer = buffer_ref;
+//    int num_samples = buffer->mAudioDataByteSize / 2;
+//    short *samples = buffer->mAudioData;
+//    
+//    [synth getSamples:samples :num_samples];
+//    ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
+//}
 
 
 
@@ -91,33 +91,8 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 {
     
     [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
-    
-    OSStatus status;
-        
-    synth = [[Synth alloc] init];
-    [[synth vca] setMasterVolume:0];
-
-    AudioStreamBasicDescription fmt = {0};
-    fmt.mSampleRate = kSampleRate;
-    fmt.mFormatID = kAudioFormatLinearPCM;
-    fmt.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-    fmt.mFramesPerPacket = 1;
-    fmt.mChannelsPerFrame = 1;
-    fmt.mBitsPerChannel = 16;
-    fmt.mBytesPerFrame = fmt.mBitsPerChannel/8;
-    fmt.mBytesPerPacket = fmt.mBytesPerFrame*fmt.mFramesPerPacket;
-    
-    
-    status = AudioQueueNewOutput(&fmt, audio_queue_output_callback, (__bridge void*)synth, NULL, NULL, 0, &mAudioQueue);
-    
-    for (int i=0; i < kNumBuffers; i++) {
-        status = AudioQueueAllocateBuffer(mAudioQueue, kBufferSize, &mQueueBuffers[i]);
-        AudioQueueBuffer *buffer = mQueueBuffers[i];
-        buffer->mAudioDataByteSize = kBufferSize;
-    }
-    [self primeBuffers];
-    
-    status = AudioQueueSetParameter (mAudioQueue, kAudioQueueParam_Volume, 1.0);
+            
+    synth = [[AudioQueueSynth alloc] init];
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
@@ -147,7 +122,7 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
     [synth setAnalyzer:synthAnalyzer];
     
-    AudioQueueStart(mAudioQueue, NULL);
+    [synth start];
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" \
                                 AND \"Right Hand X\" = \"Pitch\"\
@@ -162,25 +137,23 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 }
 - (void)windowWillClose:(NSNotification *)notification
 {
-    AudioQueueStop(mAudioQueue, true);
+    [synth stop];
     [NSApp terminate:self];
 }
 
 
 - (void)primeBuffers
 {
-    for (int i=0; i < kNumBuffers; i++) {
-        audio_queue_output_callback((__bridge void*)synth, mAudioQueue, mQueueBuffers[i]);
-    }
+    [synth primeBuffers];
 }
 
 
 
 - (IBAction)setVcoShape:(id)sender {
     [[synth osc1] setWaveShape:[osc1_shape intValue]];
-    AudioQueueStop(mAudioQueue, true);
-    [self primeBuffers];
-    AudioQueueStart(mAudioQueue, NULL);
+    [synth stop];
+    [synth primeBuffers];
+    [synth start];
 }
 
 - (IBAction)setVcoRange:(id)sender {
@@ -200,9 +173,10 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 }
 - (IBAction)setVco2Shape:(id)sender {
     [[synth osc2] setWaveShape:[osc2_shape intValue]];
-    AudioQueueStop(mAudioQueue, true);
-    [self primeBuffers];
-    AudioQueueStart(mAudioQueue, NULL);
+    [synth stop];
+    [synth primeBuffers];
+    [synth start];
+
 }
 
 - (IBAction)setVco2Range:(id)sender {
@@ -600,10 +574,10 @@ void audio_queue_output_callback(void *userdata, AudioQueueRef queue_ref, AudioQ
 
 - (void)noteOn
 {        
-    AudioQueueStop(mAudioQueue, true);
+//    AudioQueueStop(mAudioQueue, true);
     [synth noteOn];
-    [self primeBuffers];
-    AudioQueueStart(mAudioQueue, NULL);
+//    [self primeBuffers];
+//    AudioQueueStart(mAudioQueue, NULL);
     
     [vca_note setState:true];
 }
