@@ -75,7 +75,6 @@
 @synthesize lfo_type;
 
 @synthesize window = _window;
-@synthesize drawer;
 
 
 
@@ -127,7 +126,6 @@
     [patch_predicateeditor setObjectValue:predicate];
     [self changePredicate:self];
     
-    [drawer toggle:self];
     
 
 }

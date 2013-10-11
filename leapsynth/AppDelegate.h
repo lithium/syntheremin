@@ -69,7 +69,6 @@ enum {
 }
 
 @property (assign) IBOutlet NSWindow *window;
-@property (weak) IBOutlet NSDrawer *drawer;
 
 
 //OSC1
