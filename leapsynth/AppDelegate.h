@@ -66,6 +66,10 @@ enum {
     NSArray *kInputTypeArray;
     int inputParams[kInputEnumSize];
     
+    MIDIClientRef midiClient;
+    MIDIPortRef midiInput;
+
+    
     bool paramNoteOn;
 }
 

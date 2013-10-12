@@ -80,6 +80,19 @@
 @synthesize window = _window;
 
 
+static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, void *srcUserdata)
+{
+    AppDelegate *self = (__bridge AppDelegate *)inputUserdata;
+    const MIDIPacket *packet = list->packet;
+    
+    for (int i = 0; i < list->numPackets; i++) {        
+//        NSLog(@"midi %s: %02x", packet->data[0]);
+        
+        packet = MIDIPacketNext(packet);
+    }
+//    NSLog(@"handle_midi_input %@ %@ %@", list, procRef, srcRef);
+}
+
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -132,8 +145,19 @@
     [patch_predicateeditor setObjectValue:predicate];
     [self changePredicate:self];
     
-    
+    OSStatus status;
 
+    
+    //connect all midi endpoints to our listener
+    status = MIDIClientCreate(CFSTR("Syntheremin"), NULL, NULL, &midiClient);
+    status = MIDIInputPortCreate(midiClient, CFSTR("Input"), handle_midi_input, (__bridge void*)self, &midiInput);
+    int num_midi = MIDIGetNumberOfDevices();
+    for (int i=0; i < num_midi; i++) {
+        MIDIEndpointRef src = MIDIGetSource(i);
+        CFStringRef srcName;
+        MIDIObjectGetStringProperty(src, kMIDIPropertyName, &srcName);
+        status = MIDIPortConnectSource(midiInput, src, srcName);
+    }
 }
 - (void)windowWillClose:(NSNotification *)notification
 {
