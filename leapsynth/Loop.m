@@ -25,7 +25,7 @@
     int written = 0;
     if (samples && avail > 0 && num_samples > 0) {
         written = MIN(num_samples, avail);
-        memcpy(buffer+size, samples, written);
+        memcpy(buffer+size, samples, written*sizeof(short));
         size += written;
     }
     return written;    
@@ -76,7 +76,7 @@
     // play as much of the chunk as we can
     int chunk_size = MIN(chunk->size - ofs, num_samples); 
 
-    memcpy(buffer, chunk->buffer+ofs, chunk_size);
+    memcpy(buffer, chunk->buffer+ofs, chunk_size*sizeof(short));
     written += chunk_size;
     
     while (num_samples - written > 0) {
@@ -86,7 +86,7 @@
         SampleChunk *nextChunk = [sampleChunks objectAtIndex:idx];
         chunk_size = MIN(nextChunk->size, num_samples-written); 
         
-        memcpy(buffer+written, nextChunk->buffer, chunk_size);
+        memcpy(buffer+written, nextChunk->buffer, chunk_size*sizeof(short));
         written += chunk_size;
     }
            

@@ -117,6 +117,7 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
 
 - (void)setupAudioFormat:(AudioStreamBasicDescription*)fmt
 {
+    memset(fmt, 0, sizeof(AudioStreamBasicDescription));
     fmt->mSampleRate = kSampleRate;
     fmt->mFormatID = kAudioFormatLinearPCM;
     fmt->mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
