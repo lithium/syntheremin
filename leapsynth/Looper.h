@@ -11,8 +11,13 @@
 #import "Defines.h"
 #import "Loop.h"
 
+#define kMaxNumberOfLoops 10
+
 struct LooperCallbackState {
     void *self;
+    int loopIndex;
+    AudioQueueRef queue;
+    AudioQueueBufferRef buffers[kNumBuffers];
 };
 
 @interface Looper : NSObject
@@ -22,23 +27,18 @@ struct LooperCallbackState {
     BOOL isRecording;
     BOOL isPlaying;
     
-    struct LooperCallbackState callbackState;
-    
-    AudioQueueRef playbackQueue;
-    AudioQueueBufferRef playbackBuffers[kNumBuffers];
-    AudioStreamBasicDescription playbackFmt;
-
+    struct LooperCallbackState states[kMaxNumberOfLoops];
 }
 
 - (id)init;
 - (void)dealloc;
 
-- (void)recordNewLoop;
+- (BOOL)recordNewLoop;
 - (void)stopRecording;
 - (void)playAll;
 - (void)stopPlayback;
 
 - (void)recordSamples:(short*)samples :(int)num_samples;
-- (void)fillPlaybackBuffer:(short*)samples :(int)num_samples;
+- (void)fillPlaybackBuffer:(int)loopIndex :(short*)samples :(int)num_samples;
 
 @end

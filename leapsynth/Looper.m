@@ -16,11 +16,12 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
 {
     struct LooperCallbackState *state = (struct LooperCallbackState *)userdata;
     Looper *self = (__bridge Looper*)state->self;
+    int loopIndex = state->loopIndex;
     int num_samples = buffer->mAudioDataByteSize / sizeof(short);
     short *samples = buffer->mAudioData;
     
     if (self->isPlaying) {
-        [self fillPlaybackBuffer:samples :num_samples];
+        [self fillPlaybackBuffer:loopIndex :samples :num_samples];
         AudioQueueEnqueueBuffer(queue, buffer, 0, NULL);
     }
 }
@@ -29,8 +30,16 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
 {
     if (self) {
         loops = [[NSMutableArray alloc] init];
-            
-        callbackState.self = (__bridge void *)self;
+        
+        memset(&audioFormat, 0, sizeof(AudioStreamBasicDescription));
+        audioFormat.mSampleRate = kSampleRate;
+        audioFormat.mFormatID = kAudioFormatLinearPCM;
+        audioFormat.mFormatFlags =  kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+        audioFormat.mFramesPerPacket = 1;
+        audioFormat.mChannelsPerFrame = 1;
+        audioFormat.mBitsPerChannel = 16;
+        audioFormat.mBytesPerFrame = audioFormat.mBitsPerChannel/8;
+        audioFormat.mBytesPerPacket = audioFormat.mBytesPerFrame*audioFormat.mFramesPerPacket;
 
         isRecording = NO;
         isPlaying = NO;
@@ -43,16 +52,16 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
 {
 }
 
-- (void)recordNewLoop
+- (BOOL)recordNewLoop
 {
-//    OSStatus status;
-
+    if ([loops count] >= kMaxNumberOfLoops)
+        return NO;
 
     Loop *loop = [[Loop alloc] init];
     [loops addObject:loop];
     isRecording = YES;
 
-    
+    return YES;
  }
 
 
@@ -63,32 +72,36 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
 
 - (void)playAll
 {
-    OSStatus status;
-
-    Loop *loop = [loops lastObject];
-    [loop start];
-
     isPlaying = YES;
 
-    [self setupAudioFormat:&playbackFmt];
-    status = AudioQueueNewOutput(&playbackFmt, handle_output_buffer, (void*)&callbackState, NULL, NULL, 0, &playbackQueue);
-    for (int n=0; n < kNumBuffers; n++) {
-        status = AudioQueueAllocateBuffer(playbackQueue, kBufferSize, &playbackBuffers[n]);
-        playbackBuffers[n]->mAudioDataByteSize = kBufferSize;
-        handle_output_buffer(&callbackState, playbackQueue, playbackBuffers[n]);
+    OSStatus status;
+
+    for (int i=0; i < MIN([loops count], kMaxNumberOfLoops); i++) {
+        states[i].self = (__bridge void*)self;
+        states[i].loopIndex = i;
+
+        status = AudioQueueNewOutput(&audioFormat, handle_output_buffer, (void*)&states[i], NULL, NULL, 0, &states[i].queue);
+        for (int n=0; n < kNumBuffers; n++) {
+            status = AudioQueueAllocateBuffer(states[i].queue, kBufferSize, &(states[i].buffers[n]));
+            states[i].buffers[n]->mAudioDataByteSize = kBufferSize;
+            handle_output_buffer(&states[i], states[i].queue, states[i].buffers[n]);
+        }
+        status = AudioQueueSetParameter (states[i].queue, kAudioQueueParam_Volume, 1.0);
     }
-    status = AudioQueueSetParameter (playbackQueue, kAudioQueueParam_Volume, 1.0);
-    status = AudioQueueStart(playbackQueue, NULL);
+    for (int i=0; i < MIN([loops count], kMaxNumberOfLoops); i++) {
+        status = AudioQueueStart(states[i].queue, NULL);
+    }
 }
 - (void)stopPlayback
 {
     isPlaying = NO;
-    AudioQueueStop(playbackQueue, true);
-    for (int n=0; n < kNumBuffers; n++) {
-        AudioQueueFreeBuffer(playbackQueue, playbackBuffers[n]);
+    for (int i=0; i < [loops count]; i++) {
+        AudioQueueStop(states[i].queue, true);
+        for (int n=0; n < kNumBuffers; n++) {
+            AudioQueueFreeBuffer(states[i].queue, states[i].buffers[n]);
+        }
+        AudioQueueDispose(states[i].queue, true);
     }
-    AudioQueueDispose(playbackQueue, true);
-    playbackQueue = nil;
 }
 - (void)recordSamples:(short*)samples :(int)num_samples
 {
@@ -97,34 +110,14 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
     
     Loop *loop = [loops lastObject];
     [loop writeSamples:samples :num_samples];
-//    NSDate *dataData = [NSData dataWithBytes:samples length:num_samples*sizeof(short)];
-//    NSLog(@"RECD %@\n\n", dataData);
-
 }
 
 
-- (void)fillPlaybackBuffer:(short*)samples :(int)num_samples
+- (void)fillPlaybackBuffer:(int)loopIndex :(short*)samples :(int)num_samples
 {
-    Loop *loop = [loops lastObject];
+    Loop *loop = [loops objectAtIndex:loopIndex];
     [loop fillPlaybackBuffer:samples :num_samples];
-//    memset(samples, 0, num_samples*sizeof(short));
-    
-//    NSDate *dataData = [NSData dataWithBytes:samples length:num_samples*sizeof(short)];
-//    NSLog(@"PLAY %@\n\n", dataData);
-
 }
 
 
-- (void)setupAudioFormat:(AudioStreamBasicDescription*)fmt
-{
-    memset(fmt, 0, sizeof(AudioStreamBasicDescription));
-    fmt->mSampleRate = kSampleRate;
-    fmt->mFormatID = kAudioFormatLinearPCM;
-    fmt->mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
-    fmt->mFramesPerPacket = 1;
-    fmt->mChannelsPerFrame = 1;
-    fmt->mBitsPerChannel = 16;
-    fmt->mBytesPerFrame = fmt->mBitsPerChannel/8;
-    fmt->mBytesPerPacket = fmt->mBytesPerFrame*fmt->mFramesPerPacket;
-}
 @end
