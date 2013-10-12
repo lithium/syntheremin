@@ -82,5 +82,16 @@
     return numSamples;
 }
 
+- (int) mixSamples :(short *)samples :(int)numSamples
+{
+    int index=0;
+    for (int i=0; i < numSamples; i++) {
+        double ds = [self getSample]*level * 32767.0;
+        short ss = (short)round(ds);
+        samples[index] = (samples[index] + ss) / 2;
+        index+=1;
+    }
+    return numSamples;
+}
 
 @end

@@ -121,9 +121,7 @@
     
     [synth start];
     
-    
-    mLooper = [[Looper alloc] init];
-    
+        
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" \
                                 AND \"Right Hand X\" = \"Pitch\"\
@@ -142,19 +140,11 @@
 }
 
 
-- (void)primeBuffers
-{
-    [synth primeBuffers];
-}
-
 
 
 - (IBAction)setVcoShape:(id)sender {
     int tag = [sender tag];
     [[synth oscN:tag] setWaveShape:[sender intValue]];
-    [synth stop];
-    [synth primeBuffers];
-    [synth start];
 }
 
 - (IBAction)setVcoRange:(id)sender {
@@ -542,19 +532,12 @@
 
 - (void)noteOn
 {        
-//    AudioQueueStop(mAudioQueue, true);
     [synth noteOn];
-//    [self primeBuffers];
-//    AudioQueueStart(mAudioQueue, NULL);
-    
-//    [vca_note setState:true];
 }
 
 - (void)noteOff
 {
     [synth noteOff];
-//    [vca_note setState:false];
-
 }
 
 
@@ -598,18 +581,18 @@
 - (IBAction)toggleLooperRecord:(id)sender {
     int state = [looper_record state];
     if (state) {
-        [mLooper recordNewLoop];
+        [[synth looper] recordNewLoop];
     } else {
-        [mLooper stopRecording];
+        [[synth looper] stopRecording];
     }
 
 }
 - (IBAction)toggleLooperPlay:(id)sender {
     int state = [looper_play state];
     if (state) {
-        [mLooper playAll];
+        [[synth looper] playAll];
     } else {
-        [mLooper stopPlayback];
+        [[synth looper] stopPlayback];
     }
 }
 @end

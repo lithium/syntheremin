@@ -12,6 +12,7 @@
 @synthesize vcfEnabled;
 @synthesize vcaEnabled;
 @synthesize vca;
+@synthesize looper;
 
 
 static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, AudioQueueBufferRef buffer_ref)
@@ -27,15 +28,24 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
     for (int i=0; i < num_samples; i++) {
         samples[i] = 0;
     }
-
-    if ([synth oscEnabled:args->whichOsc]) {
-        [synth->oscN[args->whichOsc] getSamples:samples :num_samples];
     
-        if (synth->vcfEnabled) {
-            [synth->vcfN[args->whichOsc] modifySamples:samples :num_samples];
+    BOOL foundOsc = NO;
+    for (int i=0; i < kNumOscillators; i++) {
+        if ([synth oscEnabled:i]) {
+            if (foundOsc) {
+                [synth->oscN[i] mixSamples:samples :num_samples];
+            } else {
+                foundOsc=YES;
+                [synth->oscN[i] getSamples:samples :num_samples];
+            }
         }
-        [synth->vca modifySamples:samples :num_samples];
-    } 
+    }
+    if (synth->vcfEnabled) {
+        [synth->vcf modifySamples:samples :num_samples];
+    }
+    [synth->vca modifySamples:samples :num_samples];
+    
+    [synth->looper recordSamples:samples :num_samples];
 
     ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
 }
@@ -47,7 +57,7 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
         AudioStreamBasicDescription fmt = {0};
         fmt.mSampleRate = kSampleRate;
         fmt.mFormatID = kAudioFormatLinearPCM;
-        fmt.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+        fmt.mFormatFlags =  kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
         fmt.mFramesPerPacket = 1;
         fmt.mChannelsPerFrame = 1;
         fmt.mBitsPerChannel = 16;
@@ -56,6 +66,10 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
         OSStatus status;
 
         vca = [[Vca alloc] init];        
+        vcf = [[Vcf alloc] init];
+        [vcf setCutoffFrequencyInHz:1000];
+        [vcf setResonance:0.85];
+        [vcf setDepth:2.0];
 
         for (int i=0; i < kNumOscillators; i++) {
             oscN[i] = [[Vco alloc] init];
@@ -63,25 +77,19 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
             [oscN[i] setFrequency:440];
             [oscN[i] setLevel:1.0];
             oscEnabled[i] = NO;
-
-            vcfN[i] = [[Vcf alloc] init];
-            [vcfN[i] setCutoffFrequencyInHz:1000];
-            [vcfN[i] setResonance:0.85];
-            [vcfN[i] setDepth:2.0];
-        
-            callbackArgs[i].self = (__bridge void*)self;
-            callbackArgs[i].whichOsc = i;
-        
-            status = AudioQueueNewOutput(&fmt, audioqueue_osc_callback, (void*)&callbackArgs[i], NULL, NULL, 0, &queueOsc[i]);
-            for (int n=0; n < kNumBuffers; n++) {
-                status = AudioQueueAllocateBuffer(queueOsc[i], kBufferSize, &buffersOsc[i][n]);
-                buffersOsc[i][n]->mAudioDataByteSize = kBufferSize;
-            }
-            status = AudioQueueSetParameter (queueOsc[i], kAudioQueueParam_Volume, 1.0);
-
         }
         
-        [self primeBuffers];
+        callbackArgs.self = (__bridge void*)self;
+        status = AudioQueueNewOutput(&fmt, audioqueue_osc_callback, (void*)&callbackArgs, NULL, NULL, 0, &queueOsc);
+        for (int n=0; n < kNumBuffers; n++) {
+            status = AudioQueueAllocateBuffer(queueOsc, kBufferSize, &buffersOsc[n]);
+            buffersOsc[n]->mAudioDataByteSize = kBufferSize;
+            audioqueue_osc_callback((void*)&callbackArgs, queueOsc, buffersOsc[n]);
+        }
+        status = AudioQueueSetParameter(queueOsc, kAudioQueueParam_Volume, 1.0);
+
+        looper = [[Looper alloc] init];
+        
 
     }
      
@@ -90,26 +98,14 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
 
 - (void)start
 {
-    for (int i=0; i < kNumOscillators; i++) {
-        AudioQueueStart(queueOsc[i], NULL);
-    }
+    AudioQueueStart(queueOsc, NULL);
 }
 - (void)stop
 {    
-    for (int i=0; i < kNumOscillators; i++) {
-        AudioQueueStop(queueOsc[i], true);
-    }
+    AudioQueueStop(queueOsc, true);
 }
 
 
-- (void)primeBuffers
-{
-    for (int i=0; i < kNumOscillators; i++) {
-        for (int n=0; n < kNumBuffers; n++) {
-            audioqueue_osc_callback((void*)&callbackArgs[i], queueOsc[i], buffersOsc[i][n]);
-        }
-    }
-}
 
 - (void)setOscEnabled:(int)which :(bool)enabled
 {
@@ -134,46 +130,32 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
 }
 - (void)setVcfAttackTimeInMs:(int)ms
 {
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] setAttackTimeInMs:ms];
-    }
+    [vcf setAttackTimeInMs:ms];
 }
 - (void)setVcfDecayTimeInMs:(int)ms
 {
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] setDecayTimeInMs:ms];
-        [vcfN[i] setReleaseTimeInMs:ms];
-    }
+    [vcf setDecayTimeInMs:ms];
+    [vcf setReleaseTimeInMs:ms];
 }
 - (void)setVcfSustainLevel:(double)level
 {
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] setSustainLevel:level];
-    }
+    [vcf setSustainLevel:level];
 }
 - (void)setVcfCutoffInHz:(double)freqInHz
 {
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] setCutoffFrequencyInHz:freqInHz];
-    }
+    [vcf setCutoffFrequencyInHz:freqInHz];
 }
 - (void)setVcfResonance:(double)level
 {
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] setResonance:level];
-    }
+    [vcf setResonance:level];
 }
 - (void)setVcfDepth:(double)level
 {
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] setDepth:level];
-    }
+    [vcf setDepth:level];
 }
 - (void)setVcfEnvelopeEnabled:(bool)enabled
 {
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] setEnvelopeEnabled:enabled];
-    }
+    [vcf setEnvelopeEnabled:enabled];
 }
 - (void)setFrequencyInHz:(double)freqInHz
 {
@@ -186,21 +168,17 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
 - (void)noteOn
 {        
     for (int i=0; i < kNumOscillators; i++) {
-        AudioQueueFlush(queueOsc[i]);
+        AudioQueueFlush(queueOsc);
     }
 
     [vca noteOn];
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] noteOn];
-    }
+    [vcf noteOn];
 }
 
 - (void)noteOff
 {
     [vca noteOff];
-    for (int i=0; i < kNumOscillators; i++) {
-        [vcfN[i] noteOff];
-    }
+    [vcf noteOff];
 }
 
 

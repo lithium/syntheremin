@@ -14,6 +14,8 @@ enum {
     kSampleRate = 44100,
     kNumBuffers = 3,
     kBufferSize = 2000,
+    kNumOscillators = 3,
+
 };
 
 

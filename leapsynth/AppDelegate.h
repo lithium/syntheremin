@@ -61,7 +61,6 @@ enum {
 //    AudioQueueBufferRef mQueueBuffers[kNumBuffers];
     
     LeapSyntheremin *mSyntheremin;
-    Looper *mLooper;
         
     NSArray *kParameterTypeArray;
     NSArray *kInputTypeArray;
@@ -71,7 +70,6 @@ enum {
 }
 
 @property (assign) IBOutlet NSWindow *window;
-
 
 //OSC1
 - (IBAction)setVcoShape:(id)sender;

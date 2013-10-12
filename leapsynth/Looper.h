@@ -11,7 +11,6 @@
 #import "Defines.h"
 #import "Loop.h"
 
-
 struct LooperCallbackState {
     void *self;
 };
@@ -24,10 +23,7 @@ struct LooperCallbackState {
     BOOL isPlaying;
     
     struct LooperCallbackState callbackState;
-    AudioQueueRef recordingQueue;
-    AudioQueueBufferRef recordingBuffers[kNumBuffers];
-    AudioStreamBasicDescription recordingFmt;
-
+    
     AudioQueueRef playbackQueue;
     AudioQueueBufferRef playbackBuffers[kNumBuffers];
     AudioStreamBasicDescription playbackFmt;

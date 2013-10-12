@@ -8,8 +8,8 @@
 
 #import "Synth.h"
 #import "AudioToolbox/AudioQueue.h"
+#import "Looper.h"
 
-#define kNumOscillators 3
 
 struct CallbackArg {
     void *self;
@@ -18,14 +18,17 @@ struct CallbackArg {
 
 @interface AudioQueueSynth : NSObject
 {
-    AudioQueueRef queueOsc[kNumOscillators];
-    AudioQueueBufferRef buffersOsc[kNumOscillators][kNumBuffers];
+    AudioQueueRef queueOsc;
+    AudioQueueBufferRef buffersOsc[kNumBuffers];
 
     Vco *oscN[kNumOscillators];
-    Vcf *vcfN[kNumOscillators];
+    Vcf *vcf;
     Vca *vca;
+    
+    Looper *looper;
         
-    struct CallbackArg callbackArgs[kNumOscillators];
+    
+    struct CallbackArg callbackArgs;
 
     bool oscEnabled[kNumOscillators];
     bool vcfEnabled;
@@ -35,6 +38,7 @@ struct CallbackArg {
 @property bool vcfEnabled;
 @property bool vcaEnabled;
 @property Vca *vca;
+@property Looper *looper;
 
 - (void)setOscEnabled:(int)which :(bool)enabled;
 - (void)setOscVolume:(int)which :(double)level;
@@ -57,7 +61,6 @@ struct CallbackArg {
 - (void)stop;
 - (void)noteOn;
 - (void)noteOff;
-- (void)primeBuffers;
 
 @end
 
