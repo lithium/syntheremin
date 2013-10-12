@@ -68,6 +68,12 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
 - (void)stopRecording
 {
     isRecording = NO;
+    Loop *loop = [loops lastObject];
+    if ([loop size] > longestLoopSize) {
+        longestLoopSize = [loop size];
+        longestLoopIndex = [loops count]-1;
+    }
+    
 }
 
 - (void)playAll

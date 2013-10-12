@@ -34,6 +34,5 @@
 
 - (void)start;
 - (int)fillPlaybackBuffer:(short *)buffer :(int)num_samples;
-
-
+- (int)size;
 @end

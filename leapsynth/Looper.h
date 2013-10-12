@@ -27,6 +27,9 @@ struct LooperCallbackState {
     BOOL isRecording;
     BOOL isPlaying;
     
+    int longestLoopIndex;
+    int longestLoopSize;
+    
     struct LooperCallbackState states[kMaxNumberOfLoops];
 }
 

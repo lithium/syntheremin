@@ -96,4 +96,7 @@
     
     return written;
 }
+-(int)size {
+    return size;
+}
 @end
