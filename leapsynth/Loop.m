@@ -24,7 +24,7 @@
     int avail = kChunkSize - size;
     int written = 0;
     if (samples && avail > 0 && num_samples > 0) {
-        written = MAX(num_samples, avail);
+        written = MIN(num_samples, avail);
         memcpy(buffer+size, samples, written);
         size += written;
     }
@@ -54,7 +54,9 @@
     while (num_samples - written > 0) {       
         SampleChunk *newChunk = [[SampleChunk alloc] init];
         written += [newChunk writeSamples:samples+written :num_samples-written];
+        [sampleChunks addObject:newChunk];
     }
+    size += written;
     return written;
 }
 
@@ -72,7 +74,7 @@
     SampleChunk *chunk = [sampleChunks objectAtIndex:idx];
     
     // play as much of the chunk as we can
-    int chunk_size = MAX(chunk->size, num_samples); 
+    int chunk_size = MIN(chunk->size - ofs, num_samples); 
 
     memcpy(buffer, chunk->buffer+ofs, chunk_size);
     written += chunk_size;
@@ -82,7 +84,7 @@
         if (idx >= [sampleChunks count])
             idx = 0;
         SampleChunk *nextChunk = [sampleChunks objectAtIndex:idx];
-        chunk_size = MAX(nextChunk->size, num_samples-written); 
+        chunk_size = MIN(nextChunk->size, num_samples-written); 
         
         memcpy(buffer+written, nextChunk->buffer, chunk_size);
         written += chunk_size;

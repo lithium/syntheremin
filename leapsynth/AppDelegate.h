@@ -13,6 +13,7 @@
 #import "DownUpButton.h"
 #import "LeapSyntheremin.h"
 #import "AudioQueueSynth.h"
+#import "Looper.h"
 
 enum {
     kParameterNone=0,
@@ -60,6 +61,7 @@ enum {
 //    AudioQueueBufferRef mQueueBuffers[kNumBuffers];
     
     LeapSyntheremin *mSyntheremin;
+    Looper *mLooper;
         
     NSArray *kParameterTypeArray;
     NSArray *kInputTypeArray;
@@ -188,4 +190,13 @@ enum {
 
 @property (weak) IBOutlet NSPredicateEditor *patch_predicateeditor;
 - (IBAction)changePredicate:(id)sender;
+
+
+@property (weak) IBOutlet NSButton *looper_record;
+- (IBAction)toggleLooperRecord:(id)sender;
+@property (weak) IBOutlet NSButton *looper_play;
+- (IBAction)toggleLooperPlay:(id)sender;
+
+
+
 @end

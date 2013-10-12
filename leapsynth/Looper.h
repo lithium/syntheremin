@@ -25,8 +25,13 @@ struct LooperCallbackState {
     
     struct LooperCallbackState callbackState;
     AudioQueueRef recordingQueue;
+    AudioQueueBufferRef recordingBuffers[kNumBuffers];
+    AudioStreamBasicDescription recordingFmt;
+
     AudioQueueRef playbackQueue;
     AudioQueueBufferRef playbackBuffers[kNumBuffers];
+    AudioStreamBasicDescription playbackFmt;
+
 }
 
 - (id)init;
@@ -37,7 +42,7 @@ struct LooperCallbackState {
 - (void)playAll;
 - (void)stopPlayback;
 
-
+- (void)recordSamples:(short*)samples :(int)num_samples;
 - (void)fillPlaybackBuffer:(short*)samples :(int)num_samples;
 
 @end

@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize looper_play;
+@synthesize looper_record;
 @synthesize lefthand_tap_popup;
 @synthesize righthand_tap_popup;
 @synthesize synthAnalyzer;
@@ -118,6 +120,10 @@
 //    [synth setAnalyzer:synthAnalyzer];
     
     [synth start];
+    
+    
+    mLooper = [[Looper alloc] init];
+    
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" \
                                 AND \"Right Hand X\" = \"Pitch\"\
@@ -589,4 +595,21 @@
     [synth setOscEnabled:2 :state];
 }
 
+- (IBAction)toggleLooperRecord:(id)sender {
+    int state = [looper_record state];
+    if (state) {
+        [mLooper recordNewLoop];
+    } else {
+        [mLooper stopRecording];
+    }
+
+}
+- (IBAction)toggleLooperPlay:(id)sender {
+    int state = [looper_play state];
+    if (state) {
+        [mLooper playAll];
+    } else {
+        [mLooper stopPlayback];
+    }
+}
 @end
