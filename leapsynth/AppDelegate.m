@@ -87,6 +87,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     for (int i = 0; i < list->numPackets; i++) {        
 //        NSLog(@"midi %s: %02x", packet->data[0]);
+        [self->midiParser feedPacketData:packet->data :packet->length];
         
         packet = MIDIPacketNext(packet);
     }
@@ -149,6 +150,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
     
     //connect all midi endpoints to our listener
+    midiParser = [[MidiParser alloc] init];
+    [midiParser setDelegate:self];
     status = MIDIClientCreate(CFSTR("Syntheremin"), NULL, NULL, &midiClient);
     status = MIDIInputPortCreate(midiClient, CFSTR("Input"), handle_midi_input, (__bridge void*)self, &midiInput);
     int num_midi = MIDIGetNumberOfDevices();
@@ -156,7 +159,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         MIDIEndpointRef src = MIDIGetSource(i);
         CFStringRef srcName;
         MIDIObjectGetStringProperty(src, kMIDIPropertyName, &srcName);
-        status = MIDIPortConnectSource(midiInput, src, srcName);
+        status = MIDIPortConnectSource(midiInput, src, NULL);
     }
 }
 - (void)windowWillClose:(NSNotification *)notification
@@ -647,6 +650,23 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 @autoreleasepool {
         [looper_level setIntValue:0];
 }
+}
+
+
+- (void)noteOn:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel
+{
+    [synth setFrequencyInHz:[MidiParser frequencyFromNoteNumber:noteNumber]];
+    currentNoteNumber = noteNumber;
+    [self noteOn];
+    
+}
+- (void)noteOff:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel
+{
+    if (noteNumber == currentNoteNumber) {
+        currentNoteNumber = -1;
+        [self noteOff];            
+    }
+
 }
 
 @end

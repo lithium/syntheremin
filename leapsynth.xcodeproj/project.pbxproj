@@ -17,6 +17,7 @@
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
 		128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 128646CD17A9E99A00CE0420 /* DownUpButton.m */; };
 		1291C76517BB423D0055761E /* SynthAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1291C76417BB423D0055761E /* SynthAnalyzer.m */; };
+		12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE671809CE410019EBC4 /* MidiParser.m */; };
 		12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */ = {isa = PBXBuildFile; fileRef = 12B235D717C0698D00FA7E5C /* syntheremin.icns */; };
 		12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BB468B17A988E4009D7B5C /* MainMenu.xib */; };
 		12BB468E17A988ED009D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D40317A9883C001323FA /* AppDelegate.m */; };
@@ -67,6 +68,8 @@
 		128646CD17A9E99A00CE0420 /* DownUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownUpButton.m; sourceTree = "<group>"; };
 		1291C76317BB423D0055761E /* SynthAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthAnalyzer.h; sourceTree = "<group>"; };
 		1291C76417BB423D0055761E /* SynthAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynthAnalyzer.m; sourceTree = "<group>"; };
+		12B0FE661809CE410019EBC4 /* MidiParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiParser.h; sourceTree = "<group>"; };
+		12B0FE671809CE410019EBC4 /* MidiParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidiParser.m; sourceTree = "<group>"; };
 		12B235D717C0698D00FA7E5C /* syntheremin.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = syntheremin.icns; sourceTree = SOURCE_ROOT; };
 		12BB468C17A988E4009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = leapsynth/en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		12BB469217A9890D009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = leapsynth/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
@@ -168,6 +171,8 @@
 				12C39410180899E90035BEFF /* Loop.m */,
 				12C0D40217A9883C001323FA /* AppDelegate.h */,
 				12C0D40317A9883C001323FA /* AppDelegate.m */,
+				12B0FE661809CE410019EBC4 /* MidiParser.h */,
+				12B0FE671809CE410019EBC4 /* MidiParser.m */,
 				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
 				126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */,
 				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
@@ -294,6 +299,7 @@
 				12C3940A1807598B0035BEFF /* AudioQueueSynth.m in Sources */,
 				12C3940E18087F710035BEFF /* Looper.m in Sources */,
 				12C39411180899E90035BEFF /* Loop.m in Sources */,
+				12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

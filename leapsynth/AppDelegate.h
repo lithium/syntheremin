@@ -14,6 +14,7 @@
 #import "LeapSyntheremin.h"
 #import "AudioQueueSynth.h"
 #import "Looper.h"
+#import "MidiParser.h"
 
 enum {
     kParameterNone=0,
@@ -68,7 +69,8 @@ enum {
     
     MIDIClientRef midiClient;
     MIDIPortRef midiInput;
-
+    MidiParser *midiParser;
+    int currentNoteNumber;
     
     bool paramNoteOn;
 }
