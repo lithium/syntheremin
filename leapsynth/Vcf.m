@@ -18,21 +18,21 @@
     envelopeEnabled = true;
     return self;
 }
-- (void)setCutoffFrequencyInHz:(double)cutoff
+- (void)setCutoffFrequencyInHz:(double)cutoffInHz
 {
-    cutoffFrequencyInHz  = MAX(MIN(cutoff, kCutoffMax), kCutoffMin);
-    self->cutoff = cutoffFrequencyInHz;
+    cutoffFrequencyInHz  = MAX(MIN(cutoffInHz, kCutoffMax), kCutoffMin);
+    cutoff = cutoffFrequencyInHz;
 
     [self recalculate];
 }
-- (void)setResonance:(double)resonance
+- (void)setResonance:(double)value
 {
-    self->resonance = resonance;
+    resonance = value;
     [self recalculate];
 }
-- (void)setDepth:(double)depth
+- (void)setDepth:(double)value
 {
-    self->depth = MAX(MIN(depth, kDepthMax), kDepthMin);
+    depth = MAX(MIN(value, kDepthMax), kDepthMin);
 }
 
 

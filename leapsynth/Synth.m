@@ -11,6 +11,7 @@
 @implementation Synth
 
 @synthesize osc1;
+@synthesize osc1Enabled;
 @synthesize vca;
 @synthesize vcf;
 @synthesize vcfEnabled;

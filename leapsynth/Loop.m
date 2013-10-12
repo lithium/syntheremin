@@ -35,6 +35,8 @@
 
 
 @implementation Loop
+@synthesize delegate;
+
 - (id)init
 {
     if (self) {
@@ -57,6 +59,11 @@
         [sampleChunks addObject:newChunk];
     }
     size += written;
+    
+    if (delegate) {
+        [delegate samplesPlayed:samples :num_samples];
+    }
+
     return written;
 }
 
@@ -79,10 +86,15 @@
     memcpy(buffer, chunk->buffer+ofs, chunk_size*sizeof(short));
     written += chunk_size;
     
+
     while (num_samples - written > 0) {
         idx += 1;
-        if (idx >= [sampleChunks count])
+        if (idx >= [sampleChunks count]) {
             idx = 0;
+            if (delegate) {
+                [delegate loopReset];
+            }
+        }
         SampleChunk *nextChunk = [sampleChunks objectAtIndex:idx];
         chunk_size = MIN(nextChunk->size, num_samples-written); 
         
@@ -94,6 +106,10 @@
     if (playbackPosition > size)
         playbackPosition = 0;
     
+    if (delegate) {
+        [delegate samplesPlayed:buffer :num_samples];
+    }
+
     return written;
 }
 -(int)size {

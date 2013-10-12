@@ -9,13 +9,14 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize looper_level;
 @synthesize looper_play;
 @synthesize looper_record;
-@synthesize lefthand_tap_popup;
-@synthesize righthand_tap_popup;
+//@synthesize lefthand_tap_popup;
+//@synthesize righthand_tap_popup;
 @synthesize synthAnalyzer;
-@synthesize lefthand_box;
-@synthesize righthand_box;
+//@synthesize lefthand_box;
+//@synthesize righthand_box;
 @synthesize noleap_label;
 @synthesize patch_predicateeditor;
 //@synthesize vca_note;
@@ -25,23 +26,23 @@
 @synthesize osc1_enable;
 @synthesize osc2_enable;
 @synthesize osc3_enable;
-@synthesize vca_enable;
+//@synthesize vca_enable;
 
 @synthesize vca_master;
 @synthesize vcf_envelope_enable;
 @synthesize vcf_enable;
-@synthesize lefthand_x;
-@synthesize lefthand_y;
-@synthesize lefthand_z;
-@synthesize righthand_x;
-@synthesize righthand_y;
-@synthesize righthand_z;
-@synthesize lefthand_x_popup;
-@synthesize lefthand_y_popup;
-@synthesize lefthand_z_popup;
-@synthesize righthand_x_popup;
-@synthesize righthand_y_popup;
-@synthesize righthand_z_popup;
+//@synthesize lefthand_x;
+//@synthesize lefthand_y;
+//@synthesize lefthand_z;
+//@synthesize righthand_x;
+//@synthesize righthand_y;
+//@synthesize righthand_z;
+//@synthesize lefthand_x_popup;
+//@synthesize lefthand_y_popup;
+//@synthesize lefthand_z_popup;
+//@synthesize righthand_x_popup;
+//@synthesize righthand_y_popup;
+//@synthesize righthand_z_popup;
 
 @synthesize vcf_cutoff;
 @synthesize vcf_resonance;
@@ -68,9 +69,9 @@
 //@synthesize osc1_range;
 //@synthesize osc2_detune;
 //@synthesize osc1_freq;
-//@synthesize osc2_shape;
-//@synthesize osc2_range;
-//@synthesize osc2_freq;
+@synthesize osc2_shape;
+@synthesize osc2_range;
+@synthesize osc2_detune;
 @synthesize lfo_shape;
 @synthesize lfo_freq;
 @synthesize lfo_amount;
@@ -121,6 +122,7 @@
     
     [synth start];
     
+    [[synth looper] setDelegate:self];
         
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"\"Left Hand Y\" = \"Volume\" \
@@ -394,14 +396,14 @@
 }
 - (void)onConnect
 {
-    [lefthand_box setHidden:NO];
-    [righthand_box setHidden:NO];
+//    [lefthand_box setHidden:NO];
+//    [righthand_box setHidden:NO];
     [noleap_label setHidden:YES];
 }
 - (void)onDisconnect
 {
-    [lefthand_box setHidden:YES];
-    [righthand_box setHidden:YES];
+//    [lefthand_box setHidden:YES];
+//    [righthand_box setHidden:YES];
     
     [noleap_label setHidden:NO];
 
@@ -581,18 +583,46 @@
 - (IBAction)toggleLooperRecord:(id)sender {
     int state = [looper_record state];
     if (state) {
+        [looper_level setIntValue:0];
+        [looper_level setMaxValue:1000000];
+        [looper_level setCriticalValue:0.1];
         [[synth looper] recordNewLoop];
     } else {
+        [looper_level setIntValue:0];
+        [looper_level setMaxValue:0];
+        [looper_level setCriticalValue:0];
         [[synth looper] stopRecording];
     }
 
 }
 - (IBAction)toggleLooperPlay:(id)sender {
+
     int state = [looper_play state];
     if (state) {
+        [looper_level setIntValue:0];
+        [looper_level setMaxValue:[[synth looper] longestLoopSize]];
+        [looper_level setCriticalValue:0];
         [[synth looper] playAll];
     } else {
+        [looper_level setIntValue:0];
+        [looper_level setMaxValue:0];
+        [looper_level setCriticalValue:0];
         [[synth looper] stopPlayback];
     }
+        
 }
+
+- (void) samplesPlayed :(short *)samples :(int)numSamples
+{
+@autoreleasepool {
+    [looper_level setIntValue:[looper_level intValue]+numSamples];
+}
+}
+- (void) loopReset
+{
+@autoreleasepool {
+        [looper_level setIntValue:0];
+}
+}
+
 @end

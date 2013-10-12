@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol LoopDelegate <NSObject>
+- (void) samplesPlayed :(short *)samples :(int)numSamples;
+- (void) loopReset;
+@end
+
 #define kChunkSize 4096
 
 @interface SampleChunk : NSObject
@@ -35,4 +40,7 @@
 - (void)start;
 - (int)fillPlaybackBuffer:(short *)buffer :(int)num_samples;
 - (int)size;
+
+@property (weak) id <LoopDelegate> delegate;
+
 @end

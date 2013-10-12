@@ -80,9 +80,9 @@ enum {
 - (IBAction)setVcoFrequency:(id)sender;
 
 //OSC2
-- (IBAction)setVco2Shape:(id)sender;
-- (IBAction)setVco2Range:(id)sender;
-- (IBAction)setVco2Detune:(id)sender;
+//- (IBAction)setVco2Shape:(id)sender;
+//- (IBAction)setVco2Range:(id)sender;
+//- (IBAction)setVco2Detune:(id)sender;
 @property (weak) IBOutlet NSSlider *osc2_shape;
 @property (weak) IBOutlet NSSlider *osc2_range;
 @property (weak) IBOutlet NSSlider *osc2_detune;
@@ -90,10 +90,10 @@ enum {
 
 
 //LFO
-- (IBAction)setLfoAmount:(id)sender;
-- (IBAction)setLfoType:(id)sender;
-- (IBAction)setLfoShape:(id)sender;
-- (IBAction)setLfoFrequency:(id)sender;
+//- (IBAction)setLfoAmount:(id)sender;
+//- (IBAction)setLfoType:(id)sender;
+//- (IBAction)setLfoShape:(id)sender;
+//- (IBAction)setLfoFrequency:(id)sender;
 @property (weak) IBOutlet NSSlider *lfo_shape;
 @property (weak) IBOutlet NSSlider *lfo_freq;
 @property (weak) IBOutlet NSSlider *lfo_amount;
@@ -139,8 +139,8 @@ enum {
 - (IBAction)toggleOsc2Enabled:(id)sender;
 - (IBAction)toggleOsc3Enabled:(id)sender;
 
-@property (weak) IBOutlet NSButton *vca_enable;
-- (IBAction)toggleVcaEnvelope:(id)sender;
+//@property (weak) IBOutlet NSButton *vca_enable;
+//- (IBAction)toggleVcaEnvelope:(id)sender;
 //@property (weak) IBOutlet NSButton *vca_note;
 //- (IBAction)toggleVcaNote:(id)sender;
 
@@ -155,7 +155,7 @@ enum {
 - (IBAction)setVcfAttack:(id)sender;
 - (IBAction)setVcfDecay:(id)sender;
 - (IBAction)setVcfSustain:(id)sender;
-- (IBAction)setVcfRelease:(id)sender;
+//- (IBAction)setVcfRelease:(id)sender;
 - (IBAction)setVcfCutoff:(id)sender;
 - (IBAction)setVcfResonance:(id)sender;
 - (IBAction)setVcfDepth:(id)sender;
@@ -165,25 +165,25 @@ enum {
 - (IBAction)toggleVcfEnable:(id)sender;
 
 
-@property (weak) IBOutlet NSLevelIndicator *lefthand_x;
-@property (weak) IBOutlet NSLevelIndicator *lefthand_y;
-@property (weak) IBOutlet NSLevelIndicator *lefthand_z;
-@property (weak) IBOutlet NSLevelIndicator *righthand_x;
-@property (weak) IBOutlet NSLevelIndicator *righthand_y;
-@property (weak) IBOutlet NSLevelIndicator *righthand_z;
-@property (weak) IBOutlet NSPopUpButton *lefthand_x_popup;
-@property (weak) IBOutlet NSPopUpButton *lefthand_y_popup;
-@property (weak) IBOutlet NSPopUpButton *lefthand_z_popup;
-@property (weak) IBOutlet NSPopUpButton *righthand_x_popup;
-@property (weak) IBOutlet NSPopUpButton *righthand_y_popup;
-@property (weak) IBOutlet NSPopUpButton *righthand_z_popup;
-- (IBAction)setParameter:(id)sender;
-@property (weak) IBOutlet NSPopUpButton *lefthand_tap_popup;
-@property (weak) IBOutlet NSPopUpButton *righthand_tap_popup;
+//@property (weak) IBOutlet NSLevelIndicator *lefthand_x;
+//@property (weak) IBOutlet NSLevelIndicator *lefthand_y;
+//@property (weak) IBOutlet NSLevelIndicator *lefthand_z;
+//@property (weak) IBOutlet NSLevelIndicator *righthand_x;
+//@property (weak) IBOutlet NSLevelIndicator *righthand_y;
+//@property (weak) IBOutlet NSLevelIndicator *righthand_z;
+//@property (weak) IBOutlet NSPopUpButton *lefthand_x_popup;
+//@property (weak) IBOutlet NSPopUpButton *lefthand_y_popup;
+//@property (weak) IBOutlet NSPopUpButton *lefthand_z_popup;
+//@property (weak) IBOutlet NSPopUpButton *righthand_x_popup;
+//@property (weak) IBOutlet NSPopUpButton *righthand_y_popup;
+//@property (weak) IBOutlet NSPopUpButton *righthand_z_popup;
+//- (IBAction)setParameter:(id)sender;
+//@property (weak) IBOutlet NSPopUpButton *lefthand_tap_popup;
+//@property (weak) IBOutlet NSPopUpButton *righthand_tap_popup;
 
 @property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
-@property (weak) IBOutlet NSBox *lefthand_box;
-@property (weak) IBOutlet NSBox *righthand_box;
+//@property (weak) IBOutlet NSBox *lefthand_box;
+//@property (weak) IBOutlet NSBox *righthand_box;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 @property (weak) IBOutlet NSPredicateEditor *patch_predicateeditor;
@@ -194,6 +194,7 @@ enum {
 - (IBAction)toggleLooperRecord:(id)sender;
 @property (weak) IBOutlet NSButton *looper_play;
 - (IBAction)toggleLooperPlay:(id)sender;
+@property (weak) IBOutlet NSLevelIndicator *looper_level;
 
 
 
