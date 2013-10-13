@@ -11,11 +11,8 @@
 
 @implementation Vcf
 
-@synthesize envelopeEnabled;
-
 - (id)init
 {
-    envelopeEnabled = true;
     return self;
 }
 - (void)setCutoffFrequencyInHz:(double)cutoffInHz
@@ -67,15 +64,13 @@
 
 }
 
-- (int) modifySamples :(short *)samples :(int)numSamples
+- (int) getSamples:(short *)samples :(int)numSamples
 {
     int i;
     for (i=0; i < numSamples; i++) {
-        double value = [self getValue];
+        double value = [self getModulationSample];
         cutoff = cutoffFrequencyInHz;
-        if (envelopeEnabled) {
-            cutoff *= pow(2.0, depth*value);
-        }
+        cutoff *= pow(2.0, depth*value);
         [self recalculate];
         samples[i] = [self processSample:samples[i]];
     }

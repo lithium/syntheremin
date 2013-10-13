@@ -10,73 +10,63 @@
 
 @implementation Synth
 
-@synthesize osc1;
-@synthesize osc1Enabled;
-@synthesize vca;
-@synthesize vcf;
-@synthesize vcfEnabled;
-@synthesize vcaEnabled;
-@synthesize analyzer;
 
 - (id)init
 {
 
-    osc1 = [[Vco alloc] init];
-    [osc1 setWaveShape:kWaveSquare];
-    [osc1 setFrequency:440];
+    if (self) {
+        self = [super init];
     
+        for (int i=0; i < kNumOscillators; i++) {
+            oscN[i] = [[Vco alloc] init];
+        }
+        for (int i=0; i < kNumEnvelopes; i++) {
+            adsrN[i] = [[Adsr alloc] init];
+        }
 
-    vca = [[Vca alloc] init];
-    [vca setAttackTimeInMs:600];
-    [vca setDecayTimeInMs:200];
-    [vca setSustainLevel:0.2];
-    [vca setReleaseTimeInMs:1000];
-    
-    vcf = [[Vcf alloc] init];
-    [vcf  setCutoffFrequencyInHz:1000];
-    [vcf setResonance:0.85];
-    [vcf setDepth:2.0];
+        lfo = [[Oscillator alloc] init];
+        noise = [[NoiseGenerator alloc] init];
+        vcf = [[Vcf alloc] init];
+        
+        for (int i=0; i < kNumMixers; i++) {
+            mixerN[i] = [[Mixer alloc] init];
+        }
 
-    
-    
-//    vcaEnabled = true;
-    vcfEnabled = true;
-//    [vca setEnvelopeEnabled:false];
-    [vcf setEnvelopeEnabled:false];
-
+    }
     
     return self;
 }
 
 - (int) getSamples :(short *)samples :(int)numSamples
 {
-    [osc1 getSamples:samples :numSamples];
     
-    if (vcfEnabled) {
-        [vcf modifySamples:samples :numSamples];
-    }
-    if (vcaEnabled) {
-        [vca modifySamples:samples :numSamples];
-    }
-    
-    @autoreleasepool {
-        if (analyzer) {
-            [analyzer receiveSamples:samples :numSamples];
+    BOOL foundOne = NO;
+    for (int i=0; i < kNumMixers; i++) {
+        if ([mixerN[i] level] > 0) {
+            if (foundOne) {
+                [mixerN[i] mixSamples:samples :numSamples];
+            } else {
+                [mixerN[i] getSamples:samples :numSamples];
+                foundOne = YES;
+            }
         }
     }
+    
     return numSamples;
 }
 
 - (void)noteOn
 {
-    [vca noteOn];
-    [vcf noteOn];
+    for (int i=0; i < kNumEnvelopes; i++) {
+        [adsrN[i] noteOn];
+    }
 }
 
 - (void)noteOff
 {
-    [vca noteOff];
-    [vcf noteOff];
+    for (int i=0; i < kNumEnvelopes; i++) {
+        [adsrN[i] noteOff];
+    }
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SampleProvider.h"
 enum {
     kStateIdle, kStateAttack, kStateDecay, kStateSustain, kStateRelease
 };
@@ -17,7 +18,7 @@ enum {
 #define kSustainMax 1.0
 
 
-@interface Adsr : NSObject {
+@interface Adsr : SampleProvider {
     bool noteOn;
     bool noteOff;
     int count;
@@ -44,7 +45,7 @@ enum {
 - (void)setSustainLevel:(double) level;
 - (void)setReleaseTimeInMs:(int) ms;
 
-- (double)getValue;
+- (double)getSample;
 
 - (void)noteOn;
 - (void)noteOff;

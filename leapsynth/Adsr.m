@@ -52,7 +52,7 @@
     releaseSlope = sustainLevel / temp;
 }
 
-- (double)getValue
+- (double)getSample
 {
     double value = 0.0;
     

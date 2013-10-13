@@ -25,7 +25,7 @@
 - (double)getValue
 {
     double value = masterVolume;
-    value *= [super getValue];
+    value *= [super getSample];
     return value;
 }
 

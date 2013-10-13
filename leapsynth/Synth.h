@@ -10,30 +10,26 @@
 #import "Vco.h"
 #import "Vca.h"
 #import "Vcf.h"
-#import "SynthAnalyzer.h"
+//#import "SynthAnalyzer.h"
+#import "NoiseGenerator.h"
+#import "Adsr.h"
+#import "SampleProvider.h"
+#import "Mixer.h"
 
-@protocol AnalyzerDelegate <NSObject>
-- (void) receiveSamples :(short *)samples :(int)numSamples;
-@end
+#define kNumMixers 4
 
-@interface Synth : NSObject {
-    Vco *osc1;
-    Vca *vca;
+//@protocol AnalyzerDelegate <NSObject>
+//- (void) receiveSamples :(short *)samples :(int)numSamples;
+//@end
+
+@interface Synth : SampleProvider {
+    Vco *oscN[kNumOscillators];
+    Oscillator *lfo;
+    NoiseGenerator *noise;
     Vcf *vcf;
-    
-    bool vcfEnabled;
-    bool vcaEnabled;
-    bool osc1Enabled;
+    Adsr *adsrN[kNumEnvelopes];
+    Mixer *mixerN[kNumMixers];
 }
-
-@property Vco *osc1;
-@property Vca *vca;
-@property Vcf *vcf;
-
-@property bool vcfEnabled;
-@property bool vcaEnabled;
-@property bool osc1Enabled;
-@property (weak) id <AnalyzerDelegate> analyzer;
 
 
 - (id)init;
