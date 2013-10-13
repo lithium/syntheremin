@@ -9,10 +9,6 @@
 #import "AudioQueueSynth.h"
 @implementation AudioQueueSynth
 
-@synthesize vcfEnabled;
-@synthesize vcaEnabled;
-@synthesize noiseEnabled;
-@synthesize vca;
 @synthesize looper;
 
 
@@ -24,39 +20,20 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
     int num_samples = buffer->mAudioDataByteSize / 2;
     short *samples = buffer->mAudioData;
     
-    AudioQueueSynth *synth = (__bridge AudioQueueSynth *)args->self;
+    AudioQueueSynth *self = (__bridge AudioQueueSynth *)args->self;
     
+    //fill with silence
     for (int i=0; i < num_samples; i++) {
         samples[i] = 0;
     }
     
-    BOOL foundOsc = NO;
-    for (int i=0; i < kNumOscillators; i++) {
-        if ([synth oscEnabled:i]) {
-            if (foundOsc) {
-                [synth->oscN[i] mixSamples:samples :num_samples];
-            } else {
-                foundOsc=YES;
-                [synth->oscN[i] getSamples:samples :num_samples];
-            }
-        }
-    }
-    if (synth->noiseEnabled) {
-        if (foundOsc) {
-           [synth->noise mixSamples:samples :num_samples];
-        } else {
-            [synth->noise getSamples:samples :num_samples];
-        }
-    }
-
-        
-    if (synth->vcfEnabled) {
-        [synth->vcf modifySamples:samples :num_samples];
-    }
-    [synth->vca modifySamples:samples :num_samples];
+    //get the output from the mixers
+    [self getSamples:samples :num_samples];
     
-    [synth->looper recordSamples:samples :num_samples];
+    //send to recorder
+    [self->looper recordSamples:samples :num_samples];
 
+    
     ret = AudioQueueEnqueueBuffer(queue_ref, buffer_ref, 0, NULL);
 }
 
@@ -75,22 +52,6 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
         fmt.mBytesPerPacket = fmt.mBytesPerFrame*fmt.mFramesPerPacket;
         OSStatus status;
 
-        vca = [[Vca alloc] init];        
-        vcf = [[Vcf alloc] init];
-        [vcf setCutoffFrequencyInHz:1000];
-        [vcf setResonance:0.85];
-        [vcf setDepth:2.0];
-        
-        noise = [[NoiseGenerator alloc] init];
-
-        for (int i=0; i < kNumOscillators; i++) {
-            oscN[i] = [[Vco alloc] init];
-            [oscN[i] setWaveShape:kWaveSaw];
-            [oscN[i] setFrequency:440];
-            [oscN[i] setLevel:1.0];
-            oscEnabled[i] = NO;
-        }
-        
         callbackArgs.self = (__bridge void*)self;
         status = AudioQueueNewOutput(&fmt, audioqueue_osc_callback, (void*)&callbackArgs, NULL, NULL, 0, &queueOsc);
         for (int n=0; n < kNumBuffers; n++) {
@@ -118,79 +79,12 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
 }
 
 
-
-- (void)setOscEnabled:(int)which :(bool)enabled
-{
-    oscEnabled[which] = enabled;
-}
-- (bool)oscEnabled:(int)which
-{
-    return oscEnabled[which];
-}
-
-- (void)setOscVolume:(int)which :(double)level
-{
-    [oscN[which] setLevel:level];
-}
-- (double)oscVolume:(int)which
-{
-    return [oscN[which] level];
-}
-- (Vco *)oscN:(int)which
-{
-    return oscN[which];
-}
-- (void)setVcfAttackTimeInMs:(int)ms
-{
-    [vcf setAttackTimeInMs:ms];
-}
-- (void)setVcfDecayTimeInMs:(int)ms
-{
-    [vcf setDecayTimeInMs:ms];
-    [vcf setReleaseTimeInMs:ms];
-}
-- (void)setVcfSustainLevel:(double)level
-{
-    [vcf setSustainLevel:level];
-}
-- (void)setVcfCutoffInHz:(double)freqInHz
-{
-    [vcf setCutoffFrequencyInHz:freqInHz];
-}
-- (void)setVcfResonance:(double)level
-{
-    [vcf setResonance:level];
-}
-- (void)setVcfDepth:(double)level
-{
-    [vcf setDepth:level];
-}
-- (void)setVcfEnvelopeEnabled:(bool)enabled
-{
-    [vcf setEnvelopeEnabled:enabled];
-}
-- (void)setFrequencyInHz:(double)freqInHz
-{
-    for (int i=0; i < kNumOscillators; i++) {
-        [oscN[i] setFrequency:freqInHz];
-    }
-}
-
-
 - (void)noteOn
 {        
     for (int i=0; i < kNumOscillators; i++) {
         AudioQueueFlush(queueOsc);
     }
-
-    [vca noteOn];
-    [vcf noteOn];
-}
-
-- (void)noteOff
-{
-    [vca noteOff];
-    [vcf noteOff];
+    [super noteOn];
 }
 
 

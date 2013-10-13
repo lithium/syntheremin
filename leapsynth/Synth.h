@@ -34,6 +34,7 @@
 
 - (id)init;
 - (int) getSamples :(short *)samples :(int)numSamples;
+- (void)setFrequencyInHz:(double)freqInHz;
 
 
 - (void)noteOn;

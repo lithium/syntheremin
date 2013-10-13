@@ -69,4 +69,11 @@
     }
 }
 
+- (void)setFrequencyInHz:(double)freqInHz
+{
+    for (int i=0; i < kNumOscillators; i++) {
+        [oscN[i] setFrequencyInHz:freqInHz];
+    }
+}
+
 @end
