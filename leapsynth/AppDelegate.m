@@ -56,27 +56,10 @@
 @synthesize vca_decay;
 @synthesize vca_sustain;
 @synthesize vca_release;
-@synthesize keyboard_1;
-@synthesize keyboard_2;
-@synthesize keyboard_3;
-@synthesize keyboard_4;
-@synthesize keyboard_5;
-@synthesize cv_1;
-@synthesize cv_2;
-@synthesize cv_3;
-@synthesize cv_4;
-@synthesize cv_5;
-//@synthesize osc1_shape;
-//@synthesize osc1_range;
-//@synthesize osc2_detune;
-//@synthesize osc1_freq;
-@synthesize osc2_shape;
-@synthesize osc2_range;
-@synthesize osc2_detune;
-@synthesize lfo_shape;
-@synthesize lfo_freq;
-@synthesize lfo_amount;
-@synthesize lfo_type;
+//@synthesize lfo_shape;
+//@synthesize lfo_freq;
+//@synthesize lfo_amount;
+//@synthesize lfo_type;
 
 @synthesize window = _window;
 
@@ -102,12 +85,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
-    
-    [keyboard_1 setDelegate:self];
-    [keyboard_2 setDelegate:self];
-    [keyboard_3 setDelegate:self];
-    [keyboard_4 setDelegate:self];
-    [keyboard_5 setDelegate:self];
     
     
     
@@ -255,11 +232,10 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [synth setVcfSustainLevel:[vcf_sustain doubleValue]];
     
 }
-//- (IBAction)setVcfRelease:(id)sender
-//{
+- (IBAction)setVcfRelease:(id)sender
+{
 //    [synth setVcfReleaseTimeInMs:[vcf_release intValue]];
-//    
-//}
+}
 - (IBAction)setVcfCutoff:(id)sender
 {
     [synth setVcfCutoffInHz:[vcf_cutoff intValue]];
