@@ -40,6 +40,7 @@
 - (void)start;
 - (int)fillPlaybackBuffer:(short *)buffer :(int)num_samples;
 - (int)size;
+- (int)addSilence:(int)num_samples;
 
 @property (weak) id <LoopDelegate> delegate;
 

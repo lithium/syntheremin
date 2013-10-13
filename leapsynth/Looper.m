@@ -77,19 +77,27 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
 {
     isRecording = NO;
     Loop *loop = [loops lastObject];
+    
     if ([loop size] > longestLoopSize) {
         longestLoopSize = [loop size];
-        longestLoopIndex = [loops count]-1;
-        
-        if (delegateLoop) {
-            [delegateLoop setDelegate:nil];
-        }
-        [loop setDelegate:delegate];
-        delegateLoop = loop;
-
+        [self adjustLoopLengths];
     }
-    
 }
+
+
+- (void)adjustLoopLengths
+{
+    int loopCount = [loops count];
+    for (int i=0; i < loopCount; i++) {
+        Loop *loop = [loops objectAtIndex:i];
+        int loopSize = [loop size];
+        int toFill = (longestLoopSize - loopSize);
+        if (toFill > 0) {
+            [loop addSilence:toFill];
+        }
+    }
+}
+
 
 - (void)playAll
 {
@@ -97,15 +105,13 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
 
     OSStatus status;
 
+    Loop *loop = [loops objectAtIndex:0];
+    [loop setDelegate:delegate];
+
     for (int i=0; i < MIN([loops count], kMaxNumberOfLoops); i++) {
         states[i].self = (__bridge void*)self;
         states[i].loopIndex = i;
         
-        if (i == longestLoopIndex) {
-            Loop *loop = [loops objectAtIndex:i];
-            [loop setDelegate:delegate];
-        }
-
         status = AudioQueueNewOutput(&audioFormat, handle_output_buffer, (void*)&states[i], NULL, NULL, 0, &states[i].queue);
         for (int n=0; n < kNumBuffers; n++) {
             status = AudioQueueAllocateBuffer(states[i].queue, kBufferSize, &(states[i].buffers[n]));

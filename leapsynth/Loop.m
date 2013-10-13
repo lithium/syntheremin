@@ -115,4 +115,11 @@
 -(int)size {
     return size;
 }
+
+- (int)addSilence:(int)num_samples
+{
+    short silence[num_samples];
+    memset(silence, 0, num_samples*sizeof(short));
+    [self writeSamples:silence :num_samples];
+}
 @end
