@@ -6,10 +6,12 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "Synth.h"
 #import "AudioToolbox/AudioQueue.h"
 #import "Looper.h"
-
+#import "NoiseGenerator.h"
+#import "Vcf.h"
+#import "Vca.h"
+#import "Vco.h"
 
 struct CallbackArg {
     void *self;
@@ -24,8 +26,10 @@ struct CallbackArg {
     Vco *oscN[kNumOscillators];
     Vcf *vcf;
     Vca *vca;
+    NoiseGenerator *noise;
     
     Looper *looper;
+    
         
     
     struct CallbackArg callbackArgs;
@@ -33,10 +37,13 @@ struct CallbackArg {
     bool oscEnabled[kNumOscillators];
     bool vcfEnabled;
     bool vcaEnabled;
+    
+    bool noiseEnabled;
 }
 
 @property bool vcfEnabled;
 @property bool vcaEnabled;
+@property bool noiseEnabled;
 @property Vca *vca;
 @property Looper *looper;
 

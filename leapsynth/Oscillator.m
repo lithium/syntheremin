@@ -11,17 +11,14 @@
 @implementation Oscillator
 
 @synthesize waveShape;
-@synthesize level;
 
 
 - (id) init
 {
     if (self) {
+        self = [super init];
         [self setFrequency:0];
-        level = 1.0;
-        
-    }
-    
+    }    
     return self;
 }
 
@@ -68,30 +65,6 @@
     }
     sampleStep = (sampleStep+1) % samplesPerPeriod;
     return value;
-}
-
-
-- (int) getSamples :(short *)samples :(int)numSamples
-{
-    int index=0;
-    for (int i=0; i < numSamples; i++) {
-        double ds = [self getSample]*level * 32767.0;
-        short ss = (short)round(ds);
-        samples[index++] = ss;
-    }
-    return numSamples;
-}
-
-- (int) mixSamples :(short *)samples :(int)numSamples
-{
-    int index=0;
-    for (int i=0; i < numSamples; i++) {
-        double ds = [self getSample]*level * 32767.0;
-        short ss = (short)round(ds);
-        samples[index] = (samples[index] + ss) / 2;
-        index+=1;
-    }
-    return numSamples;
 }
 
 @end

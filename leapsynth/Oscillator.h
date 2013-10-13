@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Defines.h"
+#import "SampleProvider.h"
 
 enum  {
     kWaveSquare=0,
@@ -16,21 +17,16 @@ enum  {
     kWaveTriangle=3,
 };
 
-@interface Oscillator : NSObject {
+@interface Oscillator : SampleProvider {
     int waveShape;
     long samplesPerPeriod;
     long sampleStep;
-    double level;
 }
 
 @property int waveShape;
-@property double level;
 
 - (id) init;
 - (void) setFrequency :(double)freq;
-- (int) getSamples :(short *)samples :(int)numSamples;
-- (int) mixSamples :(short *)samples :(int)numSamples;
-
 - (double) getSample;
 
 @end

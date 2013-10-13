@@ -18,6 +18,8 @@
 		128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 128646CD17A9E99A00CE0420 /* DownUpButton.m */; };
 		1291C76517BB423D0055761E /* SynthAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1291C76417BB423D0055761E /* SynthAnalyzer.m */; };
 		12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE671809CE410019EBC4 /* MidiParser.m */; };
+		12B0FE6B180A19A50019EBC4 /* NoiseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE6A180A19A50019EBC4 /* NoiseGenerator.m */; };
+		12B0FE6E180A1A5A0019EBC4 /* SampleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE6D180A1A5A0019EBC4 /* SampleProvider.m */; };
 		12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */ = {isa = PBXBuildFile; fileRef = 12B235D717C0698D00FA7E5C /* syntheremin.icns */; };
 		12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BB468B17A988E4009D7B5C /* MainMenu.xib */; };
 		12BB468E17A988ED009D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D40317A9883C001323FA /* AppDelegate.m */; };
@@ -70,6 +72,10 @@
 		1291C76417BB423D0055761E /* SynthAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynthAnalyzer.m; sourceTree = "<group>"; };
 		12B0FE661809CE410019EBC4 /* MidiParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiParser.h; sourceTree = "<group>"; };
 		12B0FE671809CE410019EBC4 /* MidiParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidiParser.m; sourceTree = "<group>"; };
+		12B0FE69180A19A50019EBC4 /* NoiseGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoiseGenerator.h; sourceTree = "<group>"; };
+		12B0FE6A180A19A50019EBC4 /* NoiseGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoiseGenerator.m; sourceTree = "<group>"; };
+		12B0FE6C180A1A5A0019EBC4 /* SampleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleProvider.h; sourceTree = "<group>"; };
+		12B0FE6D180A1A5A0019EBC4 /* SampleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleProvider.m; sourceTree = "<group>"; };
 		12B235D717C0698D00FA7E5C /* syntheremin.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = syntheremin.icns; sourceTree = SOURCE_ROOT; };
 		12BB468C17A988E4009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = leapsynth/en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		12BB469217A9890D009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = leapsynth/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
@@ -200,8 +206,12 @@
 		1291C77317BC0C430055761E /* Soft Synth */ = {
 			isa = PBXGroup;
 			children = (
+				12B0FE6C180A1A5A0019EBC4 /* SampleProvider.h */,
+				12B0FE6D180A1A5A0019EBC4 /* SampleProvider.m */,
 				12CDBF6F17A9A5A800C72104 /* Oscillator.h */,
 				12CDBF7017A9A5A800C72104 /* Oscillator.m */,
+				12B0FE69180A19A50019EBC4 /* NoiseGenerator.h */,
+				12B0FE6A180A19A50019EBC4 /* NoiseGenerator.m */,
 				12CDBF7417A9AC3F00C72104 /* Vco.h */,
 				12CDBF7517A9AC3F00C72104 /* Vco.m */,
 				12EFCD2917AAE53C00E84D98 /* Adsr.h */,
@@ -300,6 +310,8 @@
 				12C3940E18087F710035BEFF /* Looper.m in Sources */,
 				12C39411180899E90035BEFF /* Loop.m in Sources */,
 				12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */,
+				12B0FE6B180A19A50019EBC4 /* NoiseGenerator.m in Sources */,
+				12B0FE6E180A1A5A0019EBC4 /* SampleProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 
 @synthesize vcfEnabled;
 @synthesize vcaEnabled;
+@synthesize noiseEnabled;
 @synthesize vca;
 @synthesize looper;
 
@@ -40,6 +41,15 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
             }
         }
     }
+    if (synth->noiseEnabled) {
+        if (foundOsc) {
+           [synth->noise mixSamples:samples :num_samples];
+        } else {
+            [synth->noise getSamples:samples :num_samples];
+        }
+    }
+
+        
     if (synth->vcfEnabled) {
         [synth->vcf modifySamples:samples :num_samples];
     }
@@ -70,6 +80,8 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
         [vcf setCutoffFrequencyInHz:1000];
         [vcf setResonance:0.85];
         [vcf setDepth:2.0];
+        
+        noise = [[NoiseGenerator alloc] init];
 
         for (int i=0; i < kNumOscillators; i++) {
             oscN[i] = [[Vco alloc] init];
