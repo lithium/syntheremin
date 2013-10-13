@@ -11,7 +11,6 @@
 
 @implementation Looper
 @synthesize longestLoopSize;
-@synthesize longestLoopIndex;
 @synthesize delegate;
 
 static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueueBufferRef buffer)
@@ -135,6 +134,16 @@ static void handle_output_buffer(void *userdata, AudioQueueRef queue, AudioQueue
         AudioQueueDispose(states[i].queue, true);
     }
 }
+
+- (void)clearAllLoops
+{
+    [loops removeAllObjects];
+}
+- (void)undoLastLoop
+{
+    [loops removeLastObject];
+}
+
 - (void)recordSamples:(short*)samples :(int)num_samples
 {
     if (!isRecording)

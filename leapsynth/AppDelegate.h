@@ -202,6 +202,8 @@ enum {
 - (IBAction)toggleLooperPlay:(id)sender;
 @property (weak) IBOutlet NSLevelIndicator *looper_level;
 
+- (IBAction)clickLooperUndo:(id)sender;
+- (IBAction)clickLooperClear:(id)sender;
 
 
 @end

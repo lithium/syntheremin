@@ -27,12 +27,14 @@ struct LooperCallbackState {
     BOOL isRecording;
     BOOL isPlaying;
     
-//    int longestLoopIndex;
     int longestLoopSize;
     Loop *delegateLoop;
     
     struct LooperCallbackState states[kMaxNumberOfLoops];
 }
+
+@property int longestLoopSize;
+@property (weak) id <LoopDelegate> delegate;
 
 - (id)init;
 - (void)dealloc;
@@ -41,12 +43,11 @@ struct LooperCallbackState {
 - (void)stopRecording;
 - (void)playAll;
 - (void)stopPlayback;
+- (void)clearAllLoops;
+- (void)undoLastLoop;
 
 - (void)recordSamples:(short*)samples :(int)num_samples;
 - (void)fillPlaybackBuffer:(int)loopIndex :(short*)samples :(int)num_samples;
 
-@property int longestLoopSize;
-@property int longestLoopIndex;
-@property (weak) id <LoopDelegate> delegate;
 
 @end

@@ -666,4 +666,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
+- (IBAction)clickLooperUndo:(id)sender {
+    [[synth looper] undoLastLoop];
+}
+
+- (IBAction)clickLooperClear:(id)sender {
+    [[synth looper] clearAllLoops];
+}
 @end
