@@ -17,6 +17,12 @@
     if (self) {
         self = [super init];
         [self setNoiseType:kNoiseNone];
+        
+        //prep pink noise state
+        pinkKey = 0;
+        for (int i=0; i < kNumWhiteValues; i++) {
+            whiteValues[i] = arc4random_uniform(SHRT_MAX);
+        }
     }    
     return self;
 }
@@ -40,7 +46,24 @@
 
 - (double)getPinkSample
 {
-    return 0;
+    /* Voss algorithm http://www.firstpr.com.au/dsp/pink-noise/#Voss */
+    int lastKey = pinkKey;
+    unsigned int sum;
+    
+    pinkKey++;
+    if (pinkKey > kPinkKeyMax) 
+        pinkKey = 0;
+    
+    int diff = lastKey ^ pinkKey;
+    sum = 0;
+    for (int i=0; i < kNumWhiteValues; i++) {
+        if (diff & (1 << i)) {
+            whiteValues[i] = arc4random_uniform(SHRT_MAX / kNumWhiteValues);
+        }
+        sum += whiteValues[i];
+    }
+    return sum / (double)SHRT_MAX;
+    
 }
 
 

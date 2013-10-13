@@ -15,16 +15,22 @@ enum  {
     kNoisePink=2,
 };
 
+#define kNumWhiteValues 5
+#define kPinkKeyMax 0x1F
 
 @interface NoiseGenerator : SampleProvider
 {
     int noiseType;
+    
+    // pink noise state
+    int pinkKey;
+    short whiteValues[kNumWhiteValues];
 }
 @property int noiseType;
 
 - (id) init;
 
-- (double) getSample;
+- (double)getSample;
 - (double)getPinkSample;
 - (double)getWhiteSample;
 
