@@ -86,12 +86,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     const MIDIPacket *packet = list->packet;
     
     for (int i = 0; i < list->numPackets; i++) {        
-//        NSLog(@"midi %s: %02x", packet->data[0]);
         [self->midiParser feedPacketData:packet->data :packet->length];
-        
         packet = MIDIPacketNext(packet);
     }
-//    NSLog(@"handle_midi_input %@ %@ %@", list, procRef, srcRef);
 }
 
 
