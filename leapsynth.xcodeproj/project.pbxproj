@@ -29,6 +29,10 @@
 		12C3940A1807598B0035BEFF /* AudioQueueSynth.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C394091807598B0035BEFF /* AudioQueueSynth.m */; };
 		12C3940E18087F710035BEFF /* Looper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C3940D18087F710035BEFF /* Looper.m */; };
 		12C39411180899E90035BEFF /* Loop.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C39410180899E90035BEFF /* Loop.m */; };
+		12C4032F180B2CDA00FB384A /* saw.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032B180B2CDA00FB384A /* saw.png */; };
+		12C40330180B2CDA00FB384A /* sine.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032C180B2CDA00FB384A /* sine.png */; };
+		12C40331180B2CDA00FB384A /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032D180B2CDA00FB384A /* square.png */; };
+		12C40332180B2CDA00FB384A /* tri.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032E180B2CDA00FB384A /* tri.png */; };
 		12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Oscillator.m */; };
 		12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7517A9AC3F00C72104 /* Vco.m */; };
 		12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2A17AAE53C00E84D98 /* Adsr.m */; };
@@ -91,6 +95,10 @@
 		12C3940D18087F710035BEFF /* Looper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Looper.m; sourceTree = "<group>"; };
 		12C3940F180899E90035BEFF /* Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loop.h; sourceTree = "<group>"; };
 		12C39410180899E90035BEFF /* Loop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loop.m; sourceTree = "<group>"; };
+		12C4032B180B2CDA00FB384A /* saw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saw.png; sourceTree = "<group>"; };
+		12C4032C180B2CDA00FB384A /* sine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sine.png; sourceTree = "<group>"; };
+		12C4032D180B2CDA00FB384A /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
+		12C4032E180B2CDA00FB384A /* tri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri.png; sourceTree = "<group>"; };
 		12CDBF6F17A9A5A800C72104 /* Oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Oscillator.h; sourceTree = "<group>"; };
 		12CDBF7017A9A5A800C72104 /* Oscillator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Oscillator.m; sourceTree = "<group>"; };
 		12CDBF7317A9A9C100C72104 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -139,6 +147,7 @@
 				127DBD3817A76D16007C68FF /* leapsynth */,
 				127DBD3117A76D16007C68FF /* Frameworks */,
 				127DBD2F17A76D16007C68FF /* Products */,
+				12C4032A180B2CDA00FB384A /* labels */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,6 +237,18 @@
 			name = "Soft Synth";
 			sourceTree = "<group>";
 		};
+		12C4032A180B2CDA00FB384A /* labels */ = {
+			isa = PBXGroup;
+			children = (
+				12C4032B180B2CDA00FB384A /* saw.png */,
+				12C4032C180B2CDA00FB384A /* sine.png */,
+				12C4032D180B2CDA00FB384A /* square.png */,
+				12C4032E180B2CDA00FB384A /* tri.png */,
+			);
+			name = labels;
+			path = img/labels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -284,6 +305,10 @@
 				12BB469B17A98979009D7B5C /* Credits.rtf in Resources */,
 				12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */,
 				12751A3417C1FA0800A57258 /* logo-white.png in Resources */,
+				12C4032F180B2CDA00FB384A /* saw.png in Resources */,
+				12C40330180B2CDA00FB384A /* sine.png in Resources */,
+				12C40331180B2CDA00FB384A /* square.png in Resources */,
+				12C40332180B2CDA00FB384A /* tri.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
