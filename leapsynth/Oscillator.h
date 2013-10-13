@@ -21,12 +21,15 @@ enum  {
     int waveShape;
     long samplesPerPeriod;
     long sampleStep;
+    double currentFrequency;
 }
 
 @property int waveShape;
 
-- (id) init;
-- (void) setFrequency :(double)freq;
-- (double) getSample;
 
+- (void) setFrequencyInHz:(double)frequencyInHz;
+- (double) getFrequencyInHz;
+
+
+- (double) getSample;
 @end

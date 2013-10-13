@@ -11,8 +11,11 @@
 @interface SampleProvider : NSObject 
 {
     double level;
+    
+    id modulator;
 }
 @property double level;
+@property id modulator;
 
 
 - (id) init;
@@ -20,5 +23,6 @@
 - (int) getSamples :(short *)samples :(int)numSamples;
 - (int) mixSamples :(short *)samples :(int)numSamples;
 - (double) getSample;
+- (double) getModulationSample;
 
 @end

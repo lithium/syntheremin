@@ -10,6 +10,7 @@
 
 @implementation SampleProvider
 @synthesize level;
+@synthesize modulator;
 
 - (id) init
 {
@@ -25,6 +26,14 @@
 }
 
 
+- (double) getModulationSample
+{
+    if (modulator && [modulator respondsToSelector:@selector(getSample:)]) {
+        return (double)[modulator getSample];
+    }
+    return 1.0;
+}
+
 - (int) getSamples :(short *)samples :(int)numSamples
 {
     int index=0;
@@ -38,6 +47,7 @@
 
 - (int) mixSamples :(short *)samples :(int)numSamples
 {
+    // average new samples with existing ones to mix
     int index=0;
     for (int i=0; i < numSamples; i++) {
         double ds = [self getSample]*level * (double)SHRT_MAX;

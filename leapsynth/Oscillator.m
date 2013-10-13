@@ -13,22 +13,18 @@
 @synthesize waveShape;
 
 
-- (id) init
+- (void) setFrequencyInHz :(double)frequency
 {
-    if (self) {
-        self = [super init];
-        [self setFrequency:0];
-    }    
-    return self;
-}
-
-- (void) setFrequency :(double)frequency
-{
+    currentFrequency = frequency;
     if (frequency == 0) {
         samplesPerPeriod = 0;
         return;
     }
     samplesPerPeriod = (long)(kSampleRate / frequency);
+}
+- (double) getFrequencyInHz
+{
+    return currentFrequency;
 }
 
 - (double) getSample
