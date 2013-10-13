@@ -72,6 +72,8 @@ enum {
     MidiParser *midiParser;
     int currentNoteNumber;
     
+    int keyboardCurrentOctave;
+    
     bool paramNoteOn;
 }
 
@@ -204,6 +206,10 @@ enum {
 
 - (IBAction)clickLooperUndo:(id)sender;
 - (IBAction)clickLooperClear:(id)sender;
+
+
+@property (weak) IBOutlet NSBox *keyboardBox;
+- (IBAction)clickKeyboardChangeOctave:(id)sender;
 
 
 @end

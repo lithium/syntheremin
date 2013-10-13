@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize keyboardBox;
 @synthesize looper_level;
 @synthesize looper_play;
 @synthesize looper_record;
@@ -158,6 +159,13 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         MIDIObjectGetStringProperty(src, kMIDIPropertyName, &srcName);
         status = MIDIPortConnectSource(midiInput, src, NULL);
     }
+    
+    //set up the delegates for the keyboard buttons
+    for (int i=40; i<=52; i++) {
+        DownUpButton *key = [keyboardBox viewWithTag:i];
+        [key setDelegate:self];
+    }
+    
 }
 - (void)windowWillClose:(NSNotification *)notification
 {
@@ -327,33 +335,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
-- (void)mouseDown:(NSEvent *)evt :(int)tag {
-    double freq=440;
-    switch (tag) {
-        case 100:
-            freq += [cv_1 intValue]; 
-            break;
-        case 101:
-            freq += [cv_2 intValue]; 
-            break;
-        case 102:
-            freq += [cv_3 intValue]; 
-            break;
-        case 103:
-            freq += [cv_4 intValue]; 
-            break;
-        case 104:
-            freq += [cv_5 intValue]; 
-            break;
-    }
-    [synth setFrequencyInHz:freq];
-    
-    [self noteOn];
 
-}
-- (void)mouseUp:(NSEvent *)evt :(int)tag {
-    [self noteOff];
-}
 
 - (double)translateMinMax:(double)pos :(double)min :(double)max
 {
@@ -672,5 +654,19 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (IBAction)clickLooperClear:(id)sender {
     [[synth looper] clearAllLoops];
+}
+
+
+- (IBAction)clickKeyboardChangeOctave:(id)sender {
+    int ofs = [sender tag];
+    keyboardCurrentOctave += ofs;
+}
+
+- (void)mouseDown:(NSEvent *)evt :(int)tag {
+    int noteNumber = tag + (kNotesPerOctave*keyboardCurrentOctave);
+    [self noteOn:noteNumber withVelocity:64 onChannel:0];    
+}
+- (void)mouseUp:(NSEvent *)evt :(int)tag {
+    [self noteOff:currentNoteNumber withVelocity:64 onChannel:0];
 }
 @end
