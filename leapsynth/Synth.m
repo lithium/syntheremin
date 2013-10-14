@@ -39,28 +39,32 @@
         [oscN[0] setFrequencyInHz:440];
         [oscN[1] setWaveShape:kWaveSaw];
         [oscN[1] setFrequencyInHz:220];
-
+        [noise setNoiseType:kNoisePink];
+        [noise setLevel:0.07];
+        
         [vcaN[0] addInput:oscN[0]];
         [vcaN[0] addInput:oscN[1]];
+        [vcaN[0] addInput:noise];
         [vcaN[0] setLevel:0.6];
 
         
+        
+        //loudness countour
         [adsrN[0] setAttackTimeInMs:700];
         [adsrN[0] setDecayTimeInMs:700];
         [adsrN[0] setSustainLevel:0.2];
         [adsrN[0] setReleaseTimeInMs:100];
-        
         [vcaN[0] setModulator:adsrN[0]];
-        //am
+        
+        
+//amplitude modulation
 //        [lfo setWaveShape:kWaveSine];
-//        [lfo setFrequencyInHz:9];
-//        [lfo setLevel:0.4];
+//        [lfo setFrequencyInHz:1];
+//        [lfo setLevel:1];
 //        [vcaN[0] setModulator:lfo];
         
 
 
-//        [vcaN[0] setModulator:lfo];
-//        [vcaN[1] setLevel:0.6];
     }
     
     return self;

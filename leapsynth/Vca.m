@@ -28,9 +28,7 @@
     }
     sample /= [inputs count];
     
-    double mod = [self getModulationSample];
-//    double m = mod ? 1.0 - (mod + 1.0) / 2.0 : 0;
-    return sample*mod;
+    return sample*[self getModulationSample];
 }
 
 - (int)addInput:(SampleProvider*)source
