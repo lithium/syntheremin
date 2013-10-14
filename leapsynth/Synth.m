@@ -29,7 +29,7 @@
         vcf = [[Vcf alloc] init];
         
         for (int i=0; i < kNumMixers; i++) {
-            mixerN[i] = [[Mixer alloc] init];
+            vcaN[i] = [[Vca alloc] init];
         }
 
     }
@@ -42,11 +42,11 @@
     
     BOOL foundOne = NO;
     for (int i=0; i < kNumMixers; i++) {
-        if ([mixerN[i] level] > 0) {
+        if ([vcaN[i] level] > 0) {
             if (foundOne) {
-                [mixerN[i] mixSamples:samples :numSamples];
+                [vcaN[i] mixSamples:samples :numSamples];
             } else {
-                [mixerN[i] getSamples:samples :numSamples];
+                [vcaN[i] getSamples:samples :numSamples];
                 foundOne = YES;
             }
         }

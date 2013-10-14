@@ -15,7 +15,7 @@
 @synthesize looper_record;
 //@synthesize lefthand_tap_popup;
 //@synthesize righthand_tap_popup;
-@synthesize synthAnalyzer;
+//@synthesize synthAnalyzer;
 //@synthesize lefthand_box;
 //@synthesize righthand_box;
 @synthesize noleap_label;
@@ -99,13 +99,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     synth = [[AudioQueueSynth alloc] init];
 
-    for (int i=0; i < kNumOscillators; i++) {
-        [[synth oscN:i] setWaveShape:kWaveSaw];
-        [[synth oscN:i] setModulationType:kModulationTypeNone];
-        [[synth oscN:i] setRange:i];
-    }
-
-    
+//    for (int i=0; i < kNumOscillators; i++) {
+//        [[synth oscN:i] setWaveShape:kWaveSaw];
+//        [[synth oscN:i] setModulationType:kModulationTypeNone];
+//        [[synth oscN:i] setRange:i];
+//    }    
 //    [self setVcaEnvelopeEnabled:NO];
 //    [synth setAnalyzer:synthAnalyzer];
     
@@ -153,24 +151,24 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 
 
-- (IBAction)setVcoShape:(id)sender {
-    int tag = [sender tag];
-    [[synth oscN:tag] setWaveShape:[sender intValue]];
-}
-
-- (IBAction)setVcoRange:(id)sender {
-    int tag = [sender tag];
-    int value = [sender intValue];
-    [[synth oscN:tag] setRange:value];
-}
-
-- (IBAction)setVcoFrequency:(id)sender
-{    
-    int tag = [sender tag];
-    double freq = [sender doubleValue];
-    [[synth oscN:tag] setDetuneInCents:kCentsPerOctave-freq];
-
-}
+//- (IBAction)setVcoShape:(id)sender {
+//    int tag = [sender tag];
+//    [[synth oscN:tag] setWaveShape:[sender intValue]];
+//}
+//
+//- (IBAction)setVcoRange:(id)sender {
+//    int tag = [sender tag];
+//    int value = [sender intValue];
+//    [[synth oscN:tag] setRange:value];
+//}
+//
+//- (IBAction)setVcoFrequency:(id)sender
+//{    
+//    int tag = [sender tag];
+//    double freq = [sender doubleValue];
+//    [[synth oscN:tag] setDetuneInCents:kCentsPerOctave-freq];
+//
+//}
 
 //- (IBAction)setLfoShape:(id)sender {
 //    int shape = [lfo_shape intValue];
@@ -190,76 +188,76 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 //
 //}
 
-- (IBAction)setVcaMaster:(id)sender;
-{
-    [[synth vca] setMasterVolume:[vca_master doubleValue]];
-}
-- (IBAction)setVcaAttack:(id)sender
-{
-    [[synth vca] setAttackTimeInMs:[vca_attack intValue]];
-}
-
-- (IBAction)setVcaDecay:(id)sender
-{
-    [[synth vca] setDecayTimeInMs:[vca_decay intValue]];
-
-}
-
-- (IBAction)setVcaSustain:(id)sender
-{
-    [[synth vca] setSustainLevel:[vca_sustain doubleValue]];
-
-}
-- (IBAction)setVcaRelease:(id)sender
-{
-    [[synth vca] setReleaseTimeInMs:[vca_release intValue]];
-
-}
-
-- (IBAction)setVcfAttack:(id)sender
-{
-    [synth setVcfAttackTimeInMs:[vcf_attack intValue]];
-}
-
-- (IBAction)setVcfDecay:(id)sender
-{
-    [synth setVcfDecayTimeInMs:[vcf_decay intValue]];
-    
-}
-
-- (IBAction)setVcfSustain:(id)sender
-{
-    [synth setVcfSustainLevel:[vcf_sustain doubleValue]];
-    
-}
-- (IBAction)setVcfRelease:(id)sender
-{
-//    [synth setVcfReleaseTimeInMs:[vcf_release intValue]];
-}
-- (IBAction)setVcfCutoff:(id)sender
-{
-    [synth setVcfCutoffInHz:[vcf_cutoff intValue]];
-}
-- (IBAction)setVcfResonance:(id)sender
-{
-    [synth setVcfResonance:[vcf_resonance doubleValue]];
-}
-- (IBAction)setVcfDepth:(id)sender
-{
-    double depth = [vcf_depth doubleValue];
-    [synth setVcfDepth:depth];
-}
-
-- (IBAction)toggleVcfEnable:(id)sender {
-    int state = [vcf_enable state];
-    [self setVcfEnabled:state];
-}
-
-
-- (IBAction)toggleFilterEnvelope:(id)sender {
-    int state = [vcf_envelope_enable state];
-    [self setVcfEnvelopeEnabled:state];
-}
+//- (IBAction)setVcaMaster:(id)sender;
+//{
+//    [[synth vca] setMasterVolume:[vca_master doubleValue]];
+//}
+//- (IBAction)setVcaAttack:(id)sender
+//{
+//    [[synth vca] setAttackTimeInMs:[vca_attack intValue]];
+//}
+//
+//- (IBAction)setVcaDecay:(id)sender
+//{
+//    [[synth vca] setDecayTimeInMs:[vca_decay intValue]];
+//
+//}
+//
+//- (IBAction)setVcaSustain:(id)sender
+//{
+//    [[synth vca] setSustainLevel:[vca_sustain doubleValue]];
+//
+//}
+//- (IBAction)setVcaRelease:(id)sender
+//{
+//    [[synth vca] setReleaseTimeInMs:[vca_release intValue]];
+//
+//}
+//
+//- (IBAction)setVcfAttack:(id)sender
+//{
+//    [synth setVcfAttackTimeInMs:[vcf_attack intValue]];
+//}
+//
+//- (IBAction)setVcfDecay:(id)sender
+//{
+//    [synth setVcfDecayTimeInMs:[vcf_decay intValue]];
+//    
+//}
+//
+//- (IBAction)setVcfSustain:(id)sender
+//{
+//    [synth setVcfSustainLevel:[vcf_sustain doubleValue]];
+//    
+//}
+//- (IBAction)setVcfRelease:(id)sender
+//{
+////    [synth setVcfReleaseTimeInMs:[vcf_release intValue]];
+//}
+//- (IBAction)setVcfCutoff:(id)sender
+//{
+//    [synth setVcfCutoffInHz:[vcf_cutoff intValue]];
+//}
+//- (IBAction)setVcfResonance:(id)sender
+//{
+//    [synth setVcfResonance:[vcf_resonance doubleValue]];
+//}
+//- (IBAction)setVcfDepth:(id)sender
+//{
+//    double depth = [vcf_depth doubleValue];
+//    [synth setVcfDepth:depth];
+//}
+//
+//- (IBAction)toggleVcfEnable:(id)sender {
+//    int state = [vcf_enable state];
+//    [self setVcfEnabled:state];
+//}
+//
+//
+//- (IBAction)toggleFilterEnvelope:(id)sender {
+//    int state = [vcf_envelope_enable state];
+//    [self setVcfEnvelopeEnabled:state];
+//}
 
 //- (IBAction)toggleVcaEnvelope:(id)sender {
 //    int state = [vca_enable state];
@@ -278,38 +276,38 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 //    [vca_sustain setEnabled:enabled];
 //    [vca_release setEnabled:enabled];
 //}
-- (void)setVcfEnvelopeEnabled:(bool)enabled
-{
-    [synth setVcfEnvelopeEnabled:enabled];
-    [vcf_attack setEnabled:enabled];
-    [vcf_decay setEnabled:enabled];
-    [vcf_sustain setEnabled:enabled];
-    [vcf_release setEnabled:enabled];
-    [vcf_depth setEnabled:enabled];
-}
-- (void)setVcfEnabled:(bool)enabled
-{
-    [synth setVcfEnabled:enabled];
-    [vcf_cutoff setEnabled:enabled];
-    [vcf_resonance setEnabled:enabled];
-    [vcf_envelope_enable setEnabled:enabled];
-    [vcf_attack setEnabled:enabled];
-    [vcf_decay setEnabled:enabled];
-    [vcf_sustain setEnabled:enabled];
-    [vcf_release setEnabled:enabled];
-    [vcf_depth setEnabled:enabled];
-}
-
-- (void)setNoteOn:(bool)noteOn
-{
-    if ((bool)noteOn) {
-        [self noteOn];
-    }
-    else {
-        [self noteOff];
-    }
-
-}
+//- (void)setVcfEnvelopeEnabled:(bool)enabled
+//{
+//    [synth setVcfEnvelopeEnabled:enabled];
+//    [vcf_attack setEnabled:enabled];
+//    [vcf_decay setEnabled:enabled];
+//    [vcf_sustain setEnabled:enabled];
+//    [vcf_release setEnabled:enabled];
+//    [vcf_depth setEnabled:enabled];
+//}
+//- (void)setVcfEnabled:(bool)enabled
+//{
+//    [synth setVcfEnabled:enabled];
+//    [vcf_cutoff setEnabled:enabled];
+//    [vcf_resonance setEnabled:enabled];
+//    [vcf_envelope_enable setEnabled:enabled];
+//    [vcf_attack setEnabled:enabled];
+//    [vcf_decay setEnabled:enabled];
+//    [vcf_sustain setEnabled:enabled];
+//    [vcf_release setEnabled:enabled];
+//    [vcf_depth setEnabled:enabled];
+//}
+//
+//- (void)setNoteOn:(bool)noteOn
+//{
+//    if ((bool)noteOn) {
+//        [self noteOn];
+//    }
+//    else {
+//        [self noteOff];
+//    }
+//
+//}
 
 
 
@@ -351,7 +349,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [self applyParameter:inputParams[kInputLeftHandY] :y];
     [self applyParameter:inputParams[kInputLeftHandZ] :z];
     
-    [synthAnalyzer setLeftHand:x :y :z];
+//    [synthAnalyzer setLeftHand:x :y :z];
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
 {
@@ -364,7 +362,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [self applyParameter:inputParams[kInputRightHandY] :y];
     [self applyParameter:inputParams[kInputRightHandZ] :z];
 
-    [synthAnalyzer setRightHand:x :y :z];
+//    [synthAnalyzer setRightHand:x :y :z];
 
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
@@ -539,28 +537,28 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         }
     }
 }
-- (IBAction)setOsc1Volume:(id)sender {
-    [synth setOscVolume:0 :[osc1_volume doubleValue]];
-}
-
-- (IBAction)setOsc2Volume:(id)sender {
-    [synth setOscVolume:1 :[osc2_volume doubleValue]];
-}
-- (IBAction)setOsc3Volume:(id)sender {
-    [synth setOscVolume:2 :[osc3_volume doubleValue]];
-}
-- (IBAction)toggleOsc1Enabled:(id)sender {
-    int state = [osc1_enable state];
-    [synth setOscEnabled:0 :(bool)state];
-}
-- (IBAction)toggleOsc2Enabled:(id)sender {
-    int state = [osc2_enable state];
-    [synth setOscEnabled:1 :state];
-}
-- (IBAction)toggleOsc3Enabled:(id)sender {
-    int state = [osc3_enable state];
-    [synth setOscEnabled:2 :state];
-}
+//- (IBAction)setOsc1Volume:(id)sender {
+//    [synth setOscVolume:0 :[osc1_volume doubleValue]];
+//}
+//
+//- (IBAction)setOsc2Volume:(id)sender {
+//    [synth setOscVolume:1 :[osc2_volume doubleValue]];
+//}
+//- (IBAction)setOsc3Volume:(id)sender {
+//    [synth setOscVolume:2 :[osc3_volume doubleValue]];
+//}
+//- (IBAction)toggleOsc1Enabled:(id)sender {
+//    int state = [osc1_enable state];
+//    [synth setOscEnabled:0 :(bool)state];
+//}
+//- (IBAction)toggleOsc2Enabled:(id)sender {
+//    int state = [osc2_enable state];
+//    [synth setOscEnabled:1 :state];
+//}
+//- (IBAction)toggleOsc3Enabled:(id)sender {
+//    int state = [osc3_enable state];
+//    [synth setOscEnabled:2 :state];
+//}
 
 - (IBAction)toggleLooperRecord:(id)sender {
     int state = [looper_record state];

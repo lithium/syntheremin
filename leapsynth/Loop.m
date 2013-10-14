@@ -121,5 +121,6 @@
     short silence[num_samples];
     memset(silence, 0, num_samples*sizeof(short));
     [self writeSamples:silence :num_samples];
+    return num_samples;
 }
 @end

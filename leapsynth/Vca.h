@@ -7,15 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Adsr.h"
+#import "SampleProvider.h"
 
-@interface Vca : Adsr
-{
-    double masterVolume;
-}
+@interface Vca : SampleProvider
 
-@property double masterVolume;
 
-- (int) modifySamples :(short *)samples :(int)numSamples;
+- (double) getSample;
 
 @end

@@ -152,7 +152,7 @@ enum {
 
 //- (IBAction)setParameter:(id)sender;
 
-@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
+//@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 @property (weak) IBOutlet NSPredicateEditor *patch_predicateeditor;

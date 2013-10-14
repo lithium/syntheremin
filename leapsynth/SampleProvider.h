@@ -20,8 +20,8 @@
 
 - (id) init;
 
-- (int) getSamples :(short *)samples :(int)numSamples;
-- (int) mixSamples :(short *)samples :(int)numSamples;
+- (int) getSamples:(short *)samples :(int)numSamples;
+- (int) mixSamples:(short *)samples :(int)numSamples;
 - (double) getSample;
 - (double) getModulationSample;
 

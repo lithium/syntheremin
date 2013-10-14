@@ -14,9 +14,10 @@
 #import "NoiseGenerator.h"
 #import "Adsr.h"
 #import "SampleProvider.h"
-#import "Mixer.h"
 
 #define kNumMixers 4
+#define kNumOscillators 3
+#define kNumEnvelopes 2
 
 //@protocol AnalyzerDelegate <NSObject>
 //- (void) receiveSamples :(short *)samples :(int)numSamples;
@@ -28,7 +29,7 @@
     NoiseGenerator *noise;
     Vcf *vcf;
     Adsr *adsrN[kNumEnvelopes];
-    Mixer *mixerN[kNumMixers];
+    Vca *vcaN[kNumMixers];
 }
 
 
