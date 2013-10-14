@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Concentric Sky. All rights reserved.
 //
 
-#import "SampleProvider.h"
+#import "Mixer.h"
 
 #define kCutoffMin 20.0
 #define kCutoffMax 8000.0
@@ -15,8 +15,8 @@
 #define kDepthMax 2.0
 
 
-@interface Vcf : SampleProvider {
-    double resonance, depth, cutoff, cutoffFrequencyInHz;
+@interface Vcf : Mixer {
+    double resonance, cutoff, cutoffFrequencyInHz;
 
     double x, r, p, k, y1, y2, y3, y4, oldx, oldy1, oldy2, oldy3;
 }
@@ -26,8 +26,6 @@
 
 - (void)setCutoffFrequencyInHz:(double)cutoff;
 - (void)setResonance:(double)resonance;
-- (void)setDepth:(double)depth;
 
-- (int) getSamples:(short *)samples :(int)numSamples;
-
+- (double)getSample;
 @end
