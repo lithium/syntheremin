@@ -33,6 +33,7 @@
 		12C40330180B2CDA00FB384A /* sine.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032C180B2CDA00FB384A /* sine.png */; };
 		12C40331180B2CDA00FB384A /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032D180B2CDA00FB384A /* square.png */; };
 		12C40332180B2CDA00FB384A /* tri.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032E180B2CDA00FB384A /* tri.png */; };
+		12C4033C180B8A7400FB384A /* Mixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C4033B180B8A7400FB384A /* Mixer.m */; };
 		12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Oscillator.m */; };
 		12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7517A9AC3F00C72104 /* Vco.m */; };
 		12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2A17AAE53C00E84D98 /* Adsr.m */; };
@@ -99,6 +100,8 @@
 		12C4032C180B2CDA00FB384A /* sine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sine.png; sourceTree = "<group>"; };
 		12C4032D180B2CDA00FB384A /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
 		12C4032E180B2CDA00FB384A /* tri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri.png; sourceTree = "<group>"; };
+		12C4033A180B8A7400FB384A /* Mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixer.h; sourceTree = "<group>"; };
+		12C4033B180B8A7400FB384A /* Mixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mixer.m; sourceTree = "<group>"; };
 		12CDBF6F17A9A5A800C72104 /* Oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Oscillator.h; sourceTree = "<group>"; };
 		12CDBF7017A9A5A800C72104 /* Oscillator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Oscillator.m; sourceTree = "<group>"; };
 		12CDBF7317A9A9C100C72104 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 				12EFCD2A17AAE53C00E84D98 /* Adsr.m */,
 				12EFCD2D17AD429F00E84D98 /* Vca.h */,
 				12EFCD2E17AD429F00E84D98 /* Vca.m */,
+				12C4033A180B8A7400FB384A /* Mixer.h */,
+				12C4033B180B8A7400FB384A /* Mixer.m */,
 				12EFCD3317AD493100E84D98 /* Vcf.h */,
 				12EFCD3417AD493100E84D98 /* Vcf.m */,
 				12EFCD3017AD490200E84D98 /* Synth.h */,
@@ -337,6 +342,7 @@
 				12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */,
 				12B0FE6B180A19A50019EBC4 /* NoiseGenerator.m in Sources */,
 				12B0FE6E180A1A5A0019EBC4 /* SampleProvider.m in Sources */,
+				12C4033C180B8A7400FB384A /* Mixer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

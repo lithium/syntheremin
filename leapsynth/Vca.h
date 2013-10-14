@@ -7,18 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SampleProvider.h"
+#import "Mixer.h"
 
-@interface Vca : SampleProvider
-{
-    NSMutableArray *inputs;
-}
-
-- (id)init;
+@interface Vca : Mixer
 
 - (double) getSample;
 
-- (int)addInput:(SampleProvider*)source;
-- (SampleProvider*)inputAtIndex:(int)index;
 
 @end
