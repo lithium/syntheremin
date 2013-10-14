@@ -38,14 +38,29 @@
         //hardcode a patch for debugging
         [oscN[0] setWaveShape:kWaveSaw];
         [oscN[0] setFrequencyInHz:440];
-        
+        [oscN[0] setRange:0];
+    
         [oscN[1] setWaveShape:kWaveSaw];
-        [oscN[1] setFrequencyInHz:220];
+        [oscN[1] setFrequencyInHz:440];
+        [oscN[1] setRange:1];
+        
+        [oscN[2] setWaveShape:kWaveSaw];
+        [oscN[2] setFrequencyInHz:440];
+        [oscN[2] setRange:2];
+
+
+        
+        [lfo setFrequencyInHz:8];
+        [lfo setWaveShape:kWaveSine];
+        [lfo setLevel:0.5];
         
         [vcf addInput:oscN[0]];
         [vcf addInput:oscN[1]];
-        [vcf setCutoffFrequencyInHz:800];
+        [vcf addInput:oscN[2]];
+        [vcf setCutoffFrequencyInHz:1000];
         [vcf setResonance:0.8];
+        
+        [vcf setModulator:lfo];
         
         [vcaN[0] addInput:vcf];
         [vcaN[0] setLevel:0.8];
