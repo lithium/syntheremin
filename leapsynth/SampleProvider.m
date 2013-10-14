@@ -28,7 +28,7 @@
 
 - (double) getModulationSample
 {
-    if (modulator && [modulator respondsToSelector:@selector(getSample:)]) {
+    if (modulator && [modulator respondsToSelector:@selector(getSample)]) {
         return (double)[modulator getSample];
     }
     return 1.0;
@@ -36,11 +36,10 @@
 
 - (int) getSamples :(short *)samples :(int)numSamples
 {
-    int index=0;
     for (int i=0; i < numSamples; i++) {
         double ds = [self getSample]*level * (double)SHRT_MAX; 
         short ss = (short)round(ds);
-        samples[index++] = ss;
+        samples[i] = ss;
     }
     return numSamples;
 }
@@ -48,12 +47,10 @@
 - (int) mixSamples :(short *)samples :(int)numSamples
 {
     // average new samples with existing ones to mix
-    int index=0;
     for (int i=0; i < numSamples; i++) {
         double ds = [self getSample]*level * (double)SHRT_MAX;
         short ss = (short)round(ds);
-        samples[index] = (samples[index] + ss) / 2;
-        index+=1;
+        samples[i] = (samples[i] + ss) / 2;
     }
     return numSamples;
 }

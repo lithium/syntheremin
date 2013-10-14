@@ -10,9 +10,36 @@
 
 @implementation Vca
 
+- (id) init
+{
+    if (self) {
+        self = [super init];
+        inputs = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (double) getSample
 {
-    return [self getModulationSample];
+    //average all inputs
+    double sample = 0;
+    for (id source in inputs) {
+        sample += [source getSample];
+    }
+    sample /= [inputs count];
+    
+    double m = 1.0 - ([self getModulationSample] + 1.0) / 2.0;
+    return sample*m;
+}
+
+- (int)addInput:(SampleProvider*)source
+{
+    [inputs addObject:source];
+    return [inputs indexOfObject:source];
+}
+- (SampleProvider*)inputAtIndex:(int)index
+{
+    return [inputs objectAtIndex:index];
 }
 
 

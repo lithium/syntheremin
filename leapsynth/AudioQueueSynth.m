@@ -41,6 +41,8 @@ static void audioqueue_osc_callback(void *userdata, AudioQueueRef queue_ref, Aud
 - (id) init
 {
     if (self) {
+        self = [super init];
+        
         AudioStreamBasicDescription fmt = {0};
         fmt.mSampleRate = kSampleRate;
         fmt.mFormatID = kAudioFormatLinearPCM;

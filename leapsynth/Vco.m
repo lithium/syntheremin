@@ -10,7 +10,6 @@
 
 @implementation Vco
 
-@synthesize modulationType;
 
 
 - (id)init
@@ -20,7 +19,6 @@
         
         rangeMultiplier = 1.0;
         detuneMultiplier = 1.0;
-        [self setModulationType:kModulationTypeNone];
     }
     return self;
 }
@@ -63,21 +61,18 @@
 
 - (double)getSample
 {
-    double freq = [self getFrequencyInHz];
-    if (modulationType == kModulationTypeFrequency) {
-        freq *= pow(2.0, [self getModulationSample]);
+    double orig = [self getFrequencyInHz];
+    double freq = orig;
+    if ([self->modulator respondsToSelector:@selector(getSample)]) {
+        freq *= pow(2.0, [self->modulator getSample]);
     }
     
     freq *= rangeMultiplier;
     freq /= detuneMultiplier;
     
-    [super setFrequencyInHz:freq];
+    [self setFrequencyInHz:freq];
     double sample = [super getSample];
-    
-    if (modulationType == kModulationTypeAmplitude) {
-        double m = 1.0 - ([self getModulationSample] + 1.0) / 2.0;
-        sample *= m;
-    }
+    [self setFrequencyInHz:orig];
     
     return sample;
 }

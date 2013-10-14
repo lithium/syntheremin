@@ -10,8 +10,15 @@
 #import "SampleProvider.h"
 
 @interface Vca : SampleProvider
+{
+    NSMutableArray *inputs;
+}
 
+- (id)init;
 
 - (double) getSample;
+
+- (int)addInput:(SampleProvider*)source;
+- (SampleProvider*)inputAtIndex:(int)index;
 
 @end

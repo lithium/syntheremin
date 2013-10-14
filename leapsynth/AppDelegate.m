@@ -108,7 +108,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 //    [synth setAnalyzer:synthAnalyzer];
     
     [synth start];
-    
+        
     [[synth looper] setDelegate:self];
         
 

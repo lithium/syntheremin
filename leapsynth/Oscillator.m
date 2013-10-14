@@ -27,6 +27,7 @@
     return currentFrequency;
 }
 
+
 - (double) getSample
 {
     if (samplesPerPeriod == 0)
@@ -60,7 +61,7 @@
             
     }
     sampleStep = (sampleStep+1) % samplesPerPeriod;
-    return value;
+    return value*[self level];
 }
 
 @end

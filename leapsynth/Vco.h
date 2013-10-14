@@ -15,20 +15,12 @@ enum {
     kCentsDetuneMax = kCentsPerOctave,
 };
 
-enum {
-    kModulationTypeNone=0,
-    kModulationTypeAmplitude,
-    kModulationTypeFrequency,
-};
-
 @interface Vco : Oscillator {
-    int modulationType;
     double rangeMultiplier;
     double detuneMultiplier;
     
 }
 
-@property int modulationType;
 
 
 - (id)init;
