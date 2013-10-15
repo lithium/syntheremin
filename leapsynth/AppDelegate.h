@@ -15,6 +15,7 @@
 #import "AudioQueueSynth.h"
 #import "Looper.h"
 #import "MidiParser.h"
+#import "SynthAnalyzer.h"
 
 enum {
     kParameterNone=0,
@@ -56,7 +57,7 @@ enum {
 #define kNoteThreshold 0.90
 
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate, LeapSynthereminDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate, DownUpButtonDelegate, LeapSynthereminDelegate, AnalyzerDelegate, LoopDelegate> {
     AudioQueueSynth *synth;
 //    AudioQueueRef mAudioQueue;
 //    AudioQueueBufferRef mQueueBuffers[kNumBuffers];
@@ -152,7 +153,7 @@ enum {
 
 //- (IBAction)setParameter:(id)sender;
 
-//@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
+@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 @property (weak) IBOutlet NSPredicateEditor *patch_predicateeditor;

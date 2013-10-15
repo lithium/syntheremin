@@ -15,7 +15,7 @@
 @synthesize looper_record;
 //@synthesize lefthand_tap_popup;
 //@synthesize righthand_tap_popup;
-//@synthesize synthAnalyzer;
+@synthesize synthAnalyzer;
 //@synthesize lefthand_box;
 //@synthesize righthand_box;
 @synthesize noleap_label;
@@ -70,7 +70,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     const MIDIPacket *packet = list->packet;
     
     for (int i = 0; i < list->numPackets; i++) {        
-        [self->midiParser feedPacketData:packet->data :packet->length];
+        [self->midiParser feedPacketData:(UInt8*)packet->data :packet->length];
         packet = MIDIPacketNext(packet);
     }
 }
@@ -98,15 +98,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
     
     synth = [[AudioQueueSynth alloc] init];
-
-//    for (int i=0; i < kNumOscillators; i++) {
-//        [[synth oscN:i] setWaveShape:kWaveSaw];
-//        [[synth oscN:i] setModulationType:kModulationTypeNone];
-//        [[synth oscN:i] setRange:i];
-//    }    
-//    [self setVcaEnvelopeEnabled:NO];
-//    [synth setAnalyzer:synthAnalyzer];
-    
+    [synth setDelegate:synthAnalyzer];
     [synth start];
         
     [[synth looper] setDelegate:self];
@@ -349,7 +341,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [self applyParameter:inputParams[kInputLeftHandY] :y];
     [self applyParameter:inputParams[kInputLeftHandZ] :z];
     
-//    [synthAnalyzer setLeftHand:x :y :z];
+    [synthAnalyzer setLeftHand:x :y :z];
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
 {
@@ -362,7 +354,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [self applyParameter:inputParams[kInputRightHandY] :y];
     [self applyParameter:inputParams[kInputRightHandZ] :z];
 
-//    [synthAnalyzer setRightHand:x :y :z];
+    [synthAnalyzer setRightHand:x :y :z];
 
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture

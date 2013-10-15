@@ -9,7 +9,7 @@
 #import "Synth.h"
 
 @implementation Synth
-
+@synthesize delegate;
 
 - (id)init
 {
@@ -83,7 +83,8 @@
 
 - (int) getSamples :(short *)samples :(int)numSamples
 {
-    
+@autoreleasepool {
+        
     BOOL foundOne = NO;
     for (int i=0; i < kNumMixers; i++) {
         if ([vcaN[i] level] > 0) {
@@ -95,7 +96,12 @@
             }
         }
     }
+    if (delegate && [delegate respondsToSelector:@selector(receiveSamples::)]) {
+        [delegate receiveSamples:samples :numSamples];
+    }
     return numSamples;
+    
+}
 }
 
 - (void)noteOn
