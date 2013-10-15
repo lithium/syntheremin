@@ -11,28 +11,24 @@
 
 @implementation Vcf
 
-@synthesize envelopeEnabled;
-
 - (id)init
 {
-    envelopeEnabled = true;
+    if (self) {
+        self = [super init];
+    }
     return self;
 }
-- (void)setCutoffFrequencyInHz:(double)cutoff
+- (void)setCutoffFrequencyInHz:(double)cutoffInHz
 {
-    cutoffFrequencyInHz  = MAX(MIN(cutoff, kCutoffMax), kCutoffMin);
-    self->cutoff = cutoffFrequencyInHz;
+    cutoffFrequencyInHz  = MAX(MIN(cutoffInHz, kCutoffMax), kCutoffMin);
+    cutoff = cutoffFrequencyInHz;
 
     [self recalculate];
 }
-- (void)setResonance:(double)resonance
+- (void)setResonance:(double)value
 {
-    self->resonance = resonance;
+    resonance = value;
     [self recalculate];
-}
-- (void)setDepth:(double)depth
-{
-    self->depth = MAX(MIN(depth, kDepthMax), kDepthMin);
 }
 
 
@@ -45,7 +41,6 @@
     double t = (1.0 - p) * 1.386249;
     double t2 = 12.0 + t * t;
     r = resonance * (t2 + 6.0 * t) / (t2 - 6.0 * t);
-    
 }
 
 - (short)processSample:(short)input
@@ -64,23 +59,19 @@
     
     oldx = x; oldy1 = y1; oldy2 = y2; oldy3 = y3;
     return (short) (y4 * SHRT_MAX);
-
 }
 
-- (int) modifySamples :(short *)samples :(int)numSamples
+- (double)getSample
 {
-    int i;
-    for (i=0; i < numSamples; i++) {
-        double value = [self getValue];
-        cutoff = cutoffFrequencyInHz;
-        if (envelopeEnabled) {
-            cutoff *= pow(2.0, depth*value);
-        }
-        [self recalculate];
-        samples[i] = [self processSample:samples[i]];
-    }
-    return numSamples;
-
+    double ds = [self sampleAllInputs];
+    short sample = (short)(ds * SHRT_MAX);
+    cutoff = cutoffFrequencyInHz;
+    if (modulator) {
+        cutoff *= pow(2.0, [self getModulationSample]);
+    }    
+    [self recalculate];
+    short newSample = [self processSample:sample];
+    return ((double)newSample / SHRT_MAX);
 }
 
 @end

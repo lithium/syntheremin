@@ -13,6 +13,8 @@
 #import "DownUpButton.h"
 #import "LeapSyntheremin.h"
 #import "AudioQueueSynth.h"
+#import "Looper.h"
+#import "MidiParser.h"
 
 enum {
     kParameterNone=0,
@@ -65,52 +67,36 @@ enum {
     NSArray *kInputTypeArray;
     int inputParams[kInputEnumSize];
     
+    MIDIClientRef midiClient;
+    MIDIPortRef midiInput;
+    MidiParser *midiParser;
+    int currentNoteNumber;
+    
+    int keyboardCurrentOctave;
+    
     bool paramNoteOn;
 }
 
 @property (assign) IBOutlet NSWindow *window;
-@property (weak) IBOutlet NSDrawer *drawer;
 
 
-//OSC1
+
+
 - (IBAction)setVcoShape:(id)sender;
 - (IBAction)setVcoRange:(id)sender;
-- (IBAction)setVcoDetune:(id)sender;
-@property (weak) IBOutlet NSSlider *osc1_shape;
-@property (weak) IBOutlet NSSlider *osc1_range;
-@property (weak) IBOutlet NSSlider *osc1_detune;
-@property (weak) IBOutlet NSSlider *osc1_freq;
 - (IBAction)setVcoFrequency:(id)sender;
 
-//OSC2
-- (IBAction)setVco2Shape:(id)sender;
-- (IBAction)setVco2Range:(id)sender;
-@property (weak) IBOutlet NSSlider *osc2_shape;
-@property (weak) IBOutlet NSSlider *osc2_range;
-@property (weak) IBOutlet NSSlider *osc2_freq;
-- (IBAction)setVco2Frequency:(id)sender;
 
 
 //LFO
-- (IBAction)setLfoAmount:(id)sender;
-- (IBAction)setLfoType:(id)sender;
-- (IBAction)setLfoShape:(id)sender;
-- (IBAction)setLfoFrequency:(id)sender;
-@property (weak) IBOutlet NSSlider *lfo_shape;
-@property (weak) IBOutlet NSSlider *lfo_freq;
-@property (weak) IBOutlet NSSlider *lfo_amount;
-@property (weak) IBOutlet NSSlider *lfo_type;
-
-@property (weak) IBOutlet DownUpButton *keyboard_1;
-@property (weak) IBOutlet DownUpButton *keyboard_2;
-@property (weak) IBOutlet DownUpButton *keyboard_3;
-@property (weak) IBOutlet DownUpButton *keyboard_4;
-@property (weak) IBOutlet DownUpButton *keyboard_5;
-@property (weak) IBOutlet NSSlider *cv_1;
-@property (weak) IBOutlet NSSlider *cv_2;
-@property (weak) IBOutlet NSSlider *cv_3;
-@property (weak) IBOutlet NSSlider *cv_4;
-@property (weak) IBOutlet NSSlider *cv_5;
+//- (IBAction)setLfoAmount:(id)sender;
+//- (IBAction)setLfoType:(id)sender;
+//- (IBAction)setLfoShape:(id)sender;
+//- (IBAction)setLfoFrequency:(id)sender;
+//@property (weak) IBOutlet NSSlider *lfo_shape;
+//@property (weak) IBOutlet NSSlider *lfo_freq;
+//@property (weak) IBOutlet NSSlider *lfo_amount;
+//@property (weak) IBOutlet NSSlider *lfo_type;
 
 - (void)mouseDown:(NSEvent *)evt :(int)tag;
 - (void)mouseUp:(NSEvent *)evt :(int)tag;
@@ -125,12 +111,23 @@ enum {
 - (IBAction)setVcaDecay:(id)sender;
 - (IBAction)setVcaSustain:(id)sender;
 - (IBAction)setVcaRelease:(id)sender;
+
 @property (weak) IBOutlet NSSlider *vca_master;
 - (IBAction)setVcaMaster:(id)sender;
-@property (weak) IBOutlet NSButton *vca_enable;
-- (IBAction)toggleVcaEnvelope:(id)sender;
-@property (weak) IBOutlet NSButton *vca_note;
-- (IBAction)toggleVcaNote:(id)sender;
+
+@property (weak) IBOutlet NSSlider *osc1_volume;
+@property (weak) IBOutlet NSSlider *osc2_volume;
+@property (weak) IBOutlet NSSlider *osc3_volume;
+@property (weak) IBOutlet NSButton *osc1_enable;
+@property (weak) IBOutlet NSButton *osc2_enable;
+@property (weak) IBOutlet NSButton *osc3_enable;
+- (IBAction)setOsc1Volume:(id)sender;
+- (IBAction)setOsc2Volume:(id)sender;
+- (IBAction)setOsc3Volume:(id)sender;
+- (IBAction)toggleOsc1Enabled:(id)sender;
+- (IBAction)toggleOsc2Enabled:(id)sender;
+- (IBAction)toggleOsc3Enabled:(id)sender;
+
 
 //VCF
 @property (weak) IBOutlet NSSlider *vcf_attack;
@@ -152,30 +149,28 @@ enum {
 @property (weak) IBOutlet NSButton *vcf_enable;
 - (IBAction)toggleVcfEnable:(id)sender;
 
-- (IBAction)toggleOsc2:(id)sender;
-@property (weak) IBOutlet NSButton *osc2_enable;
 
-@property (weak) IBOutlet NSLevelIndicator *lefthand_x;
-@property (weak) IBOutlet NSLevelIndicator *lefthand_y;
-@property (weak) IBOutlet NSLevelIndicator *lefthand_z;
-@property (weak) IBOutlet NSLevelIndicator *righthand_x;
-@property (weak) IBOutlet NSLevelIndicator *righthand_y;
-@property (weak) IBOutlet NSLevelIndicator *righthand_z;
-@property (weak) IBOutlet NSPopUpButton *lefthand_x_popup;
-@property (weak) IBOutlet NSPopUpButton *lefthand_y_popup;
-@property (weak) IBOutlet NSPopUpButton *lefthand_z_popup;
-@property (weak) IBOutlet NSPopUpButton *righthand_x_popup;
-@property (weak) IBOutlet NSPopUpButton *righthand_y_popup;
-@property (weak) IBOutlet NSPopUpButton *righthand_z_popup;
-- (IBAction)setParameter:(id)sender;
-@property (weak) IBOutlet NSPopUpButton *lefthand_tap_popup;
-@property (weak) IBOutlet NSPopUpButton *righthand_tap_popup;
+//- (IBAction)setParameter:(id)sender;
 
-@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
-@property (weak) IBOutlet NSBox *lefthand_box;
-@property (weak) IBOutlet NSBox *righthand_box;
+//@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 @property (weak) IBOutlet NSPredicateEditor *patch_predicateeditor;
 - (IBAction)changePredicate:(id)sender;
+
+
+@property (weak) IBOutlet NSButton *looper_record;
+- (IBAction)toggleLooperRecord:(id)sender;
+@property (weak) IBOutlet NSButton *looper_play;
+- (IBAction)toggleLooperPlay:(id)sender;
+@property (weak) IBOutlet NSLevelIndicator *looper_level;
+
+- (IBAction)clickLooperUndo:(id)sender;
+- (IBAction)clickLooperClear:(id)sender;
+
+
+@property (weak) IBOutlet NSBox *keyboardBox;
+- (IBAction)clickKeyboardChangeOctave:(id)sender;
+
+
 @end

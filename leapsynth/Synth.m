@@ -10,76 +10,74 @@
 
 @implementation Synth
 
-@synthesize osc1;
-@synthesize osc2;
-@synthesize vca;
-@synthesize vcf;
-@synthesize vcfEnabled;
-@synthesize vcaEnabled;
-@synthesize osc2Enabled;
-@synthesize analyzer;
 
 - (id)init
 {
+
+    if (self) {
+        self = [super init];
     
-    
-    
-    
-    
-    osc1 = [[Vco alloc] init];
-    [osc1 setWaveShape:kWaveSquare];
-    [osc1 setFrequency:440];
-    
-    osc2 = [[Vco alloc] init];
-    [osc2 setWaveShape:kWaveSquare];
-    [osc2 setFrequency:440];
+        for (int i=0; i < kNumOscillators; i++) {
+            oscN[i] = [[Vco alloc] init];
+        }
+        for (int i=0; i < kNumEnvelopes; i++) {
+            adsrN[i] = [[Adsr alloc] init];
+        }
+
+        lfo = [[Oscillator alloc] init];
+        noise = [[NoiseGenerator alloc] init];
+        vcf = [[Vcf alloc] init];
+        
+        for (int i=0; i < kNumMixers; i++) {
+            vcaN[i] = [[Vca alloc] init];
+            [vcaN[i] setLevel:0];
+        }
+
+        
+        
+        //hardcode a patch for debugging
+        [oscN[0] setWaveShape:kWaveSaw];
+        [oscN[0] setFrequencyInHz:440];
+        
+        [oscN[1] setWaveShape:kWaveSaw];
+        [oscN[1] setFrequencyInHz:220];
+        
+        [vcf addInput:oscN[0]];
+        [vcf addInput:oscN[1]];
+        [vcf setCutoffFrequencyInHz:800];
+        [vcf setResonance:0.8];
+        
+        [vcaN[0] addInput:vcf];
+        [vcaN[0] setLevel:0.8];
+
+        
+        [adsrN[0] setAttackTimeInMs:0];
+        [adsrN[0] setDecayTimeInMs:0];
+        [adsrN[0] setSustainLevel:1.0];
+        [adsrN[0] setReleaseTimeInMs:0];
+        [vcaN[0] setModulator:adsrN[0]];
+        
+        
+        
 
 
-    vca = [[Vca alloc] init];
-    [vca setAttackTimeInMs:600];
-    [vca setDecayTimeInMs:200];
-    [vca setSustainLevel:0.2];
-    [vca setReleaseTimeInMs:1000];
-    
-    vcf = [[Vcf alloc] init];
-    [vcf  setCutoffFrequencyInHz:1000];
-    [vcf setResonance:0.85];
-    [vcf setDepth:2.0];
-    
-    vcf2 = [[Vcf alloc] init];
-    [vcf2  setCutoffFrequencyInHz:1000];
-    [vcf2 setResonance:0.85];
-    [vcf2 setDepth:2.0];
-
-    
-    
-    vcaEnabled = true;
-    vcfEnabled = true;
-    [vca setEnvelopeEnabled:false];
-    [vcf setEnvelopeEnabled:false];
-
+    }
     
     return self;
 }
 
 - (int) getSamples :(short *)samples :(int)numSamples
 {
-    [osc1 getSamples:samples :numSamples];
     
-    if (osc2Enabled) {
-        [osc2 mixSamples:samples :numSamples];
-    }
-    
-    if (vcfEnabled) {
-        [vcf modifySamples:samples :numSamples];
-    }
-    if (vcaEnabled) {
-        [vca modifySamples:samples :numSamples];
-    }
-    
-    @autoreleasepool {
-        if (analyzer) {
-            [analyzer receiveSamples:samples :numSamples];
+    BOOL foundOne = NO;
+    for (int i=0; i < kNumMixers; i++) {
+        if ([vcaN[i] level] > 0) {
+            if (foundOne) {
+                [vcaN[i] mixSamples:samples :numSamples];
+            } else {
+                [vcaN[i] getSamples:samples :numSamples];
+                foundOne = YES;
+            }
         }
     }
     return numSamples;
@@ -87,14 +85,23 @@
 
 - (void)noteOn
 {
-    [vca noteOn];
-    [vcf noteOn];
+    for (int i=0; i < kNumEnvelopes; i++) {
+        [adsrN[i] noteOn];
+    }
 }
 
 - (void)noteOff
 {
-    [vca noteOff];
-    [vcf noteOff];
+    for (int i=0; i < kNumEnvelopes; i++) {
+        [adsrN[i] noteOff];
+    }
+}
+
+- (void)setFrequencyInHz:(double)freqInHz
+{
+    for (int i=0; i < kNumOscillators; i++) {
+        [oscN[i] setFrequencyInHz:freqInHz];
+    }
 }
 
 @end

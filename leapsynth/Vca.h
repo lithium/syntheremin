@@ -7,17 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Adsr.h"
+#import "Mixer.h"
 
-@interface Vca : Adsr
-{
-    double masterVolume;
-    bool envelopeEnabled;
-}
+@interface Vca : Mixer
 
-@property bool envelopeEnabled;
-@property double masterVolume;
+- (double) getSample;
 
-- (int) modifySamples :(short *)samples :(int)numSamples;
 
 @end

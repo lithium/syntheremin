@@ -10,37 +10,32 @@
 #import "Vco.h"
 #import "Vca.h"
 #import "Vcf.h"
-#import "SynthAnalyzer.h"
+//#import "SynthAnalyzer.h"
+#import "NoiseGenerator.h"
+#import "Adsr.h"
+#import "SampleProvider.h"
 
-@protocol AnalyzerDelegate <NSObject>
-- (void) receiveSamples :(short *)samples :(int)numSamples;
-@end
+#define kNumMixers 4
+#define kNumOscillators 3
+#define kNumEnvelopes 2
 
-@interface Synth : NSObject {
-    Vco *osc1;
-    Vco *osc2;
-    Vca *vca;
+//@protocol AnalyzerDelegate <NSObject>
+//- (void) receiveSamples :(short *)samples :(int)numSamples;
+//@end
+
+@interface Synth : SampleProvider {
+    Vco *oscN[kNumOscillators];
+    Oscillator *lfo;
+    NoiseGenerator *noise;
     Vcf *vcf;
-    Vcf *vcf2;
-    
-    bool vcfEnabled;
-    bool vcaEnabled;
-    bool osc2Enabled;
+    Adsr *adsrN[kNumEnvelopes];
+    Vca *vcaN[kNumMixers];
 }
-
-@property Vco *osc1;
-@property Vco *osc2;
-@property Vca *vca;
-@property Vcf *vcf;
-@property Vcf *vcf2;
-@property bool vcfEnabled;
-@property bool vcaEnabled;
-@property bool osc2Enabled;
-@property (weak) id <AnalyzerDelegate> analyzer;
 
 
 - (id)init;
 - (int) getSamples :(short *)samples :(int)numSamples;
+- (void)setFrequencyInHz:(double)freqInHz;
 
 
 - (void)noteOn;

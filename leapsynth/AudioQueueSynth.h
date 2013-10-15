@@ -6,22 +6,29 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "Synth.h"
 #import "AudioToolbox/AudioQueue.h"
+#import "Looper.h"
+#import "Synth.h"
 
+struct CallbackArg {
+    void *self;
+};
 
 @interface AudioQueueSynth : Synth
 {
-    AudioQueueRef queueOsc1,queueOsc2;
-    AudioQueueBufferRef buffersOsc1[kNumBuffers], buffersOsc2[kNumBuffers];
-    
+    AudioQueueRef queueOsc;
+    AudioQueueBufferRef buffersOsc[kNumBuffers];
+    struct CallbackArg callbackArgs;
+
+    Looper *looper;
 }
-    
+
+@property Looper *looper;
+
+
 - (void)start;
 - (void)stop;
 - (void)noteOn;
-- (void)noteOff;
-- (void)primeBuffers;
 
 @end
 

@@ -10,17 +10,16 @@
 
 @implementation Vco
 
-@synthesize modulationType;
-@synthesize modulationAmount;
 
 
 - (id)init
 {
-    lfo = [[Oscillator alloc] init];
-    rangeMultiplier = 1.0;
-    detuneMultiplier = 1.0;
-    modulationAmount = 0.0;
-    modulationType = kModulationTypeNone;
+    if (self) {
+        self = [super init];
+        
+        rangeMultiplier = 1.0;
+        detuneMultiplier = 1.0;
+    }
     return self;
 }
 
@@ -47,11 +46,6 @@
     }
 }
 
-- (void)setFrequency :(double)frequencyInHz
-{
-    frequency = frequencyInHz;
-}
-
 - (void)setDetuneInCents :(int)cents
 {
     if (cents == 0)
@@ -64,36 +58,21 @@
     detuneMultiplier = pow(2.0, (double)((double)cents / kCentsPerOctave));
 }
 
-- (void)setLfoWaveshape :(int)shape
-{
-    [lfo setWaveShape :shape];
-
-}
-
-- (void)setLfoFrequency :(double)frequencyInHz
-{
-    [lfo setFrequency :frequencyInHz];
-}
 
 - (double)getSample
 {
-    double freq = frequency;
-    if (modulationType == kModulationTypeFrequency) {
-        double lfoSample = [lfo getSample] * modulationAmount;
-        freq *= pow(2.0, lfoSample);
+    double orig = [self getFrequencyInHz];
+    double freq = orig;
+    if ([self->modulator respondsToSelector:@selector(getSample)]) {
+        freq *= pow(2.0, [self->modulator getSample]);
     }
     
     freq *= rangeMultiplier;
     freq /= detuneMultiplier;
     
-    [super setFrequency:freq];
+    [self setFrequencyInHz:freq];
     double sample = [super getSample];
-    
-    if (modulationType == kModulationTypeAmplitude) {
-        double lfoOffset = ([lfo getSample] + 1.0) / 2.0;
-        double m = 1.0 - (modulationAmount * lfoOffset);
-        sample *= m;
-    }
+    [self setFrequencyInHz:orig];
     
     return sample;
 }

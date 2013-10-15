@@ -12,10 +12,14 @@
 		126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */; };
 		126C4D6E17B2B42F00598323 /* LeapObjectiveC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */; };
 		12751A3417C1FA0800A57258 /* logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 12751A3317C1FA0800A57258 /* logo-white.png */; };
+		12759AC418092CE400EA2D1A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12759AC318092CE400EA2D1A /* CoreMIDI.framework */; };
 		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
 		128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 128646CD17A9E99A00CE0420 /* DownUpButton.m */; };
 		1291C76517BB423D0055761E /* SynthAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1291C76417BB423D0055761E /* SynthAnalyzer.m */; };
+		12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE671809CE410019EBC4 /* MidiParser.m */; };
+		12B0FE6B180A19A50019EBC4 /* NoiseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE6A180A19A50019EBC4 /* NoiseGenerator.m */; };
+		12B0FE6E180A1A5A0019EBC4 /* SampleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE6D180A1A5A0019EBC4 /* SampleProvider.m */; };
 		12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */ = {isa = PBXBuildFile; fileRef = 12B235D717C0698D00FA7E5C /* syntheremin.icns */; };
 		12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12BB468B17A988E4009D7B5C /* MainMenu.xib */; };
 		12BB468E17A988ED009D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C0D40317A9883C001323FA /* AppDelegate.m */; };
@@ -23,6 +27,13 @@
 		12BB469517A98944009D7B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BB469417A98944009D7B5C /* main.m */; };
 		12BB469B17A98979009D7B5C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 12BB469917A98979009D7B5C /* Credits.rtf */; };
 		12C3940A1807598B0035BEFF /* AudioQueueSynth.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C394091807598B0035BEFF /* AudioQueueSynth.m */; };
+		12C3940E18087F710035BEFF /* Looper.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C3940D18087F710035BEFF /* Looper.m */; };
+		12C39411180899E90035BEFF /* Loop.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C39410180899E90035BEFF /* Loop.m */; };
+		12C4032F180B2CDA00FB384A /* saw.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032B180B2CDA00FB384A /* saw.png */; };
+		12C40330180B2CDA00FB384A /* sine.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032C180B2CDA00FB384A /* sine.png */; };
+		12C40331180B2CDA00FB384A /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032D180B2CDA00FB384A /* square.png */; };
+		12C40332180B2CDA00FB384A /* tri.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032E180B2CDA00FB384A /* tri.png */; };
+		12C4033C180B8A7400FB384A /* Mixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C4033B180B8A7400FB384A /* Mixer.m */; };
 		12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Oscillator.m */; };
 		12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7517A9AC3F00C72104 /* Vco.m */; };
 		12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2A17AAE53C00E84D98 /* Adsr.m */; };
@@ -53,6 +64,7 @@
 		126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapSyntheremin.h; sourceTree = "<group>"; };
 		126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapSyntheremin.m; sourceTree = "<group>"; };
 		12751A3317C1FA0800A57258 /* logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-white.png"; path = "img/logo-white.png"; sourceTree = SOURCE_ROOT; };
+		12759AC318092CE400EA2D1A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		127DBD2E17A76D16007C68FF /* Syntheremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syntheremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -63,6 +75,12 @@
 		128646CD17A9E99A00CE0420 /* DownUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownUpButton.m; sourceTree = "<group>"; };
 		1291C76317BB423D0055761E /* SynthAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthAnalyzer.h; sourceTree = "<group>"; };
 		1291C76417BB423D0055761E /* SynthAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynthAnalyzer.m; sourceTree = "<group>"; };
+		12B0FE661809CE410019EBC4 /* MidiParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiParser.h; sourceTree = "<group>"; };
+		12B0FE671809CE410019EBC4 /* MidiParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidiParser.m; sourceTree = "<group>"; };
+		12B0FE69180A19A50019EBC4 /* NoiseGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoiseGenerator.h; sourceTree = "<group>"; };
+		12B0FE6A180A19A50019EBC4 /* NoiseGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoiseGenerator.m; sourceTree = "<group>"; };
+		12B0FE6C180A1A5A0019EBC4 /* SampleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleProvider.h; sourceTree = "<group>"; };
+		12B0FE6D180A1A5A0019EBC4 /* SampleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleProvider.m; sourceTree = "<group>"; };
 		12B235D717C0698D00FA7E5C /* syntheremin.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = syntheremin.icns; sourceTree = SOURCE_ROOT; };
 		12BB468C17A988E4009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = leapsynth/en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		12BB469217A9890D009D7B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = leapsynth/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
@@ -74,6 +92,16 @@
 		12C0D40317A9883C001323FA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = leapsynth/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		12C394081807598B0035BEFF /* AudioQueueSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueSynth.h; sourceTree = "<group>"; };
 		12C394091807598B0035BEFF /* AudioQueueSynth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioQueueSynth.m; sourceTree = "<group>"; };
+		12C3940C18087F700035BEFF /* Looper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Looper.h; sourceTree = "<group>"; };
+		12C3940D18087F710035BEFF /* Looper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Looper.m; sourceTree = "<group>"; };
+		12C3940F180899E90035BEFF /* Loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loop.h; sourceTree = "<group>"; };
+		12C39410180899E90035BEFF /* Loop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loop.m; sourceTree = "<group>"; };
+		12C4032B180B2CDA00FB384A /* saw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saw.png; sourceTree = "<group>"; };
+		12C4032C180B2CDA00FB384A /* sine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sine.png; sourceTree = "<group>"; };
+		12C4032D180B2CDA00FB384A /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
+		12C4032E180B2CDA00FB384A /* tri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri.png; sourceTree = "<group>"; };
+		12C4033A180B8A7400FB384A /* Mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixer.h; sourceTree = "<group>"; };
+		12C4033B180B8A7400FB384A /* Mixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mixer.m; sourceTree = "<group>"; };
 		12CDBF6F17A9A5A800C72104 /* Oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Oscillator.h; sourceTree = "<group>"; };
 		12CDBF7017A9A5A800C72104 /* Oscillator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Oscillator.m; sourceTree = "<group>"; };
 		12CDBF7317A9A9C100C72104 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -94,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12759AC418092CE400EA2D1A /* CoreMIDI.framework in Frameworks */,
 				126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */,
 				127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */,
 				127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */,
@@ -119,9 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				127DBD3817A76D16007C68FF /* leapsynth */,
-				126C4D6417B29FA900598323 /* LeapSDK */,
 				127DBD3117A76D16007C68FF /* Frameworks */,
 				127DBD2F17A76D16007C68FF /* Products */,
+				12C4032A180B2CDA00FB384A /* labels */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,36 +165,38 @@
 		127DBD3117A76D16007C68FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				127DBD3217A76D16007C68FF /* Cocoa.framework */,
-				127DBD3417A76D16007C68FF /* Other Frameworks */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		127DBD3417A76D16007C68FF /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
+				126C4D6417B29FA900598323 /* LeapSDK */,
 				127DBD4F17A81437007C68FF /* AudioToolbox.framework */,
 				127DBD3517A76D16007C68FF /* AppKit.framework */,
 				127DBD3617A76D16007C68FF /* CoreData.framework */,
 				127DBD3717A76D16007C68FF /* Foundation.framework */,
+				12759AC318092CE400EA2D1A /* CoreMIDI.framework */,
+				127DBD3217A76D16007C68FF /* Cocoa.framework */,
 			);
-			name = "Other Frameworks";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		127DBD3817A76D16007C68FF /* leapsynth */ = {
 			isa = PBXGroup;
 			children = (
+				127DBD3917A76D16007C68FF /* Supporting Files */,
 				12BB468B17A988E4009D7B5C /* MainMenu.xib */,
 				1291C77317BC0C430055761E /* Soft Synth */,
-				12CDBF7717A9AC5300C72104 /* Headers */,
+				12CDBF7317A9A9C100C72104 /* Defines.h */,
+				12C3940C18087F700035BEFF /* Looper.h */,
+				12C3940D18087F710035BEFF /* Looper.m */,
+				12C3940F180899E90035BEFF /* Loop.h */,
+				12C39410180899E90035BEFF /* Loop.m */,
+				12C0D40217A9883C001323FA /* AppDelegate.h */,
 				12C0D40317A9883C001323FA /* AppDelegate.m */,
-				12C394081807598B0035BEFF /* AudioQueueSynth.h */,
-				12C394091807598B0035BEFF /* AudioQueueSynth.m */,
+				12B0FE661809CE410019EBC4 /* MidiParser.h */,
+				12B0FE671809CE410019EBC4 /* MidiParser.m */,
+				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
 				126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */,
+				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
 				128646CD17A9E99A00CE0420 /* DownUpButton.m */,
+				1291C76317BB423D0055761E /* SynthAnalyzer.h */,
 				1291C76417BB423D0055761E /* SynthAnalyzer.m */,
-				127DBD3917A76D16007C68FF /* Supporting Files */,
 			);
 			path = leapsynth;
 			sourceTree = "<group>";
@@ -187,40 +218,40 @@
 		1291C77317BC0C430055761E /* Soft Synth */ = {
 			isa = PBXGroup;
 			children = (
-				1291C77417BC0C520055761E /* Headers */,
+				12B0FE6C180A1A5A0019EBC4 /* SampleProvider.h */,
+				12B0FE6D180A1A5A0019EBC4 /* SampleProvider.m */,
+				12CDBF6F17A9A5A800C72104 /* Oscillator.h */,
 				12CDBF7017A9A5A800C72104 /* Oscillator.m */,
+				12B0FE69180A19A50019EBC4 /* NoiseGenerator.h */,
+				12B0FE6A180A19A50019EBC4 /* NoiseGenerator.m */,
+				12CDBF7417A9AC3F00C72104 /* Vco.h */,
 				12CDBF7517A9AC3F00C72104 /* Vco.m */,
+				12EFCD2917AAE53C00E84D98 /* Adsr.h */,
 				12EFCD2A17AAE53C00E84D98 /* Adsr.m */,
+				12EFCD2D17AD429F00E84D98 /* Vca.h */,
 				12EFCD2E17AD429F00E84D98 /* Vca.m */,
+				12C4033A180B8A7400FB384A /* Mixer.h */,
+				12C4033B180B8A7400FB384A /* Mixer.m */,
+				12EFCD3317AD493100E84D98 /* Vcf.h */,
 				12EFCD3417AD493100E84D98 /* Vcf.m */,
+				12EFCD3017AD490200E84D98 /* Synth.h */,
 				12EFCD3117AD490200E84D98 /* Synth.m */,
+				12C394081807598B0035BEFF /* AudioQueueSynth.h */,
+				12C394091807598B0035BEFF /* AudioQueueSynth.m */,
 			);
 			name = "Soft Synth";
 			sourceTree = "<group>";
 		};
-		1291C77417BC0C520055761E /* Headers */ = {
+		12C4032A180B2CDA00FB384A /* labels */ = {
 			isa = PBXGroup;
 			children = (
-				12CDBF6F17A9A5A800C72104 /* Oscillator.h */,
-				12CDBF7417A9AC3F00C72104 /* Vco.h */,
-				12EFCD2917AAE53C00E84D98 /* Adsr.h */,
-				12EFCD2D17AD429F00E84D98 /* Vca.h */,
-				12EFCD3317AD493100E84D98 /* Vcf.h */,
-				12EFCD3017AD490200E84D98 /* Synth.h */,
+				12C4032B180B2CDA00FB384A /* saw.png */,
+				12C4032C180B2CDA00FB384A /* sine.png */,
+				12C4032D180B2CDA00FB384A /* square.png */,
+				12C4032E180B2CDA00FB384A /* tri.png */,
 			);
-			name = Headers;
-			sourceTree = "<group>";
-		};
-		12CDBF7717A9AC5300C72104 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				12CDBF7317A9A9C100C72104 /* Defines.h */,
-				12C0D40217A9883C001323FA /* AppDelegate.h */,
-				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
-				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
-				1291C76317BB423D0055761E /* SynthAnalyzer.h */,
-			);
-			name = Headers;
+			name = labels;
+			path = img/labels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +310,10 @@
 				12BB469B17A98979009D7B5C /* Credits.rtf in Resources */,
 				12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */,
 				12751A3417C1FA0800A57258 /* logo-white.png in Resources */,
+				12C4032F180B2CDA00FB384A /* saw.png in Resources */,
+				12C40330180B2CDA00FB384A /* sine.png in Resources */,
+				12C40331180B2CDA00FB384A /* square.png in Resources */,
+				12C40332180B2CDA00FB384A /* tri.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +337,12 @@
 				126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */,
 				1291C76517BB423D0055761E /* SynthAnalyzer.m in Sources */,
 				12C3940A1807598B0035BEFF /* AudioQueueSynth.m in Sources */,
+				12C3940E18087F710035BEFF /* Looper.m in Sources */,
+				12C39411180899E90035BEFF /* Loop.m in Sources */,
+				12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */,
+				12B0FE6B180A19A50019EBC4 /* NoiseGenerator.m in Sources */,
+				12B0FE6E180A1A5A0019EBC4 /* SampleProvider.m in Sources */,
+				12C4033C180B8A7400FB384A /* Mixer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
