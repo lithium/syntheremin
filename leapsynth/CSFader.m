@@ -58,6 +58,8 @@
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
+    if (!dragging)
+        return;
     [self setValueFromScreenLocation:[NSEvent mouseLocation]];
 }
 - (void)mouseDown:(NSEvent *)theEvent
