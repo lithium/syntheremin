@@ -24,6 +24,11 @@
     NSString *label;
     NSDictionary *labelAttributes;
     NSRect labelRect;
+    
+    NSPoint lastDragPoint;
+    BOOL dragging;
+    BOOL dragIsCoarse;
+
 }
 
 @end

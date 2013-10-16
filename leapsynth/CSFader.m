@@ -45,4 +45,30 @@
     
 }
 
+
+- (void)setValueFromScreenLocation:(NSPoint)screenLocation
+{
+    NSPoint windowLocation = [_window convertScreenToBase:screenLocation];
+    NSPoint loc = [self convertPoint:windowLocation fromView:nil];
+    double val = loc.y / [self bounds].size.height;
+    [self setDoubleValue:val];
+    [self setNeedsDisplay:YES];
+
+}
+
+- (void)mouseDragged:(NSEvent *)theEvent
+{
+    [self setValueFromScreenLocation:[NSEvent mouseLocation]];
+}
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    dragging = YES;
+    [self setValueFromScreenLocation:[NSEvent mouseLocation]];
+}
+
+- (void)mouseUp:(NSEvent *)theEvent
+{
+    dragging = NO;
+}
+
 @end

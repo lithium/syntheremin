@@ -14,6 +14,7 @@
     NSImage *trackImage;
     NSImage *knobImage;
     
+    BOOL dragging;
     double knobWidth,knobHeight;
 }
 @end

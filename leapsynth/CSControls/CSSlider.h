@@ -20,9 +20,6 @@
     id target;
     SEL action;
     
-    NSPoint lastDragPoint;
-    BOOL dragging;
-    BOOL dragIsCoarse;
 }
 @property double minValue;
 @property double maxValue;
