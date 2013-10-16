@@ -28,10 +28,11 @@
 
 - (void)setDoubleValue:(double)newValue
 {
+    double oldValue = value;
     value = MIN(MAX(newValue, minValue), maxValue);
-    [self setNeedsDisplay:YES];
-    if ([target respondsToSelector:action]) {
+    if (value != oldValue && [target respondsToSelector:action]) {
         [target performSelector:action withObject:self];
+        [self setNeedsDisplay:YES];
     }
 }
 - (double)doubleValue

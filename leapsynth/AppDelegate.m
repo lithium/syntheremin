@@ -628,6 +628,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     keyboardCurrentOctave += ofs;
 }
 
+- (IBAction)faderChange:(id)sender {
+    double value = [sender doubleValue];
+    NSLog(@"value %f", value);
+}
+
 - (void)mouseDown:(NSEvent *)evt :(int)tag {
     int noteNumber = tag + (kNotesPerOctave*keyboardCurrentOctave);
     [self noteOn:noteNumber withVelocity:64 onChannel:0];    

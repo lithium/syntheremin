@@ -173,5 +173,6 @@ enum {
 @property (weak) IBOutlet NSBox *keyboardBox;
 - (IBAction)clickKeyboardChangeOctave:(id)sender;
 
+- (IBAction)faderChange:(id)sender;
 
 @end
