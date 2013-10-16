@@ -20,9 +20,12 @@
     id target;
     SEL action;
     
+    NSString *parameter;
+    
 }
 @property double minValue;
 @property double maxValue;
+@property NSString *parameter;
 
 @property id target;
 @property SEL action;

@@ -13,6 +13,7 @@
 @synthesize maxValue;
 @synthesize target;
 @synthesize action;
+@synthesize parameter;
 
 
 - (id)initWithFrame:(NSRect)frame

@@ -630,7 +630,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (IBAction)faderChange:(id)sender {
     double value = [sender doubleValue];
-    NSLog(@"value %f", value);
+    NSString *param = [sender valueForKey:@"parameter"];
+    NSLog(@"%@ = %f", param, value);
 }
 
 - (void)mouseDown:(NSEvent *)evt :(int)tag {
