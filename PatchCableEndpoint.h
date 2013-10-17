@@ -32,6 +32,11 @@ enum {
    
     @private
     NSImage *image;
+    
+    BOOL isConnected;
+    BOOL isDragging;
+    NSPoint clickLocation;
+    NSPoint origOrigin;
 }
 
 @property int endpointType;

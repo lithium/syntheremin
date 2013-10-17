@@ -71,4 +71,34 @@
     [context restoreGraphicsState];
 }
 
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    if (endpointType == kInputPatchEndpoint) {
+        return;
+    }
+    isDragging = YES;
+    clickLocation = [theEvent locationInWindow];
+    origOrigin = [self frame].origin;
+}
+
+- (void)mouseUp:(NSEvent *)theEvent
+{
+    if (!isDragging)
+        return;
+    isDragging = NO;
+    if (!isConnected) {
+        [self setFrameOrigin:origOrigin];
+    }
+}
+
+- (void)mouseDragged:(NSEvent *)theEvent
+{
+    if (!isDragging)
+        return;
+    NSPoint dragLocation = [theEvent locationInWindow];
+    NSPoint origin = NSMakePoint(origOrigin.x + (dragLocation.x - clickLocation.x), 
+                                 origOrigin.y + (dragLocation.y - clickLocation.y));
+    [self setFrameOrigin:origin];
+
+}
 @end
