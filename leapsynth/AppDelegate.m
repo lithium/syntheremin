@@ -98,7 +98,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
     
     synth = [[AudioQueueSynth alloc] init];
-    [synth setDelegate:synthAnalyzer];
+//    [synth setDelegate:synthAnalyzer];
     [synth start];
         
     [[synth looper] setDelegate:self];
