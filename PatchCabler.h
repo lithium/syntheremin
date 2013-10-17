@@ -10,12 +10,19 @@
 #import "PatchCableEndpoint.h"
 
 
+@protocol PatchCablerDelegate <NSObject>
+- (void)patchConnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target;
+- (void)patchDisconnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target;
+@end
+
+
 @interface PatchCabler : NSView <PatchCableEndpointDelegate> 
 {
     NSImage *outputImage, *inputImage;
     NSMutableArray *endpoints;
     
 }
+@property (weak) id <PatchCablerDelegate> delegate;
 
 - (int)addEndpoint:(PatchCableEndpoint *)endpoint;
 

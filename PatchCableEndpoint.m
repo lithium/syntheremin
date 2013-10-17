@@ -141,6 +141,9 @@
     if (endpointType == kInputPatchEndpoint) 
     {
         if (isConnected) {
+            if (delegate) {
+                [delegate endpointReleased:connectedTo fromEndpoint:self];
+            }
             [[self target] setConnectedTo:nil];
             [self setConnectedTo:nil];
             [[self superview] setNeedsDisplay:YES];
@@ -164,7 +167,7 @@
     }
     [[self superview] setNeedsDisplay:YES];
     if (delegate) {
-        [delegate endpointReleased:self];
+        [delegate endpointReleased:self fromEndpoint:nil];
     }
 
 }

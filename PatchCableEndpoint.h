@@ -25,7 +25,7 @@ enum {
 @protocol PatchCableEndpointDelegate <NSObject>
 
 - (void)endpointDragged:(id)endpoint toLocation:(NSPoint)dragLocation;
-- (void)endpointReleased:(id)endpoint;
+- (void)endpointReleased:(id)sender fromEndpoint:(id)connectedTo;
 
 @end
 
@@ -53,6 +53,7 @@ enum {
 @property (weak) id connectedTo;
 
 - (NSPoint)origin;
+- (PatchCableEndpoint*)target;
 
 - (id)initWithType:(int)endpointType 
            andName:(NSString*)name

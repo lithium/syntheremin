@@ -9,6 +9,7 @@
 #import "PatchCabler.h"
 
 @implementation PatchCabler
+@synthesize delegate;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -84,13 +85,21 @@
             PatchCableEndpoint *source = (PatchCableEndpoint*)sender;
             [source setConnectedTo:target];
             [target setConnectedTo:source];
+            
+            if (delegate) {
+                [delegate patchConnected:source :target];
+            }
             break;
         }
     }
 }
-- (void)endpointReleased:(id)endpoint
+- (void)endpointReleased:(id)sender fromEndpoint:(id)connectedTo
 {
-    
+    PatchCableEndpoint *source = (PatchCableEndpoint*)sender;
+    if (delegate) {
+        [delegate patchDisconnected:source :[source target]];
+    }
+
 }
 
 @end
