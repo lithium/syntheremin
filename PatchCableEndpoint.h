@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#define kEndpointWidth 32
+#define kEndpointHeight 32
 
 enum {
     kInputPatchEndpoint=0,
@@ -31,12 +33,12 @@ enum {
 {
     int endpointType;
     
-   
+    
     NSImage *image;    
     BOOL isConnected;
     BOOL isDragging;
     NSPoint clickLocation;
-    NSPoint origOrigin;
+    NSPoint origin;
 }
 
 @property int endpointType;
@@ -45,5 +47,13 @@ enum {
 @property double edgeOffset;
 @property (weak) id <PatchCableEndpointDelegate> delegate;
 
-- (NSPoint)startingPoint;
+- (NSPoint)origin;
+
+- (id)initWithType:(int)endpointType 
+           andName:(NSString*)name
+            onEdge:(int)edge
+        withOffset:(double)offset
+      parentBounds:(NSRect)bounds
+                  ;
+
 @end

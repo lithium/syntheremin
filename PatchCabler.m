@@ -31,7 +31,7 @@
         NSBezierPath *cablePath = [[NSBezierPath alloc] init];
         [cablePath setLineWidth:4];
         
-        NSPoint orig = [draggingEndpoint startingPoint];
+        NSPoint orig = [draggingEndpoint origin];
         orig.y += kEndpointHeight/2;
         NSPoint loc = [draggingEndpoint frame].origin;
         loc.y += kEndpointHeight/2;
@@ -54,35 +54,13 @@
                     onEdge:(int)cablerEdge
                 withOffset:(double)edgeOffset
 {
-    NSRect bounds = [self bounds];
-    double x,y;
+    PatchCableEndpoint *endpoint = [[PatchCableEndpoint alloc] initWithType:endpointType
+                                                                    andName:name
+                                                                     onEdge:cablerEdge
+                                                                 withOffset:edgeOffset
+                                                               parentBounds:[self bounds]];
     
-    switch (cablerEdge) {
-        case kEdgeLeft:
-            x = 0;
-            y = edgeOffset > 0 ? edgeOffset : bounds.size.height+edgeOffset;
-            break;
-        case kEdgeTop:
-            x = edgeOffset > 0 ? edgeOffset : bounds.size.width+edgeOffset;
-            y = bounds.size.height-kEndpointHeight;
-            break;
-        case kEdgeRight:
-            x = bounds.size.width-kEndpointWidth;
-            y = edgeOffset > 0 ? edgeOffset : bounds.size.height+edgeOffset;
-            break;
-        case kEdgeBottom:
-            x = edgeOffset > 0 ? edgeOffset : bounds.size.width+edgeOffset;
-            y = 0;
-            break;
-    }
-    NSRect endpointFrame = NSMakeRect(x, y, kEndpointWidth, kEndpointHeight);
-    PatchCableEndpoint *newEndpoint = [[PatchCableEndpoint alloc] initWithFrame:endpointFrame];
-    [newEndpoint setEndpointType:endpointType];
-    [newEndpoint setParameterName:name];
-    [newEndpoint setCablerEdge:cablerEdge];
-    [newEndpoint setEdgeOffset:edgeOffset];
-    
-    return [self addEndpoint:newEndpoint];
+    return [self addEndpoint:endpoint];
 }
 - (int)addEndpoint:(PatchCableEndpoint *)newEndpoint
 {

@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PatchCableEndpoint.h"
-#define kEndpointWidth 32
-#define kEndpointHeight 32
 
 
 @interface PatchCabler : NSView <PatchCableEndpointDelegate> 

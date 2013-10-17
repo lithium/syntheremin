@@ -25,6 +25,43 @@
     return self;
 }
 
+- (id)initWithType:(int)endpointType 
+           andName:(NSString*)name
+            onEdge:(int)edge
+        withOffset:(double)offset
+      parentBounds:(NSRect)bounds
+{
+    
+    double x,y;
+    switch (edge) {
+        case kEdgeLeft:
+            x = 0;
+            y = offset > 0 ? offset : bounds.size.height+offset;
+            break;
+        case kEdgeTop:
+            x = offset > 0 ? offset : bounds.size.width+offset;
+            y = bounds.size.height-kEndpointHeight;
+            break;
+        case kEdgeRight:
+            x = bounds.size.width-kEndpointWidth;
+            y = offset > 0 ? offset : bounds.size.height+offset;
+            break;
+        case kEdgeBottom:
+            x = offset > 0 ? offset : bounds.size.width+offset;
+            y = 0;
+            break;
+    }
+    origin = NSMakePoint(x,y);
+    self = [self initWithFrame:NSMakeRect(x, y, kEndpointWidth, kEndpointHeight)];
+
+    
+    [self setCablerEdge:cablerEdge];
+    [self setEdgeOffset:edgeOffset];
+
+    return self;
+}
+
+   
 - (int)endpointType { return endpointType; }
 - (void)setEndpointType:(int)newEndpointType
 {
@@ -36,9 +73,9 @@
     }
 }
 
-- (NSPoint)startingPoint 
+- (NSPoint)origin 
 {
-    return origOrigin;
+    return origin;
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -75,19 +112,6 @@
              fraction:1.0];
     [context restoreGraphicsState];
     
-    
-    if (isDragging) {
-        [context saveGraphicsState];
-        NSBezierPath *cablePath = [[NSBezierPath alloc] init];
-        [cablePath setLineWidth:4];
-        
-        [cablePath moveToPoint:origOrigin];
-        [cablePath lineToPoint:[self frame].origin];
-        [[NSColor blackColor] set];
-        [cablePath stroke];
-        
-        [context restoreGraphicsState];
-    }
 }
 
 - (void)mouseDown:(NSEvent *)theEvent
@@ -97,7 +121,6 @@
     }
     isDragging = YES;
     clickLocation = [theEvent locationInWindow];
-    origOrigin = [self frame].origin;
     if (delegate) {
         [delegate endpointDragged:self];
     }
@@ -109,7 +132,7 @@
         return;
     isDragging = NO;
     if (!isConnected) {
-        [self setFrameOrigin:origOrigin];
+        [self setFrameOrigin:origin];
     }
     if (delegate) {
         [delegate endpointReleased:self];
@@ -122,9 +145,8 @@
     if (!isDragging)
         return;
     NSPoint dragLocation = [theEvent locationInWindow];
-    NSPoint origin = NSMakePoint(origOrigin.x + (dragLocation.x - clickLocation.x), 
-                                 origOrigin.y + (dragLocation.y - clickLocation.y));
-    [self setFrameOrigin:origin];
+    [self setFrameOrigin:NSMakePoint(origin.x + (dragLocation.x - clickLocation.x), 
+                                     origin.y + (dragLocation.y - clickLocation.y))];
     if (delegate) {
         [delegate endpointDragged:self];
     }
