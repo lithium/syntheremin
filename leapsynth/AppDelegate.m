@@ -63,33 +63,100 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     //set up patch cabler
     {
         [patchCabler setDelegate:self];
-        
+
+        //oscilattors
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"osc:0:modulate"
+                                  onEdge:kEdgeLeft
+                              withOffset:-60];
         [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                         andParameterName:@"osc:0:output"
                                   onEdge:kEdgeLeft
                               withOffset:-100];
         
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"osc:0:modulate"
+                        andParameterName:@"osc:1:modulate"
                                   onEdge:kEdgeLeft
-                              withOffset:-70];
+                              withOffset:-150];
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"osc:1:output"
+                                  onEdge:kEdgeLeft
+                              withOffset:-200];
         
-        
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"osc:2:modulate"
+                                  onEdge:kEdgeLeft
+                              withOffset:-250];
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"osc:2:output"
+                                  onEdge:kEdgeLeft
+                              withOffset:-300];
+
+        //vcas
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
                         andParameterName:@"vca:0:input"
                                   onEdge:kEdgeBottom
-                              withOffset:150];
+                              withOffset:40];
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"vca:0:modulate"
+                                  onEdge:kEdgeBottom
+                              withOffset:70];
         
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"vca:1:input"
+                                  onEdge:kEdgeBottom
+                              withOffset:110];
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"vca:1:modulate"
+                                  onEdge:kEdgeBottom
+                              withOffset:140];
+
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"vca:2:input"
+                                  onEdge:kEdgeBottom
+                              withOffset:180];
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"vca:2:modulate"
+                                  onEdge:kEdgeBottom
+                              withOffset:210];
+
+
+        //envelopes
         [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"env:0:input"
+                        andParameterName:@"env:0:output"
                                   onEdge:kEdgeRight
                               withOffset:150];
-        
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"env:1:output"
+                                  onEdge:kEdgeRight
+                              withOffset:50];
+
+        //filter
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"vcf:0:modulate"
+                                  onEdge:kEdgeRight
+                              withOffset:-50];
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"vcf:0:input"
+                                  onEdge:kEdgeRight
+                              withOffset:-80];
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"vcf:0:output"
+                                  onEdge:kEdgeRight
+                              withOffset:-110];
+
+
+
+        //modulators
         [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                         andParameterName:@"lfo:0:output"
                                   onEdge:kEdgeTop
                               withOffset:50];
-        
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"noise:0:output"
+                                  onEdge:kEdgeTop
+                              withOffset:250];
+
         
     }
 
