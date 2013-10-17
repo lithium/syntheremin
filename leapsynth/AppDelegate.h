@@ -67,7 +67,7 @@
 @property (weak) IBOutlet NSBox *keyboardBox;
 - (IBAction)clickKeyboardChangeOctave:(id)sender;
 
-- (IBAction)faderChange:(id)sender;
+- (IBAction)changeControl:(id)sender;
 
 
 @property (weak) IBOutlet PatchCabler *patchCabler;

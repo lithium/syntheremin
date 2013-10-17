@@ -430,10 +430,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     keyboardCurrentOctave += ofs;
 }
 
-- (IBAction)faderChange:(id)sender {
+- (IBAction)changeControl:(id)sender {
     double value = [sender doubleValue];
     NSString *param = [sender valueForKey:@"parameter"];
     NSLog(@"%@ = %f", param, value);
+    
+    [synth applyParameter:param :value];
 }
 
 @end

@@ -128,10 +128,12 @@
 
 - (void)applyParameter:(NSString *)parameterName :(double)value
 {
-//    if ([chunks count] < 3
-//    if ([@"vca" isEqualToString:[parameterName substringToIndex:3]]) {
-//        
-//    }
+    __weak SampleProvider *component;
+    NSString *param = [self parsePortName:parameterName :&component];
+    
+    [component setValue:[NSNumber numberWithDouble:value] 
+                 forKey:param];
+
 }
 - (void)connectPatch:(NSString *)sourceName :(NSString *)targetName
 {
