@@ -16,6 +16,7 @@
 #import "Looper.h"
 #import "MidiParser.h"
 #import "SynthAnalyzer.h"
+#import "PatchCabler.h"
 
 enum {
     kParameterNone=0,
@@ -174,5 +175,8 @@ enum {
 - (IBAction)clickKeyboardChangeOctave:(id)sender;
 
 - (IBAction)faderChange:(id)sender;
+
+
+@property (weak) IBOutlet PatchCabler *patchCabler;
 
 @end

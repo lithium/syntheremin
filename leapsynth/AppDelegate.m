@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize patchCabler;
 @synthesize keyboardBox;
 @synthesize looper_level;
 @synthesize looper_play;
@@ -133,6 +134,37 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         [key setDelegate:self];
     }
     
+    
+    //set up patch cabler
+    {
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"oscOutput1"
+                                  onEdge:kEdgeLeft
+                              withOffset:-100];
+        
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"oscModulate1"
+                                  onEdge:kEdgeLeft
+                              withOffset:-70];
+
+        
+        [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                        andParameterName:@"vcaInput3"
+                                  onEdge:kEdgeBottom
+                              withOffset:150];
+        
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"envOutput1"
+                                  onEdge:kEdgeRight
+                              withOffset:150];
+        
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"lfoOutput1"
+                                  onEdge:kEdgeTop
+                              withOffset:50];
+
+
+    }
 }
 - (void)windowWillClose:(NSNotification *)notification
 {
