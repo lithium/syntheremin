@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define kCoarseModifier  500
-#define kFineModifier    1500
 
 @interface CSSlider : NSControl
 {
