@@ -65,11 +65,32 @@
 - (int)addEndpoint:(PatchCableEndpoint *)newEndpoint
 {
     [self addSubview:newEndpoint];
+    [newEndpoint setDelegate:self];
     
     [endpoints addObject:newEndpoint];
     return [endpoints indexOfObject:newEndpoint];
 
 }
 
+- (void)endpointDragged:(id)sender toLocation:(NSPoint)dragLocation
+{
+    dragLocation = [self convertPoint:dragLocation fromView:nil];
+    for (PatchCableEndpoint *target in endpoints) 
+    {
+        if (target != sender && 
+            NSPointInRect(dragLocation,[target frame]) &&
+            [target endpointType] == kInputPatchEndpoint) 
+        {
+            PatchCableEndpoint *source = (PatchCableEndpoint*)sender;
+            [source setConnectedTo:target];
+            [target setConnectedTo:source];
+            break;
+        }
+    }
+}
+- (void)endpointReleased:(id)endpoint
+{
+    
+}
 
 @end

@@ -22,6 +22,12 @@ enum {
     kEdgeBottom,
 };
 
+@protocol PatchCableEndpointDelegate <NSObject>
+
+- (void)endpointDragged:(id)endpoint toLocation:(NSPoint)dragLocation;
+- (void)endpointReleased:(id)endpoint;
+
+@end
 
 @interface PatchCableEndpoint : NSView
 {
@@ -31,8 +37,10 @@ enum {
     NSImage *image;    
     
     BOOL isConnected;
+    __weak id connectedTo;
 
     NSPoint clickLocation;
+    NSPoint dragOrigin;
     NSPoint origin;
 }
 
@@ -41,6 +49,7 @@ enum {
 @property NSString *parameterName;
 @property int cablerEdge;
 @property double edgeOffset;
+@property (weak) id <PatchCableEndpointDelegate> delegate;
 @property (weak) id connectedTo;
 
 - (NSPoint)origin;

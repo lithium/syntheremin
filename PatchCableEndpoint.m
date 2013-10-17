@@ -14,7 +14,7 @@
 @synthesize cablerEdge;
 @synthesize edgeOffset;
 @synthesize isDragging;
-@synthesize connectedTo;
+@synthesize delegate;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -76,6 +76,17 @@
     }
 }
 
+- (id)connectedTo { return connectedTo; }
+- (void)setConnectedTo:(id)target
+{
+    connectedTo = target;
+    isConnected = (target != nil);
+    isDragging = NO;
+    if (!isConnected) {
+        [self setFrameOrigin:origin];        
+    }
+}
+
 - (NSPoint)origin 
 {
     return origin;
@@ -117,13 +128,30 @@
     
 }
 
+- (PatchCableEndpoint*)target
+{
+    return (PatchCableEndpoint*)connectedTo;
+}
+
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    if (endpointType == kInputPatchEndpoint) {
-        return;
-    }
-    isDragging = YES;
+    dragOrigin = [self frame].origin;
     clickLocation = [theEvent locationInWindow];
+
+    if (endpointType == kInputPatchEndpoint) 
+    {
+        if (isConnected) {
+            [[self target] setConnectedTo:nil];
+            [self setConnectedTo:nil];
+            [[self superview] setNeedsDisplay:YES];
+        }
+        return;
+    } 
+    else if (endpointType == kOutputPatchEndpoint) 
+    {
+        [self setConnectedTo:nil];
+        isDragging = YES;
+    }
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
@@ -135,6 +163,9 @@
         [self setFrameOrigin:origin];
     }
     [[self superview] setNeedsDisplay:YES];
+    if (delegate) {
+        [delegate endpointReleased:self];
+    }
 
 }
 
@@ -143,9 +174,12 @@
     if (!isDragging)
         return;
     NSPoint dragLocation = [theEvent locationInWindow];
-    [self setFrameOrigin:NSMakePoint(origin.x + (dragLocation.x - clickLocation.x), 
-                                     origin.y + (dragLocation.y - clickLocation.y))];
+    [self setFrameOrigin:NSMakePoint(dragOrigin.x + (dragLocation.x - clickLocation.x), 
+                                     dragOrigin.y + (dragLocation.y - clickLocation.y))];
     [[self superview] setNeedsDisplay:YES];
 
+    if (delegate) {
+        [delegate endpointDragged:self toLocation:dragLocation];
+    }
 }
 @end
