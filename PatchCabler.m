@@ -24,27 +24,27 @@
 {
     NSGraphicsContext *context = [NSGraphicsContext currentContext];
     
-//    NSRect bounds = [self bounds];
     [context saveGraphicsState];
     
-    if (draggingEndpoint) {
-        NSBezierPath *cablePath = [[NSBezierPath alloc] init];
-        [cablePath setLineWidth:4];
-        
-        NSPoint orig = [draggingEndpoint origin];
-        orig.y += kEndpointHeight/2;
-        NSPoint loc = [draggingEndpoint frame].origin;
-        loc.y += kEndpointHeight/2;
-
-        [cablePath moveToPoint:orig];
-        [cablePath lineToPoint:loc];
-        [[NSColor blackColor] set];
-        [cablePath stroke];
-        
-        NSLog(@"%f,%f -> %f,%f", orig.x, orig.y, loc.x, loc.y);
-
+    NSBezierPath *cablePath = [[NSBezierPath alloc] init];
+    [cablePath setLineWidth:4];
+    for (PatchCableEndpoint *endpoint in endpoints) {
+        if ([endpoint endpointType] == kOutputPatchEndpoint ||
+            [endpoint connectedTo] != nil ||
+            [endpoint isDragging])
+        {
+            NSPoint orig = [endpoint origin];
+            orig.y += kEndpointHeight/2;
+            NSPoint loc = [endpoint frame].origin;
+            loc.y += kEndpointHeight/2;
+            
+            [cablePath moveToPoint:orig];
+            [cablePath lineToPoint:loc];
+        }
     }
-    
+    [[NSColor blackColor] set];
+    [cablePath stroke];
+
     [context restoreGraphicsState];
 }
 
@@ -64,7 +64,6 @@
 }
 - (int)addEndpoint:(PatchCableEndpoint *)newEndpoint
 {
-    [newEndpoint setDelegate:self];
     [self addSubview:newEndpoint];
     
     [endpoints addObject:newEndpoint];
@@ -72,16 +71,5 @@
 
 }
 
-- (void)endpointDragged:(id)sender
-{
-    draggingEndpoint = (PatchCableEndpoint*)sender;
-    [self setNeedsDisplay:YES];
-}
-- (void)endpointReleased:(id)sender
-{
-    draggingEndpoint = nil;
-    [self setNeedsDisplay:YES];
-
-}
 
 @end

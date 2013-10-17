@@ -13,7 +13,8 @@
 @synthesize parameterName;
 @synthesize cablerEdge;
 @synthesize edgeOffset;
-@synthesize delegate;
+@synthesize isDragging;
+@synthesize connectedTo;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -25,7 +26,7 @@
     return self;
 }
 
-- (id)initWithType:(int)endpointType 
+- (id)initWithType:(int)type 
            andName:(NSString*)name
             onEdge:(int)edge
         withOffset:(double)offset
@@ -55,8 +56,10 @@
     self = [self initWithFrame:NSMakeRect(x, y, kEndpointWidth, kEndpointHeight)];
 
     
-    [self setCablerEdge:cablerEdge];
-    [self setEdgeOffset:edgeOffset];
+    [self setCablerEdge:edge];
+    [self setEdgeOffset:offset];
+    [self setEndpointType:type];
+    [self setParameterName:name];
 
     return self;
 }
@@ -121,9 +124,6 @@
     }
     isDragging = YES;
     clickLocation = [theEvent locationInWindow];
-    if (delegate) {
-        [delegate endpointDragged:self];
-    }
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
@@ -134,9 +134,7 @@
     if (!isConnected) {
         [self setFrameOrigin:origin];
     }
-    if (delegate) {
-        [delegate endpointReleased:self];
-    }
+    [[self superview] setNeedsDisplay:YES];
 
 }
 
@@ -147,9 +145,7 @@
     NSPoint dragLocation = [theEvent locationInWindow];
     [self setFrameOrigin:NSMakePoint(origin.x + (dragLocation.x - clickLocation.x), 
                                      origin.y + (dragLocation.y - clickLocation.y))];
-    if (delegate) {
-        [delegate endpointDragged:self];
-    }
+    [[self superview] setNeedsDisplay:YES];
 
 }
 @end

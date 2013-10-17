@@ -10,12 +10,11 @@
 #import "PatchCableEndpoint.h"
 
 
-@interface PatchCabler : NSView <PatchCableEndpointDelegate> 
+@interface PatchCabler : NSView 
 {
     NSImage *outputImage, *inputImage;
     NSMutableArray *endpoints;
     
-    __weak PatchCableEndpoint *draggingEndpoint;
 }
 
 - (int)addEndpoint:(PatchCableEndpoint *)endpoint;
