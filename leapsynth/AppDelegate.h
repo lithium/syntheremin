@@ -22,6 +22,7 @@
 @interface AppDelegate : NSObject  <NSApplicationDelegate, 
                                     DownUpButtonDelegate, 
                                     LeapSynthereminDelegate, 
+                                    PatchCablerDelegate,
                                     LoopDelegate> 
 {
     AudioQueueSynth *synth;
@@ -49,7 +50,7 @@
 
 
 
-@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
+//@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 

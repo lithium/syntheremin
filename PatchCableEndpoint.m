@@ -146,29 +146,35 @@
             }
             [[self target] setConnectedTo:nil];
             [self setConnectedTo:nil];
-            [[self superview] setNeedsDisplay:YES];
         }
-        return;
     } 
     else if (endpointType == kOutputPatchEndpoint) 
     {
-        [self setConnectedTo:nil];
+        [self setFrameOrigin:origin];        
         isDragging = YES;
     }
+    
+    [[self superview] setNeedsDisplay:YES];
+
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
     if (!isDragging)
         return;
+    
     isDragging = NO;
+    
+    if (delegate) {
+        [delegate endpointReleased:self fromEndpoint:connectedTo];
+    }
+
     if (!isConnected) {
         [self setFrameOrigin:origin];
+        [[self target] setConnectedTo:nil];
+        [self setConnectedTo:nil];
     }
     [[self superview] setNeedsDisplay:YES];
-    if (delegate) {
-        [delegate endpointReleased:self fromEndpoint:nil];
-    }
 
 }
 

@@ -36,11 +36,15 @@
 @property (weak) id delegate;
 
 - (id)init;
-- (int) getSamples :(short *)samples :(int)numSamples;
+
+- (int)getSamples :(short *)samples :(int)numSamples;
+
 - (void)setFrequencyInHz:(double)freqInHz;
-
-
 - (void)noteOn;
 - (void)noteOff;
+
+- (void)applyParameter:(NSString *)parameterName :(double)value;
+- (void)connectPatch:(NSString *)sourceName :(NSString *)targetName;
+- (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName;
 
 @end

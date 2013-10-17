@@ -15,7 +15,7 @@
 @synthesize looper_play;
 @synthesize looper_record;
 
-@synthesize synthAnalyzer;
+//@synthesize synthAnalyzer;
 @synthesize noleap_label;
 
 
@@ -39,7 +39,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     
-    [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+//    [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
             
 
     
@@ -52,7 +52,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
         
     synth = [[AudioQueueSynth alloc] init];
-//    [synth setDelegate:synthAnalyzer];
     [synth start];
         
     [[synth looper] setDelegate:self];
@@ -63,29 +62,31 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     //set up patch cabler
     {
+        [patchCabler setDelegate:self];
+        
         [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"oscOutput1"
+                        andParameterName:@"osc:0:output"
                                   onEdge:kEdgeLeft
                               withOffset:-100];
         
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"oscModulate1"
+                        andParameterName:@"osc:0:modulate"
                                   onEdge:kEdgeLeft
                               withOffset:-70];
         
         
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vcaInput3"
+                        andParameterName:@"vca:0:input"
                                   onEdge:kEdgeBottom
                               withOffset:150];
         
         [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"envOutput1"
+                        andParameterName:@"env:0:input"
                                   onEdge:kEdgeRight
                               withOffset:150];
         
         [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"lfoOutput1"
+                        andParameterName:@"lfo:0:output"
                                   onEdge:kEdgeTop
                               withOffset:50];
         
@@ -123,170 +124,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 
 
-//- (IBAction)setVcoShape:(id)sender {
-//    int tag = [sender tag];
-//    [[synth oscN:tag] setWaveShape:[sender intValue]];
-//}
-//
-//- (IBAction)setVcoRange:(id)sender {
-//    int tag = [sender tag];
-//    int value = [sender intValue];
-//    [[synth oscN:tag] setRange:value];
-//}
-//
-//- (IBAction)setVcoFrequency:(id)sender
-//{    
-//    int tag = [sender tag];
-//    double freq = [sender doubleValue];
-//    [[synth oscN:tag] setDetuneInCents:kCentsPerOctave-freq];
-//
-//}
 
-//- (IBAction)setLfoShape:(id)sender {
-//    int shape = [lfo_shape intValue];
-//    [[synth osc1] setLfoWaveshape:shape];
-//}
-//
-//- (IBAction)setLfoFrequency:(id)sender {
-//    [[synth osc1] setLfoFrequency:[lfo_freq doubleValue]];
-//}
-//
-//- (IBAction)setLfoType:(id)sender {
-//    [[synth osc1] setModulationType:[lfo_type intValue]];
-//}
-//
-//- (IBAction)setLfoAmount:(id)sender {
-//    [[synth osc1] setModulationAmount:[lfo_amount doubleValue]];
-//
-//}
-
-//- (IBAction)setVcaMaster:(id)sender;
-//{
-//    [[synth vca] setMasterVolume:[vca_master doubleValue]];
-//}
-//- (IBAction)setVcaAttack:(id)sender
-//{
-//    [[synth vca] setAttackTimeInMs:[vca_attack intValue]];
-//}
-//
-//- (IBAction)setVcaDecay:(id)sender
-//{
-//    [[synth vca] setDecayTimeInMs:[vca_decay intValue]];
-//
-//}
-//
-//- (IBAction)setVcaSustain:(id)sender
-//{
-//    [[synth vca] setSustainLevel:[vca_sustain doubleValue]];
-//
-//}
-//- (IBAction)setVcaRelease:(id)sender
-//{
-//    [[synth vca] setReleaseTimeInMs:[vca_release intValue]];
-//
-//}
-//
-//- (IBAction)setVcfAttack:(id)sender
-//{
-//    [synth setVcfAttackTimeInMs:[vcf_attack intValue]];
-//}
-//
-//- (IBAction)setVcfDecay:(id)sender
-//{
-//    [synth setVcfDecayTimeInMs:[vcf_decay intValue]];
-//    
-//}
-//
-//- (IBAction)setVcfSustain:(id)sender
-//{
-//    [synth setVcfSustainLevel:[vcf_sustain doubleValue]];
-//    
-//}
-//- (IBAction)setVcfRelease:(id)sender
-//{
-////    [synth setVcfReleaseTimeInMs:[vcf_release intValue]];
-//}
-//- (IBAction)setVcfCutoff:(id)sender
-//{
-//    [synth setVcfCutoffInHz:[vcf_cutoff intValue]];
-//}
-//- (IBAction)setVcfResonance:(id)sender
-//{
-//    [synth setVcfResonance:[vcf_resonance doubleValue]];
-//}
-//- (IBAction)setVcfDepth:(id)sender
-//{
-//    double depth = [vcf_depth doubleValue];
-//    [synth setVcfDepth:depth];
-//}
-//
-//- (IBAction)toggleVcfEnable:(id)sender {
-//    int state = [vcf_enable state];
-//    [self setVcfEnabled:state];
-//}
-//
-//
-//- (IBAction)toggleFilterEnvelope:(id)sender {
-//    int state = [vcf_envelope_enable state];
-//    [self setVcfEnvelopeEnabled:state];
-//}
-
-//- (IBAction)toggleVcaEnvelope:(id)sender {
-//    int state = [vca_enable state];
-//    [self setVcaEnvelopeEnabled:state];
-//}
-//- (IBAction)toggleVcaNote:(id)sender {
-//    int state = [vca_note state];
-//    [self setNoteOn:state];
-//}
-
-//- (void)setVcaEnvelopeEnabled:(bool)enabled 
-//{
-//    [[synth vca] setEnvelopeEnabled:enabled];
-//    [vca_attack setEnabled:enabled];
-//    [vca_decay setEnabled:enabled];
-//    [vca_sustain setEnabled:enabled];
-//    [vca_release setEnabled:enabled];
-//}
-//- (void)setVcfEnvelopeEnabled:(bool)enabled
-//{
-//    [synth setVcfEnvelopeEnabled:enabled];
-//    [vcf_attack setEnabled:enabled];
-//    [vcf_decay setEnabled:enabled];
-//    [vcf_sustain setEnabled:enabled];
-//    [vcf_release setEnabled:enabled];
-//    [vcf_depth setEnabled:enabled];
-//}
-//- (void)setVcfEnabled:(bool)enabled
-//{
-//    [synth setVcfEnabled:enabled];
-//    [vcf_cutoff setEnabled:enabled];
-//    [vcf_resonance setEnabled:enabled];
-//    [vcf_envelope_enable setEnabled:enabled];
-//    [vcf_attack setEnabled:enabled];
-//    [vcf_decay setEnabled:enabled];
-//    [vcf_sustain setEnabled:enabled];
-//    [vcf_release setEnabled:enabled];
-//    [vcf_depth setEnabled:enabled];
-//}
-//
-//- (void)setNoteOn:(bool)noteOn
-//{
-//    if ((bool)noteOn) {
-//        [self noteOn];
-//    }
-//    else {
-//        [self noteOff];
-//    }
-//
-//}
-
-
-
-- (double)translateMinMax:(double)pos :(double)min :(double)max
-{
-    return (abs(pos) + abs(min))/(abs(min)+abs(max));
-}
 
 
 #define kLeftXMin -200
@@ -321,7 +159,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 //    [self applyParameter:inputParams[kInputLeftHandY] :y];
 //    [self applyParameter:inputParams[kInputLeftHandZ] :z];
     
-    [synthAnalyzer setLeftHand:x :y :z];
+//    [synthAnalyzer setLeftHand:x :y :z];
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
 {
@@ -334,7 +172,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 //    [self applyParameter:inputParams[kInputRightHandY] :y];
 //    [self applyParameter:inputParams[kInputRightHandZ] :z];
 
-    [synthAnalyzer setRightHand:x :y :z];
+//    [synthAnalyzer setRightHand:x :y :z];
 
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
@@ -488,6 +326,62 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 
+// delgate callbacks
+- (void) samplesPlayed :(short *)samples :(int)numSamples
+{
+    @autoreleasepool {
+        [looper_level setIntValue:[looper_level intValue]+numSamples];
+    }
+}
+- (void) loopReset
+{
+    @autoreleasepool {
+        [looper_level setIntValue:0];
+    }
+}
+
+
+- (void)noteOn:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel
+{
+    [synth setFrequencyInHz:[MidiParser frequencyFromNoteNumber:noteNumber]];
+    currentNoteNumber = noteNumber;
+    [self noteOn];
+    
+}
+- (void)noteOff:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel
+{
+    if (noteNumber == currentNoteNumber) {
+        currentNoteNumber = -1;
+        [self noteOff];            
+    }
+    
+}
+
+- (void)mouseDown:(NSEvent *)evt :(int)tag {
+    int noteNumber = tag + (kNotesPerOctave*keyboardCurrentOctave);
+    [self noteOn:noteNumber withVelocity:64 onChannel:0];    
+}
+- (void)mouseUp:(NSEvent *)evt :(int)tag {
+    [self noteOff:currentNoteNumber withVelocity:64 onChannel:0];
+}
+
+- (void)patchConnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target
+{
+    NSLog(@"connect: %@ -> %@", [source parameterName], [target parameterName]);
+    [synth connectPatch:[source parameterName] :[target parameterName]];
+}
+- (void)patchDisconnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target
+{
+    NSLog(@"disconnect %@ -> %@", [source parameterName], [target parameterName]);
+    [synth disconnectPatch:[source parameterName] :[target parameterName]];
+
+}
+
+
+/*
+ * IB Actions
+ */
+
 - (IBAction)toggleLooperRecord:(id)sender {
     int state = [looper_record state];
     if (state) {
@@ -520,35 +414,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         
 }
 
-- (void) samplesPlayed :(short *)samples :(int)numSamples
-{
-@autoreleasepool {
-    [looper_level setIntValue:[looper_level intValue]+numSamples];
-}
-}
-- (void) loopReset
-{
-@autoreleasepool {
-        [looper_level setIntValue:0];
-}
-}
 
-
-- (void)noteOn:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel
-{
-    [synth setFrequencyInHz:[MidiParser frequencyFromNoteNumber:noteNumber]];
-    currentNoteNumber = noteNumber;
-    [self noteOn];
-    
-}
-- (void)noteOff:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel
-{
-    if (noteNumber == currentNoteNumber) {
-        currentNoteNumber = -1;
-        [self noteOff];            
-    }
-
-}
 
 - (IBAction)clickLooperUndo:(id)sender {
     [[synth looper] undoLastLoop];
@@ -570,11 +436,4 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     NSLog(@"%@ = %f", param, value);
 }
 
-- (void)mouseDown:(NSEvent *)evt :(int)tag {
-    int noteNumber = tag + (kNotesPerOctave*keyboardCurrentOctave);
-    [self noteOn:noteNumber withVelocity:64 onChannel:0];    
-}
-- (void)mouseUp:(NSEvent *)evt :(int)tag {
-    [self noteOff:currentNoteNumber withVelocity:64 onChannel:0];
-}
 @end

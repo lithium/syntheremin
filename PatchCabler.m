@@ -95,9 +95,8 @@
 }
 - (void)endpointReleased:(id)sender fromEndpoint:(id)connectedTo
 {
-    PatchCableEndpoint *source = (PatchCableEndpoint*)sender;
     if (delegate) {
-        [delegate patchDisconnected:source :[source target]];
+        [delegate patchDisconnected:sender :connectedTo];
     }
 
 }

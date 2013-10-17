@@ -39,6 +39,9 @@
 {
     return [inputs objectAtIndex:index];
 }
-
+- (void)removeInput:(SampleProvider*)source
+{
+    [inputs removeObject:source];
+}
 
 @end
