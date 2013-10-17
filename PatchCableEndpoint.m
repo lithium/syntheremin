@@ -13,6 +13,7 @@
 @synthesize parameterName;
 @synthesize cablerEdge;
 @synthesize edgeOffset;
+@synthesize delegate;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -33,6 +34,11 @@
     } else {
         image = [NSImage imageNamed:@"patch_endpoint_input.png"];
     }
+}
+
+- (NSPoint)startingPoint 
+{
+    return origOrigin;
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -67,8 +73,21 @@
              fromRect:NSMakeRect(0, 0, [image size].width, [image size].height)
             operation:NSCompositeSourceOver
              fraction:1.0];
-    
     [context restoreGraphicsState];
+    
+    
+    if (isDragging) {
+        [context saveGraphicsState];
+        NSBezierPath *cablePath = [[NSBezierPath alloc] init];
+        [cablePath setLineWidth:4];
+        
+        [cablePath moveToPoint:origOrigin];
+        [cablePath lineToPoint:[self frame].origin];
+        [[NSColor blackColor] set];
+        [cablePath stroke];
+        
+        [context restoreGraphicsState];
+    }
 }
 
 - (void)mouseDown:(NSEvent *)theEvent
@@ -79,6 +98,9 @@
     isDragging = YES;
     clickLocation = [theEvent locationInWindow];
     origOrigin = [self frame].origin;
+    if (delegate) {
+        [delegate endpointDragged:self];
+    }
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
@@ -89,6 +111,10 @@
     if (!isConnected) {
         [self setFrameOrigin:origOrigin];
     }
+    if (delegate) {
+        [delegate endpointReleased:self];
+    }
+
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent
@@ -99,6 +125,9 @@
     NSPoint origin = NSMakePoint(origOrigin.x + (dragLocation.x - clickLocation.x), 
                                  origOrigin.y + (dragLocation.y - clickLocation.y));
     [self setFrameOrigin:origin];
+    if (delegate) {
+        [delegate endpointDragged:self];
+    }
 
 }
 @end

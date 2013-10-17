@@ -12,10 +12,12 @@
 #define kEndpointHeight 32
 
 
-@interface PatchCabler : NSView
+@interface PatchCabler : NSView <PatchCableEndpointDelegate> 
 {
     NSImage *outputImage, *inputImage;
     NSMutableArray *endpoints;
+    
+    __weak PatchCableEndpoint *draggingEndpoint;
 }
 
 - (int)addEndpoint:(PatchCableEndpoint *)endpoint;
