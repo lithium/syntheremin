@@ -35,6 +35,7 @@
     [super setDoubleValue:newValue];
     
     label = [NSString stringWithFormat:@"%.2f", value];
+    [self setNeedsDisplay:YES];
 }
 
 

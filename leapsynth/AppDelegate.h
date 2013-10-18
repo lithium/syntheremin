@@ -18,7 +18,7 @@
 #import "SynthAnalyzer.h"
 #import "PatchCabler.h"
 
-
+#import "CSKnob.h"
 #import "CSPopupButton.h"
 #import "CSMultiSwitch.h"
 
@@ -76,4 +76,6 @@
 @property (weak) IBOutlet PatchCabler *patchCabler;
 - (IBAction)debug_save:(id)sender;
 
+@property (weak) IBOutlet CSKnob *lfo_freq;
+@property (weak) IBOutlet CSKnob *lfo_level;
 @end

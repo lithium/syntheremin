@@ -19,9 +19,6 @@
     
         for (int i=0; i < kNumOscillators; i++) {
             oscN[i] = [[Vco alloc] init];
-            [oscN[i] setWaveShape:kWaveSquare];
-            [oscN[i] setFrequencyInHz:440];
-            [oscN[i] setRange:0];
         }
         for (int i=0; i < kNumEnvelopes; i++) {
             adsrN[i] = [[Adsr alloc] init];
@@ -39,6 +36,8 @@
         }
 
         patches = [[NSMutableDictionary alloc] init];
+        
+        [self setDefaults];
     }
     
     return self;
@@ -245,5 +244,38 @@
 
     }];
     return YES;
+}
+
+- (void)setDefaults
+{
+    for (int i=0; i < kNumOscillators; i++) {
+        [oscN[i] setDetuneInCents:0];
+        [oscN[i] setRange:0];
+        [oscN[i] setWaveShape:kWaveSaw];
+        [oscN[i] setFrequencyInHz:440];
+    }
+
+    [lfo setFrequencyInHz:1];
+    [lfo setLevel:0.3];
+    [lfo setWaveShape:kWaveSine];
+    
+    [noise setNoiseType:kNoisePink];
+    [noise setLevel:0.3];
+    
+    [vcf setCutoffFrequencyInHz:1000];
+    [vcf setResonance:0.5];
+    
+    for (int i=0; i < kNumEnvelopes; i++) {
+        [adsrN[i] setAttackTimeInMs:0];
+        [adsrN[i] setDecayTimeInMs:0];
+        [adsrN[i] setSustainLevel:1.0];
+        [adsrN[i] setReleaseTimeInMs:0];
+    }
+    
+    for (int i=0; i < kNumMixers; i++) {
+        [vcaN[i] setLevel:0];
+    }
+    
+    [mixer setLevel:0.35];
 }
 @end

@@ -53,4 +53,5 @@
 - (NSData *)currentConfiguration;
 - (BOOL)setConfiguration:(NSDictionary *)config;
 
+- (void)setDefaults;
 @end

@@ -2059,20 +2059,20 @@
 								<reference key="NSTextColor" ref="351471177"/>
 							</object>
 						</object>
-						<object class="NSButton" id="138959513">
+						<object class="NSButton" id="382042439">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{57, 539}, {75, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="813486720">
+							<object class="NSButtonCell" key="NSCell" id="987131811">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">save/</string>
 								<reference key="NSSupport" ref="776293554"/>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="138959513"/>
+								<reference key="NSControlView" ref="382042439"/>
 								<int key="NSButtonFlags">-2038284033</int>
 								<int key="NSButtonFlags2">129</int>
 								<string key="NSAlternateContents"/>
@@ -2996,9 +2996,25 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">debug_save:</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="138959513"/>
+						<reference key="destination" ref="382042439"/>
 					</object>
 					<int key="connectionID">5186</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">lfo_freq</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="110686057"/>
+					</object>
+					<int key="connectionID">5187</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">lfo_level</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1009714613"/>
+					</object>
+					<int key="connectionID">5188</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3212,7 +3228,7 @@
 							<reference ref="323804690"/>
 							<reference ref="617967423"/>
 							<reference ref="30950227"/>
-							<reference ref="138959513"/>
+							<reference ref="382042439"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -4421,16 +4437,16 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5184</int>
-						<reference key="object" ref="138959513"/>
+						<reference key="object" ref="382042439"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="813486720"/>
+							<reference ref="987131811"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5185</int>
-						<reference key="object" ref="813486720"/>
-						<reference key="parent" ref="138959513"/>
+						<reference key="object" ref="987131811"/>
+						<reference key="parent" ref="382042439"/>
 					</object>
 				</array>
 			</object>
@@ -5126,7 +5142,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">5186</int>
+			<int key="maxID">5188</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

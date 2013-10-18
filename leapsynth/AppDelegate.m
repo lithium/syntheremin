@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize lfo_freq;
+@synthesize lfo_level;
 @synthesize patchCabler;
 @synthesize keyboardBox;
 @synthesize looper_level;
@@ -53,6 +55,19 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         
     synth = [[AudioQueueSynth alloc] init];
     [synth start];
+    
+    
+
+    [synth addObserver:self            
+            forKeyPath:@"lfo.frequencyInHz" 
+               options:0
+               context:(__bridge void *)lfo_freq];
+    [synth addObserver:self            
+            forKeyPath:@"lfo.level" 
+               options:0
+               context:(__bridge void *)lfo_level];
+
+    [synth setDefaults];
         
     [[synth looper] setDelegate:self];
         
@@ -325,6 +340,20 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
+
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+                      ofObject:(id)object 
+                        change:(NSDictionary *)change 
+                       context:(void *)context
+{
+    id value = [object valueForKeyPath:keyPath];
+    
+    CSControl *control = (__bridge CSControl *)context;
+    double v = [value doubleValue];
+    [control setDoubleValue:[value doubleValue]];
+    NSLog(@"%@[%@] = %@", keyPath, context, value);
+
+}
 
 /*
  * IB Actions
