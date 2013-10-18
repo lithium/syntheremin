@@ -12,7 +12,7 @@
 
 - (double) getSample
 {
-    return [self sampleAllInputs]*[self getModulationSample];
+    return [self sampleAllInputs]*[self level]*[self getModulationSample];
 }
 
 @end
