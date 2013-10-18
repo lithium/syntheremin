@@ -29,6 +29,7 @@
     Vcf *vcf;
     Adsr *adsrN[kNumEnvelopes];
     Vca *vcaN[kNumMixers];
+    Vca *mixer;
     
     __weak id delegate;
 }

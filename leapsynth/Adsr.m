@@ -37,9 +37,9 @@
     decaySlope = (1.0 - sustainLevel) / temp;
 }
 
-- (void)setSustainLevel:(double) level
+- (void)setSustainLevel:(double)newLevel
 {
-    sustainLevel = MAX(MIN(level, kSustainMax), kSustainMin);
+    sustainLevel = MAX(MIN(newLevel, kSustainMax), kSustainMin);
     [self setDecayTimeInMs:decayMS];
     [self setReleaseTimeInMs:releaseMS];
 }

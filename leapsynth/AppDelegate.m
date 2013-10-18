@@ -96,38 +96,36 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
                         andParameterName:@"vca:0:input"
                                   onEdge:kEdgeBottom
-                              withOffset:40];
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vca:0:modulate"
-                                  onEdge:kEdgeBottom
-                              withOffset:70];
+                              withOffset:50];
         
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
                         andParameterName:@"vca:1:input"
                                   onEdge:kEdgeBottom
                               withOffset:110];
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vca:1:modulate"
-                                  onEdge:kEdgeBottom
-                              withOffset:140];
 
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
                         andParameterName:@"vca:2:input"
                                   onEdge:kEdgeBottom
                               withOffset:180];
+        
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vca:2:modulate"
+                        andParameterName:@"mixer::modulate"
                                   onEdge:kEdgeBottom
-                              withOffset:210];
+                              withOffset:220];
+        
+        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                        andParameterName:@"mixer::output"
+                                  onEdge:kEdgeBottom
+                              withOffset:260];
 
 
         //envelopes
         [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"env:0:output"
+                        andParameterName:@"adsr:0:output"
                                   onEdge:kEdgeRight
                               withOffset:150];
         [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"env:1:output"
+                        andParameterName:@"adsr:1:output"
                                   onEdge:kEdgeRight
                               withOffset:50];
 
@@ -259,124 +257,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 {
     [noleap_label setHidden:NO];
 }
-
-//- (void)applyParameter:(int)param :(double)value
-//{
-//    switch (param) {
-//        case kParameterVolume:
-//            [[synth vca] setMasterVolume:value];
-//            [vca_master setDoubleValue:value];
-//            break;
-//        case kParameterPitch: {
-//            double detune = (value*kCentsPerOctave);
-//            [[synth osc1] setDetuneInCents:kCentsPerOctave-detune];
-//            [osc1_freq setDoubleValue:detune];
-//            break;
-//        }
-//        case kParameterFrequency: {
-//            double freq = value*(kFrequencyMax-kFrequencyMin)+kFrequencyMin;
-//            [[synth vcf] setCutoffFrequencyInHz:freq];
-//            [vcf_cutoff setDoubleValue:freq];
-//            break;
-//        }
-//        case kParameterResonance: {
-//            [[synth vcf] setResonance:value];
-//            [vcf_resonance setDoubleValue:value];
-//            break;
-//        }
-//        case kParameterLfoSpeed: {
-//            double freq = value*(kLfoFrequencyMax-kLfoFrequencyMin)+kLfoFrequencyMin;
-//            [[synth osc1] setLfoFrequency:freq];
-//            [lfo_freq setDoubleValue:freq];
-//            break;
-//        }
-//        case kParameterLfoAmount: {
-//            [[synth osc1] setModulationAmount:value];
-//            [lfo_amount setDoubleValue:value];
-//            break;
-//        }
-//        case kParameterNote: {
-//            if (value > kNoteThreshold) {
-//                if (!paramNoteOn) { 
-//                    [self noteOn];
-//                    paramNoteOn = true;
-//                }
-//            } else {
-//                if (paramNoteOn) {
-//                    [self noteOff];
-//                    paramNoteOn = false;
-//                }
-//            }
-//            break;
-//        }
-//        case kParameterVcaEnvelope: {
-//            bool state = ![vca_enable state];
-//            [self setVcaEnvelopeEnabled:state];
-//            [vca_enable setState:state];
-//            break;
-//        }
-//        case kParameterFilterEnable: {
-//            bool state = ![vcf_enable state];
-//            [self setVcfEnabled:state];
-//            [vcf_enable setState:state];
-//            break;
-//        }
-//        case kParameterFilterEnvelope: {
-//            bool state = ![vcf_envelope_enable state];
-//            [self setVcfEnvelopeEnabled:state];
-//            [vcf_envelope_enable setState:state];
-//            break;
-//        }
-//        case kParameterVcoWaveshape: {
-//            int value = [self incrementAndClampSlider:osc1_shape];
-//            [[synth osc1] setWaveShape:value];
-//            break;
-//        }
-//        case kParameterLfoWaveshape: {
-//            int value = [self incrementAndClampSlider:lfo_shape];
-//            [[synth osc1] setLfoWaveshape:value];
-//            break;
-//        }
-//        case kParameterLfoModulation: {
-//            int value = [self incrementAndClampSlider:lfo_type];
-//            [[synth osc1] setModulationType:value];
-//            break;
-//        }
-//        case kParameterRangeUp: {
-//            int value = [self incrementAndClampSlider:osc1_range];
-//            [[synth osc1] setRange:value];
-//            break;
-//        }
-//        case kParameterRangeDown: {
-//            int value = [self decrementAndClampSlider:osc1_range];
-//            [[synth osc1] setRange: value];
-//            break;
-//        }
-//
-//    }
-//}
-//- (int)incrementAndClampSlider:(NSSlider *)slider
-//{
-//    int value = [slider intValue]+1;
-//    int max = [slider maxValue];
-//    int min = [slider minValue];
-//    if (value >= max) 
-//        value = min;
-//    [slider setIntValue:value];
-//    return value;
-//
-//}
-//- (int)decrementAndClampSlider:(NSSlider *)slider
-//{
-//    int value = [slider intValue]-1;
-//    int max = [slider maxValue];
-//    int min = [slider minValue];
-//    if (value < min) 
-//        value = max-1;
-//    [slider setIntValue:value];
-//    return value;
-//    
-//}
 
 
 

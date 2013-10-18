@@ -22,10 +22,14 @@
 - (double)sampleAllInputs
 {
     double sample = 0;
-    for (id source in inputs) {
+    int count = 0;
+    for (SampleProvider *source in inputs) {
+        if ([source level] == 0) 
+            continue;
         sample += [source getSample];
+        count++;
     }
-    sample /= [inputs count];
+    sample /= count;
     
     return sample;
 }
