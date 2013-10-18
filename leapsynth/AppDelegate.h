@@ -74,5 +74,6 @@
 
 
 @property (weak) IBOutlet PatchCabler *patchCabler;
+- (IBAction)debug_save:(id)sender;
 
 @end

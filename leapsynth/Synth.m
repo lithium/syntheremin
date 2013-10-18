@@ -38,6 +38,7 @@
             [mixer addInput:vcaN[i]];
         }
 
+        patches = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -105,6 +106,7 @@
     }
     
 
+    [patches setObject:targetName forKey:sourceName];
 }
 - (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName
 {
@@ -125,9 +127,16 @@
         }
     }
 
+    [patches removeObjectForKey:sourceName];
 }
 
         
+- (void)clearPatches
+{
+    [patches enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [self disconnectPatch:key :obj];
+    }];
+}
         
 - (NSString*)parsePortName:(NSString*)portString :(__weak id *)outComponent
 {
@@ -198,7 +207,7 @@
     [config setObject:[noise properties] forKey:@"noise:0"];
     [config setObject:[vcf properties] forKey:@"vcf:0"];
     [config setObject:[mixer properties] forKey:@"mixer:"];
-
+    [config setObject:[patches copy] forKey:@"patches::"];
     return config;
 
 }
@@ -217,14 +226,22 @@
 
 - (BOOL)setConfiguration:(NSDictionary *)config
 {        
+    [self clearPatches];
     [config enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        __weak SampleProvider *source;
-        [self parsePortName:key :&source];
-        
-        [obj enumerateKeysAndObjectsUsingBlock:^(id inner_key, id inner_obj, BOOL *inner_stop) {
-//            NSLog(@"%@:%@ = %@",key,inner_key, inner_obj);            
-            [obj setValue:inner_obj forKey:inner_key];
-        }];
+
+        if ([@"patches::" isEqualToString:key]) {
+            [obj enumerateKeysAndObjectsUsingBlock:^(id patch_key, id patch_obj, BOOL *patch_stop) {
+//                NSLog(@"patch %@ -> %@", patch_key, patch_obj);
+                [self connectPatch:patch_key :patch_obj];
+            }];
+        } else {
+            __weak SampleProvider *source;
+            [self parsePortName:key :&source];
+            [obj enumerateKeysAndObjectsUsingBlock:^(id inner_key, id inner_obj, BOOL *inner_stop) {
+//                NSLog(@"%@:%@ = %@",key,inner_key, inner_obj);            
+                [source setValue:inner_obj forKey:inner_key];
+            }];
+        }
 
     }];
     return YES;

@@ -31,6 +31,7 @@
     Vca *vcaN[kNumMixers];
     Vca *mixer;
     
+    NSMutableDictionary *patches;
     __weak id delegate;
 }
 

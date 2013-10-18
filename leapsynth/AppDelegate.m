@@ -159,11 +159,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     }
 
     
-//    NSLog(@"props %@", [[NSString alloc] initWithData:[synth currentConfiguration]
-//                                             encoding:NSASCIIStringEncoding]);
-
-
-    [synth setConfiguration:[synth properties]];
 
     
     //connect all midi endpoints to our listener
@@ -386,9 +381,15 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)changeControl:(id)sender {
     double value = [sender doubleValue];
     NSString *param = [sender valueForKey:@"parameter"];
-    NSLog(@"%@ = %f", param, value);
+//    NSLog(@"%@ = %f", param, value);
     
     [synth applyParameter:param :value];
 }
 
+- (IBAction)debug_save:(id)sender {
+    NSLog(@"%@", [[NSString alloc] initWithData:[synth currentConfiguration]
+                                             encoding:NSASCIIStringEncoding]);
+    
+    [synth setConfiguration:[synth properties]];
+}
 @end
