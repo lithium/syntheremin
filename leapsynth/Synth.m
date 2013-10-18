@@ -136,7 +136,9 @@
     {
         NSString *component = [chunks objectAtIndex:0];
         int index = [[chunks objectAtIndex:1] intValue];
-        NSString *portName = [chunks objectAtIndex:2];
+        NSString *portName;
+        if ([chunks count] > 2) 
+            portName = [chunks objectAtIndex:2];
         
         if ([component isEqualToString:@"osc"]) {
             *outComponent = oscN[index];
@@ -195,7 +197,7 @@
     [config setObject:[lfo properties] forKey:@"lfo:0"];
     [config setObject:[noise properties] forKey:@"noise:0"];
     [config setObject:[vcf properties] forKey:@"vcf:0"];
-    [config setObject:[mixer properties] forKey:@"mixer::"];
+    [config setObject:[mixer properties] forKey:@"mixer:"];
 
     return config;
 
@@ -211,5 +213,20 @@
         NSLog(@"error generating configuration: %@", error);
     }
     return plist;
+}
+
+- (BOOL)setConfiguration:(NSDictionary *)config
+{        
+    [config enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        __weak SampleProvider *source;
+        [self parsePortName:key :&source];
+        
+        [obj enumerateKeysAndObjectsUsingBlock:^(id inner_key, id inner_obj, BOOL *inner_stop) {
+//            NSLog(@"%@:%@ = %@",key,inner_key, inner_obj);            
+            [obj setValue:inner_obj forKey:inner_key];
+        }];
+
+    }];
+    return YES;
 }
 @end

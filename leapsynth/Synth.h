@@ -50,5 +50,6 @@
 
 - (NSDictionary *)properties;
 - (NSData *)currentConfiguration;
+- (BOOL)setConfiguration:(NSDictionary *)config;
 
 @end
