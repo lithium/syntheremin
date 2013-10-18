@@ -35,8 +35,8 @@
     
     NSRect bounds = [self bounds];
     
-    [[NSColor blackColor] set];
-    NSRectFill(bounds);
+//    [[NSColor blackColor] set];
+//    NSRectFill(bounds);
     
     // draw axis
     NSBezierPath *minorAxisPath = [[NSBezierPath alloc] init];

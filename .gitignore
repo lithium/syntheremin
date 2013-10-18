@@ -1,3 +1,6 @@
 DerivedData/
 build/
 xcuserdata
+*.app
+*.dmg
+*.zip

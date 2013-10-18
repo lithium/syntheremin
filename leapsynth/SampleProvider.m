@@ -25,7 +25,6 @@
     return 0;
 }
 
-
 - (double) getModulationSample
 {
     if (modulator && [modulator respondsToSelector:@selector(getSample)]) {

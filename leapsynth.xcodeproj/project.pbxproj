@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		125286E3180EE76C0025D405 /* CSKnob.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286E2180EE76C0025D405 /* CSKnob.m */; };
+		125286F2180F3F780025D405 /* CSControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F1180F3F780025D405 /* CSControl.m */; };
+		125286F5180F3FA40025D405 /* CSFader.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F4180F3FA40025D405 /* CSFader.m */; };
+		125286FA180F42D50025D405 /* csfader_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 125286F7180F42D50025D405 /* csfader_bg.png */; };
+		125286FB180F42D50025D405 /* csfader_knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 125286F8180F42D50025D405 /* csfader_knob.png */; };
+		125286FC180F42D50025D405 /* csknob_knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 125286F9180F42D50025D405 /* csknob_knob.png */; };
+		12528703180F9F2B0025D405 /* PatchCabler.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528702180F9F2A0025D405 /* PatchCabler.m */; };
+		12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528705180F9F7D0025D405 /* PatchCableEndpoint.m */; };
+		1252870A1810420F0025D405 /* patch_endpoint_output.png in Resources */ = {isa = PBXBuildFile; fileRef = 125287091810420F0025D405 /* patch_endpoint_output.png */; };
+		1252870C181042710025D405 /* patch_endpoint_input.png in Resources */ = {isa = PBXBuildFile; fileRef = 1252870B181042710025D405 /* patch_endpoint_input.png */; };
+		125287181810D2D60025D405 /* CSMultiSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 125287171810D2D60025D405 /* CSMultiSwitch.m */; };
+		1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1252871A1810D3A00025D405 /* CSPopupButton.m */; };
 		126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */; };
@@ -56,6 +68,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		125286E1180EE76C0025D405 /* CSKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSKnob.h; path = CSControls/CSKnob.h; sourceTree = "<group>"; };
+		125286E2180EE76C0025D405 /* CSKnob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSKnob.m; path = CSControls/CSKnob.m; sourceTree = "<group>"; };
+		125286F0180F3F780025D405 /* CSControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSControl.h; path = CSControls/CSControl.h; sourceTree = "<group>"; };
+		125286F1180F3F780025D405 /* CSControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSControl.m; path = CSControls/CSControl.m; sourceTree = "<group>"; };
+		125286F3180F3FA40025D405 /* CSFader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSFader.h; sourceTree = "<group>"; };
+		125286F4180F3FA40025D405 /* CSFader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSFader.m; sourceTree = "<group>"; };
+		125286F7180F42D50025D405 /* csfader_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csfader_bg.png; sourceTree = "<group>"; };
+		125286F8180F42D50025D405 /* csfader_knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csfader_knob.png; sourceTree = "<group>"; };
+		125286F9180F42D50025D405 /* csknob_knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csknob_knob.png; sourceTree = "<group>"; };
+		12528701180F9F2A0025D405 /* PatchCabler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchCabler.h; sourceTree = "<group>"; };
+		12528702180F9F2A0025D405 /* PatchCabler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchCabler.m; sourceTree = "<group>"; };
+		12528704180F9F7D0025D405 /* PatchCableEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatchCableEndpoint.h; sourceTree = "<group>"; };
+		12528705180F9F7D0025D405 /* PatchCableEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatchCableEndpoint.m; sourceTree = "<group>"; };
+		125287091810420F0025D405 /* patch_endpoint_output.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patch_endpoint_output.png; sourceTree = "<group>"; };
+		1252870B181042710025D405 /* patch_endpoint_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patch_endpoint_input.png; sourceTree = "<group>"; };
+		125287161810D2D60025D405 /* CSMultiSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMultiSwitch.h; path = CSControls/CSMultiSwitch.h; sourceTree = "<group>"; };
+		125287171810D2D60025D405 /* CSMultiSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMultiSwitch.m; path = CSControls/CSMultiSwitch.m; sourceTree = "<group>"; };
+		125287191810D3A00025D405 /* CSPopupButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSPopupButton.h; path = CSControls/CSPopupButton.h; sourceTree = "<group>"; };
+		1252871A1810D3A00025D405 /* CSPopupButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSPopupButton.m; path = CSControls/CSPopupButton.m; sourceTree = "<group>"; };
 		126C4D5F17B29F8700598323 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = LeapSDK/lib/libLeap.dylib; sourceTree = "<group>"; };
 		126C4D6517B29FCB00598323 /* Leap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Leap.h; path = LeapSDK/include/Leap.h; sourceTree = "<group>"; };
 		126C4D6617B29FCB00598323 /* LeapMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LeapMath.h; path = LeapSDK/include/LeapMath.h; sourceTree = "<group>"; };
@@ -132,6 +163,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		125286E5180EE7700025D405 /* CSControls */ = {
+			isa = PBXGroup;
+			children = (
+				125286F6180F42D50025D405 /* images */,
+				125286F0180F3F780025D405 /* CSControl.h */,
+				125286F1180F3F780025D405 /* CSControl.m */,
+				125286E1180EE76C0025D405 /* CSKnob.h */,
+				125286E2180EE76C0025D405 /* CSKnob.m */,
+				125286F3180F3FA40025D405 /* CSFader.h */,
+				125286F4180F3FA40025D405 /* CSFader.m */,
+				125287161810D2D60025D405 /* CSMultiSwitch.h */,
+				125287171810D2D60025D405 /* CSMultiSwitch.m */,
+				125287191810D3A00025D405 /* CSPopupButton.h */,
+				1252871A1810D3A00025D405 /* CSPopupButton.m */,
+			);
+			name = CSControls;
+			sourceTree = "<group>";
+		};
+		125286F6180F42D50025D405 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				1252870B181042710025D405 /* patch_endpoint_input.png */,
+				125287091810420F0025D405 /* patch_endpoint_output.png */,
+				125286F7180F42D50025D405 /* csfader_bg.png */,
+				125286F8180F42D50025D405 /* csfader_knob.png */,
+				125286F9180F42D50025D405 /* csknob_knob.png */,
+			);
+			name = images;
+			path = img/controls;
+			sourceTree = SOURCE_ROOT;
+		};
 		126C4D6417B29FA900598323 /* LeapSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +209,10 @@
 		127DBD2317A76D16007C68FF = {
 			isa = PBXGroup;
 			children = (
+				12528701180F9F2A0025D405 /* PatchCabler.h */,
+				12528702180F9F2A0025D405 /* PatchCabler.m */,
+				12528704180F9F7D0025D405 /* PatchCableEndpoint.h */,
+				12528705180F9F7D0025D405 /* PatchCableEndpoint.m */,
 				127DBD3817A76D16007C68FF /* leapsynth */,
 				127DBD3117A76D16007C68FF /* Frameworks */,
 				127DBD2F17A76D16007C68FF /* Products */,
@@ -181,6 +247,7 @@
 			children = (
 				127DBD3917A76D16007C68FF /* Supporting Files */,
 				12BB468B17A988E4009D7B5C /* MainMenu.xib */,
+				125286E5180EE7700025D405 /* CSControls */,
 				1291C77317BC0C430055761E /* Soft Synth */,
 				12CDBF7317A9A9C100C72104 /* Defines.h */,
 				12C3940C18087F700035BEFF /* Looper.h */,
@@ -314,6 +381,11 @@
 				12C40330180B2CDA00FB384A /* sine.png in Resources */,
 				12C40331180B2CDA00FB384A /* square.png in Resources */,
 				12C40332180B2CDA00FB384A /* tri.png in Resources */,
+				125286FA180F42D50025D405 /* csfader_bg.png in Resources */,
+				125286FB180F42D50025D405 /* csfader_knob.png in Resources */,
+				125286FC180F42D50025D405 /* csknob_knob.png in Resources */,
+				1252870A1810420F0025D405 /* patch_endpoint_output.png in Resources */,
+				1252870C181042710025D405 /* patch_endpoint_input.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +415,13 @@
 				12B0FE6B180A19A50019EBC4 /* NoiseGenerator.m in Sources */,
 				12B0FE6E180A1A5A0019EBC4 /* SampleProvider.m in Sources */,
 				12C4033C180B8A7400FB384A /* Mixer.m in Sources */,
+				125286E3180EE76C0025D405 /* CSKnob.m in Sources */,
+				125286F2180F3F780025D405 /* CSControl.m in Sources */,
+				125286F5180F3FA40025D405 /* CSFader.m in Sources */,
+				12528703180F9F2B0025D405 /* PatchCabler.m in Sources */,
+				12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */,
+				125287181810D2D60025D405 /* CSMultiSwitch.m in Sources */,
+				1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

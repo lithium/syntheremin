@@ -10,7 +10,6 @@
 #import "Vco.h"
 #import "Vca.h"
 #import "Vcf.h"
-//#import "SynthAnalyzer.h"
 #import "NoiseGenerator.h"
 #import "Adsr.h"
 #import "SampleProvider.h"
@@ -19,9 +18,9 @@
 #define kNumOscillators 3
 #define kNumEnvelopes 2
 
-//@protocol AnalyzerDelegate <NSObject>
-//- (void) receiveSamples :(short *)samples :(int)numSamples;
-//@end
+@protocol AnalyzerDelegate <NSObject>
+- (void) receiveSamples :(short *)samples :(int)numSamples;
+@end
 
 @interface Synth : SampleProvider {
     Vco *oscN[kNumOscillators];
@@ -30,15 +29,23 @@
     Vcf *vcf;
     Adsr *adsrN[kNumEnvelopes];
     Vca *vcaN[kNumMixers];
+    Vca *mixer;
+    
+    __weak id delegate;
 }
 
+@property (weak) id delegate;
 
 - (id)init;
-- (int) getSamples :(short *)samples :(int)numSamples;
+
+- (int)getSamples :(short *)samples :(int)numSamples;
+
 - (void)setFrequencyInHz:(double)freqInHz;
-
-
 - (void)noteOn;
 - (void)noteOff;
+
+- (void)applyParameter:(NSString *)parameterName :(double)value;
+- (void)connectPatch:(NSString *)sourceName :(NSString *)targetName;
+- (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName;
 
 @end

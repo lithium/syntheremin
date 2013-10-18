@@ -9,7 +9,7 @@
 #import "Synth.h"
 
 @implementation Synth
-
+@synthesize delegate;
 
 - (id)init
 {
@@ -19,47 +19,24 @@
     
         for (int i=0; i < kNumOscillators; i++) {
             oscN[i] = [[Vco alloc] init];
+            [oscN[i] setWaveShape:kWaveSquare];
+            [oscN[i] setFrequencyInHz:440];
+            [oscN[i] setRange:0];
         }
         for (int i=0; i < kNumEnvelopes; i++) {
             adsrN[i] = [[Adsr alloc] init];
         }
 
         lfo = [[Oscillator alloc] init];
+
         noise = [[NoiseGenerator alloc] init];
         vcf = [[Vcf alloc] init];
-        
+        mixer = [[Vca alloc] init];
         for (int i=0; i < kNumMixers; i++) {
             vcaN[i] = [[Vca alloc] init];
             [vcaN[i] setLevel:0];
+            [mixer addInput:vcaN[i]];
         }
-
-        
-        
-        //hardcode a patch for debugging
-        [oscN[0] setWaveShape:kWaveSaw];
-        [oscN[0] setFrequencyInHz:440];
-        
-        [oscN[1] setWaveShape:kWaveSaw];
-        [oscN[1] setFrequencyInHz:220];
-        
-        [vcf addInput:oscN[0]];
-        [vcf addInput:oscN[1]];
-        [vcf setCutoffFrequencyInHz:800];
-        [vcf setResonance:0.8];
-        
-        [vcaN[0] addInput:vcf];
-        [vcaN[0] setLevel:0.8];
-
-        
-        [adsrN[0] setAttackTimeInMs:0];
-        [adsrN[0] setDecayTimeInMs:0];
-        [adsrN[0] setSustainLevel:1.0];
-        [adsrN[0] setReleaseTimeInMs:0];
-        [vcaN[0] setModulator:adsrN[0]];
-        
-        
-        
-
 
     }
     
@@ -68,19 +45,15 @@
 
 - (int) getSamples :(short *)samples :(int)numSamples
 {
-    
-    BOOL foundOne = NO;
-    for (int i=0; i < kNumMixers; i++) {
-        if ([vcaN[i] level] > 0) {
-            if (foundOne) {
-                [vcaN[i] mixSamples:samples :numSamples];
-            } else {
-                [vcaN[i] getSamples:samples :numSamples];
-                foundOne = YES;
-            }
-        }
+@autoreleasepool {
+        
+    [mixer getSamples:samples :numSamples];
+    if (delegate && [delegate respondsToSelector:@selector(receiveSamples::)]) {
+        [delegate receiveSamples:samples :numSamples];
     }
     return numSamples;
+    
+}
 }
 
 - (void)noteOn
@@ -104,4 +77,100 @@
     }
 }
 
+- (void)applyParameter:(NSString *)parameterName :(double)value
+{
+    __weak SampleProvider *component;
+    NSString *param = [self parsePortName:parameterName :&component];
+    
+    [component setValue:[NSNumber numberWithDouble:value] 
+                 forKey:param];
+
+}
+- (void)connectPatch:(NSString *)sourceName :(NSString *)targetName
+{
+    __weak SampleProvider *source;
+    __weak Mixer *target;
+    NSString *src_port = [self parsePortName:sourceName :&source];
+    NSString *target_port = [self parsePortName:targetName :&target];
+    
+    if (![src_port isEqualToString:@"output"]) {
+        return;
+    }
+    
+    if ([target_port isEqualToString:@"input"]) {
+        [target addInput:source];
+    }
+    else if ([target_port isEqualToString:@"modulate"]) {
+        [target setModulator:source];
+    }
+    
+
+}
+- (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName
+{
+    __weak SampleProvider *source;
+    __weak Mixer *target;
+    NSString *src_port = [self parsePortName:sourceName :&source];
+    NSString *target_port = [self parsePortName:targetName :&target];
+    
+    if ([target_port isEqualToString:@"input"]) {
+        [target removeInput:source];
+    }
+    else if ([target_port isEqualToString:@"modulate"]) {
+        [target setModulator:nil];
+    }
+    else if ([target_port isEqualToString:@"modulateMixer"]) {
+        for (int i=0; i < kNumMixers; i++) {
+            [vcaN[i] setModulator:nil];
+        }
+    }
+
+}
+
+        
+        
+- (NSString*)parsePortName:(NSString*)portString :(__weak id *)outComponent
+{
+    NSArray *chunks = [portString componentsSeparatedByString:@":"];
+    if ([chunks count] >= 2 && outComponent) 
+    {
+        NSString *component = [chunks objectAtIndex:0];
+        int index = [[chunks objectAtIndex:1] intValue];
+        NSString *portName = [chunks objectAtIndex:2];
+        
+        if ([component isEqualToString:@"osc"]) {
+            *outComponent = oscN[index];
+        }
+        else if ([component isEqualToString:@"vca"]) {
+            *outComponent = vcaN[index];
+        }
+        else if ([component isEqualToString:@"adsr"]) {
+            *outComponent = adsrN[index];
+        }
+        else if ([component isEqualToString:@"vcf"]) {
+            *outComponent = vcf;
+        }
+        else if ([component isEqualToString:@"lfo"]) {
+            *outComponent = lfo;
+        }
+        else if ([component isEqualToString:@"noise"]) {
+            *outComponent = noise;
+        }
+        else if ([component isEqualToString:@"master"]) {
+            *outComponent = self;
+        }
+        else if ([component isEqualToString:@"mixer"]) {
+            *outComponent = mixer;
+        }
+        else {
+            *outComponent = nil;
+        }
+
+        
+        return portName;
+    }
+    
+    return nil;
+
+}
 @end
