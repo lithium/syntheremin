@@ -1286,7 +1286,7 @@
 											<string key="NSFrame">{{65, 82}, {29, 17}}</string>
 											<reference key="NSSuperview" ref="74788305"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="1056240117"/>
+											<reference key="NSNextKeyView" ref="836116740"/>
 											<string key="NSReuseIdentifierKey">_NS:1505</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="1062221604">
@@ -1323,10 +1323,10 @@
 										<object class="NSSegmentedControl" id="714531269">
 											<reference key="NSNextResponder" ref="74788305"/>
 											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{178, 59}, {87, 20}}</string>
+											<string key="NSFrame">{{144, 60}, {133, 20}}</string>
 											<reference key="NSSuperview" ref="74788305"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="796409666"/>
+											<reference key="NSNextKeyView" ref="110686057"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSegmentedCell" key="NSCell" id="922440635">
@@ -1338,15 +1338,18 @@
 												<array class="NSMutableArray" key="NSSegmentImages">
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">40</double>
-														<string key="NSSegmentItemLabel">White</string>
-														<int key="NSSegmentItemTag">1</int>
+														<int key="NSSegmentItemTag">2</int>
 														<bool key="NSSegmentItemSelected">YES</bool>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">40</double>
-														<string key="NSSegmentItemLabel">Pink</string>
+														<string key="NSSegmentItemLabel">White</string>
 														<int key="NSSegmentItemTag">2</int>
+														<int key="NSSegmentItemImageScaling">0</int>
+													</object>
+													<object class="NSSegmentItem">
+														<string key="NSSegmentItemLabel">Pink</string>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 												</array>
@@ -1359,7 +1362,7 @@
 											<string key="NSFrame">{{200, 82}, {42, 17}}</string>
 											<reference key="NSSuperview" ref="74788305"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="714531269"/>
+											<reference key="NSNextKeyView" ref="1056240117"/>
 											<string key="NSReuseIdentifierKey">_NS:1505</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="506482522">
@@ -1379,7 +1382,7 @@
 											<string key="NSFrame">{{161, -1}, {5, 108}}</string>
 											<reference key="NSSuperview" ref="74788305"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="836116740"/>
+											<reference key="NSNextKeyView" ref="796409666"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<string key="NSOffsets">{0, 0}</string>
 											<object class="NSTextFieldCell" key="NSTitleCell">
@@ -1404,7 +1407,7 @@
 											<string key="NSFrame">{{18, 60}, {125, 20}}</string>
 											<reference key="NSSuperview" ref="74788305"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="110686057"/>
+											<reference key="NSNextKeyView" ref="714531269"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSSegmentedCell" key="NSCell" id="675315800">
@@ -4756,7 +4759,7 @@
 					</object>
 				</object>
 				<string key="4780.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<integer value="1" key="4781.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="0" key="4781.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="4781.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4788.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4797.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4979,17 +4982,12 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">env:1:attackTimeInMs</string>
-							</object>
-							<object class="IBUserDefinedRuntimeAttribute">
-								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
-								<string key="keyPath">minValue</string>
-								<real value="0.0" key="value"/>
+								<string key="value">adsr:1:attackTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
-								<real value="20000" key="value"/>
+								<real value="5000" key="value"/>
 							</object>
 						</array>
 					</object>
@@ -5004,12 +5002,12 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">env:1:decayTimeInMs</string>
+								<string key="value">adsr:1:decayTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
-								<real value="20000" key="value"/>
+								<real value="5000" key="value"/>
 							</object>
 						</array>
 					</object>
@@ -5024,7 +5022,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">env:1:sustainLevel</string>
+								<string key="value">adsr:1:sustainLevel</string>
 							</object>
 						</array>
 					</object>
@@ -5039,12 +5037,12 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">env:1:releaseTimeInMs</string>
+								<string key="value">adsr:1:releaseTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
-								<real value="20000" key="value"/>
+								<real value="5000" key="value"/>
 							</object>
 						</array>
 					</object>
@@ -5059,7 +5057,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">env:0:attackTimeInMs</string>
+								<string key="value">adsr:0:attackTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -5069,7 +5067,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
-								<real value="20000" key="value"/>
+								<real value="5000" key="value"/>
 							</object>
 						</array>
 					</object>
@@ -5084,12 +5082,12 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">env:0:attackTimeInMs</string>
+								<string key="value">adsr:0:attackTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
-								<real value="20000" key="value"/>
+								<real value="5000" key="value"/>
 							</object>
 						</array>
 					</object>
@@ -5104,7 +5102,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">env:0:sustainLevel</string>
+								<string key="value">adsr:0:sustainLevel</string>
 							</object>
 						</array>
 					</object>
@@ -5119,12 +5117,12 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">env:0:releaseTimeInMs</string>
+								<string key="value">adsr:0:releaseTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
-								<real value="20000" key="value"/>
+								<real value="5000" key="value"/>
 							</object>
 						</array>
 					</object>
@@ -5159,7 +5157,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
-								<real value="20000" key="value"/>
+								<real value="9000" key="value"/>
 							</object>
 						</array>
 					</object>
@@ -5231,11 +5229,6 @@
 								<string key="keyPath">maxValue</string>
 								<real value="1200" key="value"/>
 							</object>
-							<object class="IBUserDefinedRuntimeAttribute">
-								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
-								<string key="keyPath">doubleValue</string>
-								<real value="600" key="value"/>
-							</object>
 						</array>
 					</object>
 				</object>
@@ -5255,11 +5248,6 @@
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
 								<real value="1200" key="value"/>
-							</object>
-							<object class="IBUserDefinedRuntimeAttribute">
-								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
-								<string key="keyPath">doubleValue</string>
-								<real value="600" key="value"/>
 							</object>
 						</array>
 					</object>

@@ -32,9 +32,9 @@
 {
     switch (noiseType) {
         case kNoiseWhite:
-            return [self getWhiteSample];
+            return [self getWhiteSample]*level;
         case kNoisePink:
-            return [self getPinkSample];
+            return [self getPinkSample]*level;
     }
     return 0;
 }
