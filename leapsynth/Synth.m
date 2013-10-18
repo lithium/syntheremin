@@ -43,6 +43,10 @@
     return self;
 }
 
+- (Vca *)vcaN:(int)i { return vcaN[i]; }
+- (Vco *)oscN:(int)i { return oscN[i]; }
+- (Adsr *)adsrN:(int)i { return adsrN[i]; }
+
 - (int) getSamples :(short *)samples :(int)numSamples
 {
 @autoreleasepool {
@@ -250,7 +254,7 @@
 {
     for (int i=0; i < kNumOscillators; i++) {
         [oscN[i] setDetuneInCents:0];
-        [oscN[i] setRange:0];
+        [oscN[i] setRange:i];
         [oscN[i] setWaveShape:kWaveSaw];
         [oscN[i] setFrequencyInHz:440];
     }

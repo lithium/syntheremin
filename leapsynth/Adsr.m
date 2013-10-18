@@ -20,6 +20,7 @@
     self->noteOff = true;
 }
 
+- (int)attackTimeInMs { return attackMS; }
 - (void)setAttackTimeInMs:(int) ms
 {
     attackMS = MAX(MIN(ms, kMsMax), kMsMin);
@@ -29,6 +30,7 @@
     attackSlope = 1.0/temp;
 }
 
+- (int)decayTimeInMs { return decayMS; }
 - (void)setDecayTimeInMs:(int) ms
 {
     decayMS = MAX(MIN(ms, kMsMax), kMsMin);
@@ -37,6 +39,7 @@
     decaySlope = (1.0 - sustainLevel) / temp;
 }
 
+- (double)sustainLevel { return sustainLevel; }
 - (void)setSustainLevel:(double)newLevel
 {
     sustainLevel = MAX(MIN(newLevel, kSustainMax), kSustainMin);
@@ -44,6 +47,7 @@
     [self setReleaseTimeInMs:releaseMS];
 }
 
+- (int)releaseTimeInMs { return releaseMS; }
 - (void)setReleaseTimeInMs:(int) ms
 {
     releaseMS = MAX(MIN(ms, kMsMax), kMsMin);

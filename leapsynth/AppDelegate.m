@@ -9,22 +9,45 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
-@synthesize osc_shape_2;
-@synthesize osc_detune_1;
-@synthesize mixer_level;
-@synthesize vca_level_0;
-@synthesize lfo_freq;
-@synthesize lfo_level;
-@synthesize lfo_shape;
-@synthesize noise_level;
-@synthesize noise_type;
-@synthesize filter_cutoff;
-@synthesize filter_resonance;
 @synthesize patchCabler;
 @synthesize keyboardBox;
 @synthesize looper_level;
 @synthesize looper_play;
 @synthesize looper_record;
+
+@synthesize lfo_freq;
+@synthesize lfo_level;
+@synthesize lfo_shape;
+
+@synthesize noise_level;
+@synthesize noise_type;
+
+@synthesize filter_cutoff;
+@synthesize filter_resonance;
+
+@synthesize adsr_attack_0;
+@synthesize adsr_decay_0;
+@synthesize adsr_sustain_0;
+@synthesize adsr_release_0;
+@synthesize adsr_attack_1;
+@synthesize adsr_decay_1;
+@synthesize adsr_sustain_1;
+@synthesize adsr_release_1;
+
+@synthesize mixer_level;
+@synthesize vca_level_0;
+@synthesize vca_level_1;
+@synthesize vca_level_2;
+
+@synthesize osc_shape_0;
+@synthesize osc_range_0;
+@synthesize osc_detune_1;
+@synthesize osc_shape_1;
+@synthesize osc_detune_2;
+@synthesize osc_shape_2;
+@synthesize osc_range_1;
+@synthesize osc_range_2;
+
 
 //@synthesize synthAnalyzer;
 //@synthesize noleap_label;
@@ -67,14 +90,40 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     
 
-    [synth addObserver:self            
-            forKeyPath:@"lfo.frequencyInHz" 
-               options:0
-               context:(__bridge void *)lfo_freq];
-    [synth addObserver:self            
-            forKeyPath:@"lfo.level" 
-               options:0
-               context:(__bridge void *)lfo_level];
+    [synth addObserver:self forKeyPath:@"lfo.frequencyInHz" options:0 context:(__bridge void *)lfo_freq];
+    [synth addObserver:self forKeyPath:@"lfo.level" options:0 context:(__bridge void *)lfo_level];
+    [synth addObserver:self forKeyPath:@"lfo.waveShape" options:0 context:(__bridge void *)lfo_shape];
+    
+    [synth addObserver:self forKeyPath:@"noise.level" options:0 context:(__bridge void *)noise_level];
+    [synth addObserver:self forKeyPath:@"noise.noiseType" options:0 context:(__bridge void *)noise_type];
+
+    [synth addObserver:self forKeyPath:@"vcf.cutoffFrequencyInHz" options:0 context:(__bridge void *)filter_cutoff];
+    [synth addObserver:self forKeyPath:@"vcf.resonance" options:0 context:(__bridge void *)filter_resonance];
+    
+
+    [synth addObserver:self forKeyPath:@"mixer.level" options:0 context:(__bridge void *)mixer_level];
+    [[synth vcaN:0] addObserver:self forKeyPath:@"level" options:0 context:(__bridge void *)vca_level_0];
+    [[synth vcaN:1] addObserver:self forKeyPath:@"level" options:0 context:(__bridge void *)vca_level_1];
+    [[synth vcaN:2] addObserver:self forKeyPath:@"level" options:0 context:(__bridge void *)vca_level_2];
+
+    [[synth adsrN:0] addObserver:self forKeyPath:@"attackTimeInMs" options:0 context:(__bridge void *)adsr_attack_0];
+    [[synth adsrN:0] addObserver:self forKeyPath:@"decayTimeInMs" options:0 context:(__bridge void *)adsr_decay_0];
+    [[synth adsrN:0] addObserver:self forKeyPath:@"sustainLevel" options:0 context:(__bridge void *)adsr_sustain_0];
+    [[synth adsrN:0] addObserver:self forKeyPath:@"releaseTimeInMs" options:0 context:(__bridge void *)adsr_release_0];
+    [[synth adsrN:1] addObserver:self forKeyPath:@"attackTimeInMs" options:0 context:(__bridge void *)adsr_attack_1];
+    [[synth adsrN:1] addObserver:self forKeyPath:@"decayTimeInMs" options:0 context:(__bridge void *)adsr_decay_1];
+    [[synth adsrN:1] addObserver:self forKeyPath:@"sustainLevel" options:0 context:(__bridge void *)adsr_sustain_1];
+    [[synth adsrN:1] addObserver:self forKeyPath:@"releaseTimeInMs" options:0 context:(__bridge void *)adsr_release_1];
+
+    [[synth oscN:0] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_0];
+    [[synth oscN:0] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_0];
+    [[synth oscN:1] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_1];
+    [[synth oscN:1] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_1];
+    [[synth oscN:1] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_1];
+    [[synth oscN:2] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_2];
+    [[synth oscN:2] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_2];
+    [[synth oscN:2] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_2];
+
 
     [synth setDefaults];
         
@@ -359,8 +408,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     CSControl *control = (__bridge CSControl *)context;
     double v = [value doubleValue];
-    [control setDoubleValue:[value doubleValue]];
     NSLog(@"%@[%@] = %@", keyPath, context, value);
+
+    [control setDoubleValue:[value doubleValue]];
 
 }
 

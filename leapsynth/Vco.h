@@ -30,5 +30,6 @@ enum {
 - (void)setRange :(int)octave; 
 - (void)setDetuneInCents :(int)cents;
 
+- (int)range;
 
 @end

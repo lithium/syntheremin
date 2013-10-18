@@ -23,7 +23,7 @@
     return self;
 }
 
-
+- (int)range { return range; }
 - (void)setRange :(int)octave
 {
     switch (octave) {

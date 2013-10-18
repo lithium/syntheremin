@@ -2141,7 +2141,7 @@
 								<reference key="NSTextColor" ref="351471177"/>
 							</object>
 						</object>
-						<object class="NSButton" id="737226841">
+						<object class="NSButton" id="113868308">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{57, 539}, {75, 32}}</string>
@@ -2150,13 +2150,13 @@
 							<reference key="NSNextKeyView" ref="633452124"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="394023272">
+							<object class="NSButtonCell" key="NSCell" id="915582676">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">save/</string>
 								<reference key="NSSupport" ref="776293554"/>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="737226841"/>
+								<reference key="NSControlView" ref="113868308"/>
 								<int key="NSButtonFlags">-2038284033</int>
 								<int key="NSButtonFlags2">129</int>
 								<string key="NSAlternateContents"/>
@@ -2169,7 +2169,7 @@
 					<string key="NSFrameSize">{794, 614}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView" ref="737226841"/>
+					<reference key="NSNextKeyView" ref="113868308"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1058}}</string>
 				<string key="NSMinSize">{783, 635}</string>
@@ -3101,7 +3101,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">debug_save:</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="737226841"/>
+						<reference key="destination" ref="113868308"/>
 					</object>
 					<int key="connectionID">5186</int>
 				</object>
@@ -3304,6 +3304,30 @@
 						<reference key="destination" ref="714531269"/>
 					</object>
 					<int key="connectionID">5211</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">osc_range_0</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="941598787"/>
+					</object>
+					<int key="connectionID">5212</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">osc_range_1</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="870185746"/>
+					</object>
+					<int key="connectionID">5213</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">osc_range_2</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1022212447"/>
+					</object>
+					<int key="connectionID">5214</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3517,7 +3541,7 @@
 							<reference ref="323804690"/>
 							<reference ref="617967423"/>
 							<reference ref="30950227"/>
-							<reference ref="737226841"/>
+							<reference ref="113868308"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -4726,16 +4750,16 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5184</int>
-						<reference key="object" ref="737226841"/>
+						<reference key="object" ref="113868308"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="394023272"/>
+							<reference ref="915582676"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5185</int>
-						<reference key="object" ref="394023272"/>
-						<reference key="parent" ref="737226841"/>
+						<reference key="object" ref="915582676"/>
+						<reference key="parent" ref="113868308"/>
 					</object>
 				</array>
 			</object>
@@ -5431,7 +5455,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">5211</int>
+			<int key="maxID">5214</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5500,6 +5524,9 @@
 						<string key="noise_type">CSMultiSwitch</string>
 						<string key="osc_detune_1">CSKnob</string>
 						<string key="osc_detune_2">CSKnob</string>
+						<string key="osc_range_0">CSPopupButton</string>
+						<string key="osc_range_1">CSPopupButton</string>
+						<string key="osc_range_2">CSPopupButton</string>
 						<string key="osc_shape_0">CSMultiSwitch</string>
 						<string key="osc_shape_1">CSMultiSwitch</string>
 						<string key="osc_shape_2">CSMultiSwitch</string>
@@ -5597,6 +5624,18 @@
 						<object class="IBToOneOutletInfo" key="osc_detune_2">
 							<string key="name">osc_detune_2</string>
 							<string key="candidateClassName">CSKnob</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="osc_range_0">
+							<string key="name">osc_range_0</string>
+							<string key="candidateClassName">CSPopupButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="osc_range_1">
+							<string key="name">osc_range_1</string>
+							<string key="candidateClassName">CSPopupButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="osc_range_2">
+							<string key="name">osc_range_2</string>
+							<string key="candidateClassName">CSPopupButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="osc_shape_0">
 							<string key="name">osc_shape_0</string>

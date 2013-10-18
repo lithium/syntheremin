@@ -39,6 +39,10 @@
 
 - (id)init;
 
+- (Vca *)vcaN:(int)i;
+- (Adsr *)adsrN:(int)i;
+- (Vco *)oscN:(int)i;
+
 - (int)getSamples :(short *)samples :(int)numSamples;
 
 - (void)setFrequencyInHz:(double)freqInHz;

@@ -103,13 +103,13 @@
 @property (weak) IBOutlet CSFader *vca_level_2;
 
 @property (weak) IBOutlet CSMultiSwitch *osc_shape_0;
-@property (weak) IBOutlet CSKnob *osc_detune_1;
+@property (weak) IBOutlet CSPopupButton *osc_range_0;
 @property (weak) IBOutlet CSMultiSwitch *osc_shape_1;
-@property (weak) IBOutlet CSKnob *osc_detune_2;
+@property (weak) IBOutlet CSPopupButton *osc_range_1;
+@property (weak) IBOutlet CSKnob *osc_detune_1;
 @property (weak) IBOutlet CSMultiSwitch *osc_shape_2;
-
-
-
+@property (weak) IBOutlet CSPopupButton *osc_range_2;
+@property (weak) IBOutlet CSKnob *osc_detune_2;
 
 
 

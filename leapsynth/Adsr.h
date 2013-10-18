@@ -40,6 +40,10 @@ enum {
     
 }
 
+- (int)attackTimeInMs;
+- (int)decayTimeInMs;
+- (int)releaseTimeInMs;
+- (double)sustainLevel;
 - (void)setAttackTimeInMs:(int) ms;
 - (void)setDecayTimeInMs:(int) ms;
 - (void)setSustainLevel:(double) level;
