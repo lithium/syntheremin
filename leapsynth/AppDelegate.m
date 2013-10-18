@@ -79,7 +79,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
     
-    
+    [_window makeFirstResponder:self];
     
     mSyntheremin = [[LeapSyntheremin alloc] init];
     [mSyntheremin setDelegate:self];
@@ -247,90 +247,16 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         status = MIDIPortConnectSource(midiInput, src, NULL);
     }
     
-    //set up the delegates for the keyboard buttons
-    for (int i=40; i<=52; i++) {
-        DownUpButton *key = [keyboardBox viewWithTag:i];
-        [key setDelegate:self];
-    }
     
-    }
+}
+
+
 - (void)windowWillClose:(NSNotification *)notification
 {
     [synth stop];
     [NSApp terminate:self];
 }
 
-
-
-
-
-
-
-#define kLeftXMin -200
-#define kLeftXMax -70
-
-#define kLeftYMin 150
-#define kLeftYMax 500
-
-#define kLeftZMin 0
-#define kLeftZMax 120
-
-#define kRightXMin 70
-#define kRightXMax 200
-
-#define kRightYMin 150
-#define kRightYMax 500
-
-#define kRightZMin 0
-#define kRightZMax 120
-
-
-
-- (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)position
-{
-    double x = (MAX(MIN([position x], kLeftXMax), kLeftXMin) - kLeftXMin)/(kLeftXMax - kLeftXMin);
-    double y = (MAX(MIN([position y], kLeftYMax), kLeftYMin) - kLeftYMin)/(kLeftYMax - kLeftYMin);
-    double z = 1.0-(MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
-    
-//    NSLog(@"left x,y,z: %f,%f,%f",[position x],[position y],[position z]);
-    
-//    [self applyParameter:inputParams[kInputLeftHandX] :x];
-//    [self applyParameter:inputParams[kInputLeftHandY] :y];
-//    [self applyParameter:inputParams[kInputLeftHandZ] :z];
-    
-//    [synthAnalyzer setLeftHand:x :y :z];
-}
-- (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
-{
-    double x = (MAX(MIN([position x], kRightXMax), kRightXMin) - kRightXMin)/(kRightXMax - kRightXMin);
-    double y = (MAX(MIN([position y], kRightYMax), kRightYMin) - kRightYMin)/(kRightYMax - kRightYMin);
-    double z = 1.0-(MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
-//    NSLog(@"right x,y,z: %f,%f,%f",[position x],[position y],[position z]);
-
-//    [self applyParameter:inputParams[kInputRightHandX] :x];
-//    [self applyParameter:inputParams[kInputRightHandY] :y];
-//    [self applyParameter:inputParams[kInputRightHandZ] :z];
-
-//    [synthAnalyzer setRightHand:x :y :z];
-
-}
-- (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
-{   
-//    [self applyParameter:inputParams[kInputLeftHandTap] :!paramNoteOn];
-}
-- (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture
-{
-//    [self applyParameter:inputParams[kInputRightHandTap] :!paramNoteOn];
-
-}
-- (void)onConnect
-{
-//    [noleap_label setHidden:YES];
-}
-- (void)onDisconnect
-{
-//    [noleap_label setHidden:NO];
-}
 
 
 
@@ -414,13 +340,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
 }
 
-- (void)mouseDown:(NSEvent *)evt :(int)tag {
-    int noteNumber = tag + (kNotesPerOctave*keyboardCurrentOctave);
-    [self noteOn:noteNumber withVelocity:64 onChannel:0];    
-}
-- (void)mouseUp:(NSEvent *)evt :(int)tag {
-    [self noteOff:currentNoteNumber withVelocity:64 onChannel:0];
-}
 
 - (void)patchConnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target
 {
@@ -447,6 +366,126 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [control setDoubleValue:[value doubleValue]];
 
 }
+
+- (void)keyDown:(NSEvent*)theEvent
+{
+    char key = [[theEvent characters] characterAtIndex:0];
+    int noteNumber;
+    switch (key) {
+        case 'a': noteNumber = 40; break;
+        case 'w': noteNumber = 41; break;
+        case 's': noteNumber = 42; break;
+        case 'e': noteNumber = 43; break;
+        case 'd': noteNumber = 44; break;
+        case 'f': noteNumber = 45; break;
+        case 't': noteNumber = 46; break;
+        case 'g': noteNumber = 47; break;
+        case 'y': noteNumber = 48; break;
+        case 'h': noteNumber = 49; break;
+        case 'u': noteNumber = 50; break;
+        case 'j': noteNumber = 51; break;
+        case 'k': noteNumber = 52; break;
+        case 'o': noteNumber = 53; break;
+        case 'l': noteNumber = 54; break;
+        case 'p': noteNumber = 55; break;
+        case ';': noteNumber = 56; break;
+        case '\'': noteNumber = 57; break;
+        case 'z': 
+            keyboardCurrentOctave--;
+            return;
+        case 'x':
+            keyboardCurrentOctave++;
+            return;
+    }
+    
+    noteNumber += (kNotesPerOctave*keyboardCurrentOctave);
+    [self noteOn:noteNumber withVelocity:64 onChannel:0];    
+
+}
+- (void)keyUp:(NSEvent*)theEvent
+{
+    [self noteOff:currentNoteNumber withVelocity:64 onChannel:0];
+}
+
+
+
+
+/*
+ * Leap Motion 
+ */
+
+
+
+#define kLeftXMin -200
+#define kLeftXMax -70
+
+#define kLeftYMin 150
+#define kLeftYMax 500
+
+#define kLeftZMin 0
+#define kLeftZMax 120
+
+#define kRightXMin 70
+#define kRightXMax 200
+
+#define kRightYMin 150
+#define kRightYMax 500
+
+#define kRightZMin 0
+#define kRightZMax 120
+
+
+
+- (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)position
+{
+    double x = (MAX(MIN([position x], kLeftXMax), kLeftXMin) - kLeftXMin)/(kLeftXMax - kLeftXMin);
+    double y = (MAX(MIN([position y], kLeftYMax), kLeftYMin) - kLeftYMin)/(kLeftYMax - kLeftYMin);
+    double z = 1.0-(MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
+    
+    //    NSLog(@"left x,y,z: %f,%f,%f",[position x],[position y],[position z]);
+    
+    //    [self applyParameter:inputParams[kInputLeftHandX] :x];
+    //    [self applyParameter:inputParams[kInputLeftHandY] :y];
+    //    [self applyParameter:inputParams[kInputLeftHandZ] :z];
+    
+    //    [synthAnalyzer setLeftHand:x :y :z];
+}
+- (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)position
+{
+    double x = (MAX(MIN([position x], kRightXMax), kRightXMin) - kRightXMin)/(kRightXMax - kRightXMin);
+    double y = (MAX(MIN([position y], kRightYMax), kRightYMin) - kRightYMin)/(kRightYMax - kRightYMin);
+    double z = 1.0-(MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
+    //    NSLog(@"right x,y,z: %f,%f,%f",[position x],[position y],[position z]);
+    
+    //    [self applyParameter:inputParams[kInputRightHandX] :x];
+    //    [self applyParameter:inputParams[kInputRightHandY] :y];
+    //    [self applyParameter:inputParams[kInputRightHandZ] :z];
+    
+    //    [synthAnalyzer setRightHand:x :y :z];
+    
+}
+- (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
+{   
+    //    [self applyParameter:inputParams[kInputLeftHandTap] :!paramNoteOn];
+}
+- (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture
+{
+    //    [self applyParameter:inputParams[kInputRightHandTap] :!paramNoteOn];
+    
+}
+- (void)onConnect
+{
+    //    [noleap_label setHidden:YES];
+}
+- (void)onDisconnect
+{
+    //    [noleap_label setHidden:NO];
+}
+
+
+
+
+
 
 /*
  * IB Actions
@@ -495,10 +534,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 
-- (IBAction)clickKeyboardChangeOctave:(id)sender {
-    int ofs = [sender tag];
-    keyboardCurrentOctave += ofs;
-}
 
 - (IBAction)changeControl:(id)sender {
     double value = [sender doubleValue];

@@ -23,8 +23,7 @@
 #import "CSPopupButton.h"
 #import "CSMultiSwitch.h"
 
-@interface AppDelegate : NSObject  <NSApplicationDelegate, 
-                                    DownUpButtonDelegate, 
+@interface AppDelegate : NSResponder  <NSApplicationDelegate, 
                                     LeapSynthereminDelegate, 
                                     PatchCablerDelegate,
                                     LoopDelegate> 
@@ -67,7 +66,6 @@
 
 //button keyboard
 @property (weak) IBOutlet NSBox *keyboardBox;
-- (IBAction)clickKeyboardChangeOctave:(id)sender;
 - (IBAction)changeControl:(id)sender;
 
 
