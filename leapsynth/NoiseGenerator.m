@@ -65,6 +65,11 @@
     return sum / (double)SHRT_MAX;
     
 }
+- (void)updatePropertyList:(NSMutableDictionary*)props
+{
+    [super updatePropertyList:props];
+    [props setObject:[NSNumber numberWithInt:noiseType] forKey:@"noiseType"];
+}
 
 
 @end

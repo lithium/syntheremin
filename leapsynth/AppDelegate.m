@@ -158,6 +158,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         
     }
 
+    
+    NSLog(@"props %@", [[NSString alloc] initWithData:[synth currentConfiguration]
+                                             encoding:NSASCIIStringEncoding]);
+
+
 
     
     //connect all midi endpoints to our listener

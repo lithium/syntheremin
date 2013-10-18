@@ -25,4 +25,6 @@
 - (double) getModulationSample;
 
 
+- (id)properties;
+- (void)updatePropertyList:(NSMutableDictionary*)props;
 @end

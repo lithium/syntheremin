@@ -73,5 +73,11 @@
     short newSample = [self processSample:sample];
     return ((double)newSample / SHRT_MAX);
 }
+- (void)updatePropertyList:(NSMutableDictionary*)props
+{
+    [super updatePropertyList:props];
+    [props setObject:[NSNumber numberWithDouble:resonance] forKey:@"resonance"];
+    [props setObject:[NSNumber numberWithDouble:cutoffFrequencyInHz] forKey:@"cutoffFrequencyInHz"];
+}
 
 @end

@@ -22,9 +22,9 @@
 
 - (void)setAttackTimeInMs:(int) ms
 {
-    ms = MAX(MIN(ms, kMsMax), kMsMin);
+    attackMS = MAX(MIN(ms, kMsMax), kMsMin);
     
-    double temp = (0.001*ms) / (1.0/kSampleRate);
+    double temp = (0.001*attackMS) / (1.0/kSampleRate);
     attackCount = (int)temp;
     attackSlope = 1.0/temp;
 }
@@ -110,6 +110,15 @@
             break;
     }
     return value;
+}
+- (void)updatePropertyList:(NSMutableDictionary*)props
+{
+    [super updatePropertyList:props];
+    [props setObject:[NSNumber numberWithInt:attackMS] forKey:@"attackTimeInMs"];
+    [props setObject:[NSNumber numberWithInt:decayMS] forKey:@"decayTimeInMs"];
+    [props setObject:[NSNumber numberWithDouble:sustainLevel] forKey:@"sustainLevel"];
+    [props setObject:[NSNumber numberWithInt:releaseMS] forKey:@"releaseTimeInMs"];
+
 }
 
 @end

@@ -24,7 +24,7 @@ enum {
     int count;
     int state;
     
-    
+    int attackMS;
     int attackCount;
     double attackSlope;
     

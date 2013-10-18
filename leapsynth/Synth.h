@@ -48,4 +48,7 @@
 - (void)connectPatch:(NSString *)sourceName :(NSString *)targetName;
 - (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName;
 
+- (NSDictionary *)properties;
+- (NSData *)currentConfiguration;
+
 @end

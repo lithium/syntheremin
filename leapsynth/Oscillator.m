@@ -63,5 +63,11 @@
     sampleStep = (sampleStep+1) % samplesPerPeriod;
     return value*[self level];
 }
+- (void)updatePropertyList:(NSMutableDictionary*)props
+{
+    [super updatePropertyList:props];
+    [props setObject:[NSNumber numberWithInt:waveShape] forKey:@"waveShape"];
+    [props setObject:[NSNumber numberWithDouble:currentFrequency] forKey:@"frequencyInHz"];
+}
 
 @end

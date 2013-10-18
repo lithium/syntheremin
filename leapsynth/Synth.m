@@ -173,4 +173,43 @@
     return nil;
 
 }
+
+- (NSDictionary *)properties
+{
+    NSMutableDictionary *config = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    for (int i=0; i < kNumOscillators; i++) {
+        [config setObject:[oscN[i] properties] 
+                   forKey:[NSString stringWithFormat:@"osc:%d", i]];
+    }
+    for (int i=0; i < kNumEnvelopes; i++) {
+        [config setObject:[adsrN[i] properties] 
+                   forKey:[NSString stringWithFormat:@"adsr:%d", i]];
+    }
+
+    for (int i=0; i < kNumMixers; i++) {
+        [config setObject:[vcaN[i] properties] 
+                   forKey:[NSString stringWithFormat:@"vca:%d", i]];
+    }
+
+    [config setObject:[lfo properties] forKey:@"lfo:0"];
+    [config setObject:[noise properties] forKey:@"noise:0"];
+    [config setObject:[vcf properties] forKey:@"vcf:0"];
+    [config setObject:[mixer properties] forKey:@"mixer::"];
+
+    return config;
+
+}
+
+- (NSData *)currentConfiguration
+{
+    NSString *error;
+    NSData *plist = [NSPropertyListSerialization dataFromPropertyList:[self properties]
+                                                               format:NSPropertyListXMLFormat_v1_0
+                                                     errorDescription:&error];
+    if (!plist) {
+        NSLog(@"error generating configuration: %@", error);
+    }
+    return plist;
+}
 @end
