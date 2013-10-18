@@ -32,7 +32,8 @@
     AudioQueueSynth *synth;
     
     LeapSyntheremin *mSyntheremin;
-        
+    
+    NSURL *currentPatchUrl;
     
     MIDIClientRef midiClient;
     MIDIPortRef midiInput;
@@ -69,8 +70,19 @@
 - (IBAction)clickKeyboardChangeOctave:(id)sender;
 - (IBAction)changeControl:(id)sender;
 
-//save debug
-- (IBAction)debug_save:(id)sender;
+
+
+/*
+ * Menu actions
+ */
+- (IBAction)menuNewPatch:(id)sender;
+- (IBAction)menuOpenPatch:(id)sender;
+- (IBAction)menuSavePatch:(id)sender;
+- (IBAction)menuSavePatchAs:(id)sender;
+- (IBAction)menuClearPatch:(id)sender;
+
+
+
 
 /* 
  * Outlets

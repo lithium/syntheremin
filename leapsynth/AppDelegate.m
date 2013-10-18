@@ -346,8 +346,44 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [synth noteOff];
 }
 
+- (BOOL)loadPatchFromURL:(NSURL*)url
+{
+//    NSLog(@"open: %@", url);
+    NSString *error;
+    NSData *contents = [NSData dataWithContentsOfURL:url];
+    id config = [NSPropertyListSerialization propertyListFromData:contents
+                                     mutabilityOption:NSPropertyListImmutable 
+                                               format:nil
+                                     errorDescription:&error];
+    
+    [synth setConfiguration:config];
+    return YES;
+}
+- (BOOL)savePatchToURL:(NSURL*)url
+{    
+    currentPatchUrl = url;
+//    NSLog(@"save: %@", url);
+    return [[synth currentConfiguration] writeToURL:url atomically:YES];
+}
 
-// delgate callbacks
+- (NSURL*)patchDirectoryURL
+{
+    NSArray *docs_dir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSURL *patch_dir = [[NSURL URLWithString:[docs_dir objectAtIndex:0]] URLByAppendingPathComponent:@"Syntheremin"];
+    NSString *path = [patch_dir absoluteString];
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:path
+                              withIntermediateDirectories:YES 
+                                               attributes:nil 
+                                                    error:nil];
+    
+    return [NSURL fileURLWithPath:path isDirectory:YES];
+}
+
+
+/*
+ * Delegate Callbacks
+ */
 - (void) samplesPlayed :(short *)samples :(int)numSamples
 {
     @autoreleasepool {
@@ -407,9 +443,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     id value = [object valueForKeyPath:keyPath];
     
     CSControl *control = (__bridge CSControl *)context;
-    double v = [value doubleValue];
-    NSLog(@"%@[%@] = %@", keyPath, context, value);
-
+//    NSLog(@"%@[%@] = %@", keyPath, context, value);
     [control setDoubleValue:[value doubleValue]];
 
 }
@@ -469,15 +503,53 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)changeControl:(id)sender {
     double value = [sender doubleValue];
     NSString *param = [sender valueForKey:@"parameter"];
-//    NSLog(@"%@ = %f", param, value);
-    
     [synth applyParameter:param :value];
 }
 
-- (IBAction)debug_save:(id)sender {
-    NSLog(@"%@", [[NSString alloc] initWithData:[synth currentConfiguration]
-                                             encoding:NSASCIIStringEncoding]);
+- (IBAction)menuNewPatch:(id)sender {
+    [synth setDefaults];
+    currentPatchUrl = nil;
+}
+- (IBAction)menuOpenPatch:(id)sender {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
     
-    [synth setConfiguration:[synth properties]];
+    [openPanel setCanChooseFiles:YES];
+    [openPanel setCanChooseDirectories:NO];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setAllowedFileTypes:[NSArray arrayWithObject:@"csp"]];
+    [openPanel setAllowsOtherFileTypes:NO];
+
+    if ([openPanel runModal] == NSOKButton && [[openPanel URLs] count]) {
+        NSURL *url = [[openPanel URLs] objectAtIndex:0];
+        [self loadPatchFromURL:url];
+    }
+}
+- (IBAction)menuSavePatch:(id)sender {
+    if (currentPatchUrl) {
+        [self savePatchToURL:currentPatchUrl];
+    }
+    else {
+        return [self menuSavePatchAs:sender];
+    }
+}
+- (IBAction)menuSavePatchAs:(id)sender {
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    
+    [savePanel setAllowedFileTypes:[NSArray arrayWithObject:@"csp"]];
+    [savePanel setAllowsOtherFileTypes:NO];
+    
+    NSURL *patch_dir = [self patchDirectoryURL];
+    if (patch_dir) {
+        [savePanel setDirectoryURL:patch_dir];
+    }
+    
+    if ([savePanel runModal] == NSOKButton) {
+        NSURL *url = [savePanel URL];
+        [self savePatchToURL:url];
+    }
+    
+}
+- (IBAction)menuClearPatch:(id)sender {
+    [synth setDefaults];
 }
 @end
