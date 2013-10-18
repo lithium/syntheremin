@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CSSlider.h"
+#import "CSControl.h"
 
 #define kCoarseModifier  20
 #define kFineModifier    50
@@ -20,7 +20,7 @@
 
 #define kLabelHeight   20
 
-@interface CSKnob : CSSlider
+@interface CSKnob : CSControl
 {
     NSImage *image;
     

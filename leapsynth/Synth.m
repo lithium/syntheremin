@@ -196,7 +196,7 @@
             *outComponent = lfo;
         }
         else if ([component isEqualToString:@"noise"]) {
-            *outComponent = lfo;
+            *outComponent = noise;
         }
         
         return portName;

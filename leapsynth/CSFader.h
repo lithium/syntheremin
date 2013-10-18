@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CSSlider.h"
+#import "CSControl.h"
 
-@interface CSFader : CSSlider
+@interface CSFader : CSControl
 {
     NSImage *trackImage;
     NSImage *knobImage;

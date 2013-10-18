@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface CSSlider : NSControl
+@interface CSControl : NSControl
 {
     double value;    
     double minValue;

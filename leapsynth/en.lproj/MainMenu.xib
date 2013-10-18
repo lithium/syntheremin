@@ -561,7 +561,7 @@
 										<object class="NSSegmentedControl" id="444710286">
 											<reference key="NSNextResponder" ref="761329435"/>
 											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{27, 218}, {127, 20}}</string>
+											<string key="NSFrame">{{28, 218}, {127, 20}}</string>
 											<reference key="NSSuperview" ref="761329435"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="681353255"/>
@@ -580,36 +580,35 @@
 												<array class="NSMutableArray" key="NSSegmentImages">
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">27</double>
-														<object class="NSCustomResource" key="NSSegmentItemImage" id="512105146">
+														<object class="NSCustomResource" key="NSSegmentItemImage" id="779668904">
 															<string key="NSClassName">NSImage</string>
-															<string key="NSResourceName">saw</string>
+															<string key="NSResourceName">square</string>
 														</object>
-														<int key="NSSegmentItemTag">2</int>
 														<bool key="NSSegmentItemSelected">YES</bool>
 														<int key="NSSegmentItemImageScaling">2</int>
 													</object>
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">27</double>
-														<object class="NSCustomResource" key="NSSegmentItemImage" id="432002710">
+														<object class="NSCustomResource" key="NSSegmentItemImage" id="783355942">
 															<string key="NSClassName">NSImage</string>
-															<string key="NSResourceName">tri</string>
+															<string key="NSResourceName">sine</string>
 														</object>
 														<int key="NSSegmentItemTag">3</int>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 													<object class="NSSegmentItem">
-														<object class="NSCustomResource" key="NSSegmentItemImage" id="779668904">
+														<object class="NSCustomResource" key="NSSegmentItemImage" id="512105146">
 															<string key="NSClassName">NSImage</string>
-															<string key="NSResourceName">square</string>
+															<string key="NSResourceName">saw</string>
 														</object>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 													<object class="NSSegmentItem">
-														<object class="NSCustomResource" key="NSSegmentItemImage" id="783355942">
+														<object class="NSCustomResource" key="NSSegmentItemImage" id="432002710">
 															<string key="NSClassName">NSImage</string>
-															<string key="NSResourceName">sine</string>
+															<string key="NSResourceName">tri</string>
 														</object>
-														<int key="NSSegmentItemTag">1</int>
+														<int key="NSSegmentItemTag">3</int>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 												</array>
@@ -634,23 +633,23 @@
 												<array class="NSMutableArray" key="NSSegmentImages">
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">22</double>
-														<reference key="NSSegmentItemImage" ref="512105146"/>
+														<reference key="NSSegmentItemImage" ref="779668904"/>
 														<int key="NSSegmentItemTag">2</int>
 														<bool key="NSSegmentItemSelected">YES</bool>
 														<int key="NSSegmentItemImageScaling">2</int>
 													</object>
 													<object class="NSSegmentItem">
-														<reference key="NSSegmentItemImage" ref="432002710"/>
+														<reference key="NSSegmentItemImage" ref="783355942"/>
 														<int key="NSSegmentItemTag">3</int>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 													<object class="NSSegmentItem">
-														<reference key="NSSegmentItemImage" ref="779668904"/>
+														<reference key="NSSegmentItemImage" ref="512105146"/>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 													<object class="NSSegmentItem">
-														<reference key="NSSegmentItemImage" ref="783355942"/>
-														<int key="NSSegmentItemTag">1</int>
+														<reference key="NSSegmentItemImage" ref="432002710"/>
+														<int key="NSSegmentItemTag">3</int>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 												</array>
@@ -675,24 +674,24 @@
 												<array class="NSMutableArray" key="NSSegmentImages">
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">27</double>
-														<reference key="NSSegmentItemImage" ref="512105146"/>
+														<reference key="NSSegmentItemImage" ref="779668904"/>
 														<int key="NSSegmentItemTag">2</int>
 														<bool key="NSSegmentItemSelected">YES</bool>
 														<int key="NSSegmentItemImageScaling">2</int>
 													</object>
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">27</double>
-														<reference key="NSSegmentItemImage" ref="432002710"/>
+														<reference key="NSSegmentItemImage" ref="783355942"/>
 														<int key="NSSegmentItemTag">3</int>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 													<object class="NSSegmentItem">
-														<reference key="NSSegmentItemImage" ref="779668904"/>
+														<reference key="NSSegmentItemImage" ref="512105146"/>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 													<object class="NSSegmentItem">
-														<reference key="NSSegmentItemImage" ref="783355942"/>
-														<int key="NSSegmentItemTag">1</int>
+														<reference key="NSSegmentItemImage" ref="432002710"/>
+														<int key="NSSegmentItemTag">3</int>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 												</array>
@@ -859,7 +858,6 @@
 													</array>
 													<reference key="NSMenuFont" ref="776293554"/>
 												</object>
-												<int key="NSSelectedIndex">4</int>
 												<int key="NSPreferredEdge">1</int>
 												<bool key="NSUsesItemFromMenu">YES</bool>
 												<bool key="NSAltersState">YES</bool>
@@ -1340,15 +1338,15 @@
 												<array class="NSMutableArray" key="NSSegmentImages">
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">40</double>
-														<string key="NSSegmentItemLabel">Pink</string>
-														<int key="NSSegmentItemTag">2</int>
+														<string key="NSSegmentItemLabel">White</string>
+														<int key="NSSegmentItemTag">1</int>
 														<bool key="NSSegmentItemSelected">YES</bool>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">40</double>
-														<string key="NSSegmentItemLabel">White</string>
-														<int key="NSSegmentItemTag">1</int>
+														<string key="NSSegmentItemLabel">Pink</string>
+														<int key="NSSegmentItemTag">2</int>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 												</array>
@@ -1403,7 +1401,7 @@
 										<object class="NSSegmentedControl" id="1056240117">
 											<reference key="NSNextResponder" ref="74788305"/>
 											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{17, 60}, {125, 20}}</string>
+											<string key="NSFrame">{{18, 60}, {125, 20}}</string>
 											<reference key="NSSuperview" ref="74788305"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="110686057"/>
@@ -1418,24 +1416,24 @@
 												<array class="NSMutableArray" key="NSSegmentImages">
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">26</double>
-														<reference key="NSSegmentItemImage" ref="512105146"/>
-														<int key="NSSegmentItemTag">2</int>
+														<reference key="NSSegmentItemImage" ref="779668904"/>
 														<bool key="NSSegmentItemSelected">YES</bool>
 														<int key="NSSegmentItemImageScaling">2</int>
 													</object>
 													<object class="NSSegmentItem">
 														<double key="NSSegmentItemWidth">26</double>
-														<reference key="NSSegmentItemImage" ref="432002710"/>
-														<int key="NSSegmentItemTag">3</int>
-														<int key="NSSegmentItemImageScaling">0</int>
-													</object>
-													<object class="NSSegmentItem">
-														<reference key="NSSegmentItemImage" ref="779668904"/>
-														<int key="NSSegmentItemImageScaling">0</int>
-													</object>
-													<object class="NSSegmentItem">
 														<reference key="NSSegmentItemImage" ref="783355942"/>
 														<int key="NSSegmentItemTag">1</int>
+														<int key="NSSegmentItemImageScaling">0</int>
+													</object>
+													<object class="NSSegmentItem">
+														<reference key="NSSegmentItemImage" ref="512105146"/>
+														<int key="NSSegmentItemTag">2</int>
+														<int key="NSSegmentItemImageScaling">0</int>
+													</object>
+													<object class="NSSegmentItem">
+														<reference key="NSSegmentItemImage" ref="432002710"/>
+														<int key="NSSegmentItemTag">3</int>
 														<int key="NSSegmentItemImageScaling">0</int>
 													</object>
 												</array>
@@ -3089,6 +3087,70 @@
 					</object>
 					<int key="connectionID">5134</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeControl:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="714531269"/>
+					</object>
+					<int key="connectionID">5172</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeControl:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1056240117"/>
+					</object>
+					<int key="connectionID">5173</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeControl:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="941598787"/>
+					</object>
+					<int key="connectionID">5174</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeControl:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="444710286"/>
+					</object>
+					<int key="connectionID">5175</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeControl:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="870185746"/>
+					</object>
+					<int key="connectionID">5176</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeControl:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="83397397"/>
+					</object>
+					<int key="connectionID">5177</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeControl:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1022212447"/>
+					</object>
+					<int key="connectionID">5178</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeControl:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="903572009"/>
+					</object>
+					<int key="connectionID">5179</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -3535,10 +3597,10 @@
 							<reference ref="85497732"/>
 							<reference ref="685865236"/>
 							<reference ref="836116740"/>
-							<reference ref="714531269"/>
 							<reference ref="796409666"/>
 							<reference ref="1009714613"/>
 							<reference ref="110686057"/>
+							<reference ref="714531269"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -4678,6 +4740,21 @@
 				<string key="4769.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4770.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4771.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="4780.CustomClassName">CSMultiSwitch</string>
+				<object class="NSMutableDictionary" key="4780.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="714531269"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">parameter</string>
+								<string key="value">noise:0:noiseType</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="4780.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<integer value="1" key="4781.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="4781.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4689,17 +4766,77 @@
 				<string key="4801.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4802.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4815.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="4816.CustomClassName">CSMultiSwitch</string>
+				<object class="NSMutableDictionary" key="4816.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="444710286"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">parameter</string>
+								<string key="value">osc:0:waveShape</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="4816.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<integer value="0" key="4817.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="3" key="4817.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="4817.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="4818.CustomClassName">CSMultiSwitch</string>
+				<object class="NSMutableDictionary" key="4818.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="83397397"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">parameter</string>
+								<string key="value">osc:1:waveShape</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="4818.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<integer value="0" key="4819.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="3" key="4819.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="4819.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="4820.CustomClassName">CSMultiSwitch</string>
+				<object class="NSMutableDictionary" key="4820.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="903572009"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">parameter</string>
+								<string key="value">osc:2:waveShape</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="4820.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<integer value="0" key="4821.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="3" key="4821.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="4821.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="4826.CustomClassName">CSMultiSwitch</string>
+				<object class="NSMutableDictionary" key="4826.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="1056240117"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">parameter</string>
+								<string key="value">lfo:0:waveShape</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="4826.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<integer value="0" key="4827.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="3" key="4827.IBNSSegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="4827.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4838.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="4839.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5130,7 +5267,21 @@
 				<string key="5080.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5086.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5087.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<dictionary class="NSMutableDictionary" key="5090.IBAttributePlaceholdersKey"/>
+				<string key="5090.CustomClassName">CSPopupButton</string>
+				<object class="NSMutableDictionary" key="5090.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="941598787"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">parameter</string>
+								<string key="value">osc:0:range</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="5090.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5091.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5092.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5139,7 +5290,21 @@
 				<string key="5095.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5096.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5097.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<dictionary class="NSMutableDictionary" key="5098.IBAttributePlaceholdersKey"/>
+				<string key="5098.CustomClassName">CSPopupButton</string>
+				<object class="NSMutableDictionary" key="5098.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="870185746"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">parameter</string>
+								<string key="value">osc:1:range</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="5098.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5099.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5100.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5148,7 +5313,21 @@
 				<string key="5103.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5104.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5105.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<dictionary class="NSMutableDictionary" key="5106.IBAttributePlaceholdersKey"/>
+				<string key="5106.CustomClassName">CSPopupButton</string>
+				<object class="NSMutableDictionary" key="5106.IBAttributePlaceholdersKey">
+					<string key="NS.key.0">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+					<object class="IBUserDefinedRuntimeAttributesPlaceholder" key="NS.object.0">
+						<string key="name">IBUserDefinedRuntimeAttributesPlaceholderName</string>
+						<reference key="object" ref="1022212447"/>
+						<array key="userDefinedRuntimeAttributes">
+							<object class="IBUserDefinedRuntimeAttribute">
+								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
+								<string key="keyPath">parameter</string>
+								<string key="value">osc:2:range</string>
+							</object>
+						</array>
+					</object>
+				</object>
 				<string key="5106.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5107.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5108.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5166,7 +5345,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">5134</int>
+			<int key="maxID">5179</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5252,8 +5431,16 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">CSControl</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CSControl.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">CSFader</string>
-					<string key="superclassName">CSSlider</string>
+					<string key="superclassName">CSControl</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CSFader.h</string>
@@ -5261,18 +5448,26 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">CSKnob</string>
-					<string key="superclassName">CSSlider</string>
+					<string key="superclassName">CSControl</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CSKnob.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">CSSlider</string>
-					<string key="superclassName">NSControl</string>
+					<string key="className">CSMultiSwitch</string>
+					<string key="superclassName">NSSegmentedControl</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/CSSlider.h</string>
+						<string key="minorKey">./Classes/CSMultiSwitch.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">CSPopupButton</string>
+					<string key="superclassName">NSPopUpButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CSPopupButton.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

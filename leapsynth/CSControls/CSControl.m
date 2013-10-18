@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "CSSlider.h"
+#import "CSControl.h"
 
-@implementation CSSlider
+@implementation CSControl
 @synthesize minValue;
 @synthesize maxValue;
 @synthesize target;

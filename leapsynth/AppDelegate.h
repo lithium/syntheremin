@@ -19,6 +19,9 @@
 #import "PatchCabler.h"
 
 
+#import "CSPopupButton.h"
+#import "CSMultiSwitch.h"
+
 @interface AppDelegate : NSObject  <NSApplicationDelegate, 
                                     DownUpButtonDelegate, 
                                     LeapSynthereminDelegate, 
