@@ -9,8 +9,17 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize osc_shape_2;
+@synthesize osc_detune_1;
+@synthesize mixer_level;
+@synthesize vca_level_0;
 @synthesize lfo_freq;
 @synthesize lfo_level;
+@synthesize lfo_shape;
+@synthesize noise_level;
+@synthesize noise_type;
+@synthesize filter_cutoff;
+@synthesize filter_resonance;
 @synthesize patchCabler;
 @synthesize keyboardBox;
 @synthesize looper_level;
@@ -18,7 +27,7 @@
 @synthesize looper_record;
 
 //@synthesize synthAnalyzer;
-@synthesize noleap_label;
+//@synthesize noleap_label;
 
 
 
@@ -267,11 +276,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (void)onConnect
 {
-    [noleap_label setHidden:YES];
+//    [noleap_label setHidden:YES];
 }
 - (void)onDisconnect
 {
-    [noleap_label setHidden:NO];
+//    [noleap_label setHidden:NO];
 }
 
 
