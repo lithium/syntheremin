@@ -19,9 +19,6 @@
     
         for (int i=0; i < kNumOscillators; i++) {
             oscN[i] = [[Vco alloc] init];
-            [oscN[i] setWaveShape:kWaveSquare];
-            [oscN[i] setFrequencyInHz:440];
-            [oscN[i] setRange:0];
         }
         for (int i=0; i < kNumEnvelopes; i++) {
             adsrN[i] = [[Adsr alloc] init];
@@ -38,10 +35,17 @@
             [mixer addInput:vcaN[i]];
         }
 
+        patches = [[NSMutableDictionary alloc] init];
+        
+        [self setDefaults];
     }
     
     return self;
 }
+
+- (Vca *)vcaN:(int)i { return vcaN[i]; }
+- (Vco *)oscN:(int)i { return oscN[i]; }
+- (Adsr *)adsrN:(int)i { return adsrN[i]; }
 
 - (int) getSamples :(short *)samples :(int)numSamples
 {
@@ -105,6 +109,7 @@
     }
     
 
+    [patches setObject:targetName forKey:sourceName];
 }
 - (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName
 {
@@ -125,9 +130,16 @@
         }
     }
 
+    [patches removeObjectForKey:sourceName];
 }
 
         
+- (void)clearPatches
+{
+    [patches enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [self disconnectPatch:key :obj];
+    }];
+}
         
 - (NSString*)parsePortName:(NSString*)portString :(__weak id *)outComponent
 {
@@ -136,7 +148,9 @@
     {
         NSString *component = [chunks objectAtIndex:0];
         int index = [[chunks objectAtIndex:1] intValue];
-        NSString *portName = [chunks objectAtIndex:2];
+        NSString *portName;
+        if ([chunks count] > 2) 
+            portName = [chunks objectAtIndex:2];
         
         if ([component isEqualToString:@"osc"]) {
             *outComponent = oscN[index];
@@ -172,5 +186,100 @@
     
     return nil;
 
+}
+
+- (NSDictionary *)properties
+{
+    NSMutableDictionary *config = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    for (int i=0; i < kNumOscillators; i++) {
+        [config setObject:[oscN[i] properties] 
+                   forKey:[NSString stringWithFormat:@"osc:%d", i]];
+    }
+    for (int i=0; i < kNumEnvelopes; i++) {
+        [config setObject:[adsrN[i] properties] 
+                   forKey:[NSString stringWithFormat:@"adsr:%d", i]];
+    }
+
+    for (int i=0; i < kNumMixers; i++) {
+        [config setObject:[vcaN[i] properties] 
+                   forKey:[NSString stringWithFormat:@"vca:%d", i]];
+    }
+
+    [config setObject:[lfo properties] forKey:@"lfo:0"];
+    [config setObject:[noise properties] forKey:@"noise:0"];
+    [config setObject:[vcf properties] forKey:@"vcf:0"];
+    [config setObject:[mixer properties] forKey:@"mixer:"];
+    [config setObject:[patches copy] forKey:@"patches::"];
+    return config;
+
+}
+
+- (NSData *)currentConfiguration
+{
+    NSString *error;
+    NSData *plist = [NSPropertyListSerialization dataFromPropertyList:[self properties]
+                                                               format:NSPropertyListXMLFormat_v1_0
+                                                     errorDescription:&error];
+    if (!plist) {
+        NSLog(@"error generating configuration: %@", error);
+    }
+    return plist;
+}
+
+- (BOOL)setConfiguration:(NSDictionary *)config
+{        
+    [self clearPatches];
+    [config enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+
+        if ([@"patches::" isEqualToString:key]) {
+            [obj enumerateKeysAndObjectsUsingBlock:^(id patch_key, id patch_obj, BOOL *patch_stop) {
+//                NSLog(@"patch %@ -> %@", patch_key, patch_obj);
+                [self connectPatch:patch_key :patch_obj];
+            }];
+        } else {
+            __weak SampleProvider *source;
+            [self parsePortName:key :&source];
+            [obj enumerateKeysAndObjectsUsingBlock:^(id inner_key, id inner_obj, BOOL *inner_stop) {
+//                NSLog(@"%@:%@ = %@",key,inner_key, inner_obj);            
+                [source setValue:inner_obj forKey:inner_key];
+            }];
+        }
+
+    }];
+    return YES;
+}
+
+- (void)setDefaults
+{
+    for (int i=0; i < kNumOscillators; i++) {
+        [oscN[i] setDetuneInCents:0];
+        [oscN[i] setRange:i];
+        [oscN[i] setWaveShape:kWaveSaw];
+        [oscN[i] setFrequencyInHz:440];
+    }
+
+    [lfo setFrequencyInHz:1];
+    [lfo setLevel:0.3];
+    [lfo setWaveShape:kWaveSine];
+    
+    [noise setNoiseType:kNoisePink];
+    [noise setLevel:0.3];
+    
+    [vcf setCutoffFrequencyInHz:1000];
+    [vcf setResonance:0.5];
+    
+    for (int i=0; i < kNumEnvelopes; i++) {
+        [adsrN[i] setAttackTimeInMs:0];
+        [adsrN[i] setDecayTimeInMs:0];
+        [adsrN[i] setSustainLevel:1.0];
+        [adsrN[i] setReleaseTimeInMs:0];
+    }
+    
+    for (int i=0; i < kNumMixers; i++) {
+        [vcaN[i] setLevel:0];
+    }
+    
+    [mixer setLevel:0.35];
 }
 @end

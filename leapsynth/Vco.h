@@ -19,6 +19,8 @@ enum {
     double rangeMultiplier;
     double detuneMultiplier;
     
+    int range;
+    double detuneInCents;
 }
 
 
@@ -28,6 +30,6 @@ enum {
 - (void)setRange :(int)octave; 
 - (void)setDetuneInCents :(int)cents;
 
-
+- (int)range;
 
 @end

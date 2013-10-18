@@ -23,7 +23,7 @@
     return self;
 }
 
-
+- (int)range { return range; }
 - (void)setRange :(int)octave
 {
     switch (octave) {
@@ -44,6 +44,7 @@
             rangeMultiplier = 4.0;
             break;
     }
+    range = octave;
 }
 
 - (void)setDetuneInCents :(int)cents
@@ -55,6 +56,7 @@
     else if (cents > kCentsDetuneMax)
         detuneMultiplier = kCentsDetuneMax;
         
+    detuneInCents = cents;
     detuneMultiplier = pow(2.0, (double)((double)cents / kCentsPerOctave));
 }
 
@@ -75,5 +77,12 @@
     [self setFrequencyInHz:orig];
     
     return sample;
+}
+
+- (void)updatePropertyList:(NSMutableDictionary*)props
+{
+    [super updatePropertyList:props];
+    [props setObject:[NSNumber numberWithDouble:detuneInCents] forKey:@"detuneInCents"];
+    [props setObject:[NSNumber numberWithInt:range] forKey:@"range"];
 }
 @end

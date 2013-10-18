@@ -31,12 +31,17 @@
     Vca *vcaN[kNumMixers];
     Vca *mixer;
     
+    NSMutableDictionary *patches;
     __weak id delegate;
 }
 
 @property (weak) id delegate;
 
 - (id)init;
+
+- (Vca *)vcaN:(int)i;
+- (Adsr *)adsrN:(int)i;
+- (Vco *)oscN:(int)i;
 
 - (int)getSamples :(short *)samples :(int)numSamples;
 
@@ -48,4 +53,9 @@
 - (void)connectPatch:(NSString *)sourceName :(NSString *)targetName;
 - (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName;
 
+- (NSDictionary *)properties;
+- (NSData *)currentConfiguration;
+- (BOOL)setConfiguration:(NSDictionary *)config;
+
+- (void)setDefaults;
 @end

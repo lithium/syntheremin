@@ -15,8 +15,42 @@
 @synthesize looper_play;
 @synthesize looper_record;
 
+@synthesize lfo_freq;
+@synthesize lfo_level;
+@synthesize lfo_shape;
+
+@synthesize noise_level;
+@synthesize noise_type;
+
+@synthesize filter_cutoff;
+@synthesize filter_resonance;
+
+@synthesize adsr_attack_0;
+@synthesize adsr_decay_0;
+@synthesize adsr_sustain_0;
+@synthesize adsr_release_0;
+@synthesize adsr_attack_1;
+@synthesize adsr_decay_1;
+@synthesize adsr_sustain_1;
+@synthesize adsr_release_1;
+
+@synthesize mixer_level;
+@synthesize vca_level_0;
+@synthesize vca_level_1;
+@synthesize vca_level_2;
+
+@synthesize osc_shape_0;
+@synthesize osc_range_0;
+@synthesize osc_detune_1;
+@synthesize osc_shape_1;
+@synthesize osc_detune_2;
+@synthesize osc_shape_2;
+@synthesize osc_range_1;
+@synthesize osc_range_2;
+
+
 //@synthesize synthAnalyzer;
-@synthesize noleap_label;
+//@synthesize noleap_label;
 
 
 
@@ -53,6 +87,45 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         
     synth = [[AudioQueueSynth alloc] init];
     [synth start];
+    
+    
+
+    [synth addObserver:self forKeyPath:@"lfo.frequencyInHz" options:0 context:(__bridge void *)lfo_freq];
+    [synth addObserver:self forKeyPath:@"lfo.level" options:0 context:(__bridge void *)lfo_level];
+    [synth addObserver:self forKeyPath:@"lfo.waveShape" options:0 context:(__bridge void *)lfo_shape];
+    
+    [synth addObserver:self forKeyPath:@"noise.level" options:0 context:(__bridge void *)noise_level];
+    [synth addObserver:self forKeyPath:@"noise.noiseType" options:0 context:(__bridge void *)noise_type];
+
+    [synth addObserver:self forKeyPath:@"vcf.cutoffFrequencyInHz" options:0 context:(__bridge void *)filter_cutoff];
+    [synth addObserver:self forKeyPath:@"vcf.resonance" options:0 context:(__bridge void *)filter_resonance];
+    
+
+    [synth addObserver:self forKeyPath:@"mixer.level" options:0 context:(__bridge void *)mixer_level];
+    [[synth vcaN:0] addObserver:self forKeyPath:@"level" options:0 context:(__bridge void *)vca_level_0];
+    [[synth vcaN:1] addObserver:self forKeyPath:@"level" options:0 context:(__bridge void *)vca_level_1];
+    [[synth vcaN:2] addObserver:self forKeyPath:@"level" options:0 context:(__bridge void *)vca_level_2];
+
+    [[synth adsrN:0] addObserver:self forKeyPath:@"attackTimeInMs" options:0 context:(__bridge void *)adsr_attack_0];
+    [[synth adsrN:0] addObserver:self forKeyPath:@"decayTimeInMs" options:0 context:(__bridge void *)adsr_decay_0];
+    [[synth adsrN:0] addObserver:self forKeyPath:@"sustainLevel" options:0 context:(__bridge void *)adsr_sustain_0];
+    [[synth adsrN:0] addObserver:self forKeyPath:@"releaseTimeInMs" options:0 context:(__bridge void *)adsr_release_0];
+    [[synth adsrN:1] addObserver:self forKeyPath:@"attackTimeInMs" options:0 context:(__bridge void *)adsr_attack_1];
+    [[synth adsrN:1] addObserver:self forKeyPath:@"decayTimeInMs" options:0 context:(__bridge void *)adsr_decay_1];
+    [[synth adsrN:1] addObserver:self forKeyPath:@"sustainLevel" options:0 context:(__bridge void *)adsr_sustain_1];
+    [[synth adsrN:1] addObserver:self forKeyPath:@"releaseTimeInMs" options:0 context:(__bridge void *)adsr_release_1];
+
+    [[synth oscN:0] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_0];
+    [[synth oscN:0] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_0];
+    [[synth oscN:1] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_1];
+    [[synth oscN:1] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_1];
+    [[synth oscN:1] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_1];
+    [[synth oscN:2] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_2];
+    [[synth oscN:2] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_2];
+    [[synth oscN:2] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_2];
+
+
+    [synth setDefaults];
         
     [[synth looper] setDelegate:self];
         
@@ -158,6 +231,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         
     }
 
+    
 
     
     //connect all midi endpoints to our listener
@@ -251,11 +325,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (void)onConnect
 {
-    [noleap_label setHidden:YES];
+//    [noleap_label setHidden:YES];
 }
 - (void)onDisconnect
 {
-    [noleap_label setHidden:NO];
+//    [noleap_label setHidden:NO];
 }
 
 
@@ -272,8 +346,44 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [synth noteOff];
 }
 
+- (BOOL)loadPatchFromURL:(NSURL*)url
+{
+//    NSLog(@"open: %@", url);
+    NSString *error;
+    NSData *contents = [NSData dataWithContentsOfURL:url];
+    id config = [NSPropertyListSerialization propertyListFromData:contents
+                                     mutabilityOption:NSPropertyListImmutable 
+                                               format:nil
+                                     errorDescription:&error];
+    
+    [synth setConfiguration:config];
+    return YES;
+}
+- (BOOL)savePatchToURL:(NSURL*)url
+{    
+    currentPatchUrl = url;
+//    NSLog(@"save: %@", url);
+    return [[synth currentConfiguration] writeToURL:url atomically:YES];
+}
 
-// delgate callbacks
+- (NSURL*)patchDirectoryURL
+{
+    NSArray *docs_dir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSURL *patch_dir = [[NSURL URLWithString:[docs_dir objectAtIndex:0]] URLByAppendingPathComponent:@"Syntheremin"];
+    NSString *path = [patch_dir absoluteString];
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:path
+                              withIntermediateDirectories:YES 
+                                               attributes:nil 
+                                                    error:nil];
+    
+    return [NSURL fileURLWithPath:path isDirectory:YES];
+}
+
+
+/*
+ * Delegate Callbacks
+ */
 - (void) samplesPlayed :(short *)samples :(int)numSamples
 {
     @autoreleasepool {
@@ -324,6 +434,19 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
+
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+                      ofObject:(id)object 
+                        change:(NSDictionary *)change 
+                       context:(void *)context
+{
+    id value = [object valueForKeyPath:keyPath];
+    
+    CSControl *control = (__bridge CSControl *)context;
+//    NSLog(@"%@[%@] = %@", keyPath, context, value);
+    [control setDoubleValue:[value doubleValue]];
+
+}
 
 /*
  * IB Actions
@@ -380,9 +503,53 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)changeControl:(id)sender {
     double value = [sender doubleValue];
     NSString *param = [sender valueForKey:@"parameter"];
-    NSLog(@"%@ = %f", param, value);
-    
     [synth applyParameter:param :value];
 }
 
+- (IBAction)menuNewPatch:(id)sender {
+    [synth setDefaults];
+    currentPatchUrl = nil;
+}
+- (IBAction)menuOpenPatch:(id)sender {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    
+    [openPanel setCanChooseFiles:YES];
+    [openPanel setCanChooseDirectories:NO];
+    [openPanel setAllowsMultipleSelection:NO];
+    [openPanel setAllowedFileTypes:[NSArray arrayWithObject:@"csp"]];
+    [openPanel setAllowsOtherFileTypes:NO];
+
+    if ([openPanel runModal] == NSOKButton && [[openPanel URLs] count]) {
+        NSURL *url = [[openPanel URLs] objectAtIndex:0];
+        [self loadPatchFromURL:url];
+    }
+}
+- (IBAction)menuSavePatch:(id)sender {
+    if (currentPatchUrl) {
+        [self savePatchToURL:currentPatchUrl];
+    }
+    else {
+        return [self menuSavePatchAs:sender];
+    }
+}
+- (IBAction)menuSavePatchAs:(id)sender {
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    
+    [savePanel setAllowedFileTypes:[NSArray arrayWithObject:@"csp"]];
+    [savePanel setAllowsOtherFileTypes:NO];
+    
+    NSURL *patch_dir = [self patchDirectoryURL];
+    if (patch_dir) {
+        [savePanel setDirectoryURL:patch_dir];
+    }
+    
+    if ([savePanel runModal] == NSOKButton) {
+        NSURL *url = [savePanel URL];
+        [self savePatchToURL:url];
+    }
+    
+}
+- (IBAction)menuClearPatch:(id)sender {
+    [synth setDefaults];
+}
 @end

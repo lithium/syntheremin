@@ -18,7 +18,8 @@
 #import "SynthAnalyzer.h"
 #import "PatchCabler.h"
 
-
+#import "CSKnob.h"
+#import "CSFader.h"
 #import "CSPopupButton.h"
 #import "CSMultiSwitch.h"
 
@@ -31,7 +32,8 @@
     AudioQueueSynth *synth;
     
     LeapSyntheremin *mSyntheremin;
-        
+    
+    NSURL *currentPatchUrl;
     
     MIDIClientRef midiClient;
     MIDIPortRef midiInput;
@@ -47,14 +49,10 @@
 
 
 
-//note button delegate
-- (void)mouseDown:(NSEvent *)evt :(int)tag;
-- (void)mouseUp:(NSEvent *)evt :(int)tag;
-
 
 
 //@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
-@property (weak) IBOutlet NSTextField *noleap_label;
+//@property (weak) IBOutlet NSTextField *noleap_label;
 
 
 //looper interface
@@ -67,12 +65,64 @@
 - (IBAction)clickLooperClear:(id)sender;
 
 
+//button keyboard
 @property (weak) IBOutlet NSBox *keyboardBox;
 - (IBAction)clickKeyboardChangeOctave:(id)sender;
-
 - (IBAction)changeControl:(id)sender;
 
 
+
+/*
+ * Menu actions
+ */
+- (IBAction)menuNewPatch:(id)sender;
+- (IBAction)menuOpenPatch:(id)sender;
+- (IBAction)menuSavePatch:(id)sender;
+- (IBAction)menuSavePatchAs:(id)sender;
+- (IBAction)menuClearPatch:(id)sender;
+
+
+
+
+/* 
+ * Outlets
+ */
 @property (weak) IBOutlet PatchCabler *patchCabler;
+
+
+@property (weak) IBOutlet CSKnob *lfo_freq;
+@property (weak) IBOutlet CSKnob *lfo_level;
+@property (weak) IBOutlet CSMultiSwitch *lfo_shape;
+
+@property (weak) IBOutlet CSKnob *noise_level;
+@property (weak) IBOutlet CSMultiSwitch *noise_type;
+
+@property (weak) IBOutlet CSKnob *filter_cutoff;
+@property (weak) IBOutlet CSKnob *filter_resonance;
+
+@property (weak) IBOutlet CSKnob *adsr_attack_0;
+@property (weak) IBOutlet CSKnob *adsr_decay_0;
+@property (weak) IBOutlet CSKnob *adsr_sustain_0;
+@property (weak) IBOutlet CSKnob *adsr_release_0;
+@property (weak) IBOutlet CSKnob *adsr_attack_1;
+@property (weak) IBOutlet CSKnob *adsr_decay_1;
+@property (weak) IBOutlet CSKnob *adsr_sustain_1;
+@property (weak) IBOutlet CSKnob *adsr_release_1;
+
+@property (weak) IBOutlet CSKnob *mixer_level;
+@property (weak) IBOutlet CSFader *vca_level_0;
+@property (weak) IBOutlet CSFader *vca_level_1;
+@property (weak) IBOutlet CSFader *vca_level_2;
+
+@property (weak) IBOutlet CSMultiSwitch *osc_shape_0;
+@property (weak) IBOutlet CSPopupButton *osc_range_0;
+@property (weak) IBOutlet CSMultiSwitch *osc_shape_1;
+@property (weak) IBOutlet CSPopupButton *osc_range_1;
+@property (weak) IBOutlet CSKnob *osc_detune_1;
+@property (weak) IBOutlet CSMultiSwitch *osc_shape_2;
+@property (weak) IBOutlet CSPopupButton *osc_range_2;
+@property (weak) IBOutlet CSKnob *osc_detune_2;
+
+
 
 @end

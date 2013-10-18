@@ -54,5 +54,16 @@
     return numSamples;
 }
 
+- (void)updatePropertyList:(NSMutableDictionary*)props
+{
+    [props setObject:[NSNumber numberWithDouble:level] forKey:@"level"];
+}
+- (id)properties
+{
+    NSMutableDictionary *props = [NSMutableDictionary dictionaryWithCapacity:4];
+    
+    [self updatePropertyList:props];
+    return props;
 
+}
 @end

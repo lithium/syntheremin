@@ -16,4 +16,9 @@
     return [self selectedTag];
 }
 
+- (void)setDoubleValue:(double)aDouble
+{
+    [self selectItemWithTag:aDouble];
+}
+
 @end
