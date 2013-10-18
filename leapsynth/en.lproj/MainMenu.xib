@@ -1529,7 +1529,7 @@
 							<string key="NSFrame">{{198, 432}, {32, 14}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="453991893"/>
+							<reference key="NSNextKeyView" ref="597601878"/>
 							<string key="NSReuseIdentifierKey">_NS:1505</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="118486178">
@@ -1733,7 +1733,7 @@
 							<string key="NSFrame">{{453, 474}, {29, 14}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="597601878"/>
+							<reference key="NSNextKeyView" ref="44124124"/>
 							<string key="NSReuseIdentifierKey">_NS:1505</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="87542902">
@@ -1833,7 +1833,7 @@
 							<string key="NSFrame">{{522, 439}, {32, 14}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="44124124"/>
+							<reference key="NSNextKeyView" ref="453991893"/>
 							<string key="NSReuseIdentifierKey">_NS:1505</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="870300689">
@@ -3483,8 +3483,8 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="402716546"/>
 							<reference ref="146121953"/>
-							<reference ref="465466172"/>
 							<reference ref="905031138"/>
+							<reference ref="465466172"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -3518,10 +3518,10 @@
 						<int key="objectID">4771</int>
 						<reference key="object" ref="430778068"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="629429391"/>
 							<reference ref="184154506"/>
 							<reference ref="525655578"/>
 							<reference ref="886061266"/>
+							<reference ref="629429391"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -4198,8 +4198,8 @@
 							<reference ref="1008610637"/>
 							<reference ref="546176815"/>
 							<reference ref="102717245"/>
-							<reference ref="413767966"/>
 							<reference ref="186022194"/>
+							<reference ref="413767966"/>
 						</array>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -4842,7 +4842,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">envAttack2</string>
+								<string key="value">env:1:attackTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -4867,7 +4867,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">envDecay2</string>
+								<string key="value">env:1:decayTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -4887,7 +4887,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">envSustain2</string>
+								<string key="value">env:1:sustainLevel</string>
 							</object>
 						</array>
 					</object>
@@ -4902,7 +4902,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">envRelease2</string>
+								<string key="value">env:1:releaseTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -4922,7 +4922,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">envAttack1</string>
+								<string key="value">env:0:attackTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -4947,7 +4947,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">envDecay1</string>
+								<string key="value">env:0:attackTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -4967,7 +4967,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">envSustain1</string>
+								<string key="value">env:0:sustainLevel</string>
 							</object>
 						</array>
 					</object>
@@ -4982,7 +4982,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">envRelease1</string>
+								<string key="value">env:0:releaseTimeInMs</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -5002,7 +5002,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">filterResonance1</string>
+								<string key="value">vcf:0:resonance</string>
 							</object>
 						</array>
 					</object>
@@ -5017,7 +5017,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">filterCutoff1</string>
+								<string key="value">vcf:0:cutoffFrequencyInHz</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -5037,7 +5037,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">filterResonance1</string>
+								<string key="value">noise:0:level</string>
 							</object>
 						</array>
 					</object>
@@ -5052,7 +5052,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">lfo:0:frequency</string>
+								<string key="value">lfo:0:frequencyInHz</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -5087,7 +5087,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">oscDetune2</string>
+								<string key="value">osc:1:detuneInCents</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
@@ -5112,7 +5112,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.string</string>
 								<string key="keyPath">parameter</string>
-								<string key="value">oscDetune3</string>
+								<string key="value">osc:2:detuneInCents</string>
 							</object>
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
