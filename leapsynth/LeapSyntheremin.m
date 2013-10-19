@@ -68,13 +68,13 @@
             
             if (hand_id == leftHandId) {
                 if ([delegate respondsToSelector:@selector(leftHandMotion::)]) {
-                    [delegate leftHandMotion:hand :pos];
+                    [delegate leftHandMotion:hand :[LeapSyntheremin normalizePositionForLeftHand:pos]];
                 }
 
             }
             else if (hand_id == rightHandId) {
                 if ([delegate respondsToSelector:@selector(rightHandMotion::)]) {
-                    [delegate rightHandMotion:hand :pos];
+                    [delegate rightHandMotion:hand :[LeapSyntheremin normalizePositionForRightHand:pos]];
                 }
             }
         }
@@ -135,5 +135,18 @@
     }
 }
 
-
++ (LeapVector *)normalizePositionForLeftHand:(LeapVector *)position
+{
+    double x = (MAX(MIN([position x], kLeftXMax), kLeftXMin) - kLeftXMin)/(kLeftXMax - kLeftXMin);
+    double y = (MAX(MIN([position y], kLeftYMax), kLeftYMin) - kLeftYMin)/(kLeftYMax - kLeftYMin);
+    double z = 1.0-(MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
+    return [[LeapVector alloc] initWithX:x y:y z:z];
+}
++ (LeapVector *)normalizePositionForRightHand:(LeapVector *)position
+{
+    double x = (MAX(MIN([position x], kRightXMax), kRightXMin) - kRightXMin)/(kRightXMax - kRightXMin);
+    double y = (MAX(MIN([position y], kRightYMax), kRightYMin) - kRightYMin)/(kRightYMax - kRightYMin);
+    double z = 1.0-(MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
+    return [[LeapVector alloc] initWithX:x y:y z:z];
+}
 @end

@@ -51,7 +51,7 @@
 
 
 @property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
-//@property (weak) IBOutlet NSTextField *noleap_label;
+@property (weak) IBOutlet NSTextField *noleap_label;
 
 
 //looper interface
