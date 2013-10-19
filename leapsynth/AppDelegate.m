@@ -72,25 +72,32 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    
-//    [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
-            
+{            
 
-    
+    //we want to quit on window close
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
     
+    
+    //so we get keyUp/keyDown events
     [_window makeFirstResponder:self];
     
-    mSyntheremin = [[LeapSyntheremin alloc] init];
-    [mSyntheremin setDelegate:self];
+    
+    //set up leap motion theremin
+    leapSyntheremin = [[LeapSyntheremin alloc] init];
+    [leapSyntheremin setDelegate:self];
     
         
+    //start soft synth
     synth = [[AudioQueueSynth alloc] init];
     [synth start];
     
+    //set up synth delegates
+    [synth setPatchDelegate:self];
     [synth setAnalyzerDelegate:synthAnalyzer];
+    [[synth looper] setDelegate:self];
 
+
+    //KVO for outlets
     [synth addObserver:self forKeyPath:@"lfo.frequencyInHz" options:0 context:(__bridge void *)lfo_freq];
     [synth addObserver:self forKeyPath:@"lfo.level" options:0 context:(__bridge void *)lfo_level];
     [synth addObserver:self forKeyPath:@"lfo.waveShape" options:0 context:(__bridge void *)lfo_shape];
@@ -124,111 +131,16 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [[synth oscN:2] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_2];
     [[synth oscN:2] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_2];
     [[synth oscN:2] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_2];
+    
+    [self initializePatchCabler];
 
-    [synth setPatchDelegate:self];
-
+    //have synth re-set defaults so KVO can update outlets
     [synth setDefaults];
         
-    [[synth looper] setDelegate:self];
         
 
-    //set up patch cabler
-    {
-        [patchCabler setDelegate:self];
-
-        //oscilattors
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"osc:0:modulate"
-                                  onEdge:kEdgeLeft
-                              withOffset:-60];
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"osc:0:output"
-                                  onEdge:kEdgeLeft
-                              withOffset:-100];
-        
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"osc:1:modulate"
-                                  onEdge:kEdgeLeft
-                              withOffset:-150];
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"osc:1:output"
-                                  onEdge:kEdgeLeft
-                              withOffset:-200];
-        
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"osc:2:modulate"
-                                  onEdge:kEdgeLeft
-                              withOffset:-250];
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"osc:2:output"
-                                  onEdge:kEdgeLeft
-                              withOffset:-300];
-
-        //vcas
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vca:0:input"
-                                  onEdge:kEdgeBottom
-                              withOffset:50];
-        
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vca:1:input"
-                                  onEdge:kEdgeBottom
-                              withOffset:110];
-
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vca:2:input"
-                                  onEdge:kEdgeBottom
-                              withOffset:180];
-        
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"mixer::modulate"
-                                  onEdge:kEdgeBottom
-                              withOffset:240];
-        
-
-
-        //envelopes
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"adsr:0:output"
-                                  onEdge:kEdgeRight
-                              withOffset:150];
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"adsr:1:output"
-                                  onEdge:kEdgeRight
-                              withOffset:50];
-
-        //filter
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vcf:0:modulate"
-                                  onEdge:kEdgeRight
-                              withOffset:-50];
-        [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                        andParameterName:@"vcf:0:input"
-                                  onEdge:kEdgeRight
-                              withOffset:-80];
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"vcf:0:output"
-                                  onEdge:kEdgeRight
-                              withOffset:-110];
-
-
-
-        //modulators
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"lfo:0:output"
-                                  onEdge:kEdgeTop
-                              withOffset:50];
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"noise:0:output"
-                                  onEdge:kEdgeTop
-                              withOffset:250];
-
-        
-    }
-
-    
+    //listen to any available midi devices
     [self performSelectorInBackground:@selector(initializeMidi) withObject:nil];
-    
     
 }
 
@@ -261,6 +173,99 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 
+- (void)initializePatchCabler
+{
+    [patchCabler setDelegate:self];
+    
+    //oscilattors
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"osc:0:modulate"
+                              onEdge:kEdgeLeft
+                          withOffset:-60];
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"osc:0:output"
+                              onEdge:kEdgeLeft
+                          withOffset:-100];
+    
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"osc:1:modulate"
+                              onEdge:kEdgeLeft
+                          withOffset:-150];
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"osc:1:output"
+                              onEdge:kEdgeLeft
+                          withOffset:-200];
+    
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"osc:2:modulate"
+                              onEdge:kEdgeLeft
+                          withOffset:-250];
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"osc:2:output"
+                              onEdge:kEdgeLeft
+                          withOffset:-300];
+    
+    //vcas
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"vca:0:input"
+                              onEdge:kEdgeBottom
+                          withOffset:50];
+    
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"vca:1:input"
+                              onEdge:kEdgeBottom
+                          withOffset:110];
+    
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"vca:2:input"
+                              onEdge:kEdgeBottom
+                          withOffset:180];
+    
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"mixer::modulate"
+                              onEdge:kEdgeBottom
+                          withOffset:240];
+    
+    
+    
+    //envelopes
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"adsr:0:output"
+                              onEdge:kEdgeRight
+                          withOffset:150];
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"adsr:1:output"
+                              onEdge:kEdgeRight
+                          withOffset:50];
+    
+    //filter
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"vcf:0:modulate"
+                              onEdge:kEdgeRight
+                          withOffset:-50];
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"vcf:0:input"
+                              onEdge:kEdgeRight
+                          withOffset:-80];
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"vcf:0:output"
+                              onEdge:kEdgeRight
+                          withOffset:-110];
+    
+    
+    
+    //modulators
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"lfo:0:output"
+                              onEdge:kEdgeTop
+                          withOffset:50];
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"noise:0:output"
+                              onEdge:kEdgeTop
+                          withOffset:250];
+        
+    
+}
 
 - (void)noteOn
 {        
@@ -310,6 +315,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 /*
  * Delegate Callbacks
  */
+
+//looper delegate
 - (void) samplesPlayed :(short *)samples :(int)numSamples
 {
     @autoreleasepool {
@@ -324,6 +331,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 
+//midi delegate
 - (void)noteOn:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel
 {
     [synth setFrequencyInHz:[MidiParser frequencyFromNoteNumber:noteNumber]];
@@ -365,6 +373,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 
+//cscontrol kvo
 - (void)observeValueForKeyPath:(NSString *)keyPath 
                       ofObject:(id)object 
                         change:(NSDictionary *)change 
@@ -378,6 +387,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
+//window key events
 - (void)keyDown:(NSEvent*)theEvent
 {
     char key = [[theEvent characters] characterAtIndex:0];
@@ -422,7 +432,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 
 /*
- * Leap Motion 
+ * LeapSyntheremin delegate
  */
 
 

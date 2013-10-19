@@ -30,7 +30,7 @@
 {
     AudioQueueSynth *synth;
     
-    LeapSyntheremin *mSyntheremin;
+    LeapSyntheremin *leapSyntheremin;
     
     NSURL *currentPatchUrl;
     
