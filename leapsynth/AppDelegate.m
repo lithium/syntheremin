@@ -44,12 +44,13 @@
 @synthesize osc_detune_1;
 @synthesize osc_shape_1;
 @synthesize osc_detune_2;
+@synthesize tabView;
 @synthesize osc_shape_2;
 @synthesize osc_range_1;
 @synthesize osc_range_2;
 
 
-//@synthesize synthAnalyzer;
+@synthesize synthAnalyzer;
 //@synthesize noleap_label;
 
 
@@ -88,7 +89,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     synth = [[AudioQueueSynth alloc] init];
     [synth start];
     
-    
+    [synth setAnalyzerDelegate:synthAnalyzer];
 
     [synth addObserver:self forKeyPath:@"lfo.frequencyInHz" options:0 context:(__bridge void *)lfo_freq];
     [synth addObserver:self forKeyPath:@"lfo.level" options:0 context:(__bridge void *)lfo_level];

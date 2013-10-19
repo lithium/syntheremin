@@ -9,7 +9,7 @@
 #import "Synth.h"
 
 @implementation Synth
-@synthesize delegate;
+@synthesize analyzerDelegate;
 @synthesize patchDelegate;
 
 - (id)init
@@ -53,8 +53,8 @@
 @autoreleasepool {
         
     [mixer getSamples:samples :numSamples];
-    if (delegate && [delegate respondsToSelector:@selector(receiveSamples::)]) {
-        [delegate receiveSamples:samples :numSamples];
+    if (analyzerDelegate && [analyzerDelegate respondsToSelector:@selector(receiveSamples::)]) {
+        [analyzerDelegate receiveSamples:samples :numSamples];
     }
     return numSamples;
     

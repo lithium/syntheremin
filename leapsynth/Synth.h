@@ -40,7 +40,7 @@
     __weak id delegate;
 }
 
-@property (weak) id delegate;
+@property (weak) id analyzerDelegate;
 @property (weak) id patchDelegate;
 
 - (id)init;

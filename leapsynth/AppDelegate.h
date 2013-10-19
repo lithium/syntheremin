@@ -50,7 +50,7 @@
 
 
 
-//@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
+@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
 //@property (weak) IBOutlet NSTextField *noleap_label;
 
 
@@ -121,6 +121,7 @@
 @property (weak) IBOutlet CSPopupButton *osc_range_2;
 @property (weak) IBOutlet CSKnob *osc_detune_2;
 
+@property (weak) IBOutlet NSTabView *tabView;
 
 
 @end
