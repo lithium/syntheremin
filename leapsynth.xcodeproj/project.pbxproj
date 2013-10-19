@@ -27,7 +27,6 @@
 		12759AC418092CE400EA2D1A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12759AC318092CE400EA2D1A /* CoreMIDI.framework */; };
 		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
-		128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 128646CD17A9E99A00CE0420 /* DownUpButton.m */; };
 		1291C76517BB423D0055761E /* SynthAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1291C76417BB423D0055761E /* SynthAnalyzer.m */; };
 		12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE671809CE410019EBC4 /* MidiParser.m */; };
 		12B0FE6B180A19A50019EBC4 /* NoiseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B0FE6A180A19A50019EBC4 /* NoiseGenerator.m */; };
@@ -102,8 +101,6 @@
 		127DBD3617A76D16007C68FF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		127DBD3717A76D16007C68FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		127DBD4F17A81437007C68FF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		128646CC17A9E99A00CE0420 /* DownUpButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownUpButton.h; sourceTree = "<group>"; };
-		128646CD17A9E99A00CE0420 /* DownUpButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownUpButton.m; sourceTree = "<group>"; };
 		1291C76317BB423D0055761E /* SynthAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthAnalyzer.h; sourceTree = "<group>"; };
 		1291C76417BB423D0055761E /* SynthAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynthAnalyzer.m; sourceTree = "<group>"; };
 		12B0FE661809CE410019EBC4 /* MidiParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiParser.h; sourceTree = "<group>"; };
@@ -260,8 +257,6 @@
 				12B0FE671809CE410019EBC4 /* MidiParser.m */,
 				126C4D6B17B2B04B00598323 /* LeapSyntheremin.h */,
 				126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */,
-				128646CC17A9E99A00CE0420 /* DownUpButton.h */,
-				128646CD17A9E99A00CE0420 /* DownUpButton.m */,
 				1291C76317BB423D0055761E /* SynthAnalyzer.h */,
 				1291C76417BB423D0055761E /* SynthAnalyzer.m */,
 			);
@@ -401,7 +396,6 @@
 				12BB469517A98944009D7B5C /* main.m in Sources */,
 				12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */,
 				12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */,
-				128646CE17A9E99A00CE0420 /* DownUpButton.m in Sources */,
 				12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */,
 				12EFCD2F17AD429F00E84D98 /* Vca.m in Sources */,
 				12EFCD3217AD490200E84D98 /* Synth.m in Sources */,

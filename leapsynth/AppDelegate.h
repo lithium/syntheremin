@@ -10,7 +10,6 @@
 #import "AudioToolbox/AudioQueue.h"
 #import "Defines.h"
 #import "Synth.h"
-#import "DownUpButton.h"
 #import "LeapSyntheremin.h"
 #import "AudioQueueSynth.h"
 #import "Looper.h"
