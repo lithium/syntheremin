@@ -182,12 +182,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         [patchCabler addEndpointWithType:kInputPatchEndpoint 
                         andParameterName:@"mixer::modulate"
                                   onEdge:kEdgeBottom
-                              withOffset:220];
+                              withOffset:240];
         
-        [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                        andParameterName:@"mixer::output"
-                                  onEdge:kEdgeBottom
-                              withOffset:260];
 
 
         //envelopes
