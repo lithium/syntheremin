@@ -598,4 +598,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)menuClearPatch:(id)sender {
     [synth setDefaults];
 }
+- (IBAction)switchToSynth:(id)sender {
+    [tabView selectTabViewItemAtIndex:0];
+}
+
+- (IBAction)switchToTheremin:(id)sender {
+    [tabView selectTabViewItemAtIndex:1];
+
+}
 @end

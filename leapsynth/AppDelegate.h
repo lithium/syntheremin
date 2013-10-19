@@ -122,6 +122,8 @@
 @property (weak) IBOutlet CSKnob *osc_detune_2;
 
 @property (weak) IBOutlet NSTabView *tabView;
+- (IBAction)switchToSynth:(id)sender;
+- (IBAction)switchToTheremin:(id)sender;
 
 
 @end
