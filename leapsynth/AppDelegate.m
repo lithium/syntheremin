@@ -130,9 +130,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [[synth looper] setDelegate:self];
         
 
-    OSStatus status;
-    
-    
     //set up patch cabler
     {
         [patchCabler setDelegate:self];
@@ -232,8 +229,23 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     }
 
     
-
+    [self performSelectorInBackground:@selector(initializeMidi) withObject:nil];
     
+    
+}
+
+
+- (void)windowWillClose:(NSNotification *)notification
+{
+    [synth stop];
+    [NSApp terminate:self];
+}
+
+
+- (void)initializeMidi
+{    
+    OSStatus status;
+
     //connect all midi endpoints to our listener
     midiParser = [[MidiParser alloc] init];
     [midiParser setDelegate:self];
@@ -247,18 +259,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         status = MIDIPortConnectSource(midiInput, src, NULL);
     }
     
-    
+
 }
-
-
-- (void)windowWillClose:(NSNotification *)notification
-{
-    [synth stop];
-    [NSApp terminate:self];
-}
-
-
-
 
 
 
