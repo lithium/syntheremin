@@ -10,6 +10,7 @@
 
 @implementation Synth
 @synthesize delegate;
+@synthesize patchDelegate;
 
 - (id)init
 {
@@ -108,8 +109,8 @@
         [target setModulator:source];
     }
     
-
     [patches setObject:targetName forKey:sourceName];
+    [patchDelegate connectPatch:sourceName :targetName];
 }
 - (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName
 {
@@ -131,6 +132,7 @@
     }
 
     [patches removeObjectForKey:sourceName];
+    [patchDelegate disconnectPatch:sourceName :targetName];
 }
 
         
@@ -281,5 +283,6 @@
     }
     
     [mixer setLevel:0.35];
+    [self clearPatches];
 }
 @end

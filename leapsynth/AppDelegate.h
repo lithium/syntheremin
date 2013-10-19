@@ -25,6 +25,7 @@
 @interface AppDelegate : NSResponder  <NSApplicationDelegate, 
                                     LeapSynthereminDelegate, 
                                     PatchCablerDelegate,
+                                    SynthPatchDelegate,
                                     LoopDelegate> 
 {
     AudioQueueSynth *synth;

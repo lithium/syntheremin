@@ -15,7 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        endpoints = [[NSMutableArray alloc] init];
+        endpoints = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -29,7 +29,8 @@
     
     NSBezierPath *cablePath = [[NSBezierPath alloc] init];
     [cablePath setLineWidth:4];
-    for (PatchCableEndpoint *endpoint in endpoints) {
+    [endpoints enumerateKeysAndObjectsUsingBlock:^(id parameterName, id endpoint, BOOL *stop) {
+        
         if ([endpoint endpointType] == kOutputPatchEndpoint ||
             [endpoint connectedTo] != nil ||
             [endpoint isDragging])
@@ -42,7 +43,9 @@
             [cablePath moveToPoint:orig];
             [cablePath lineToPoint:loc];
         }
-    }
+    
+    }];
+
     [[NSColor blackColor] set];
     [cablePath stroke];
 
@@ -50,7 +53,7 @@
 }
 
 
-- (int)addEndpointWithType:(int)endpointType 
+- (void)addEndpointWithType:(int)endpointType 
           andParameterName:(NSString*)name
                     onEdge:(int)cablerEdge
                 withOffset:(double)edgeOffset
@@ -63,21 +66,37 @@
     
     return [self addEndpoint:endpoint];
 }
-- (int)addEndpoint:(PatchCableEndpoint *)newEndpoint
+- (void)addEndpoint:(PatchCableEndpoint *)newEndpoint
 {
     [self addSubview:newEndpoint];
     [newEndpoint setDelegate:self];
     
-    [endpoints addObject:newEndpoint];
-    return [endpoints indexOfObject:newEndpoint];
+    [endpoints setObject:newEndpoint forKey:[newEndpoint parameterName]];
+}
+- (void)connectEndpoints:(NSString*)sourceName :(NSString*)targetName
+{  
+    PatchCableEndpoint *source = [endpoints objectForKey:sourceName];
+    PatchCableEndpoint *target = [endpoints objectForKey:targetName ];
+    [source setConnectedTo:target];
+    [target setConnectedTo:source];
+    [self setNeedsDisplay:YES];
+    
+}
+- (void)disconnectEndpoints:(NSString*)sourceName :(NSString*)targetName
+{
+    PatchCableEndpoint *source = [endpoints objectForKey:sourceName];
+    PatchCableEndpoint *target = [endpoints objectForKey:targetName ];
+    [source setConnectedTo:nil];
+    [target setConnectedTo:nil];
+    [self setNeedsDisplay:YES];
 
 }
 
 - (void)endpointDragged:(id)sender toLocation:(NSPoint)dragLocation
 {
     dragLocation = [self convertPoint:dragLocation fromView:nil];
-    for (PatchCableEndpoint *target in endpoints) 
-    {
+    [endpoints enumerateKeysAndObjectsUsingBlock:^(id key, id target, BOOL *stop) {
+    
         if (target != sender && 
             NSPointInRect(dragLocation,[target frame]) &&
             [target endpointType] == kInputPatchEndpoint) 
@@ -89,9 +108,9 @@
             if (delegate) {
                 [delegate patchConnected:source :target];
             }
-            break;
+            
         }
-    }
+    }];
 }
 - (void)endpointReleased:(id)sender fromEndpoint:(id)connectedTo
 {

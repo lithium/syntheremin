@@ -84,6 +84,8 @@
     isDragging = NO;
     if (!isConnected) {
         [self setFrameOrigin:origin];        
+    } else {
+        [self setFrameOrigin:[target origin]];
     }
 }
 

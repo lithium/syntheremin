@@ -22,6 +22,11 @@
 - (void) receiveSamples :(short *)samples :(int)numSamples;
 @end
 
+@protocol SynthPatchDelegate <NSObject>
+- (void)connectPatch:(NSString *)sourceName :(NSString *)targetName;
+- (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName;
+@end
+
 @interface Synth : SampleProvider {
     Vco *oscN[kNumOscillators];
     Oscillator *lfo;
@@ -36,6 +41,7 @@
 }
 
 @property (weak) id delegate;
+@property (weak) id patchDelegate;
 
 - (id)init;
 
@@ -58,4 +64,5 @@
 - (BOOL)setConfiguration:(NSDictionary *)config;
 
 - (void)setDefaults;
+
 @end

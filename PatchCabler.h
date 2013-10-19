@@ -19,17 +19,20 @@
 @interface PatchCabler : NSView <PatchCableEndpointDelegate> 
 {
     NSImage *outputImage, *inputImage;
-    NSMutableArray *endpoints;
+    NSMutableDictionary *endpoints;
     
 }
 @property (weak) id <PatchCablerDelegate> delegate;
 
-- (int)addEndpoint:(PatchCableEndpoint *)endpoint;
+- (void)addEndpoint:(PatchCableEndpoint *)endpoint;
 
-- (int)addEndpointWithType:(int)endpointType 
+- (void)addEndpointWithType:(int)endpointType 
           andParameterName:(NSString*)name
                     onEdge:(int)cablerEdge
                 withOffset:(double)edgeOffset
                           ;
+
+- (void)connectEndpoints:(NSString*)sourceName :(NSString*)targetName;
+- (void)disconnectEndpoints:(NSString*)sourceName :(NSString*)targetName;
 
 @end

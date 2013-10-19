@@ -124,6 +124,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [[synth oscN:2] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_2];
     [[synth oscN:2] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_2];
 
+    [synth setPatchDelegate:self];
 
     [synth setDefaults];
         
@@ -343,6 +344,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 
+//patch cabler delegate, ui events
 - (void)patchConnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target
 {
     NSLog(@"connect: %@ -> %@", [source parameterName], [target parameterName]);
@@ -353,6 +355,16 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     NSLog(@"disconnect %@ -> %@", [source parameterName], [target parameterName]);
     [synth disconnectPatch:[source parameterName] :[target parameterName]];
 
+}
+
+//synth patch delegate, model events
+- (void)connectPatch:(NSString *)sourceName :(NSString *)targetName
+{
+    [patchCabler connectEndpoints:sourceName :targetName];
+}
+- (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName
+{
+    [patchCabler disconnectEndpoints:sourceName :targetName];    
 }
 
 
