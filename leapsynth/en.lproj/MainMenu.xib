@@ -2050,7 +2050,7 @@
 														<string key="NSFrame">{{286, 20}, {251, 71}}</string>
 														<reference key="NSSuperview" ref="20957001"/>
 														<reference key="NSWindow"/>
-														<reference key="NSNextKeyView" ref="751481174"/>
+														<reference key="NSNextKeyView"/>
 														<string key="NSReuseIdentifierKey">_NS:9</string>
 														<bool key="NSEnabled">YES</bool>
 														<object class="NSImageCell" key="NSCell" id="376424322">
@@ -2074,7 +2074,7 @@
 														<string key="NSFrame">{{328, 317}, {166, 17}}</string>
 														<reference key="NSSuperview" ref="20957001"/>
 														<reference key="NSWindow"/>
-														<reference key="NSNextKeyView" ref="382724293"/>
+														<reference key="NSNextKeyView" ref="648993824"/>
 														<string key="NSReuseIdentifierKey">_NS:1505</string>
 														<bool key="NSEnabled">YES</bool>
 														<object class="NSTextFieldCell" key="NSCell" id="228026735">
@@ -2099,7 +2099,7 @@
 														<string key="NSFrame">{{307, 569}, {80, 32}}</string>
 														<reference key="NSSuperview" ref="20957001"/>
 														<reference key="NSWindow"/>
-														<reference key="NSNextKeyView" ref="648993824"/>
+														<reference key="NSNextKeyView" ref="751481174"/>
 														<string key="NSReuseIdentifierKey">_NS:9</string>
 														<bool key="NSEnabled">YES</bool>
 														<object class="NSButtonCell" key="NSCell" id="73113498">
@@ -2288,7 +2288,7 @@
 												<reference key="NSNextKeyView" ref="504307153"/>
 												<bool key="NSViewCanDrawConcurrently">YES</bool>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="NSClassName">SynthAnalyzer</string>
+												<string key="NSClassName">PolarAnalyzer</string>
 											</object>
 										</array>
 										<string key="NSFrameSize">{816, 643}</string>
@@ -5345,6 +5345,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/PatchCabler.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">PolarAnalyzer</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/PolarAnalyzer.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

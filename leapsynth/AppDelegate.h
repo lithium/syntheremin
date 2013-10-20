@@ -16,6 +16,7 @@
 #import "MidiParser.h"
 #import "SynthAnalyzer.h"
 #import "PatchCabler.h"
+#import "PolarAnalyzer.h"
 
 #import "CSKnob.h"
 #import "CSFader.h"
@@ -50,7 +51,7 @@
 
 
 
-@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
+@property (weak) IBOutlet PolarAnalyzer *synthAnalyzer;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 

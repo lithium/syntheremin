@@ -438,11 +438,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
-    [synthAnalyzer setLeftHand:normal.x :normal.y :normal.z];
+//    [synthAnalyzer setLeftHand:normal.x :normal.y :normal.z];
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
-    [synthAnalyzer setRightHand:normal.x :normal.y :normal.z];
+//    [synthAnalyzer setRightHand:normal.x :normal.y :normal.z];
     
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
