@@ -22,6 +22,7 @@
 #import "CSFader.h"
 #import "CSPopupButton.h"
 #import "CSMultiSwitch.h"
+#import "LeapCursorOverlay.h"
 
 @interface AppDelegate : NSResponder  <NSApplicationDelegate, 
                                     LeapSynthereminDelegate, 
@@ -126,5 +127,6 @@
 - (IBAction)switchToSynth:(id)sender;
 - (IBAction)switchToTheremin:(id)sender;
 
+@property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
 
 @end
