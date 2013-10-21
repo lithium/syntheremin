@@ -460,12 +460,23 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [leapModulator[5] setLevel:normal.z];
     
 
-#define firstNote 40      
-#define lastNote 52
+// mimic range of a theremin, G3 .. G6
+#define firstNote 35      
+#define lastNote 70
     
-    int noteNumber = (normal.x * (lastNote-firstNote)) + firstNote;
-    if (noteNumber != currentNoteNumber)
-        [self noteOn:noteNumber withVelocity:64 onChannel:0];    
+    if (equalTempered) {
+        int noteNumber = (normal.x * (lastNote-firstNote)) + firstNote;
+        if (noteNumber != currentNoteNumber)
+            [self noteOn:noteNumber withVelocity:64 onChannel:0];    
+    } else {
+        double minFreq = [MidiParser frequencyFromNoteNumber:35];
+        double maxFreq = [MidiParser frequencyFromNoteNumber:70];
+        double freq = (normal.x * (maxFreq - minFreq)) + minFreq;
+        [synth setFrequencyInHz:freq];
+    }
+    
+    
+
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {   

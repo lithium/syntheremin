@@ -45,6 +45,7 @@
     int keyboardCurrentOctave;
     
     bool paramNoteOn;
+    BOOL equalTempered;
  
     LeapModulator *leapModulator[6];
 }
