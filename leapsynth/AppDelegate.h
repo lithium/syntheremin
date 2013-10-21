@@ -16,11 +16,13 @@
 #import "MidiParser.h"
 #import "SynthAnalyzer.h"
 #import "PatchCabler.h"
+#import "PolarAnalyzer.h"
 
 #import "CSKnob.h"
 #import "CSFader.h"
 #import "CSPopupButton.h"
 #import "CSMultiSwitch.h"
+#import "LeapCursorOverlay.h"
 
 @interface AppDelegate : NSResponder  <NSApplicationDelegate, 
                                     LeapSynthereminDelegate, 
@@ -50,7 +52,7 @@
 
 
 
-@property (weak) IBOutlet SynthAnalyzer *synthAnalyzer;
+@property (weak) IBOutlet PolarAnalyzer *synthAnalyzer;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 
@@ -125,5 +127,6 @@
 - (IBAction)switchToSynth:(id)sender;
 - (IBAction)switchToTheremin:(id)sender;
 
+@property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
 
 @end

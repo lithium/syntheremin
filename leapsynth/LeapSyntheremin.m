@@ -53,11 +53,14 @@
     if ([[frame hands] count] != 0) {
         for (LeapHand *hand in [frame hands]) {
             int32_t hand_id = [hand id];
-            LeapVector *pos = [hand palmPosition];
+            LeapVector *pos = [[frame interactionBox] normalizePoint:[hand stabilizedPalmPosition] 
+                                                               clamp:YES];
+
+//            NSLog(@"sphere: %f", [hand sphereRadius]);
           
             if (hand_id != leftHandId && hand_id != rightHandId) {
                 //unknown hand assign it.
-                if ([pos x] < 0) {
+                if ([pos x] < 0.5) {
                     leftHandId = hand_id;
                     leftFound = true;
                 } else {
@@ -68,17 +71,21 @@
             
             if (hand_id == leftHandId) {
                 if ([delegate respondsToSelector:@selector(leftHandMotion::)]) {
-                    [delegate leftHandMotion:hand :[LeapSyntheremin normalizePositionForLeftHand:pos]];
+                    [delegate leftHandMotion:hand :pos];
+                                            
                 }
 
             }
             else if (hand_id == rightHandId) {
                 if ([delegate respondsToSelector:@selector(rightHandMotion::)]) {
-                    [delegate rightHandMotion:hand :[LeapSyntheremin normalizePositionForRightHand:pos]];
+                    [delegate rightHandMotion:hand :pos];
+
                 }
             }
         }
     }
+    
+    lastFrame = frame;
     
 //    if (leftHandId != -1 && !leftFound) {
 //        if ([delegate respondsToSelector:@selector(leftHandGone:)]) {

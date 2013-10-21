@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12277C461814522400388277 /* PolarAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12277C451814522400388277 /* PolarAnalyzer.m */; };
+		12277C5518148D0F00388277 /* LeapCursorOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 12277C5418148D0F00388277 /* LeapCursorOverlay.m */; };
 		125286E3180EE76C0025D405 /* CSKnob.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286E2180EE76C0025D405 /* CSKnob.m */; };
 		125286F2180F3F780025D405 /* CSControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F1180F3F780025D405 /* CSControl.m */; };
 		125286F5180F3FA40025D405 /* CSFader.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F4180F3FA40025D405 /* CSFader.m */; };
@@ -67,6 +69,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12277C441814522400388277 /* PolarAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolarAnalyzer.h; sourceTree = "<group>"; };
+		12277C451814522400388277 /* PolarAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolarAnalyzer.m; sourceTree = "<group>"; };
+		12277C5318148D0F00388277 /* LeapCursorOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapCursorOverlay.h; sourceTree = "<group>"; };
+		12277C5418148D0F00388277 /* LeapCursorOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapCursorOverlay.m; sourceTree = "<group>"; };
 		125286E1180EE76C0025D405 /* CSKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSKnob.h; path = CSControls/CSKnob.h; sourceTree = "<group>"; };
 		125286E2180EE76C0025D405 /* CSKnob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSKnob.m; path = CSControls/CSKnob.m; sourceTree = "<group>"; };
 		125286F0180F3F780025D405 /* CSControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSControl.h; path = CSControls/CSControl.h; sourceTree = "<group>"; };
@@ -259,6 +265,10 @@
 				126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */,
 				1291C76317BB423D0055761E /* SynthAnalyzer.h */,
 				1291C76417BB423D0055761E /* SynthAnalyzer.m */,
+				12277C5318148D0F00388277 /* LeapCursorOverlay.h */,
+				12277C5418148D0F00388277 /* LeapCursorOverlay.m */,
+				12277C441814522400388277 /* PolarAnalyzer.h */,
+				12277C451814522400388277 /* PolarAnalyzer.m */,
 			);
 			path = leapsynth;
 			sourceTree = "<group>";
@@ -416,6 +426,8 @@
 				12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */,
 				125287181810D2D60025D405 /* CSMultiSwitch.m in Sources */,
 				1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */,
+				12277C461814522400388277 /* PolarAnalyzer.m in Sources */,
+				12277C5518148D0F00388277 /* LeapCursorOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize cursorOverlay;
 @synthesize patchCabler;
 @synthesize keyboardBox;
 @synthesize looper_level;
@@ -438,11 +439,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
-    [synthAnalyzer setLeftHand:normal.x :normal.y :normal.z];
+    [cursorOverlay setLeftHand:normal.x/0.5 :normal.y :normal.z];
+    
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
-    [synthAnalyzer setRightHand:normal.x :normal.y :normal.z];
+    [cursorOverlay setRightHand:(normal.x-0.5)/0.5 :normal.y :normal.z];
     
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
