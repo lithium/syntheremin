@@ -9,9 +9,10 @@
 #import "LeapModulator.h"
 
 @implementation LeapModulator
+@synthesize inverted;
 
 - (double)getSample
 {
-    return level;
+    return inverted ? 1.0 - level : level;
 }
 @end

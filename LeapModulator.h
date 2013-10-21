@@ -12,7 +12,9 @@
 
 @interface LeapModulator : SampleProvider
 {
+    BOOL inverted;
 }
+@property BOOL inverted;
 
 - (double)getSample;
 @end

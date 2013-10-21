@@ -74,8 +74,8 @@
 		12277C451814522400388277 /* PolarAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolarAnalyzer.m; sourceTree = "<group>"; };
 		12277C5318148D0F00388277 /* LeapCursorOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapCursorOverlay.h; sourceTree = "<group>"; };
 		12277C5418148D0F00388277 /* LeapCursorOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapCursorOverlay.m; sourceTree = "<group>"; };
-		123B53BC1815ADDC00FB9065 /* LeapModulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapModulator.h; sourceTree = "<group>"; };
-		123B53BD1815ADDC00FB9065 /* LeapModulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapModulator.m; sourceTree = "<group>"; };
+		123B53BC1815ADDC00FB9065 /* LeapModulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeapModulator.h; path = ../LeapModulator.h; sourceTree = "<group>"; };
+		123B53BD1815ADDC00FB9065 /* LeapModulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeapModulator.m; path = ../LeapModulator.m; sourceTree = "<group>"; };
 		125286E1180EE76C0025D405 /* CSKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSKnob.h; path = CSControls/CSKnob.h; sourceTree = "<group>"; };
 		125286E2180EE76C0025D405 /* CSKnob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSKnob.m; path = CSControls/CSKnob.m; sourceTree = "<group>"; };
 		125286F0180F3F780025D405 /* CSControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSControl.h; path = CSControls/CSControl.h; sourceTree = "<group>"; };
@@ -219,8 +219,6 @@
 		127DBD2317A76D16007C68FF = {
 			isa = PBXGroup;
 			children = (
-				123B53BC1815ADDC00FB9065 /* LeapModulator.h */,
-				123B53BD1815ADDC00FB9065 /* LeapModulator.m */,
 				127DBD3817A76D16007C68FF /* leapsynth */,
 				127DBD3117A76D16007C68FF /* Frameworks */,
 				127DBD2F17A76D16007C68FF /* Products */,
@@ -268,6 +266,8 @@
 				1291C76417BB423D0055761E /* SynthAnalyzer.m */,
 				12277C5318148D0F00388277 /* LeapCursorOverlay.h */,
 				12277C5418148D0F00388277 /* LeapCursorOverlay.m */,
+				123B53BC1815ADDC00FB9065 /* LeapModulator.h */,
+				123B53BD1815ADDC00FB9065 /* LeapModulator.m */,
 				12277C441814522400388277 /* PolarAnalyzer.h */,
 				12277C451814522400388277 /* PolarAnalyzer.m */,
 			);

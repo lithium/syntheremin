@@ -144,6 +144,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     }
     //hardcode classic theremin
     [[synth mixer] setModulator:leapModulator[1]];
+//    [leapModulator[1] setInverted:YES];
 
     //listen to any available midi devices
     [self performSelectorInBackground:@selector(initializeMidi) withObject:nil];
@@ -457,7 +458,14 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [leapModulator[3] setLevel:normal.x];
     [leapModulator[4] setLevel:normal.y];
     [leapModulator[5] setLevel:normal.z];
+    
 
+#define firstNote 40      
+#define lastNote 52
+    
+    int noteNumber = (normal.x * (lastNote-firstNote)) + firstNote;
+    if (noteNumber != currentNoteNumber)
+        [self noteOn:noteNumber withVelocity:64 onChannel:0];    
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {   
