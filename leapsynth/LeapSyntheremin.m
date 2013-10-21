@@ -58,8 +58,9 @@
     if ([[frame hands] count] != 0) {
         for (LeapHand *hand in [frame hands]) {
             int32_t hand_id = [hand id];
-            LeapVector *pos = [[frame interactionBox] normalizePoint:[hand stabilizedPalmPosition] 
-                                                               clamp:YES];
+//            LeapVector *pos = [hand stabilizedPalmPosition];
+            LeapVector *pos = [[[hand pointables] frontmost] stabilizedTipPosition];
+            pos = [[frame interactionBox] normalizePoint:pos clamp:YES];
 
             if (hand_id != leftHandId && hand_id != rightHandId) {
                 //unknown hand assign it.
@@ -138,40 +139,40 @@
 //          [[frame fingers] count], [[frame tools] count], [[frame gestures:nil] count]);
 
     
-    NSArray *gestures = [frame gestures:nil];
-    double now = CFAbsoluteTimeGetCurrent();
-    for (int i = 0; i < [gestures count]; i++) {
-        LeapGesture *gesture = [gestures objectAtIndex:i];
-        for (LeapHand *hand in [gesture hands]) {
-            int32_t hand_id = [hand id];
-            LeapVector *pos = [hand palmPosition];
-
-            if (hand_id != leftHandId && hand_id != rightHandId) {
-                if ([pos x] < 0) {
-                    leftHandId = hand_id;
-                    leftFound = true;
-                } else {
-                    rightHandId = hand_id;
-                    rightFound = true;
-                }
-            }
-            if (hand_id == leftHandId && (now-leftTapDebounce)>kDebounceTimeInSecs ) {
-                leftTapDebounce = now;
-                if ([delegate respondsToSelector:@selector(leftHandTap::)]) {
-                    [delegate leftHandTap:hand :gesture];
-                }
-                
-            }
-            else if (hand_id == rightHandId && (now-rightTapDebounce)>kDebounceTimeInSecs) {
-                rightTapDebounce = now;
-                if ([delegate respondsToSelector:@selector(rightHandTap::)]) {
-                    [delegate rightHandTap:hand :gesture];
-                }
-            }
-
-        }
-
-    }
+//    NSArray *gestures = [frame gestures:nil];
+//    double now = CFAbsoluteTimeGetCurrent();
+//    for (int i = 0; i < [gestures count]; i++) {
+//        LeapGesture *gesture = [gestures objectAtIndex:i];
+//        for (LeapHand *hand in [gesture hands]) {
+//            int32_t hand_id = [hand id];
+//            LeapVector *pos = [hand palmPosition];
+//
+//            if (hand_id != leftHandId && hand_id != rightHandId) {
+//                if ([pos x] < 0) {
+//                    leftHandId = hand_id;
+//                    leftFound = true;
+//                } else {
+//                    rightHandId = hand_id;
+//                    rightFound = true;
+//                }
+//            }
+//            if (hand_id == leftHandId && (now-leftTapDebounce)>kDebounceTimeInSecs ) {
+//                leftTapDebounce = now;
+//                if ([delegate respondsToSelector:@selector(leftHandTap::)]) {
+//                    [delegate leftHandTap:hand :gesture];
+//                }
+//                
+//            }
+//            else if (hand_id == rightHandId && (now-rightTapDebounce)>kDebounceTimeInSecs) {
+//                rightTapDebounce = now;
+//                if ([delegate respondsToSelector:@selector(rightHandTap::)]) {
+//                    [delegate rightHandTap:hand :gesture];
+//                }
+//            }
+//
+//        }
+//
+//    }
 }
 
 // interactionBox gives us 0..1 for the entire sensor width
