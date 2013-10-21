@@ -11,6 +11,10 @@
 @implementation Synth
 @synthesize analyzerDelegate;
 @synthesize patchDelegate;
+@synthesize mixer;
+@synthesize vcf;
+@synthesize lfo;
+@synthesize noise;
 
 - (id)init
 {

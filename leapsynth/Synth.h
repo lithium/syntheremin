@@ -45,6 +45,11 @@
 
 - (id)init;
 
+@property (readonly) Mixer *mixer;
+@property (readonly) Vcf *vcf;
+@property (readonly) Oscillator *lfo;
+@property (readonly) NoiseGenerator *noise;
+
 - (Vca *)vcaN:(int)i;
 - (Adsr *)adsrN:(int)i;
 - (Vco *)oscN:(int)i;

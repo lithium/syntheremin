@@ -23,6 +23,7 @@
 #import "CSPopupButton.h"
 #import "CSMultiSwitch.h"
 #import "LeapCursorOverlay.h"
+#import "LeapModulator.h"
 
 @interface AppDelegate : NSResponder  <NSApplicationDelegate, 
                                     LeapSynthereminDelegate, 
@@ -44,7 +45,8 @@
     int keyboardCurrentOctave;
     
     bool paramNoteOn;
-    
+ 
+    LeapModulator *leapModulator[6];
 }
 
 @property (assign) IBOutlet NSWindow *window;

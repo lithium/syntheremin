@@ -139,6 +139,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [synth setDefaults];
         
         
+    for (int i=0; i < 6; i++) {
+        leapModulator[i] = [[LeapModulator alloc] init];
+    }
+    //hardcode classic theremin
+    [[synth mixer] setModulator:leapModulator[1]];
 
     //listen to any available midi devices
     [self performSelectorInBackground:@selector(initializeMidi) withObject:nil];
@@ -441,11 +446,18 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 {
     [cursorOverlay setLeftHand:normal.x :normal.y :normal.z];
     
+    [leapModulator[0] setLevel:normal.x];
+    [leapModulator[1] setLevel:normal.y];
+    [leapModulator[2] setLevel:normal.z];
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
     [cursorOverlay setRightHand:normal.x :normal.y :normal.z];
     
+    [leapModulator[3] setLevel:normal.x];
+    [leapModulator[4] setLevel:normal.y];
+    [leapModulator[5] setLevel:normal.z];
+
 }
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
 {   
@@ -589,6 +601,5 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (IBAction)switchToTheremin:(id)sender {
     [tabView selectTabViewItemAtIndex:1];
-
 }
 @end
