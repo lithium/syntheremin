@@ -15,10 +15,15 @@
 
 - (id)init
 {
-    leftHandId = rightHandId = -1;
-    
-    leapController = [[LeapController alloc] init];
-    [leapController addListener:self];
+    if (self) {
+        self = [super init];
+        
+        leftHandId = rightHandId = -1;
+        
+        leapController = [[LeapController alloc] init];
+        [leapController addListener:self];
+        
+    }
     
     return self;
 }
@@ -56,8 +61,6 @@
             LeapVector *pos = [[frame interactionBox] normalizePoint:[hand stabilizedPalmPosition] 
                                                                clamp:YES];
 
-//            NSLog(@"sphere: %f", [hand sphereRadius]);
-          
             if (hand_id != leftHandId && hand_id != rightHandId) {
                 //unknown hand assign it.
                 if ([pos x] < 0.5) {
@@ -69,23 +72,49 @@
                 }
             }
             
+            int fingerCount = [[hand pointables] count];
             if (hand_id == leftHandId) {
                 if ([delegate respondsToSelector:@selector(leftHandMotion::)]) {
                     [delegate leftHandMotion:hand :pos];
-                                            
+                        
                 }
+                
+                if (leftHandOpen && fingerCount < 2) {
+                    leftHandOpen = NO;
+                    if ([delegate respondsToSelector:@selector(leftHandClosed:)]) 
+                        [delegate leftHandClosed:hand];
+//                    NSLog(@"left hand closed");
+                }
+                else if (!leftHandOpen && fingerCount > 1) {
+                    leftHandOpen = YES;
+                    if ([delegate respondsToSelector:@selector(leftHandOpened:)])
+                        [delegate leftHandOpened:hand];
+//                    NSLog(@"left hand opened %d", fingerCount);
 
+                }
             }
             else if (hand_id == rightHandId) {
                 if ([delegate respondsToSelector:@selector(rightHandMotion::)]) {
                     [delegate rightHandMotion:hand :pos];
-
                 }
+                if (rightHandOpen && fingerCount < 2) {
+                    rightHandOpen = NO;
+                    if ([delegate respondsToSelector:@selector(rightHandClosed:)]) 
+                        [delegate rightHandClosed:hand];
+                    //                    NSLog(@"right hand closed");
+                }
+                else if (!rightHandOpen && fingerCount > 1) {
+                    rightHandOpen = YES;
+                    if ([delegate respondsToSelector:@selector(rightHandOpened:)])
+                        [delegate rightHandOpened:hand];
+                    //                    NSLog(@"right hand opened %d", fingerCount);
+                    
+                }
+
             }
         }
     }
     
-    lastFrame = frame;
     
 //    if (leftHandId != -1 && !leftFound) {
 //        if ([delegate respondsToSelector:@selector(leftHandGone:)]) {
@@ -142,18 +171,4 @@
     }
 }
 
-+ (LeapVector *)normalizePositionForLeftHand:(LeapVector *)position
-{
-    double x = (MAX(MIN([position x], kLeftXMax), kLeftXMin) - kLeftXMin)/(kLeftXMax - kLeftXMin);
-    double y = (MAX(MIN([position y], kLeftYMax), kLeftYMin) - kLeftYMin)/(kLeftYMax - kLeftYMin);
-    double z = 1.0-(MAX(MIN([position z], kLeftZMax), kLeftZMin) - kLeftZMin)/(kLeftZMax - kLeftZMin);
-    return [[LeapVector alloc] initWithX:x y:y z:z];
-}
-+ (LeapVector *)normalizePositionForRightHand:(LeapVector *)position
-{
-    double x = (MAX(MIN([position x], kRightXMax), kRightXMin) - kRightXMin)/(kRightXMax - kRightXMin);
-    double y = (MAX(MIN([position y], kRightYMax), kRightYMin) - kRightYMin)/(kRightYMax - kRightYMin);
-    double z = 1.0-(MAX(MIN([position z], kRightZMax), kRightZMin) - kRightZMin)/(kRightZMax - kRightZMin);
-    return [[LeapVector alloc] initWithX:x y:y z:z];
-}
 @end

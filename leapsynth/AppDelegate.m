@@ -462,6 +462,22 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [noleap_label setHidden:NO];
 }
 
+- (void)leftHandOpened:(LeapHand *)hand
+{
+    
+}
+- (void)leftHandClosed:(LeapHand *)hand
+{
+    
+}
+- (void)rightHandOpened:(LeapHand *)hand
+{
+    
+}
+- (void)rightHandClosed:(LeapHand *)hand
+{
+    
+}
 
 
 

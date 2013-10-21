@@ -44,6 +44,7 @@
     int keyboardCurrentOctave;
     
     bool paramNoteOn;
+    
 }
 
 @property (assign) IBOutlet NSWindow *window;

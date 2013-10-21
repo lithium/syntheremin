@@ -19,32 +19,15 @@
 - (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
 - (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
 
+- (void)leftHandOpened:(LeapHand *)hand;
+- (void)leftHandClosed:(LeapHand *)hand;
+- (void)rightHandOpened:(LeapHand *)hand;
+- (void)rightHandClosed:(LeapHand *)hand;
+
 
 - (void)onConnect;
 - (void)onDisconnect;
 @end
-
-
-/*
- * constants for defining the leapmotion sensor zone 
- */
-#define kLeftXMin -200
-#define kLeftXMax -70
-
-#define kLeftYMin 150
-#define kLeftYMax 500
-
-#define kLeftZMin 0
-#define kLeftZMax 120
-
-#define kRightXMin 70
-#define kRightXMax 200
-
-#define kRightYMin 150
-#define kRightYMax 500
-
-#define kRightZMin 0
-#define kRightZMax 120
 
 
 #define kDebounceTimeInSecs 0.250
@@ -59,6 +42,9 @@
     double leftTapDebounce;
     double rightTapDebounce;
     
+    
+    BOOL leftHandOpen, rightHandOpen;
+
 }
 
 @property (weak) id <LeapSynthereminDelegate> delegate;
@@ -66,6 +52,4 @@
 - (id)init;
 
 
-+ (LeapVector *)normalizePositionForLeftHand:(LeapVector *)position;
-+ (LeapVector *)normalizePositionForRightHand:(LeapVector *)position;
 @end

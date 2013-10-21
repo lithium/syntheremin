@@ -253,10 +253,6 @@
 				125286E5180EE7700025D405 /* CSControls */,
 				1291C77317BC0C430055761E /* Soft Synth */,
 				12CDBF7317A9A9C100C72104 /* Defines.h */,
-				12C3940C18087F700035BEFF /* Looper.h */,
-				12C3940D18087F710035BEFF /* Looper.m */,
-				12C3940F180899E90035BEFF /* Loop.h */,
-				12C39410180899E90035BEFF /* Loop.m */,
 				12C0D40217A9883C001323FA /* AppDelegate.h */,
 				12C0D40317A9883C001323FA /* AppDelegate.m */,
 				12B0FE661809CE410019EBC4 /* MidiParser.h */,
@@ -310,6 +306,10 @@
 				12EFCD3117AD490200E84D98 /* Synth.m */,
 				12C394081807598B0035BEFF /* AudioQueueSynth.h */,
 				12C394091807598B0035BEFF /* AudioQueueSynth.m */,
+				12C3940C18087F700035BEFF /* Looper.h */,
+				12C3940D18087F710035BEFF /* Looper.m */,
+				12C3940F180899E90035BEFF /* Loop.h */,
+				12C39410180899E90035BEFF /* Loop.m */,
 			);
 			name = "Soft Synth";
 			sourceTree = "<group>";
