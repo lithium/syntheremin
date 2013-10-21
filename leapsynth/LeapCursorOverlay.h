@@ -19,6 +19,7 @@ typedef struct Point3 {
 {
     NSColor *leftDotColor,*rightDotColor;
     Point3 leftHand,rightHand;
+    NSRect cursorFrame;
 }
 
 - (void) setLeftHand:(CGFloat)x :(CGFloat)y :(CGFloat)z;
