@@ -35,7 +35,9 @@
     
     short *samples = (short*)[buffer bytes];
     double step = (2*M_PI)/samplesInBuffer;
-    double radius = bounds.size.width/3;
+//    double radius = bounds.size.width/3;
+    double minRadius = 100;
+    double maxRadius = bounds.size.height/3;
     
     NSPoint center = NSMakePoint(bounds.size.width/2, bounds.size.height/2);
     for (int i=0; i < samplesInBuffer; i++) {
@@ -44,7 +46,7 @@
         
         //polar coordinates
         double phi = i*step;
-        double r = normal*radius;
+        double r = normal*(maxRadius-minRadius)+minRadius;
         
         //translate to cartesian
         NSPoint point = NSMakePoint(center.x + r*cos(phi), center.y + r*sin(phi));
