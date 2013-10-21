@@ -52,4 +52,6 @@
 - (id)init;
 
 
++ (LeapVector *)normalizePositionForLeftHand:(LeapVector *)normalizedPosition;
++ (LeapVector *)normalizePositionForRightHand:(LeapVector *)normalizedPosition;
 @end

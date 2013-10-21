@@ -74,8 +74,9 @@
             
             int fingerCount = [[hand pointables] count];
             if (hand_id == leftHandId) {
+                LeapVector *normalPos = [LeapSyntheremin normalizePositionForLeftHand:pos];
                 if ([delegate respondsToSelector:@selector(leftHandMotion::)]) {
-                    [delegate leftHandMotion:hand :pos];
+                    [delegate leftHandMotion:hand :normalPos];
                         
                 }
                 
@@ -94,8 +95,10 @@
                 }
             }
             else if (hand_id == rightHandId) {
+                LeapVector *normalPos = [LeapSyntheremin normalizePositionForRightHand:pos];
+
                 if ([delegate respondsToSelector:@selector(rightHandMotion::)]) {
-                    [delegate rightHandMotion:hand :pos];
+                    [delegate rightHandMotion:hand :normalPos];
                 }
                 if (rightHandOpen && fingerCount < 2) {
                     rightHandOpen = NO;
@@ -169,6 +172,29 @@
         }
 
     }
+}
+
+// interactionBox gives us 0..1 for the entire sensor width
+// we want to split it for left and right and with a bit 
+// of dead space in center so hands dont overlap
+// left hand normalizes to: 0.0 -> 0.4
+//           right hand at: 0.6 -> 1.0
+#define kLeftXMin 0.0
+#define kLeftXMax 0.4
+#define kLeftXRange kLeftXMax-kLeftXMin
+#define kRightXMin 0.6
+#define kRightXMax 1.0
+#define kRightXRange kRightXMax-kRightXMin
+
++ (LeapVector *)normalizePositionForLeftHand:(LeapVector *)normalizedPosition
+{
+    double x = MAX(MIN(normalizedPosition.x, 0.4), 0);
+    return [[LeapVector alloc] initWithX:x/0.4 y:normalizedPosition.y z:normalizedPosition.z];
+}
++ (LeapVector *)normalizePositionForRightHand:(LeapVector *)normalizedPosition
+{
+    double x = MAX(MIN(normalizedPosition.x, 1.0), 0.6);
+    return [[LeapVector alloc] initWithX:((x-0.6)/0.4) y:normalizedPosition.y z:normalizedPosition.z];    
 }
 
 @end

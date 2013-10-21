@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 typedef struct Point3 {
-    CGFloat x,y,z;
+    double x,y,z;
 } Point3;
 
 #define kHandRadiusMin 2
