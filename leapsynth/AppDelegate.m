@@ -51,7 +51,7 @@
 @synthesize osc_range_2;
 
 
-@synthesize synthAnalyzer;
+@synthesize analyzer;
 @synthesize noleap_label;
 
 
@@ -94,7 +94,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     //set up synth delegates
     [synth setPatchDelegate:self];
-    [synth setAnalyzerDelegate:synthAnalyzer];
+    [synth setAnalyzerDelegate:analyzer];
     [[synth looper] setDelegate:self];
 
 
@@ -145,6 +145,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     //hardcode classic theremin
     [[synth mixer] setModulator:leapModulator[1]];
 //    [leapModulator[1] setInverted:YES];
+    equalTempered = YES;
+    
+    [[synth vcf] setModulator:leapModulator[4]];
 
     //listen to any available midi devices
     [self performSelectorInBackground:@selector(initializeMidi) withObject:nil];
@@ -277,10 +280,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)noteOn
 {        
     [synth noteOn];
+    [analyzer shedRipple];
 }
 
 - (void)noteOff
 {
+    [analyzer shedRipple];
     [synth noteOff];
 }
 

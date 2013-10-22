@@ -56,7 +56,7 @@
 
 
 
-@property (weak) IBOutlet PolarAnalyzer *synthAnalyzer;
+@property (weak) IBOutlet PolarAnalyzer *analyzer;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 
