@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Concentric Sky. All rights reserved.
 //
 
-#import "SynthAnalyzer.h"
+#import "LinearAnalyzer.h"
 
-@implementation SynthAnalyzer
+@implementation LinearAnalyzer
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -17,9 +17,9 @@
         // Initialization code here.
         buffer = [[NSMutableData alloc] initWithCapacity:2048*sizeof(short)];
         
-        waveColor = [NSColor colorWithSRGBRed:0/255.0 green:34/255.0 blue:216/255.0 alpha:1.0];
-        majorAxisColor = [NSColor colorWithSRGBRed:0.8 green:0.8 blue:0.8 alpha:1];
-        minorAxisColor = [NSColor colorWithSRGBRed:0 green:1 blue:0 alpha:0.5];
+        waveColor = [NSColor colorWithSRGBRed:93/255.0 green:100/255.0 blue:122/255.0 alpha:1.0];
+        majorAxisColor = [NSColor colorWithSRGBRed:75/255.0 green:82/255.0 blue:99/255.0 alpha:1];
+        minorAxisColor = [NSColor colorWithSRGBRed:57/255.0 green:63/255.0 blue:75/255.0 alpha:1];
     }
     
     return self;
@@ -45,8 +45,8 @@
     
     // draw minor axis ticks
 
-    int numTicks = 12;
-    double step = (bounds.size.height/2) / numTicks;
+    int numTicks = 24;
+    double step = (bounds.size.height) / (bounds.size.height/16);
     double j;
     
     for (j=0; j < bounds.size.height; j += step) {
@@ -54,7 +54,7 @@
         [minorAxisPath lineToPoint:NSMakePoint(bounds.size.width,j)];
         
     }
-    step = (bounds.size.width/2) / numTicks;
+    step = (bounds.size.width) / numTicks;
     for (j=0; j < bounds.size.width; j += step) {
         [minorAxisPath moveToPoint:NSMakePoint(j,0)];
         [minorAxisPath lineToPoint:NSMakePoint(j,bounds.size.height)];
@@ -65,8 +65,8 @@
     // draw major axis
     [majorAxisPath moveToPoint:NSMakePoint(0,bounds.size.height/2)];
     [majorAxisPath lineToPoint:NSMakePoint(bounds.size.width,bounds.size.height/2)];
-    [majorAxisPath moveToPoint:NSMakePoint(bounds.size.width/2,0)];
-    [majorAxisPath lineToPoint:NSMakePoint(bounds.size.width/2,bounds.size.height)];
+//    [majorAxisPath moveToPoint:NSMakePoint(bounds.size.width/2,0)];
+//    [majorAxisPath lineToPoint:NSMakePoint(bounds.size.width/2,bounds.size.height)];
     [majorAxisColor set];
     [majorAxisPath stroke];
 

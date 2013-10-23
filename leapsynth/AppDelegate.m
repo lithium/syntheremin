@@ -10,6 +10,7 @@
 
 @implementation AppDelegate
 @synthesize cursorOverlay;
+@synthesize linearAnalyzer;
 @synthesize patchCabler;
 @synthesize keyboardBox;
 @synthesize looper_level;
@@ -51,7 +52,7 @@
 @synthesize osc_range_2;
 
 
-@synthesize analyzer;
+@synthesize polarAnalyzer;
 @synthesize noleap_label;
 
 
@@ -94,7 +95,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     //set up synth delegates
     [synth setPatchDelegate:self];
-    [synth setAnalyzerDelegate:analyzer];
     [[synth looper] setDelegate:self];
 
 
@@ -214,7 +214,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                     andParameterName:@"osc:2:output"
                               onEdge:kEdgeLeft
                           withOffset:-300];
-    
+    //lfo
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"lfo:0:output"
+                              onEdge:kEdgeLeft
+                          withOffset:16];
+
     //vcas
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:0:input"
@@ -248,6 +253,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                               onEdge:kEdgeRight
                           withOffset:50];
     
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"noise:0:output"
+                              onEdge:kEdgeRight
+                          withOffset:16];
+    
+
     //filter
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vcf:0:modulate"
@@ -264,28 +275,18 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     
     
-    //modulators
-    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                    andParameterName:@"lfo:0:output"
-                              onEdge:kEdgeTop
-                          withOffset:50];
-    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                    andParameterName:@"noise:0:output"
-                              onEdge:kEdgeTop
-                          withOffset:250];
-        
     
 }
 
 - (void)noteOn
 {        
     [synth noteOn];
-    [analyzer shedRipple];
+    [polarAnalyzer shedRipple];
 }
 
 - (void)noteOff
 {
-    [analyzer shedRipple];
+    [polarAnalyzer shedRipple];
     [synth noteOff];
 }
 
@@ -620,10 +621,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [synth setDefaults];
 }
 - (IBAction)switchToSynth:(id)sender {
+    [synth setAnalyzerDelegate:linearAnalyzer];
     [tabView selectTabViewItemAtIndex:0];
 }
 
 - (IBAction)switchToTheremin:(id)sender {
+    [synth setAnalyzerDelegate:polarAnalyzer];
     [tabView selectTabViewItemAtIndex:1];
 }
 @end

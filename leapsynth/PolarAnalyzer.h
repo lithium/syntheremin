@@ -39,6 +39,6 @@
     CFAbsoluteTime lastRippleTime;
 }
 
-- (void) receiveSamples :(short *)samples :(int)numSamples;
+- (void)receiveSamples :(short *)samples :(int)numSamples;
 - (void)shedRipple;
 @end

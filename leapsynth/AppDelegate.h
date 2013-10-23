@@ -14,7 +14,7 @@
 #import "AudioQueueSynth.h"
 #import "Looper.h"
 #import "MidiParser.h"
-#import "SynthAnalyzer.h"
+#import "LinearAnalyzer.h"
 #import "PatchCabler.h"
 #import "PolarAnalyzer.h"
 
@@ -56,7 +56,6 @@
 
 
 
-@property (weak) IBOutlet PolarAnalyzer *analyzer;
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 
@@ -132,5 +131,7 @@
 - (IBAction)switchToTheremin:(id)sender;
 
 @property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
+@property (weak) IBOutlet LinearAnalyzer *linearAnalyzer;
+@property (weak) IBOutlet PolarAnalyzer *polarAnalyzer;
 
 @end

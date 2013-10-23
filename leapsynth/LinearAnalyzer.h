@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface SynthAnalyzer : NSView
+@interface LinearAnalyzer : NSView
 {
     int samplesInBuffer;
     NSMutableData *buffer;
