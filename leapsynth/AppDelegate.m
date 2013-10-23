@@ -78,6 +78,10 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {            
+    
+//    NSView *view = [_window contentView];
+//    view.layer.contents = [NSImage imageNamed:@"background_controls.png"];
+    
 
     //we want to quit on window close
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
