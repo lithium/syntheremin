@@ -14,6 +14,10 @@
     NSImage *trackImage;
     NSImage *knobImage;
     
+    NSImage *glowTop;
+    NSImage *glowCenter;
+    NSImage *glowBottom;
+    NSSize glowSize;
     BOOL dragging;
     double knobWidth,knobHeight;
 }
