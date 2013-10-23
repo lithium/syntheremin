@@ -53,6 +53,7 @@
 
 
 @synthesize polarAnalyzer;
+@synthesize toggleButton;
 @synthesize noleap_label;
 
 
@@ -78,9 +79,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {            
-    
-//    NSView *view = [_window contentView];
-//    view.layer.contents = [NSImage imageNamed:@"background_controls.png"];
+
+    [toggleButton setButtonName:@"play"];
     
 
     //we want to quit on window close

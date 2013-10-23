@@ -33,8 +33,8 @@
     value = MIN(MAX(newValue, minValue), maxValue);
     if (value != oldValue && [target respondsToSelector:action]) {
         [target performSelector:action withObject:self];
-        [self setNeedsDisplay:YES];
     }
+    [self setNeedsDisplay:YES];
 }
 - (double)doubleValue
 {

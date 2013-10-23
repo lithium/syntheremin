@@ -22,6 +22,7 @@
 #import "CSFader.h"
 #import "CSPopupButton.h"
 #import "CSMultiSwitch.h"
+#import "CSToggleButton.h"
 #import "LeapCursorOverlay.h"
 #import "LeapModulator.h"
 
@@ -133,5 +134,9 @@
 @property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
 @property (weak) IBOutlet LinearAnalyzer *linearAnalyzer;
 @property (weak) IBOutlet PolarAnalyzer *polarAnalyzer;
+
+
+@property (weak) IBOutlet CSToggleButton *toggleButton;
+
 
 @end
