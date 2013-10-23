@@ -67,22 +67,14 @@
     
     
     double glowHeight = bounds.size.height*[self normalizeValue];
-//    if ([self normalizeValue] < 0.5) {
-//    if (glowHeight < bounds.size.height/2) {
-//        glowHeight += glowSize.width;
-//    }
-//        glowHeight += knobWidth*normal;
-//    }
-
-    glowHeight = MAX(knobHeight*1.1, glowHeight);
+    if ([self normalizeValue] < 0.6) {
+        glowHeight += glowSize.height/2;
+    }
                      
-    NSRect glowFrame = NSMakeRect(bounds.size.width/2 - glowSize.width/2,
-                                  0,
-                                  glowSize.width, 
-                                  glowHeight);
-    
-    
-    NSDrawThreePartImage(glowFrame,
+    NSDrawThreePartImage(NSMakeRect(bounds.size.width/2 - glowSize.width/2,
+                                    0,
+                                    glowSize.width, 
+                                    glowHeight),
                          glowTop, glowCenter, glowBottom, 
                          YES, NSCompositeSourceOver, 1.0, NO);
     
