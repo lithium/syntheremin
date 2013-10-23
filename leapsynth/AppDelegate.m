@@ -62,12 +62,15 @@
 
 static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, void *srcUserdata)
 {
-    AppDelegate *self = (__bridge AppDelegate *)inputUserdata;
-    const MIDIPacket *packet = list->packet;
-    
-    for (int i = 0; i < list->numPackets; i++) {        
-        [self->midiParser feedPacketData:(UInt8*)packet->data :packet->length];
-        packet = MIDIPacketNext(packet);
+    @autoreleasepool {
+
+        AppDelegate *self = (__bridge AppDelegate *)inputUserdata;
+        const MIDIPacket *packet = list->packet;
+        
+        for (int i = 0; i < list->numPackets; i++) {        
+            [self->midiParser feedPacketData:(UInt8*)packet->data :packet->length];
+            packet = MIDIPacketNext(packet);
+        }
     }
 }
 
@@ -466,9 +469,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [leapModulator[5] setLevel:normal.z];
     
 
-// mimic range of a theremin, G3 .. G6
-#define firstNote 35      
-#define lastNote 70
+// 2 octaves starting at middle C
+#define firstNote 40      
+#define lastNote 64
     
     if (equalTempered) {
         int noteNumber = (normal.x * (lastNote-firstNote)) + firstNote;
