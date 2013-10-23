@@ -50,7 +50,8 @@
             break;
             
         case kWaveTriangle:
-            value = fabs( 2.0 * (x - floor(x + 0.5))) - 0.5;   // Thanks to Tom Hall! @t-hall
+//            value = fabs( 2.0 * (x - floor(x + 0.5))) - 0.5;   // Thanks to Tom Hall! @t-hall
+            value = fabs(x - floor(x + 0.5))*4 - 1; //yona
             break;
             
         default:
