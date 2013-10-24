@@ -51,6 +51,8 @@
                   fraction:1.0];
     
     
+#define startDegree 230
+#define stopDegree 280
     
     //build the mask
     NSBezierPath *maskPath = [[NSBezierPath alloc] init];
@@ -59,8 +61,8 @@
     [maskPath moveToPoint:center];
     [maskPath appendBezierPathWithArcWithCenter:center
                                          radius:bounds.size.width/2 
-                                     startAngle:240
-                                       endAngle:240-330*[self normalizeValue]
+                                     startAngle:startDegree
+                                       endAngle:startDegree-stopDegree*[self normalizeValue]
                                       clockwise:YES];
     [maskPath closePath];
 
