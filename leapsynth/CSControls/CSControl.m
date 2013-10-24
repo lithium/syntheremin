@@ -31,8 +31,8 @@
 {
     double oldValue = value;
     value = MIN(MAX(newValue, minValue), maxValue);
-    if (value != oldValue && [target respondsToSelector:action]) {
-        [target performSelector:action withObject:self];
+    if (value != oldValue) {
+        [self performAction];
     }
     [self setNeedsDisplay:YES];
 }
@@ -45,4 +45,11 @@
     return value / (maxValue - minValue);
 }
 
+
+- (void)performAction
+{
+    if ([target respondsToSelector:action]) {
+        [target performSelector:action withObject:self];
+    }
+}
 @end

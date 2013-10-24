@@ -12,7 +12,8 @@
 {
     NSImage *onImage, *offImage;
     
-    BOOL pressed;
+@public
+    BOOL toggled;
 }
 
 - (void)setButtonName:(NSString*)name;

@@ -28,15 +28,13 @@
     [self setNeedsDisplay:YES];
 }
 
-- (BOOL)toggled { return [self doubleValue] == 1.0; }
 
+- (BOOL)toggled { return toggled; }
 - (void)setToggled:(BOOL)flag 
 {
-    if (flag)
-        [self setDoubleValue:1.0];
-    else {
-        [self setDoubleValue:0];
-    }
+    toggled = flag;
+    [self setNeedsDisplay:YES];
+    [self performAction];
 }
     
 
@@ -44,7 +42,7 @@
 {
     CGRect bounds = [self bounds];
     
-    NSImage *image = pressed || [self toggled] ? onImage : offImage;
+    NSImage *image = [self toggled] ? onImage : offImage;
     
     [image drawInRect:bounds
                   fromRect:NSMakeRect(0,0, [image size].width, [image size].height)
@@ -54,20 +52,20 @@
 
 
 - (void)mouseDown:(NSEvent *)theEvent
-{
-    pressed = YES;
-    [self setNeedsDisplay:YES];
+{        
+    [self setToggled:![self toggled]];
+//    pressed = YES;
 }
 
-- (void)mouseUp:(NSEvent *)theEvent
-{
-    NSPoint windowLocation = [_window convertScreenToBase:[NSEvent mouseLocation]];
+//- (void)mouseUp:(NSEvent *)theEvent
+//{
+//    NSPoint windowLocation = [_window convertScreenToBase:[NSEvent mouseLocation]];
+//
+//    if (pressed && NSPointInRect(windowLocation, self.frame)) {
+//        [self setToggled:![self toggled]];
+//    }
+//    pressed = NO;
+//    [self setNeedsDisplay:YES];
 
-    if (pressed && NSPointInRect(windowLocation, self.frame)) {
-        [self setToggled:![self toggled]];
-    }
-    pressed = NO;
-    [self setNeedsDisplay:YES];
-
-}
+//}
 @end

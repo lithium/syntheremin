@@ -53,7 +53,7 @@
 
 
 @synthesize polarAnalyzer;
-@synthesize toggleButton;
+@synthesize wave_osc_0;
 @synthesize noleap_label;
 
 
@@ -79,9 +79,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {            
-
-    [toggleButton setButtonName:@"play"];
-    
 
     //we want to quit on window close
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];

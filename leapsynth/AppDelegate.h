@@ -23,6 +23,7 @@
 #import "CSPopupButton.h"
 #import "CSMultiSwitch.h"
 #import "CSToggleButton.h"
+#import "CSRadioButtonSet.h"
 #import "LeapCursorOverlay.h"
 #import "LeapModulator.h"
 
@@ -136,7 +137,7 @@
 @property (weak) IBOutlet PolarAnalyzer *polarAnalyzer;
 
 
-@property (weak) IBOutlet CSToggleButton *toggleButton;
+@property (weak) IBOutlet CSRadioButtonSet *wave_osc_0;
 
 
 @end
