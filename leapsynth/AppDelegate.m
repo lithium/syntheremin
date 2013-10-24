@@ -191,38 +191,39 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 {
     [patchCabler setDelegate:self];
     
-    //oscilattors
-    [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                    andParameterName:@"osc:0:modulate"
-                              onEdge:kEdgeLeft
-                          withOffset:-60];
-    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                    andParameterName:@"osc:0:output"
-                              onEdge:kEdgeLeft
-                          withOffset:-100];
-    
-    [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                    andParameterName:@"osc:1:modulate"
-                              onEdge:kEdgeLeft
-                          withOffset:-150];
-    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                    andParameterName:@"osc:1:output"
-                              onEdge:kEdgeLeft
-                          withOffset:-200];
-    
-    [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                    andParameterName:@"osc:2:modulate"
-                              onEdge:kEdgeLeft
-                          withOffset:-250];
-    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                    andParameterName:@"osc:2:output"
-                              onEdge:kEdgeLeft
-                          withOffset:-300];
     //lfo
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"lfo:0:output"
                               onEdge:kEdgeLeft
-                          withOffset:16];
+                          withOffset:410];
+
+    //oscilattors
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"osc:0:output"
+                              onEdge:kEdgeLeft
+                          withOffset:300];
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"osc:0:modulate"
+                              onEdge:kEdgeLeft
+                          withOffset:250];
+
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"osc:1:output"
+                              onEdge:kEdgeLeft
+                          withOffset:190];
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"osc:1:modulate"
+                              onEdge:kEdgeLeft
+                          withOffset:140];
+
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"osc:2:output"
+                              onEdge:kEdgeLeft
+                          withOffset:80];
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"osc:2:modulate"
+                              onEdge:kEdgeLeft
+                          withOffset:40];
 
     //vcas
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
@@ -233,51 +234,54 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:1:input"
                               onEdge:kEdgeBottom
-                          withOffset:110];
+                          withOffset:105];
     
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:2:input"
                               onEdge:kEdgeBottom
-                          withOffset:180];
+                          withOffset:160];
     
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"mixer::modulate"
                               onEdge:kEdgeBottom
-                          withOffset:240];
+                          withOffset:260];
     
     
+    //noise
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"noise:0:output"
+                              onEdge:kEdgeRight
+                          withOffset:-50];
+
+    
+    
+
+    //filter
+    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
+                    andParameterName:@"vcf:0:output"
+                              onEdge:kEdgeRight
+                          withOffset:300];
+
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"vcf:0:input"
+                              onEdge:kEdgeRight
+                          withOffset:270];
+    [patchCabler addEndpointWithType:kInputPatchEndpoint 
+                    andParameterName:@"vcf:0:modulate"
+                              onEdge:kEdgeRight
+                          withOffset:235];
+
     
     //envelopes
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"adsr:0:output"
                               onEdge:kEdgeRight
-                          withOffset:150];
+                          withOffset:190];
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"adsr:1:output"
                               onEdge:kEdgeRight
-                          withOffset:50];
-    
-    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                    andParameterName:@"noise:0:output"
-                              onEdge:kEdgeRight
-                          withOffset:16];
-    
+                          withOffset:80];
 
-    //filter
-    [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                    andParameterName:@"vcf:0:modulate"
-                              onEdge:kEdgeRight
-                          withOffset:-50];
-    [patchCabler addEndpointWithType:kInputPatchEndpoint 
-                    andParameterName:@"vcf:0:input"
-                              onEdge:kEdgeRight
-                          withOffset:-80];
-    [patchCabler addEndpointWithType:kOutputPatchEndpoint 
-                    andParameterName:@"vcf:0:output"
-                              onEdge:kEdgeRight
-                          withOffset:-110];
-    
-    
     
     
 }
