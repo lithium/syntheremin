@@ -436,7 +436,7 @@
 												<string key="NSFrame">{{316, 125}, {327, 459}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
+												<reference key="NSNextKeyView" ref="465466172"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">PatchCabler</string>
 											</object>
@@ -554,7 +554,7 @@
 												<string key="NSFrame">{{834, 374}, {42, 42}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
+												<reference key="NSNextKeyView" ref="546176815"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
@@ -604,7 +604,7 @@
 												<string key="NSFrame">{{239, 265}, {42, 42}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
+												<reference key="NSNextKeyView" ref="725235581"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
@@ -945,6 +945,7 @@
 												<string key="NSFrame">{{538, 49}, {57, 57}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
@@ -2047,6 +2048,46 @@
 						<reference key="destination" ref="471209749"/>
 					</object>
 					<int key="connectionID">5282</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">lfo_shape</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="725235581"/>
+					</object>
+					<int key="connectionID">5283</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">noise_type</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="471209749"/>
+					</object>
+					<int key="connectionID">5284</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">osc_shape_0</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="171054830"/>
+					</object>
+					<int key="connectionID">5285</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">osc_shape_1</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="713894367"/>
+					</object>
+					<int key="connectionID">5286</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">osc_shape_2</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="514131103"/>
+					</object>
+					<int key="connectionID">5287</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3483,7 +3524,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">5282</int>
+			<int key="maxID">5287</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3569,23 +3610,23 @@
 						<string key="keyboardBox">NSBox</string>
 						<string key="lfo_freq">CSKnob</string>
 						<string key="lfo_level">CSKnob</string>
-						<string key="lfo_shape">CSMultiSwitch</string>
+						<string key="lfo_shape">CSRadioButtonSet</string>
 						<string key="linearAnalyzer">LinearAnalyzer</string>
 						<string key="looper_level">NSLevelIndicator</string>
 						<string key="looper_play">NSButton</string>
 						<string key="looper_record">NSButton</string>
 						<string key="mixer_level">CSKnob</string>
 						<string key="noise_level">CSKnob</string>
-						<string key="noise_type">CSMultiSwitch</string>
+						<string key="noise_type">CSRadioButtonSet</string>
 						<string key="noleap_label">NSTextField</string>
 						<string key="osc_detune_1">CSKnob</string>
 						<string key="osc_detune_2">CSKnob</string>
 						<string key="osc_range_0">CSPopupButton</string>
 						<string key="osc_range_1">CSPopupButton</string>
 						<string key="osc_range_2">CSPopupButton</string>
-						<string key="osc_shape_0">CSMultiSwitch</string>
-						<string key="osc_shape_1">CSMultiSwitch</string>
-						<string key="osc_shape_2">CSMultiSwitch</string>
+						<string key="osc_shape_0">CSRadioButtonSet</string>
+						<string key="osc_shape_1">CSRadioButtonSet</string>
+						<string key="osc_shape_2">CSRadioButtonSet</string>
 						<string key="patchCabler">PatchCabler</string>
 						<string key="polarAnalyzer">PolarAnalyzer</string>
 						<string key="tabView">NSTabView</string>
@@ -3654,7 +3695,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="lfo_shape">
 							<string key="name">lfo_shape</string>
-							<string key="candidateClassName">CSMultiSwitch</string>
+							<string key="candidateClassName">CSRadioButtonSet</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="linearAnalyzer">
 							<string key="name">linearAnalyzer</string>
@@ -3682,7 +3723,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="noise_type">
 							<string key="name">noise_type</string>
-							<string key="candidateClassName">CSMultiSwitch</string>
+							<string key="candidateClassName">CSRadioButtonSet</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="noleap_label">
 							<string key="name">noleap_label</string>
@@ -3710,15 +3751,15 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="osc_shape_0">
 							<string key="name">osc_shape_0</string>
-							<string key="candidateClassName">CSMultiSwitch</string>
+							<string key="candidateClassName">CSRadioButtonSet</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="osc_shape_1">
 							<string key="name">osc_shape_1</string>
-							<string key="candidateClassName">CSMultiSwitch</string>
+							<string key="candidateClassName">CSRadioButtonSet</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="osc_shape_2">
 							<string key="name">osc_shape_2</string>
-							<string key="candidateClassName">CSMultiSwitch</string>
+							<string key="candidateClassName">CSRadioButtonSet</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="patchCabler">
 							<string key="name">patchCabler</string>
@@ -3780,14 +3821,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CSKnob.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">CSMultiSwitch</string>
-					<string key="superclassName">NSSegmentedControl</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/CSMultiSwitch.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
