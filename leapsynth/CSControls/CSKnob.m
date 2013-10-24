@@ -51,6 +51,7 @@
                   fraction:1.0];
     
     
+    
     //build the mask
     NSBezierPath *maskPath = [[NSBezierPath alloc] init];
     NSPoint center = NSMakePoint(bounds.size.width/2,bounds.size.height/2);
@@ -58,11 +59,12 @@
     [maskPath moveToPoint:center];
     [maskPath appendBezierPathWithArcWithCenter:center
                                          radius:bounds.size.width/2 
-                                     startAngle:-rads*(180.0/M_PI)
-                                       endAngle:240
-                                      clockwise:NO];
+                                     startAngle:240
+                                       endAngle:240-330*[self normalizeValue]
+                                      clockwise:YES];
     [maskPath closePath];
 
+//    [maskPath fill];
     //draw the fill clipped with mask
     [maskPath addClip];
     [fillImage drawInRect:bounds
