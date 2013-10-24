@@ -58,7 +58,7 @@
     [maskPath moveToPoint:center];
     [maskPath appendBezierPathWithArcWithCenter:center
                                          radius:bounds.size.width/2 
-                                     startAngle:-rads*(180/M_PI)
+                                     startAngle:-rads*(180.0/M_PI)
                                        endAngle:240
                                       clockwise:NO];
     [maskPath closePath];
@@ -85,7 +85,7 @@
     
     [knobImage drawInRect:NSMakeRect((bounds.size.width - knobSize.width)/2,
                                      (bounds.size.height - knobSize.height)/2, 
-                                     knobSize.height, knobSize.width)
+                                     knobSize.width, knobSize.height)
              fromRect:NSMakeRect(0, 0, [knobImage size].width, [knobImage size].height)
             operation:NSCompositeSourceOver
              fraction:1.0];
