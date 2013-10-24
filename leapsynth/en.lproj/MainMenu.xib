@@ -436,7 +436,7 @@
 												<string key="NSFrame">{{316, 125}, {327, 459}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="465466172"/>
+												<reference key="NSNextKeyView" ref="471209749"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">PatchCabler</string>
 											</object>
@@ -456,7 +456,7 @@
 												<string key="NSFrame">{{20, 665}, {80, 32}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="171054830"/>
+												<reference key="NSNextKeyView" ref="725235581"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="643808946">
@@ -481,7 +481,7 @@
 											<object class="NSCustomView" id="546176815">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{679, 178}, {42, 42}}</string>
+												<string key="NSFrame">{{679, 178}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="102717245"/>
@@ -491,7 +491,7 @@
 											<object class="NSCustomView" id="102717245">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{732, 178}, {42, 42}}</string>
+												<string key="NSFrame">{{732, 178}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="413767966"/>
@@ -501,7 +501,7 @@
 											<object class="NSCustomView" id="413767966">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{784, 178}, {42, 42}}</string>
+												<string key="NSFrame">{{784, 178}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="186022194"/>
@@ -511,17 +511,17 @@
 											<object class="NSCustomView" id="186022194">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{837, 178}, {42, 42}}</string>
+												<string key="NSFrame">{{837, 178}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="110686057"/>
+												<reference key="NSNextKeyView" ref="629429391"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
 											<object class="NSCustomView" id="806156536">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{679, 287}, {42, 42}}</string>
+												<string key="NSFrame">{{679, 287}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="306684719"/>
@@ -531,7 +531,7 @@
 											<object class="NSCustomView" id="306684719">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{732, 287}, {42, 42}}</string>
+												<string key="NSFrame">{{732, 287}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="549001579"/>
@@ -541,7 +541,7 @@
 											<object class="NSCustomView" id="549001579">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{784, 287}, {42, 42}}</string>
+												<string key="NSFrame">{{784, 287}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="320945593"/>
@@ -551,27 +551,27 @@
 											<object class="NSCustomView" id="320945593">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{837, 287}, {42, 42}}</string>
+												<string key="NSFrame">{{837, 287}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="546176815"/>
+												<reference key="NSNextKeyView" ref="1022212447"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
 											<object class="NSCustomView" id="905031138">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{813, 382}, {42, 42}}</string>
+												<string key="NSFrame">{{790, 377}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="806156536"/>
+												<reference key="NSNextKeyView" ref="713894367"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
 											<object class="NSCustomView" id="465466172">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{692, 377}, {70, 70}}</string>
+												<string key="NSFrame">{{692, 377}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="905031138"/>
@@ -581,17 +581,17 @@
 											<object class="NSCustomView" id="110686057">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{217, 490}, {42, 42}}</string>
+												<string key="NSFrame">{{217, 490}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="471209749"/>
+												<reference key="NSNextKeyView" ref="1009714613"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
 											<object class="NSCustomView" id="1009714613">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{262, 489}, {42, 42}}</string>
+												<string key="NSFrame">{{262, 489}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="30950227"/>
@@ -601,10 +601,10 @@
 											<object class="NSCustomView" id="192425474">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{240, 140}, {42, 42}}</string>
+												<string key="NSFrame">{{240, 140}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="725235581"/>
+												<reference key="NSNextKeyView" ref="546176815"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
@@ -712,7 +712,7 @@
 												<string key="NSFrame">{{240, 256}, {42, 42}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="1022212447"/>
+												<reference key="NSNextKeyView" ref="806156536"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
@@ -819,7 +819,7 @@
 												<string key="NSFrame">{{237, 385}, {64, 26}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="713894367"/>
+												<reference key="NSNextKeyView" ref="465466172"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSPopUpButtonCell" key="NSCell" id="332231061">
@@ -945,6 +945,7 @@
 												<string key="NSFrame">{{538, 49}, {57, 57}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
@@ -984,7 +985,7 @@
 												<string key="NSFrame">{{26, 489}, {188, 45}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="1009714613"/>
+												<reference key="NSNextKeyView" ref="110686057"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSRadioButtonSet</string>
 											</object>
@@ -1001,10 +1002,10 @@
 											<object class="NSCustomView" id="796409666">
 												<reference key="NSNextResponder" ref="333374463"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{813, 500}, {42, 42}}</string>
+												<string key="NSFrame">{{813, 500}, {50, 44}}</string>
 												<reference key="NSSuperview" ref="333374463"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="629429391"/>
+												<reference key="NSNextKeyView" ref="171054830"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSClassName">CSKnob</string>
 											</object>
@@ -2455,8 +2456,8 @@
 							<reference ref="320945593"/>
 							<reference ref="471209749"/>
 							<reference ref="796409666"/>
-							<reference ref="905031138"/>
 							<reference ref="465466172"/>
+							<reference ref="905031138"/>
 						</array>
 						<reference key="parent" ref="914742906"/>
 					</object>
