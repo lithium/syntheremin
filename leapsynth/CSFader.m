@@ -14,12 +14,42 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        trackImage = [NSImage imageNamed:@"csfader_bg.png"];
-        knobImage = [NSImage imageNamed:@"csfader_knob.png"];
+        trackImage = [NSImage imageNamed:@"slider_background"];
+        knobImage = [NSImage imageNamed:@"slider_handle"];
+        NSImage *glow = [NSImage imageNamed:@"slider_glow"];
+
         
-        NSRect bounds = [self bounds];
-        knobWidth = bounds.size.width*0.5;
-        knobHeight = bounds.size.height*.1;
+        glowSize = [glow size];
+        NSSize capSize = NSMakeSize(glowSize.width, glowSize.height/2);
+        
+        glowTop = [[NSImage alloc] initWithSize:capSize];
+        glowBottom = [[NSImage alloc] initWithSize:capSize];
+        glowCenter = [[NSImage alloc] initWithSize:NSMakeSize(glowSize.width, 2)];
+
+        
+        [glowBottom lockFocus];
+        [glow compositeToPoint:NSMakePoint(0,0) 
+                      fromRect:NSMakeRect(0,0,
+                                          glowSize.width,glowSize.height/2)
+                     operation:NSCompositeSourceOver];
+        [glowBottom unlockFocus];
+
+        [glowTop lockFocus];
+        [glow compositeToPoint:NSMakePoint(0,0) 
+                      fromRect:NSMakeRect(0,glowSize.height/2,
+                                          glowSize.width,glowSize.height/2)
+                     operation:NSCompositeSourceOver];
+        [glowTop unlockFocus];
+        
+        [glowCenter lockFocus];
+        [glow compositeToPoint:NSMakePoint(0,0)
+                      fromRect:NSMakeRect(0,glowSize.height/2,
+                                          glowSize.width,2)
+                     operation:NSCompositeSourceOver];
+        [glowCenter unlockFocus];
+
+        knobWidth = [knobImage size].width;
+        knobHeight = [knobImage size].height;
         
     }
     
@@ -34,6 +64,19 @@
                   fromRect:NSMakeRect(0,0, [trackImage size].width, [trackImage size].height)
                  operation:NSCompositeSourceOver
                   fraction:1.0];
+    
+    
+    double glowHeight = bounds.size.height*[self normalizeValue];
+    if ([self normalizeValue] < 0.6) {
+        glowHeight += glowSize.height/2;
+    }
+                     
+    NSDrawThreePartImage(NSMakeRect(bounds.size.width/2 - glowSize.width/2,
+                                    0,
+                                    glowSize.width, 
+                                    glowHeight),
+                         glowTop, glowCenter, glowBottom, 
+                         YES, NSCompositeSourceOver, 1.0, NO);
     
     
     [knobImage drawInRect:NSMakeRect(bounds.size.width/2 - knobWidth/2, 

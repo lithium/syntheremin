@@ -10,9 +10,8 @@
 #import "SampleProvider.h"
 
 enum  {
-    kNoiseNone=0,
-    kNoiseWhite=1,
-    kNoisePink=2,
+    kNoiseWhite=0,
+    kNoisePink=1,
 };
 
 #define kNumWhiteValues 5

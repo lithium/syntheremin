@@ -31,5 +31,5 @@
 - (void)setDoubleValue:(double)value;
 - (double)doubleValue;
 - (double)normalizeValue;
-
+- (void)performAction;
 @end

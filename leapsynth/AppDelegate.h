@@ -21,7 +21,8 @@
 #import "CSKnob.h"
 #import "CSFader.h"
 #import "CSPopupButton.h"
-#import "CSMultiSwitch.h"
+#import "CSToggleButton.h"
+#import "CSRadioButtonSet.h"
 #import "LeapCursorOverlay.h"
 #import "LeapModulator.h"
 
@@ -95,10 +96,10 @@
 
 @property (weak) IBOutlet CSKnob *lfo_freq;
 @property (weak) IBOutlet CSKnob *lfo_level;
-@property (weak) IBOutlet CSMultiSwitch *lfo_shape;
+@property (weak) IBOutlet CSRadioButtonSet *lfo_shape;
 
 @property (weak) IBOutlet CSKnob *noise_level;
-@property (weak) IBOutlet CSMultiSwitch *noise_type;
+@property (weak) IBOutlet CSRadioButtonSet *noise_type;
 
 @property (weak) IBOutlet CSKnob *filter_cutoff;
 @property (weak) IBOutlet CSKnob *filter_resonance;
@@ -117,12 +118,12 @@
 @property (weak) IBOutlet CSFader *vca_level_1;
 @property (weak) IBOutlet CSFader *vca_level_2;
 
-@property (weak) IBOutlet CSMultiSwitch *osc_shape_0;
+@property (weak) IBOutlet CSRadioButtonSet *osc_shape_0;
 @property (weak) IBOutlet CSPopupButton *osc_range_0;
-@property (weak) IBOutlet CSMultiSwitch *osc_shape_1;
+@property (weak) IBOutlet CSRadioButtonSet *osc_shape_1;
 @property (weak) IBOutlet CSPopupButton *osc_range_1;
 @property (weak) IBOutlet CSKnob *osc_detune_1;
-@property (weak) IBOutlet CSMultiSwitch *osc_shape_2;
+@property (weak) IBOutlet CSRadioButtonSet *osc_shape_2;
 @property (weak) IBOutlet CSPopupButton *osc_range_2;
 @property (weak) IBOutlet CSKnob *osc_detune_2;
 
@@ -133,5 +134,9 @@
 @property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
 @property (weak) IBOutlet LinearAnalyzer *linearAnalyzer;
 @property (weak) IBOutlet PolarAnalyzer *polarAnalyzer;
+
+
+@property (weak) IBOutlet CSRadioButtonSet *wave_osc_0;
+
 
 @end

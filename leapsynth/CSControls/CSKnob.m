@@ -14,17 +14,16 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        image = [NSImage imageNamed:@"csknob_knob.png"];
-        
-        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-        [style setAlignment:NSCenterTextAlignment];
-        labelAttributes = [NSDictionary dictionaryWithObject:style forKey:NSParagraphStyleAttributeName];
-        
+        knobImage = [NSImage imageNamed:@"knob_dial"];
+        trackImage = [NSImage imageNamed:@"knob_outerRing_empty"];
+        fillImage = [NSImage imageNamed:@"knob_outerRing_full"];
+
+        knobSize = [knobImage size];
+        trackSize = [trackImage size];
+
         minValue = 0;
         maxValue = 1.0;
         
-        NSRect bounds = [self bounds];
-        labelRect = NSMakeRect(0, bounds.size.height/2- kLabelHeight/2, bounds.size.width, kLabelHeight);
     }
     
     return self;
@@ -33,40 +32,65 @@
 - (void)setDoubleValue:(double)newValue
 {
     [super setDoubleValue:newValue];
-    
-    label = [NSString stringWithFormat:@"%.2f", value];
     [self setNeedsDisplay:YES];
 }
 
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    CGRect bounds = [self bounds];
-    NSAffineTransform *rotate = [[NSAffineTransform alloc] init];
     NSGraphicsContext *context = [NSGraphicsContext currentContext];
+    CGRect bounds = [self bounds];
+    double rads = [self normalizeValue] * kRadianRange - kKnobRangeMin;
+
+    
+    //draw empty track
+    [context saveGraphicsState];
+    [trackImage drawInRect:bounds
+                  fromRect:NSMakeRect(0,0, [trackImage size].width, [trackImage size].height)
+                 operation:NSCompositeSourceOver
+                  fraction:1.0];
+    
+    
+    //build the mask
+    NSBezierPath *maskPath = [[NSBezierPath alloc] init];
+    NSPoint center = NSMakePoint(bounds.size.width/2,bounds.size.height/2);
+    [maskPath setLineWidth:6.0];
+    [maskPath moveToPoint:center];
+    [maskPath appendBezierPathWithArcWithCenter:center
+                                         radius:bounds.size.width/2 
+                                     startAngle:-rads*(180/M_PI)
+                                       endAngle:240
+                                      clockwise:NO];
+    [maskPath closePath];
+
+    //draw the fill clipped with mask
+    [maskPath addClip];
+    [fillImage drawInRect:bounds
+                  fromRect:NSMakeRect(0,0, [trackImage size].width, [trackImage size].height)
+                 operation:NSCompositeSourceOver
+                  fraction:1.0];
+    
+    [context restoreGraphicsState];
+
+    
     
     //draw rotated knob
     [context saveGraphicsState];
-    [rotate translateXBy:bounds.size.width/2 yBy:bounds.size.height/2];
-    double rads = [self normalizeValue] * kRadianRange - kKnobRangeMin;
+    
+    NSAffineTransform *rotate = [[NSAffineTransform alloc] init];
+    [rotate translateXBy:knobSize.width/2 yBy:knobSize.height/2];
     [rotate rotateByRadians:-rads];
-    [rotate translateXBy:-(bounds.size.width/2) yBy:-(bounds.size.height/2)];
+    [rotate translateXBy:-(knobSize.width/2) yBy:-(knobSize.height/2)];
     [rotate concat];
     
-    [image drawInRect:bounds
-             fromRect:NSMakeRect(0, 0, [image size].width, [image size].height)
+    [knobImage drawInRect:NSMakeRect((bounds.size.width - knobSize.width)/2,
+                                     (bounds.size.height - knobSize.height)/2, 
+                                     knobSize.height, knobSize.width)
+             fromRect:NSMakeRect(0, 0, [knobImage size].width, [knobImage size].height)
             operation:NSCompositeSourceOver
              fraction:1.0];
     [context restoreGraphicsState];
     
-    //draw label if dragging
-    if (dragging) {
-        [context saveGraphicsState];
-        
-        [[NSColor redColor] set];
-        [label drawInRect:labelRect withAttributes:labelAttributes];
-        [context restoreGraphicsState];
-    }
 }
 
 - (void)mouseDown:(NSEvent *)theEvent

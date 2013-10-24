@@ -14,8 +14,11 @@
     int samplesInBuffer;
     NSMutableData *buffer;
     NSColor *waveColor,*majorAxisColor,*minorAxisColor;
+
     
 }
+
+@property BOOL drawAxis;
 
 - (void) receiveSamples :(short *)samples :(int)numSamples;
 

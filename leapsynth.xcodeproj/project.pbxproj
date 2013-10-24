@@ -9,6 +9,42 @@
 /* Begin PBXBuildFile section */
 		12277C461814522400388277 /* PolarAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12277C451814522400388277 /* PolarAnalyzer.m */; };
 		12277C5518148D0F00388277 /* LeapCursorOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 12277C5418148D0F00388277 /* LeapCursorOverlay.m */; };
+		12393FE018187F7D000F4BF3 /* background_controls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FBC18187F7D000F4BF3 /* background_controls@2x.png */; };
+		12393FF518187F7D000F4BF3 /* knob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD218187F7D000F4BF3 /* knob_dial@2x.png */; };
+		12393FF618187F7D000F4BF3 /* knob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */; };
+		12393FF718187F7D000F4BF3 /* knob_outerRing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD418187F7D000F4BF3 /* knob_outerRing_full@2x.png */; };
+		12393FF818187F7D000F4BF3 /* midi_connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD518187F7D000F4BF3 /* midi_connected@2x.png */; };
+		12393FF918187F7D000F4BF3 /* midi_disconnected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD618187F7D000F4BF3 /* midi_disconnected@2x.png */; };
+		12393FFA18187F7D000F4BF3 /* slider_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD718187F7D000F4BF3 /* slider_background@2x.png */; };
+		12393FFB18187F7D000F4BF3 /* slider_glow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD818187F7D000F4BF3 /* slider_glow@2x.png */; };
+		12393FFC18187F7D000F4BF3 /* slider_handle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD918187F7D000F4BF3 /* slider_handle@2x.png */; };
+		12393FFD18187F7D000F4BF3 /* volumeKnob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDA18187F7D000F4BF3 /* volumeKnob_dial@2x.png */; };
+		12393FFE18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDB18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png */; };
+		12393FFF18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDC18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png */; };
+		1239400018187F7D000F4BF3 /* wire_connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDD18187F7D000F4BF3 /* wire_connected@2x.png */; };
+		1239400118187F7D000F4BF3 /* wire_in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDE18187F7D000F4BF3 /* wire_in@2x.png */; };
+		1239400218187F7D000F4BF3 /* wire_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDF18187F7D000F4BF3 /* wire_out@2x.png */; };
+		123940051818849C000F4BF3 /* CSToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 123940041818849C000F4BF3 /* CSToggleButton.m */; };
+		12394008181887B3000F4BF3 /* button_play_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12394006181887B3000F4BF3 /* button_play_selected@2x.png */; };
+		12394009181887B3000F4BF3 /* button_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12394007181887B3000F4BF3 /* button_play@2x.png */; };
+		1239401C18188C0B000F4BF3 /* button_clear_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239400A18188C0B000F4BF3 /* button_clear_selected@2x.png */; };
+		1239401D18188C0B000F4BF3 /* button_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239400B18188C0B000F4BF3 /* button_clear@2x.png */; };
+		1239401E18188C0B000F4BF3 /* button_noise_pink_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239400C18188C0B000F4BF3 /* button_noise_pink_selected@2x.png */; };
+		1239401F18188C0B000F4BF3 /* button_noise_pink@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239400D18188C0B000F4BF3 /* button_noise_pink@2x.png */; };
+		1239402018188C0B000F4BF3 /* button_noise_white_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239400E18188C0B000F4BF3 /* button_noise_white_selected@2x.png */; };
+		1239402118188C0B000F4BF3 /* button_noise_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239400F18188C0B000F4BF3 /* button_noise_white@2x.png */; };
+		1239402218188C0B000F4BF3 /* button_record_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401018188C0B000F4BF3 /* button_record_selected@2x.png */; };
+		1239402318188C0B000F4BF3 /* button_record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401118188C0B000F4BF3 /* button_record@2x.png */; };
+		1239402418188C0B000F4BF3 /* button_sawtooth_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401218188C0B000F4BF3 /* button_sawtooth_selected@2x.png */; };
+		1239402518188C0B000F4BF3 /* button_sawtooth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401318188C0B000F4BF3 /* button_sawtooth@2x.png */; };
+		1239402618188C0B000F4BF3 /* button_sine_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401418188C0B000F4BF3 /* button_sine_selected@2x.png */; };
+		1239402718188C0B000F4BF3 /* button_sine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401518188C0B000F4BF3 /* button_sine@2x.png */; };
+		1239402818188C0B000F4BF3 /* button_square_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401618188C0B000F4BF3 /* button_square_selected@2x.png */; };
+		1239402918188C0B000F4BF3 /* button_square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401718188C0B000F4BF3 /* button_square@2x.png */; };
+		1239402A18188C0B000F4BF3 /* button_triangle_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401818188C0B000F4BF3 /* button_triangle_selected@2x.png */; };
+		1239402B18188C0B000F4BF3 /* button_triangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401918188C0B000F4BF3 /* button_triangle@2x.png */; };
+		1239402C18188C0B000F4BF3 /* button_undo_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401A18188C0B000F4BF3 /* button_undo_selected@2x.png */; };
+		1239402D18188C0B000F4BF3 /* button_undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401B18188C0B000F4BF3 /* button_undo@2x.png */; };
 		123B53BE1815ADDC00FB9065 /* LeapModulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 123B53BD1815ADDC00FB9065 /* LeapModulator.m */; };
 		125286E3180EE76C0025D405 /* CSKnob.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286E2180EE76C0025D405 /* CSKnob.m */; };
 		125286F2180F3F780025D405 /* CSControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F1180F3F780025D405 /* CSControl.m */; };
@@ -20,7 +56,6 @@
 		12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528705180F9F7D0025D405 /* PatchCableEndpoint.m */; };
 		1252870A1810420F0025D405 /* patch_endpoint_output.png in Resources */ = {isa = PBXBuildFile; fileRef = 125287091810420F0025D405 /* patch_endpoint_output.png */; };
 		1252870C181042710025D405 /* patch_endpoint_input.png in Resources */ = {isa = PBXBuildFile; fileRef = 1252870B181042710025D405 /* patch_endpoint_input.png */; };
-		125287181810D2D60025D405 /* CSMultiSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 125287171810D2D60025D405 /* CSMultiSwitch.m */; };
 		1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1252871A1810D3A00025D405 /* CSPopupButton.m */; };
 		126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
@@ -48,6 +83,7 @@
 		12C40331180B2CDA00FB384A /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032D180B2CDA00FB384A /* square.png */; };
 		12C40332180B2CDA00FB384A /* tri.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C4032E180B2CDA00FB384A /* tri.png */; };
 		12C4033C180B8A7400FB384A /* Mixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C4033B180B8A7400FB384A /* Mixer.m */; };
+		12C4E07F1818AD1100B59ACE /* CSRadioButtonSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C4E07E1818AD1100B59ACE /* CSRadioButtonSet.m */; };
 		12CDBF7117A9A5A800C72104 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7017A9A5A800C72104 /* Oscillator.m */; };
 		12CDBF7617A9AC3F00C72104 /* Vco.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CDBF7517A9AC3F00C72104 /* Vco.m */; };
 		12EFCD2B17AAE53C00E84D98 /* Adsr.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2A17AAE53C00E84D98 /* Adsr.m */; };
@@ -74,6 +110,43 @@
 		12277C451814522400388277 /* PolarAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolarAnalyzer.m; sourceTree = "<group>"; };
 		12277C5318148D0F00388277 /* LeapCursorOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeapCursorOverlay.h; sourceTree = "<group>"; };
 		12277C5418148D0F00388277 /* LeapCursorOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapCursorOverlay.m; sourceTree = "<group>"; };
+		12393FBC18187F7D000F4BF3 /* background_controls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_controls@2x.png"; sourceTree = "<group>"; };
+		12393FD218187F7D000F4BF3 /* knob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_dial@2x.png"; sourceTree = "<group>"; };
+		12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
+		12393FD418187F7D000F4BF3 /* knob_outerRing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_outerRing_full@2x.png"; sourceTree = "<group>"; };
+		12393FD518187F7D000F4BF3 /* midi_connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "midi_connected@2x.png"; sourceTree = "<group>"; };
+		12393FD618187F7D000F4BF3 /* midi_disconnected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "midi_disconnected@2x.png"; sourceTree = "<group>"; };
+		12393FD718187F7D000F4BF3 /* slider_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider_background@2x.png"; sourceTree = "<group>"; };
+		12393FD818187F7D000F4BF3 /* slider_glow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider_glow@2x.png"; sourceTree = "<group>"; };
+		12393FD918187F7D000F4BF3 /* slider_handle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider_handle@2x.png"; sourceTree = "<group>"; };
+		12393FDA18187F7D000F4BF3 /* volumeKnob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volumeKnob_dial@2x.png"; sourceTree = "<group>"; };
+		12393FDB18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volumeKnob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
+		12393FDC18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volumeKnob_outerRing_full@2x.png"; sourceTree = "<group>"; };
+		12393FDD18187F7D000F4BF3 /* wire_connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wire_connected@2x.png"; sourceTree = "<group>"; };
+		12393FDE18187F7D000F4BF3 /* wire_in@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wire_in@2x.png"; sourceTree = "<group>"; };
+		12393FDF18187F7D000F4BF3 /* wire_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wire_out@2x.png"; sourceTree = "<group>"; };
+		123940031818849C000F4BF3 /* CSToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSToggleButton.h; path = ../CSToggleButton.h; sourceTree = "<group>"; };
+		123940041818849C000F4BF3 /* CSToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSToggleButton.m; path = ../CSToggleButton.m; sourceTree = "<group>"; };
+		12394006181887B3000F4BF3 /* button_play_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_play_selected@2x.png"; sourceTree = "<group>"; };
+		12394007181887B3000F4BF3 /* button_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_play@2x.png"; sourceTree = "<group>"; };
+		1239400A18188C0B000F4BF3 /* button_clear_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_clear_selected@2x.png"; sourceTree = "<group>"; };
+		1239400B18188C0B000F4BF3 /* button_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_clear@2x.png"; sourceTree = "<group>"; };
+		1239400C18188C0B000F4BF3 /* button_noise_pink_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_noise_pink_selected@2x.png"; sourceTree = "<group>"; };
+		1239400D18188C0B000F4BF3 /* button_noise_pink@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_noise_pink@2x.png"; sourceTree = "<group>"; };
+		1239400E18188C0B000F4BF3 /* button_noise_white_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_noise_white_selected@2x.png"; sourceTree = "<group>"; };
+		1239400F18188C0B000F4BF3 /* button_noise_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_noise_white@2x.png"; sourceTree = "<group>"; };
+		1239401018188C0B000F4BF3 /* button_record_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_record_selected@2x.png"; sourceTree = "<group>"; };
+		1239401118188C0B000F4BF3 /* button_record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_record@2x.png"; sourceTree = "<group>"; };
+		1239401218188C0B000F4BF3 /* button_sawtooth_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_sawtooth_selected@2x.png"; sourceTree = "<group>"; };
+		1239401318188C0B000F4BF3 /* button_sawtooth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_sawtooth@2x.png"; sourceTree = "<group>"; };
+		1239401418188C0B000F4BF3 /* button_sine_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_sine_selected@2x.png"; sourceTree = "<group>"; };
+		1239401518188C0B000F4BF3 /* button_sine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_sine@2x.png"; sourceTree = "<group>"; };
+		1239401618188C0B000F4BF3 /* button_square_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_square_selected@2x.png"; sourceTree = "<group>"; };
+		1239401718188C0B000F4BF3 /* button_square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_square@2x.png"; sourceTree = "<group>"; };
+		1239401818188C0B000F4BF3 /* button_triangle_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_triangle_selected@2x.png"; sourceTree = "<group>"; };
+		1239401918188C0B000F4BF3 /* button_triangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_triangle@2x.png"; sourceTree = "<group>"; };
+		1239401A18188C0B000F4BF3 /* button_undo_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_undo_selected@2x.png"; sourceTree = "<group>"; };
+		1239401B18188C0B000F4BF3 /* button_undo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_undo@2x.png"; sourceTree = "<group>"; };
 		123B53BC1815ADDC00FB9065 /* LeapModulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeapModulator.h; path = ../LeapModulator.h; sourceTree = "<group>"; };
 		123B53BD1815ADDC00FB9065 /* LeapModulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeapModulator.m; path = ../LeapModulator.m; sourceTree = "<group>"; };
 		125286E1180EE76C0025D405 /* CSKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSKnob.h; path = CSControls/CSKnob.h; sourceTree = "<group>"; };
@@ -91,8 +164,6 @@
 		12528705180F9F7D0025D405 /* PatchCableEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatchCableEndpoint.m; path = ../PatchCableEndpoint.m; sourceTree = "<group>"; };
 		125287091810420F0025D405 /* patch_endpoint_output.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patch_endpoint_output.png; sourceTree = "<group>"; };
 		1252870B181042710025D405 /* patch_endpoint_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patch_endpoint_input.png; sourceTree = "<group>"; };
-		125287161810D2D60025D405 /* CSMultiSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMultiSwitch.h; path = CSControls/CSMultiSwitch.h; sourceTree = "<group>"; };
-		125287171810D2D60025D405 /* CSMultiSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMultiSwitch.m; path = CSControls/CSMultiSwitch.m; sourceTree = "<group>"; };
 		125287191810D3A00025D405 /* CSPopupButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSPopupButton.h; path = CSControls/CSPopupButton.h; sourceTree = "<group>"; };
 		1252871A1810D3A00025D405 /* CSPopupButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSPopupButton.m; path = CSControls/CSPopupButton.m; sourceTree = "<group>"; };
 		126C4D5F17B29F8700598323 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = LeapSDK/lib/libLeap.dylib; sourceTree = "<group>"; };
@@ -139,6 +210,8 @@
 		12C4032E180B2CDA00FB384A /* tri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tri.png; sourceTree = "<group>"; };
 		12C4033A180B8A7400FB384A /* Mixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixer.h; sourceTree = "<group>"; };
 		12C4033B180B8A7400FB384A /* Mixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mixer.m; sourceTree = "<group>"; };
+		12C4E07D1818AD1100B59ACE /* CSRadioButtonSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSRadioButtonSet.h; path = CSControls/CSRadioButtonSet.h; sourceTree = "<group>"; };
+		12C4E07E1818AD1100B59ACE /* CSRadioButtonSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSRadioButtonSet.m; path = CSControls/CSRadioButtonSet.m; sourceTree = "<group>"; };
 		12CDBF6F17A9A5A800C72104 /* Oscillator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Oscillator.h; sourceTree = "<group>"; };
 		12CDBF7017A9A5A800C72104 /* Oscillator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Oscillator.m; sourceTree = "<group>"; };
 		12CDBF7317A9A9C100C72104 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -169,9 +242,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12393FBB18187F7D000F4BF3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				12393FBC18187F7D000F4BF3 /* background_controls@2x.png */,
+				12393FBD18187F7D000F4BF3 /* buttons */,
+				12393FD218187F7D000F4BF3 /* knob_dial@2x.png */,
+				12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */,
+				12393FD418187F7D000F4BF3 /* knob_outerRing_full@2x.png */,
+				12393FD518187F7D000F4BF3 /* midi_connected@2x.png */,
+				12393FD618187F7D000F4BF3 /* midi_disconnected@2x.png */,
+				12393FD718187F7D000F4BF3 /* slider_background@2x.png */,
+				12393FD818187F7D000F4BF3 /* slider_glow@2x.png */,
+				12393FD918187F7D000F4BF3 /* slider_handle@2x.png */,
+				12393FDA18187F7D000F4BF3 /* volumeKnob_dial@2x.png */,
+				12393FDB18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png */,
+				12393FDC18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png */,
+				12393FDD18187F7D000F4BF3 /* wire_connected@2x.png */,
+				12393FDE18187F7D000F4BF3 /* wire_in@2x.png */,
+				12393FDF18187F7D000F4BF3 /* wire_out@2x.png */,
+			);
+			path = images;
+			sourceTree = SOURCE_ROOT;
+		};
+		12393FBD18187F7D000F4BF3 /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				1239400A18188C0B000F4BF3 /* button_clear_selected@2x.png */,
+				1239400B18188C0B000F4BF3 /* button_clear@2x.png */,
+				1239400C18188C0B000F4BF3 /* button_noise_pink_selected@2x.png */,
+				1239400D18188C0B000F4BF3 /* button_noise_pink@2x.png */,
+				1239400E18188C0B000F4BF3 /* button_noise_white_selected@2x.png */,
+				1239400F18188C0B000F4BF3 /* button_noise_white@2x.png */,
+				1239401018188C0B000F4BF3 /* button_record_selected@2x.png */,
+				1239401118188C0B000F4BF3 /* button_record@2x.png */,
+				1239401218188C0B000F4BF3 /* button_sawtooth_selected@2x.png */,
+				1239401318188C0B000F4BF3 /* button_sawtooth@2x.png */,
+				1239401418188C0B000F4BF3 /* button_sine_selected@2x.png */,
+				1239401518188C0B000F4BF3 /* button_sine@2x.png */,
+				1239401618188C0B000F4BF3 /* button_square_selected@2x.png */,
+				1239401718188C0B000F4BF3 /* button_square@2x.png */,
+				1239401818188C0B000F4BF3 /* button_triangle_selected@2x.png */,
+				1239401918188C0B000F4BF3 /* button_triangle@2x.png */,
+				1239401A18188C0B000F4BF3 /* button_undo_selected@2x.png */,
+				1239401B18188C0B000F4BF3 /* button_undo@2x.png */,
+				12394006181887B3000F4BF3 /* button_play_selected@2x.png */,
+				12394007181887B3000F4BF3 /* button_play@2x.png */,
+			);
+			path = buttons;
+			sourceTree = "<group>";
+		};
 		125286E5180EE7700025D405 /* CSControls */ = {
 			isa = PBXGroup;
 			children = (
+				12393FBB18187F7D000F4BF3 /* images */,
 				125286F6180F42D50025D405 /* images */,
 				12528701180F9F2A0025D405 /* PatchCabler.h */,
 				12528702180F9F2A0025D405 /* PatchCabler.m */,
@@ -183,8 +307,10 @@
 				125286E2180EE76C0025D405 /* CSKnob.m */,
 				125286F3180F3FA40025D405 /* CSFader.h */,
 				125286F4180F3FA40025D405 /* CSFader.m */,
-				125287161810D2D60025D405 /* CSMultiSwitch.h */,
-				125287171810D2D60025D405 /* CSMultiSwitch.m */,
+				123940031818849C000F4BF3 /* CSToggleButton.h */,
+				123940041818849C000F4BF3 /* CSToggleButton.m */,
+				12C4E07D1818AD1100B59ACE /* CSRadioButtonSet.h */,
+				12C4E07E1818AD1100B59ACE /* CSRadioButtonSet.m */,
 				125287191810D3A00025D405 /* CSPopupButton.h */,
 				1252871A1810D3A00025D405 /* CSPopupButton.m */,
 			);
@@ -397,6 +523,41 @@
 				125286FC180F42D50025D405 /* csknob_knob.png in Resources */,
 				1252870A1810420F0025D405 /* patch_endpoint_output.png in Resources */,
 				1252870C181042710025D405 /* patch_endpoint_input.png in Resources */,
+				12393FE018187F7D000F4BF3 /* background_controls@2x.png in Resources */,
+				12393FF518187F7D000F4BF3 /* knob_dial@2x.png in Resources */,
+				12393FF618187F7D000F4BF3 /* knob_outerRing_empty@2x.png in Resources */,
+				12393FF718187F7D000F4BF3 /* knob_outerRing_full@2x.png in Resources */,
+				12393FF818187F7D000F4BF3 /* midi_connected@2x.png in Resources */,
+				12393FF918187F7D000F4BF3 /* midi_disconnected@2x.png in Resources */,
+				12393FFA18187F7D000F4BF3 /* slider_background@2x.png in Resources */,
+				12393FFB18187F7D000F4BF3 /* slider_glow@2x.png in Resources */,
+				12393FFC18187F7D000F4BF3 /* slider_handle@2x.png in Resources */,
+				12393FFD18187F7D000F4BF3 /* volumeKnob_dial@2x.png in Resources */,
+				12393FFE18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png in Resources */,
+				12393FFF18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png in Resources */,
+				1239400018187F7D000F4BF3 /* wire_connected@2x.png in Resources */,
+				1239400118187F7D000F4BF3 /* wire_in@2x.png in Resources */,
+				1239400218187F7D000F4BF3 /* wire_out@2x.png in Resources */,
+				12394008181887B3000F4BF3 /* button_play_selected@2x.png in Resources */,
+				12394009181887B3000F4BF3 /* button_play@2x.png in Resources */,
+				1239401C18188C0B000F4BF3 /* button_clear_selected@2x.png in Resources */,
+				1239401D18188C0B000F4BF3 /* button_clear@2x.png in Resources */,
+				1239401E18188C0B000F4BF3 /* button_noise_pink_selected@2x.png in Resources */,
+				1239401F18188C0B000F4BF3 /* button_noise_pink@2x.png in Resources */,
+				1239402018188C0B000F4BF3 /* button_noise_white_selected@2x.png in Resources */,
+				1239402118188C0B000F4BF3 /* button_noise_white@2x.png in Resources */,
+				1239402218188C0B000F4BF3 /* button_record_selected@2x.png in Resources */,
+				1239402318188C0B000F4BF3 /* button_record@2x.png in Resources */,
+				1239402418188C0B000F4BF3 /* button_sawtooth_selected@2x.png in Resources */,
+				1239402518188C0B000F4BF3 /* button_sawtooth@2x.png in Resources */,
+				1239402618188C0B000F4BF3 /* button_sine_selected@2x.png in Resources */,
+				1239402718188C0B000F4BF3 /* button_sine@2x.png in Resources */,
+				1239402818188C0B000F4BF3 /* button_square_selected@2x.png in Resources */,
+				1239402918188C0B000F4BF3 /* button_square@2x.png in Resources */,
+				1239402A18188C0B000F4BF3 /* button_triangle_selected@2x.png in Resources */,
+				1239402B18188C0B000F4BF3 /* button_triangle@2x.png in Resources */,
+				1239402C18188C0B000F4BF3 /* button_undo_selected@2x.png in Resources */,
+				1239402D18188C0B000F4BF3 /* button_undo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,11 +591,12 @@
 				125286F5180F3FA40025D405 /* CSFader.m in Sources */,
 				12528703180F9F2B0025D405 /* PatchCabler.m in Sources */,
 				12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */,
-				125287181810D2D60025D405 /* CSMultiSwitch.m in Sources */,
 				1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */,
 				12277C461814522400388277 /* PolarAnalyzer.m in Sources */,
 				12277C5518148D0F00388277 /* LeapCursorOverlay.m in Sources */,
 				123B53BE1815ADDC00FB9065 /* LeapModulator.m in Sources */,
+				123940051818849C000F4BF3 /* CSToggleButton.m in Sources */,
+				12C4E07F1818AD1100B59ACE /* CSRadioButtonSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

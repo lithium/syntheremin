@@ -22,11 +22,11 @@
 
 @interface CSKnob : CSControl
 {
-    NSImage *image;
-    
-    NSString *label;
-    NSDictionary *labelAttributes;
-    NSRect labelRect;
+    NSImage *knobImage;
+    NSImage *trackImage;
+    NSImage *fillImage;
+
+    NSSize knobSize, trackSize;
     
     NSPoint lastDragPoint;
     BOOL dragging;
