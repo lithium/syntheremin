@@ -35,8 +35,10 @@
     double x = 0;
     int i=0;
     NSRect bounds = [self bounds];
-    for (NSString *name in [firstName componentsSeparatedByString:@","]) {
-        NSRect frame = NSMakeRect(x, 0, 44, bounds.size.height);
+    NSArray *names = [firstName componentsSeparatedByString:@","];
+    double step = bounds.size.width / [names count];
+    for (NSString *name in names) {
+        NSRect frame = NSMakeRect(x, 0, step, bounds.size.height);
         CSToggleButton *button = [[CSToggleButton alloc] initWithFrame:frame];
         [button setButtonName:name];
         [button setTarget:self];
@@ -44,7 +46,7 @@
         [button setTag:i];
         [buttons addObject:button];
         [self addSubview:button];
-        x += 44;
+        x += step;
         i++;
     }
     

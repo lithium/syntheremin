@@ -16,7 +16,6 @@
 {
     if (self) {
         self = [super init];
-        [self setNoiseType:kNoiseNone];
         
         //prep pink noise state
         pinkKey = 0;
