@@ -9,7 +9,7 @@
 #import "Mixer.h"
 
 #define kCutoffMin 20.0
-#define kCutoffMax 8000.0
+#define kCutoffMax 10000.0
 
 #define kDepthMin -2.0
 #define kDepthMax 2.0

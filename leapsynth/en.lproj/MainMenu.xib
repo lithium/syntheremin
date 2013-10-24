@@ -2453,11 +2453,11 @@
 							<reference ref="320945593"/>
 							<reference ref="471209749"/>
 							<reference ref="905031138"/>
-							<reference ref="846828314"/>
 							<reference ref="1064872475"/>
 							<reference ref="796409666"/>
 							<reference ref="35697086"/>
 							<reference ref="465466172"/>
+							<reference ref="846828314"/>
 						</array>
 						<reference key="parent" ref="914742906"/>
 					</object>
@@ -3202,7 +3202,7 @@
 							<object class="IBUserDefinedRuntimeAttribute">
 								<string key="typeIdentifier">com.apple.InterfaceBuilder.userDefinedRuntimeAttributeType.number</string>
 								<string key="keyPath">maxValue</string>
-								<real value="9000" key="value"/>
+								<real value="10000" key="value"/>
 							</object>
 						</array>
 					</object>
