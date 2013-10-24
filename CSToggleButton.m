@@ -24,7 +24,7 @@
 {
     offImage = [NSImage imageNamed:[NSString stringWithFormat:@"button_%@", name]];
     onImage = [NSImage imageNamed:[NSString stringWithFormat:@"button_%@_selected", name]];
-
+    
     [self setNeedsDisplay:YES];
 }
 
@@ -44,7 +44,7 @@
 {
     CGRect bounds = [self bounds];
     
-    NSImage *image = [self toggled] ? onImage : offImage;
+    NSImage *image = pressed || [self toggled] ? onImage : offImage;
     
     [image drawInRect:bounds
                   fromRect:NSMakeRect(0,0, [image size].width, [image size].height)
@@ -56,6 +56,7 @@
 - (void)mouseDown:(NSEvent *)theEvent
 {
     pressed = YES;
+    [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
@@ -63,9 +64,10 @@
     NSPoint windowLocation = [_window convertScreenToBase:[NSEvent mouseLocation]];
 
     if (pressed && NSPointInRect(windowLocation, self.frame)) {
-        
         [self setToggled:![self toggled]];
-        pressed = NO;
     }
+    pressed = NO;
+    [self setNeedsDisplay:YES];
+
 }
 @end
