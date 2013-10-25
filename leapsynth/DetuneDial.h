@@ -6,14 +6,18 @@
 //
 //
 
-#import "CSSlider.h"
+#import "CSControl.h"
 
-@interface DetuneDial : CSSlider
+@interface DetuneDial : CSControl
 {
     
     NSRect _octaveRect, _centsRect;
     NSDictionary *_textAttributes;
     
+    NSPoint lastDragPoint;
+    BOOL dragging;
+    BOOL dragIsCoarse;
+
 }
 
 
