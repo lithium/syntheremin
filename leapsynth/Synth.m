@@ -262,7 +262,7 @@
         [oscN[i] setDetuneInCents:0];
         [oscN[i] setRange:0];
         [oscN[i] setWaveShape:kWaveSaw];
-        [oscN[i] setFrequencyInHz:440];
+//        [oscN[i] setFrequencyInHz:440];
     }
 
     [lfo setFrequencyInHz:1];
@@ -288,5 +288,8 @@
     
     [mixer setLevel:0.35];
     [self clearPatches];
+    
+    [self connectPatch:@"osc:0:output" :@"vca:2:input"];
+    [vcaN[2] setLevel:0.5];
 }
 @end

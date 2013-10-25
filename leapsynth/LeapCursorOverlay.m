@@ -9,6 +9,7 @@
 #import "LeapCursorOverlay.h"
 
 @implementation LeapCursorOverlay
+@synthesize drawGrid;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -65,25 +66,27 @@
     
     
 
-    NSBezierPath *gridPath = [[NSBezierPath alloc] init];
-    double step = cursorFrame.size.width/2 / 8;
-    double x;
-    double y;
-    for (x=cursorFrame.origin.x + cursorFrame.size.width/2; x < cursorFrame.origin.x+cursorFrame.size.width; x += step) {
-        [gridPath moveToPoint:NSMakePoint(x,cursorFrame.origin.y)];
-        [gridPath lineToPoint:NSMakePoint(x,cursorFrame.origin.y+cursorFrame.size.height)];
-    }
-    
-    x = cursorFrame.origin.x + cursorFrame.size.width/2;
-    step = cursorFrame.size.height / 4;
-    for (y=cursorFrame.origin.y; y < cursorFrame.origin.y+cursorFrame.size.height; y += step) {
-        [gridPath moveToPoint:NSMakePoint(x,y)];
-        [gridPath lineToPoint:NSMakePoint(x+cursorFrame.size.width/2,y)];
-    }
+    if ([self drawGrid]) {
+        NSBezierPath *gridPath = [[NSBezierPath alloc] init];
+        double step = cursorFrame.size.width/2 / 8;
+        double x;
+        double y;
+        for (x=cursorFrame.origin.x + cursorFrame.size.width/2; x < cursorFrame.origin.x+cursorFrame.size.width; x += step) {
+            [gridPath moveToPoint:NSMakePoint(x,cursorFrame.origin.y)];
+            [gridPath lineToPoint:NSMakePoint(x,cursorFrame.origin.y+cursorFrame.size.height)];
+        }
+        
+        x = cursorFrame.origin.x + cursorFrame.size.width/2;
+        step = cursorFrame.size.height / 4;
+        for (y=cursorFrame.origin.y; y < cursorFrame.origin.y+cursorFrame.size.height; y += step) {
+            [gridPath moveToPoint:NSMakePoint(x,y)];
+            [gridPath lineToPoint:NSMakePoint(x+cursorFrame.size.width/2,y)];
+        }
 
-    
-    [[NSColor blackColor] set];
-    [gridPath stroke];
+        
+        [[NSColor blackColor] set];
+        [gridPath stroke];
+    }
     
     [ctx restoreGraphicsState];
 

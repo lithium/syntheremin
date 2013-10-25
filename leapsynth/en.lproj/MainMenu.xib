@@ -160,7 +160,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView drawsBackground="NO" type="noTabsNoBorder" initialItem="5245" id="5244">
+                    <tabView drawsBackground="NO" type="noTabsNoBorder" initialItem="5246" id="5244">
                         <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>

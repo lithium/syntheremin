@@ -278,6 +278,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
     
     
+    [self switchToTheremin:nil];
+    
 }
 
 - (void)noteOn
@@ -671,6 +673,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (IBAction)changeTuning:(id)sender {
     tuningType = [sender doubleValue];
+    
+    [cursorOverlay setDrawGrid:(tuningType)];
 //    NSLog(@"tuning %d", tuning);
 }
 @end

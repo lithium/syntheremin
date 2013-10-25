@@ -22,6 +22,8 @@ typedef struct Point3 {
     NSRect cursorFrame;
 }
 
+@property BOOL drawGrid;
+
 - (void) setLeftHand:(CGFloat)x :(CGFloat)y :(CGFloat)z;
 - (void) setRightHand:(CGFloat)x :(CGFloat)y :(CGFloat)z;
 
