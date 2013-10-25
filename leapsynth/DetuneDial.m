@@ -23,7 +23,7 @@
             style, NSParagraphStyleAttributeName,
             _font, NSFontAttributeName,
          nil];
-        ;
+
         NSRect bounds = [self bounds];
         int padding=5;
         _octaveRect = NSMakeRect(padding, padding,
@@ -37,14 +37,6 @@
         [self setMinValue:-36];
     }
     return self;
-}
-- (void)setDoubleValue:(double)newValue
-{
-//    if (dragIsCoarse) {
-//        newValue = round(newValue);
-//    }
-    
-    [super setDoubleValue:newValue];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -63,6 +55,55 @@
     [path stroke];
     
     [context restoreGraphicsState];
+}
+
+
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    [super mouseDown:theEvent];
+    lastDragPoint = [NSEvent mouseLocation];
+    dragIsCoarse = YES;
+    dragging = YES;
+}
+
+- (void)rightMouseDown:(NSEvent *)theEvent
+{
+    lastDragPoint = [NSEvent mouseLocation];
+    dragIsCoarse = NO;
+    dragging = YES;
+    
+}
+
+- (void)mouseDragged:(NSEvent *)theEvent
+{
+    NSPoint pos = [NSEvent mouseLocation];
+    
+    double newValue = value;
+    if (dragIsCoarse) {
+        double normal = (pos.y - lastDragPoint.y)/300;
+        newValue = floor(normal*(maxValue - minValue)) + (value - floor(value));
+    } else {
+        double normal = (pos.y - lastDragPoint.y)/300;
+        double n = normal*99 / 100;
+        newValue = (value) + MIN(0.99,n);
+        lastDragPoint = pos;
+    }
+
+    [self setDoubleValue:newValue];
+}
+
+- (void)rightMouseDragged:(NSEvent *)theEvent
+{
+    [self mouseDragged:theEvent];
+}
+
+- (void)mouseUp:(NSEvent *)theEvent
+{
+    dragging = NO;
+}
+- (void)rightMouseUp:(NSEvent *)theEvent
+{
+    dragging = NO;
 }
 
 @end
