@@ -482,7 +482,7 @@
                             <tabViewItem label="Theremin" identifier="2" id="5246">
                                 <view key="view" id="5247">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView id="5257" customClass="LeapCursorOverlay">
                                             <rect key="frame" x="0.0" y="68" width="842" height="652"/>
@@ -583,6 +583,17 @@
                                                 </imageView>
                                             </subviews>
                                         </customView>
+                                        <button verticalHuggingPriority="750" id="wmn-fN-4HQ">
+                                            <rect key="frame" x="440" y="646" width="80" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Tuned" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NoB-Ag-P7F">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="toggleTuned:" target="494" id="Xfc-j0-bmQ"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>

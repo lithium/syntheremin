@@ -73,6 +73,7 @@
 //controls
 - (IBAction)changeControl:(id)sender;
 - (IBAction)changeDetuneControl:(id)sender;
+- (IBAction)toggleTuned:(id)sender;
 
 
 

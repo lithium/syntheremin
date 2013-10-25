@@ -148,7 +148,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     //hardcode classic theremin
     [[synth mixer] setModulator:leapModulator[1]];
 //    [leapModulator[1] setInverted:YES];
-    equalTempered = YES;
+    equalTempered = NO;
     
     [[synth vcf] setModulator:leapModulator[4]];
 
@@ -477,13 +477,16 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 #define firstNote 40      
 #define lastNote 64
     
+    int octave = round(normal.y * 3);
+    
     if (equalTempered) {
-        int noteNumber = (normal.x * (lastNote-firstNote)) + firstNote;
+        int noteNumber = (normal.x * 12) + firstNote;
+        noteNumber += octave*12;
         if (noteNumber != currentNoteNumber)
             [self noteOn:noteNumber withVelocity:64 onChannel:0];    
     } else {
-        double minFreq = [MidiParser frequencyFromNoteNumber:35];
-        double maxFreq = [MidiParser frequencyFromNoteNumber:70];
+        double minFreq = 130;//[MidiParser frequencyFromNoteNumber:28];
+        double maxFreq = 1046;//[MidiParser frequencyFromNoteNumber:76];
         double freq = (normal.x * (maxFreq - minFreq)) + minFreq;
         [synth setFrequencyInHz:freq];
     }
@@ -585,6 +588,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     double value = [sender doubleValue];
     NSString *param = [sender valueForKey:@"parameter"];
     [synth applyParameter:param :-value*100];
+}
+
+- (IBAction)toggleTuned:(id)sender {
+    NSButton *button = sender;
+    equalTempered = [button state];
 }
 
 - (IBAction)menuNewPatch:(id)sender {
