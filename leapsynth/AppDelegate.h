@@ -26,8 +26,15 @@
 #import "LeapCursorOverlay.h"
 #import "LeapModulator.h"
 
+enum {
+    kTuningNone=0,
+    kTuningMajor=1,
+    kTuningBlues=2,
+    kTuningHarmonicMinor=3,
+};
+
 @interface AppDelegate : NSResponder  <NSApplicationDelegate, 
-                                    LeapSynthereminDelegate, 
+                                    LeapSynthereminDelegate,
                                     PatchCablerDelegate,
                                     SynthPatchDelegate,
                                     LoopDelegate> 
@@ -49,6 +56,9 @@
     BOOL equalTempered;
  
     LeapModulator *leapModulator[6];
+    
+    
+    int tuningType;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -120,13 +130,8 @@
 @property (weak) IBOutlet CSFader *vca_level_2;
 
 @property (weak) IBOutlet CSRadioButtonSet *osc_shape_0;
-@property (weak) IBOutlet CSPopupButton *osc_range_0;
 @property (weak) IBOutlet CSRadioButtonSet *osc_shape_1;
-@property (weak) IBOutlet CSPopupButton *osc_range_1;
-@property (weak) IBOutlet CSKnob *osc_detune_1;
 @property (weak) IBOutlet CSRadioButtonSet *osc_shape_2;
-@property (weak) IBOutlet CSPopupButton *osc_range_2;
-@property (weak) IBOutlet CSKnob *osc_detune_2;
 
 @property (weak) IBOutlet NSTabView *tabView;
 - (IBAction)switchToSynth:(id)sender;
@@ -139,5 +144,6 @@
 
 @property (weak) IBOutlet CSRadioButtonSet *wave_osc_0;
 
+- (IBAction)changeTuning:(id)sender;
 
 @end

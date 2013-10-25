@@ -12,8 +12,8 @@ typedef struct Point3 {
     double x,y,z;
 } Point3;
 
-#define kHandRadiusMin 2
-#define kHandRadiusMax 75
+#define kHandRadiusMin 5
+#define kHandRadiusMax 40
 
 @interface LeapCursorOverlay : NSView
 {

@@ -583,17 +583,16 @@
                                                 </imageView>
                                             </subviews>
                                         </customView>
-                                        <button verticalHuggingPriority="750" id="wmn-fN-4HQ">
-                                            <rect key="frame" x="440" y="646" width="80" height="32"/>
+                                        <customView id="kaj-YT-a99" customClass="CSRadioButtonSet">
+                                            <rect key="frame" x="388" y="650" width="188" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="Tuned" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NoB-Ag-P7F">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <action selector="toggleTuned:" target="494" id="Xfc-j0-bmQ"/>
+                                                <action selector="changeTuning:" target="494" id="xnF-Iy-dyf"/>
                                             </connections>
-                                        </button>
+                                        </customView>
                                     </subviews>
                                 </view>
                             </tabViewItem>

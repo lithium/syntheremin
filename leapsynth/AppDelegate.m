@@ -41,14 +41,9 @@
 @synthesize vca_level_2;
 
 @synthesize osc_shape_0;
-@synthesize osc_range_0;
-@synthesize osc_detune_1;
 @synthesize osc_shape_1;
-@synthesize osc_detune_2;
 @synthesize tabView;
 @synthesize osc_shape_2;
-@synthesize osc_range_1;
-@synthesize osc_range_2;
 
 
 @synthesize polarAnalyzer;
@@ -128,13 +123,13 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [[synth adsrN:1] addObserver:self forKeyPath:@"releaseTimeInMs" options:0 context:(__bridge void *)adsr_release_1];
 
     [[synth oscN:0] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_0];
-    [[synth oscN:0] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_0];
+//    [[synth oscN:0] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_0];
     [[synth oscN:1] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_1];
-    [[synth oscN:1] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_1];
-    [[synth oscN:1] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_1];
+//    [[synth oscN:1] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_1];
+//    [[synth oscN:1] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_1];
     [[synth oscN:2] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_2];
-    [[synth oscN:2] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_2];
-    [[synth oscN:2] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_2];
+//    [[synth oscN:2] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_2];
+//    [[synth oscN:2] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_2];
     
     [self initializePatchCabler];
 
@@ -476,38 +471,41 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 // middle C = note 40
     
 #define kMiddleC 40
+
     
-    if (equalTempered) {
+    if (tuningType == kTuningNone) {
+        double minFreq = 130;//[MidiParser frequencyFromNoteNumber:28];
+        double maxFreq = 1046;//[MidiParser frequencyFromNoteNumber:76];
+        double freq = (normal.x * (maxFreq - minFreq)) + minFreq;
+        [synth setFrequencyInHz:freq];
+    }
+    else {
+//    if (equalTempered) {
         int octave = round(normal.y * 3);
         int noteNumber = kMiddleC+octave*12;
         
-        /* chromatic */
-//        int noteNumber = (normal.x * 12) + kMiddleC;
-//        noteNumber += octave*12;
-        
         int quadrant = (int)floor(normal.x*8);
-        int major_scale[6] = {2,4,5,7,9,11};
-        int blues_scale[6] = {2,3,5,6,9,10};
-        int harmonic_minor_scale[6] = {2,3,5,7,8,11};
-        int natural_minor_scale[6] = {2,3,5,7,8,10};
+        
+        int scales[3][6] = {
+            {2,4,5,7,9,11},  // major
+            {2,3,5,6,9,10},  // blues
+            {2,3,5,7,8,11},  // harmonic minor
+//            {2,3,5,7,8,10},  // natural minor
+        };
+        
+        
 
         if (quadrant > 6) {
             noteNumber += 12;
         }
         else if (quadrant > 0) {
-            noteNumber += blues_scale[quadrant-1];
-            
+            noteNumber += scales[tuningType-1][quadrant-1];
         }
-        /* major */
         
         
         if (noteNumber != currentNoteNumber)
-            [self noteOn:noteNumber withVelocity:64 onChannel:0];    
-    } else {
-        double minFreq = 130;//[MidiParser frequencyFromNoteNumber:28];
-        double maxFreq = 1046;//[MidiParser frequencyFromNoteNumber:76];
-        double freq = (normal.x * (maxFreq - minFreq)) + minFreq;
-        [synth setFrequencyInHz:freq];
+            [self noteOn:noteNumber withVelocity:64 onChannel:0];
+        
     }
     
     
@@ -670,5 +668,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)switchToTheremin:(id)sender {
     [synth setAnalyzerDelegate:polarAnalyzer];
     [tabView selectTabViewItemAtIndex:1];
+}
+- (IBAction)changeTuning:(id)sender {
+    tuningType = [sender doubleValue];
+//    NSLog(@"tuning %d", tuning);
 }
 @end
