@@ -70,9 +70,9 @@
 - (IBAction)clickLooperClear:(id)sender;
 
 
-//button keyboard
-@property (weak) IBOutlet NSBox *keyboardBox;
+//controls
 - (IBAction)changeControl:(id)sender;
+- (IBAction)changeDetuneControl:(id)sender;
 
 
 

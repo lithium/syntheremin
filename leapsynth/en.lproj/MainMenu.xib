@@ -341,32 +341,6 @@
                                                 <action selector="changeControl:" target="494" id="5134"/>
                                             </connections>
                                         </customView>
-                                        <customView id="5080" customClass="CSKnob">
-                                            <rect key="frame" x="240" y="140" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:2:detuneInCents"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="1200"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5129"/>
-                                            </connections>
-                                        </customView>
-                                        <customView id="5076" customClass="CSKnob">
-                                            <rect key="frame" x="240" y="256" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:1:detuneInCents"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="1200"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5123"/>
-                                            </connections>
-                                        </customView>
                                         <customView id="5028" customClass="CSKnob">
                                             <rect key="frame" x="813" y="500" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -387,75 +361,6 @@
                                                 <action selector="changeControl:" target="494" id="5183"/>
                                             </connections>
                                         </customView>
-                                        <popUpButton verticalHuggingPriority="750" id="5106" customClass="CSPopupButton">
-                                            <rect key="frame" x="237" y="188" width="64" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="+2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="2" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="5113" id="5107">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <menu key="menu" title="Range" id="5108">
-                                                    <items>
-                                                        <menuItem title="+2" state="on" tag="2" id="5109"/>
-                                                        <menuItem title="+1" tag="1" id="5110"/>
-                                                        <menuItem title="0" id="5112"/>
-                                                        <menuItem title="-1" tag="-1" id="5111"/>
-                                                        <menuItem title="-2" state="on" tag="-2" id="5113"/>
-                                                    </items>
-                                                </menu>
-                                            </popUpButtonCell>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:2:range"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5178"/>
-                                            </connections>
-                                        </popUpButton>
-                                        <popUpButton verticalHuggingPriority="750" id="5098" customClass="CSPopupButton">
-                                            <rect key="frame" x="237" y="299" width="64" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="+2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="2" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="5101" id="5099">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <menu key="menu" title="Range" id="5100">
-                                                    <items>
-                                                        <menuItem title="+2" state="on" tag="2" id="5105"/>
-                                                        <menuItem title="+1" tag="1" id="5104"/>
-                                                        <menuItem title="0" id="5102"/>
-                                                        <menuItem title="-1" tag="-1" id="5103"/>
-                                                        <menuItem title="-2" tag="-2" id="5101"/>
-                                                    </items>
-                                                </menu>
-                                            </popUpButtonCell>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:1:range"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5176"/>
-                                            </connections>
-                                        </popUpButton>
-                                        <popUpButton verticalHuggingPriority="750" id="5090" customClass="CSPopupButton">
-                                            <rect key="frame" x="104" y="419" width="64" height="26"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="+2" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="2" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="5093" id="5091">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <menu key="menu" title="Range" id="5092">
-                                                    <items>
-                                                        <menuItem title="+2" state="on" tag="2" id="5093"/>
-                                                        <menuItem title="+1" tag="1" id="5094"/>
-                                                        <menuItem title="0" id="5095"/>
-                                                        <menuItem title="-1" tag="-1" id="5096"/>
-                                                        <menuItem title="-2" tag="-2" id="5097"/>
-                                                    </items>
-                                                </menu>
-                                            </popUpButtonCell>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:0:range"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5174"/>
-                                            </connections>
-                                        </popUpButton>
                                         <customView id="4993" customClass="CSFader">
                                             <rect key="frame" x="361" y="37" width="44" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -544,6 +449,32 @@
                                         <customView id="fbE-yF-0UX" customClass="DetuneDial">
                                             <rect key="frame" x="227" y="384" width="85" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:0:detuneInCents"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="changeDetuneControl:" target="494" id="adj-uc-yDA"/>
+                                            </connections>
+                                        </customView>
+                                        <customView id="tnV-Fl-6FN" customClass="DetuneDial">
+                                            <rect key="frame" x="227" y="279" width="85" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:1:detuneInCents"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="changeDetuneControl:" target="494" id="lFQ-lv-7xw"/>
+                                            </connections>
+                                        </customView>
+                                        <customView id="DHR-Fl-fX0" customClass="DetuneDial">
+                                            <rect key="frame" x="227" y="159" width="85" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:2:detuneInCents"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="changeDetuneControl:" target="494" id="gJM-4r-v19"/>
+                                            </connections>
                                         </customView>
                                     </subviews>
                                 </view>
@@ -686,11 +617,6 @@
                 <outlet property="noise_level" destination="5028" id="5189"/>
                 <outlet property="noise_type" destination="5280" id="5284"/>
                 <outlet property="noleap_label" destination="3582" id="3584"/>
-                <outlet property="osc_detune_1" destination="5076" id="5205"/>
-                <outlet property="osc_detune_2" destination="5080" id="5206"/>
-                <outlet property="osc_range_0" destination="5090" id="5212"/>
-                <outlet property="osc_range_1" destination="5098" id="5213"/>
-                <outlet property="osc_range_2" destination="5106" id="5214"/>
                 <outlet property="osc_shape_0" destination="5270" id="5285"/>
                 <outlet property="osc_shape_1" destination="5274" id="5286"/>
                 <outlet property="osc_shape_2" destination="5276" id="5287"/>

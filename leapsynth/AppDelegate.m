@@ -12,7 +12,6 @@
 @synthesize cursorOverlay;
 @synthesize linearAnalyzer;
 @synthesize patchCabler;
-@synthesize keyboardBox;
 @synthesize looper_level;
 @synthesize looper_play;
 @synthesize looper_record;
@@ -175,8 +174,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [midiParser setDelegate:self];
     status = MIDIClientCreate(CFSTR("Syntheremin"), NULL, NULL, &midiClient);
     status = MIDIInputPortCreate(midiClient, CFSTR("Input"), handle_midi_input, (__bridge void*)self, &midiInput);
-    int num_midi = MIDIGetNumberOfDevices();
-    for (int i=0; i < num_midi; i++) {
+    long num_midi = MIDIGetNumberOfDevices();
+    for (long i=0; i < num_midi; i++) {
         MIDIEndpointRef src = MIDIGetSource(i);
         CFStringRef srcName;
         MIDIObjectGetStringProperty(src, kMIDIPropertyName, &srcName);
@@ -580,6 +579,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     double value = [sender doubleValue];
     NSString *param = [sender valueForKey:@"parameter"];
     [synth applyParameter:param :value];
+}
+
+- (IBAction)changeDetuneControl:(id)sender {
+    double value = [sender doubleValue];
+    NSString *param = [sender valueForKey:@"parameter"];
+    [synth applyParameter:param :-value*100];
 }
 
 - (IBAction)menuNewPatch:(id)sender {

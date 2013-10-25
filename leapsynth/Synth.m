@@ -260,7 +260,7 @@
 {
     for (int i=0; i < kNumOscillators; i++) {
         [oscN[i] setDetuneInCents:0];
-        [oscN[i] setRange:i];
+        [oscN[i] setRange:0];
         [oscN[i] setWaveShape:kWaveSaw];
         [oscN[i] setFrequencyInHz:440];
     }
