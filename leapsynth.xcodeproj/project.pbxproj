@@ -90,6 +90,8 @@
 		12EFCD2F17AD429F00E84D98 /* Vca.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD2E17AD429F00E84D98 /* Vca.m */; };
 		12EFCD3217AD490200E84D98 /* Synth.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD3117AD490200E84D98 /* Synth.m */; };
 		12EFCD3517AD493100E84D98 /* Vcf.m in Sources */ = {isa = PBXBuildFile; fileRef = 12EFCD3417AD493100E84D98 /* Vcf.m */; };
+		12F427BA181A0A13006B12A7 /* DetuneDial.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F427B9181A0A13006B12A7 /* DetuneDial.m */; };
+		12F427BD181A0ECF006B12A7 /* CSSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F427BC181A0ECF006B12A7 /* CSSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -225,6 +227,10 @@
 		12EFCD3117AD490200E84D98 /* Synth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Synth.m; sourceTree = "<group>"; };
 		12EFCD3317AD493100E84D98 /* Vcf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vcf.h; sourceTree = "<group>"; };
 		12EFCD3417AD493100E84D98 /* Vcf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vcf.m; sourceTree = "<group>"; };
+		12F427B8181A0A13006B12A7 /* DetuneDial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetuneDial.h; sourceTree = "<group>"; };
+		12F427B9181A0A13006B12A7 /* DetuneDial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetuneDial.m; sourceTree = "<group>"; };
+		12F427BB181A0ECF006B12A7 /* CSSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSSlider.h; path = CSControls/CSSlider.h; sourceTree = "<group>"; };
+		12F427BC181A0ECF006B12A7 /* CSSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSSlider.m; path = CSControls/CSSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +311,8 @@
 				125286F1180F3F780025D405 /* CSControl.m */,
 				125286E1180EE76C0025D405 /* CSKnob.h */,
 				125286E2180EE76C0025D405 /* CSKnob.m */,
+				12F427BB181A0ECF006B12A7 /* CSSlider.h */,
+				12F427BC181A0ECF006B12A7 /* CSSlider.m */,
 				125286F3180F3FA40025D405 /* CSFader.h */,
 				125286F4180F3FA40025D405 /* CSFader.m */,
 				123940031818849C000F4BF3 /* CSToggleButton.h */,
@@ -313,6 +321,8 @@
 				12C4E07E1818AD1100B59ACE /* CSRadioButtonSet.m */,
 				125287191810D3A00025D405 /* CSPopupButton.h */,
 				1252871A1810D3A00025D405 /* CSPopupButton.m */,
+				12F427B8181A0A13006B12A7 /* DetuneDial.h */,
+				12F427B9181A0A13006B12A7 /* DetuneDial.m */,
 			);
 			name = CSControls;
 			sourceTree = "<group>";
@@ -588,10 +598,12 @@
 				12C4033C180B8A7400FB384A /* Mixer.m in Sources */,
 				125286E3180EE76C0025D405 /* CSKnob.m in Sources */,
 				125286F2180F3F780025D405 /* CSControl.m in Sources */,
+				12F427BD181A0ECF006B12A7 /* CSSlider.m in Sources */,
 				125286F5180F3FA40025D405 /* CSFader.m in Sources */,
 				12528703180F9F2B0025D405 /* PatchCabler.m in Sources */,
 				12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */,
 				1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */,
+				12F427BA181A0A13006B12A7 /* DetuneDial.m in Sources */,
 				12277C461814522400388277 /* PolarAnalyzer.m in Sources */,
 				12277C5518148D0F00388277 /* LeapCursorOverlay.m in Sources */,
 				123B53BE1815ADDC00FB9065 /* LeapModulator.m in Sources */,
