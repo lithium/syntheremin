@@ -57,6 +57,9 @@
     [rightDotColor set];
     [rightDotPath fill];
     
+    
+
+    
     [ctx restoreGraphicsState];
 
 }

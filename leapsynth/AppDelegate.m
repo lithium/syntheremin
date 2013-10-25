@@ -473,15 +473,34 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [leapModulator[5] setLevel:normal.z];
     
 
-// 2 octaves starting at middle C
-#define firstNote 40      
-#define lastNote 64
+// middle C = note 40
     
-    int octave = round(normal.y * 3);
+#define kMiddleC 40
     
     if (equalTempered) {
-        int noteNumber = (normal.x * 12) + firstNote;
-        noteNumber += octave*12;
+        int octave = round(normal.y * 3);
+        int noteNumber = kMiddleC+octave*12;
+        
+        /* chromatic */
+//        int noteNumber = (normal.x * 12) + kMiddleC;
+//        noteNumber += octave*12;
+        
+        int quadrant = (int)floor(normal.x*8);
+        int major_scale[6] = {2,4,5,7,9,11};
+        int blues_scale[6] = {2,3,5,6,9,10};
+        int harmonic_minor_scale[6] = {2,3,5,7,8,11};
+        int natural_minor_scale[6] = {2,3,5,7,8,10};
+
+        if (quadrant > 6) {
+            noteNumber += 12;
+        }
+        else if (quadrant > 0) {
+            noteNumber += blues_scale[quadrant-1];
+            
+        }
+        /* major */
+        
+        
         if (noteNumber != currentNoteNumber)
             [self noteOn:noteNumber withVelocity:64 onChannel:0];    
     } else {
@@ -490,6 +509,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         double freq = (normal.x * (maxFreq - minFreq)) + minFreq;
         [synth setFrequencyInHz:freq];
     }
+    
+    
     
     
 
