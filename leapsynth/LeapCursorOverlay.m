@@ -61,10 +61,20 @@
     int right_x = cursorFrame.origin.x + (rightHand.x * (cursorFrame.size.width/2 - right_radius)) + (cursorFrame.size.width/2);
     int right_y = cursorFrame.origin.y + rightHand.y * (cursorFrame.size.height-right_radius);    
     [rightDotPath appendBezierPathWithOvalInRect:NSMakeRect(right_x,right_y,right_radius,right_radius)];
+    
+    right_y += right_radius/2;
+    right_x += right_radius/2;
+    [rightDotPath moveToPoint:NSMakePoint(right_x, cursorFrame.origin.y)];
+    [rightDotPath lineToPoint:NSMakePoint(right_x, cursorFrame.origin.y+cursorFrame.size.height)];
+
+    if ([self drawGrid]) {
+        [rightDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2, right_y)];
+        [rightDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width, right_y)];
+
+    }
     [rightDotColor set];
-    [rightDotPath fill];
-    
-    
+    [rightDotPath stroke];
+
 
     if ([self drawGrid]) {
         NSBezierPath *gridPath = [[NSBezierPath alloc] init];
