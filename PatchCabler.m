@@ -76,22 +76,60 @@
         if ([endpoint endpointType] == kOutputPatchEndpoint &&
             ([endpoint connectedTo] != nil || [endpoint isDragging]))
         {
-            
-//            loc.y += [endpoint size].height/2;
-            loc.y += [endpoint size].height-4;
-
-            
+            NSPoint final;
+        
+            // calculate final point
             if ([endpoint cablerEdge] == kEdgeLeft) {
-                
-                loc.x += [endpoint size].width/2;
-
+                final = NSMakePoint(loc.x + [endpoint size].width/2,
+                                    loc.y + [endpoint size].height-4);
             }
             else if ([endpoint cablerEdge] == kEdgeRight) {
-                orig.x += [endpoint size].width;
-                loc.x += [endpoint size].width-4;
+                final = NSMakePoint(loc.x + [endpoint size].width-4,
+                                    loc.y + [endpoint size].height-4);
             }
             
-            [cablePath lineToPoint:loc];
+            
+            
+//            if ([endpoint cablerEdge] == kEdgeLeft || [endpoint cablerEdge] == kEdgeRight) {
+//            }
+
+            
+
+            if ([endpoint connectedTo]) {
+                int connectedEdge = [[endpoint connectedTo] cablerEdge];
+                if (connectedEdge == kEdgeLeft || connectedEdge == kEdgeRight) {
+                    if (connectedEdge == [endpoint cablerEdge]) {
+                        //connected to same edge
+                        double x = connectedEdge == kEdgeLeft ? 100 : [self bounds].size.width-100;
+                        [cablePath lineToPoint:NSMakePoint(x, orig.y)];
+                        [cablePath lineToPoint:NSMakePoint(x, final.y)];
+                    
+                    } else {
+                        //connected to opposite edge
+                        double x = (final.x - orig.x) / 2; // midpoint
+                        double h = orig.y / [self bounds].size.height;
+                        x += 40*h;
+                        NSPoint mid = NSMakePoint(x, orig.y);
+                        [cablePath lineToPoint:mid];
+                        [cablePath lineToPoint:NSMakePoint(mid.x, final.y)];
+                        
+                    }
+                }
+                else {
+                    [cablePath lineToPoint:NSMakePoint(final.x, orig.y)];
+                    
+                }
+
+                
+                
+            }
+            else {
+                [cablePath lineToPoint:NSMakePoint(final.x, orig.y)];
+                
+            }
+
+
+            [cablePath lineToPoint:final];
             
         }
         
