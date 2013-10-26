@@ -93,17 +93,31 @@
 - (id)connectedTo { return connectedTo; }
 - (void)setConnectedTo:(id)target
 {
+
+    
     connectedTo = target;
     isConnected = (target != nil);
     isDragging = NO;
+    
+    
     
     if (endpointType == kOutputPatchEndpoint) {
         if (!isConnected) {
             [self setFrameOrigin:origin];
         } else {
             
+            int connectedCount = [self target]->_connectedCount;
+
             double x = [target origin].x;
             double y = [target origin].y + size.height/2;
+            
+            if (connectedCount == 2) {
+                y += 5;
+            }
+            if (connectedCount == 3) {
+                y -= 5;
+            }
+
             if ([target cablerEdge] == kEdgeRight) {
                 y -= _padding;
                 x -= _padding;
@@ -202,6 +216,7 @@
             }
             [[self target] setConnectedTo:nil];
             [self setConnectedTo:nil];
+            _connectedCount = 0;
         }
     } 
     else if (endpointType == kOutputPatchEndpoint) 
@@ -227,7 +242,10 @@
 
     if (!isConnected) {
         [self setFrameOrigin:origin];
-        [[self target] setConnectedTo:nil];
+        if ([self target]) {
+            [self target]->_connectedCount--;
+            [[self target] setConnectedTo:nil];
+        }
         [self setConnectedTo:nil];
     }
     [[self superview] setNeedsDisplay:YES];

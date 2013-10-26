@@ -44,11 +44,16 @@ enum {
     BOOL isConnected;
     __weak id connectedTo;
 
+
     NSPoint clickLocation;
     NSPoint dragOrigin;
     NSPoint origin;
     
     NSSize size;
+    
+    @public
+    
+        int _connectedCount;
 }
 
 @property NSColor *color;

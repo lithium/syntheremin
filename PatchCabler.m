@@ -199,6 +199,9 @@
             [target endpointType] == kInputPatchEndpoint)
         {
             PatchCableEndpoint *source = (PatchCableEndpoint*)sender;
+            PatchCableEndpoint *te = (PatchCableEndpoint*)target;
+            te->_connectedCount++;
+
             [source setConnectedTo:target];
             [target setConnectedTo:source];
             
