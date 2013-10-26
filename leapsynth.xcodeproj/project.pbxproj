@@ -49,13 +49,8 @@
 		125286E3180EE76C0025D405 /* CSKnob.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286E2180EE76C0025D405 /* CSKnob.m */; };
 		125286F2180F3F780025D405 /* CSControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F1180F3F780025D405 /* CSControl.m */; };
 		125286F5180F3FA40025D405 /* CSFader.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F4180F3FA40025D405 /* CSFader.m */; };
-		125286FA180F42D50025D405 /* csfader_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 125286F7180F42D50025D405 /* csfader_bg.png */; };
-		125286FB180F42D50025D405 /* csfader_knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 125286F8180F42D50025D405 /* csfader_knob.png */; };
-		125286FC180F42D50025D405 /* csknob_knob.png in Resources */ = {isa = PBXBuildFile; fileRef = 125286F9180F42D50025D405 /* csknob_knob.png */; };
 		12528703180F9F2B0025D405 /* PatchCabler.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528702180F9F2A0025D405 /* PatchCabler.m */; };
 		12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528705180F9F7D0025D405 /* PatchCableEndpoint.m */; };
-		1252870A1810420F0025D405 /* patch_endpoint_output.png in Resources */ = {isa = PBXBuildFile; fileRef = 125287091810420F0025D405 /* patch_endpoint_output.png */; };
-		1252870C181042710025D405 /* patch_endpoint_input.png in Resources */ = {isa = PBXBuildFile; fileRef = 1252870B181042710025D405 /* patch_endpoint_input.png */; };
 		1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1252871A1810D3A00025D405 /* CSPopupButton.m */; };
 		126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
@@ -63,6 +58,7 @@
 		126C4D6E17B2B42F00598323 /* LeapObjectiveC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */; };
 		12751A3417C1FA0800A57258 /* logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 12751A3317C1FA0800A57258 /* logo-white.png */; };
 		12759AC418092CE400EA2D1A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12759AC318092CE400EA2D1A /* CoreMIDI.framework */; };
+		1276FE57181B617300BB1976 /* background_visualizer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1276FE56181B617300BB1976 /* background_visualizer@2x.png */; };
 		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
 		1291C76517BB423D0055761E /* LinearAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1291C76417BB423D0055761E /* LinearAnalyzer.m */; };
@@ -156,15 +152,10 @@
 		125286F1180F3F780025D405 /* CSControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSControl.m; path = CSControls/CSControl.m; sourceTree = "<group>"; };
 		125286F3180F3FA40025D405 /* CSFader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSFader.h; sourceTree = "<group>"; };
 		125286F4180F3FA40025D405 /* CSFader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSFader.m; sourceTree = "<group>"; };
-		125286F7180F42D50025D405 /* csfader_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csfader_bg.png; sourceTree = "<group>"; };
-		125286F8180F42D50025D405 /* csfader_knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csfader_knob.png; sourceTree = "<group>"; };
-		125286F9180F42D50025D405 /* csknob_knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = csknob_knob.png; sourceTree = "<group>"; };
 		12528701180F9F2A0025D405 /* PatchCabler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatchCabler.h; path = ../PatchCabler.h; sourceTree = "<group>"; };
 		12528702180F9F2A0025D405 /* PatchCabler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatchCabler.m; path = ../PatchCabler.m; sourceTree = "<group>"; };
 		12528704180F9F7D0025D405 /* PatchCableEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatchCableEndpoint.h; path = ../PatchCableEndpoint.h; sourceTree = "<group>"; };
 		12528705180F9F7D0025D405 /* PatchCableEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatchCableEndpoint.m; path = ../PatchCableEndpoint.m; sourceTree = "<group>"; };
-		125287091810420F0025D405 /* patch_endpoint_output.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patch_endpoint_output.png; sourceTree = "<group>"; };
-		1252870B181042710025D405 /* patch_endpoint_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = patch_endpoint_input.png; sourceTree = "<group>"; };
 		125287191810D3A00025D405 /* CSPopupButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSPopupButton.h; path = CSControls/CSPopupButton.h; sourceTree = "<group>"; };
 		1252871A1810D3A00025D405 /* CSPopupButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSPopupButton.m; path = CSControls/CSPopupButton.m; sourceTree = "<group>"; };
 		126C4D5F17B29F8700598323 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = LeapSDK/lib/libLeap.dylib; sourceTree = "<group>"; };
@@ -176,6 +167,7 @@
 		126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeapSyntheremin.m; sourceTree = "<group>"; };
 		12751A3317C1FA0800A57258 /* logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-white.png"; path = "img/logo-white.png"; sourceTree = SOURCE_ROOT; };
 		12759AC318092CE400EA2D1A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		1276FE56181B617300BB1976 /* background_visualizer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_visualizer@2x.png"; sourceTree = "<group>"; };
 		127DBD2E17A76D16007C68FF /* Syntheremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syntheremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -249,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				12393FBC18187F7D000F4BF3 /* background_controls@2x.png */,
+				1276FE56181B617300BB1976 /* background_visualizer@2x.png */,
 				12393FBD18187F7D000F4BF3 /* buttons */,
 				12393FD218187F7D000F4BF3 /* knob_dial@2x.png */,
 				12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */,
@@ -299,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				12393FBB18187F7D000F4BF3 /* images */,
-				125286F6180F42D50025D405 /* images */,
 				12528701180F9F2A0025D405 /* PatchCabler.h */,
 				12528702180F9F2A0025D405 /* PatchCabler.m */,
 				12528704180F9F7D0025D405 /* PatchCableEndpoint.h */,
@@ -321,19 +313,6 @@
 			);
 			name = CSControls;
 			sourceTree = "<group>";
-		};
-		125286F6180F42D50025D405 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				1252870B181042710025D405 /* patch_endpoint_input.png */,
-				125287091810420F0025D405 /* patch_endpoint_output.png */,
-				125286F7180F42D50025D405 /* csfader_bg.png */,
-				125286F8180F42D50025D405 /* csfader_knob.png */,
-				125286F9180F42D50025D405 /* csknob_knob.png */,
-			);
-			name = images;
-			path = img/controls;
-			sourceTree = SOURCE_ROOT;
 		};
 		126C4D6417B29FA900598323 /* LeapSDK */ = {
 			isa = PBXGroup;
@@ -521,13 +500,9 @@
 				12751A3417C1FA0800A57258 /* logo-white.png in Resources */,
 				12C4032F180B2CDA00FB384A /* saw.png in Resources */,
 				12C40330180B2CDA00FB384A /* sine.png in Resources */,
+				1276FE57181B617300BB1976 /* background_visualizer@2x.png in Resources */,
 				12C40331180B2CDA00FB384A /* square.png in Resources */,
 				12C40332180B2CDA00FB384A /* tri.png in Resources */,
-				125286FA180F42D50025D405 /* csfader_bg.png in Resources */,
-				125286FB180F42D50025D405 /* csfader_knob.png in Resources */,
-				125286FC180F42D50025D405 /* csknob_knob.png in Resources */,
-				1252870A1810420F0025D405 /* patch_endpoint_output.png in Resources */,
-				1252870C181042710025D405 /* patch_endpoint_input.png in Resources */,
 				12393FE018187F7D000F4BF3 /* background_controls@2x.png in Resources */,
 				12393FF518187F7D000F4BF3 /* knob_dial@2x.png in Resources */,
 				12393FF618187F7D000F4BF3 /* knob_outerRing_empty@2x.png in Resources */,

@@ -77,7 +77,7 @@
         ripples = [[NSMutableArray alloc] initWithCapacity:1];
         [ripples addObject:[[Waveform alloc] initWithBounds:[self bounds]]];
 
-        waveColor = [NSColor colorWithSRGBRed:0/255.0 green:34/255.0 blue:216/255.0 alpha:1.0];
+        waveColor = [NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0];
 
     }
     

@@ -18,8 +18,8 @@
         leftDotColor = [NSColor colorWithSRGBRed:48/255.0 green:176/255.0 blue:196/255.0 alpha:0.6];
         rightDotColor = [NSColor colorWithSRGBRed:195/255.0 green:50/255.0 blue:62/255.0 alpha:0.6];
         
-        double sidePadding = [self bounds].size.width/10;
-        double topPadding = [self bounds].size.height/10;
+        double sidePadding = 10;//[self bounds].size.width/10;
+        double topPadding = 10;//[self bounds].size.height/10;
         cursorFrame = NSMakeRect(sidePadding, 
                                  topPadding, 
                                  [self bounds].size.width-sidePadding*2,
@@ -37,7 +37,7 @@
 //    NSRect bounds = [self bounds];
     
     [[NSColor blackColor] set];
-    [[NSBezierPath bezierPathWithRect:cursorFrame] stroke];
+//    [[NSBezierPath bezierPathWithRect:cursorFrame] stroke];
     
     // draw left hand
 //    NSBezierPath *leftDotPath = [[NSBezierPath alloc] init];
@@ -47,7 +47,6 @@
 //    [leftDotPath appendBezierPathWithOvalInRect:NSMakeRect(left_x,left_y,left_radius,left_radius)];
 //    [leftDotColor set];
 //    [leftDotPath fill];
-    
     NSBezierPath *levelPath = [[NSBezierPath alloc] init];
     [levelPath appendBezierPathWithRect:NSMakeRect(cursorFrame.origin.x, cursorFrame.origin.y,
                                                    cursorFrame.size.width/2,
@@ -81,19 +80,18 @@
         double step = cursorFrame.size.width/2 / 8;
         double x;
         double y;
-        for (x=cursorFrame.origin.x + cursorFrame.size.width/2; x < cursorFrame.origin.x+cursorFrame.size.width; x += step) {
+        for (x=cursorFrame.origin.x + cursorFrame.size.width/2; x <= cursorFrame.origin.x+cursorFrame.size.width; x += step) {
             [gridPath moveToPoint:NSMakePoint(x,cursorFrame.origin.y)];
             [gridPath lineToPoint:NSMakePoint(x,cursorFrame.origin.y+cursorFrame.size.height)];
         }
         
         x = cursorFrame.origin.x + cursorFrame.size.width/2;
         step = cursorFrame.size.height / 4;
-        for (y=cursorFrame.origin.y; y < cursorFrame.origin.y+cursorFrame.size.height; y += step) {
+        for (y=cursorFrame.origin.y; y <= cursorFrame.origin.y+cursorFrame.size.height; y += step) {
             [gridPath moveToPoint:NSMakePoint(x,y)];
             [gridPath lineToPoint:NSMakePoint(x+cursorFrame.size.width/2,y)];
         }
 
-        
         [[NSColor blackColor] set];
         [gridPath stroke];
     }
