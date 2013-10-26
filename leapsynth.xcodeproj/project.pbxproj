@@ -21,9 +21,6 @@
 		12393FFD18187F7D000F4BF3 /* volumeKnob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDA18187F7D000F4BF3 /* volumeKnob_dial@2x.png */; };
 		12393FFE18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDB18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png */; };
 		12393FFF18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDC18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png */; };
-		1239400018187F7D000F4BF3 /* wire_connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDD18187F7D000F4BF3 /* wire_connected@2x.png */; };
-		1239400118187F7D000F4BF3 /* wire_in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDE18187F7D000F4BF3 /* wire_in@2x.png */; };
-		1239400218187F7D000F4BF3 /* wire_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FDF18187F7D000F4BF3 /* wire_out@2x.png */; };
 		123940051818849C000F4BF3 /* CSToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 123940041818849C000F4BF3 /* CSToggleButton.m */; };
 		12394008181887B3000F4BF3 /* button_play_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12394006181887B3000F4BF3 /* button_play_selected@2x.png */; };
 		12394009181887B3000F4BF3 /* button_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12394007181887B3000F4BF3 /* button_play@2x.png */; };
@@ -51,7 +48,6 @@
 		125286F5180F3FA40025D405 /* CSFader.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F4180F3FA40025D405 /* CSFader.m */; };
 		12528703180F9F2B0025D405 /* PatchCabler.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528702180F9F2A0025D405 /* PatchCabler.m */; };
 		12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528705180F9F7D0025D405 /* PatchCableEndpoint.m */; };
-		1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1252871A1810D3A00025D405 /* CSPopupButton.m */; };
 		126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */; };
@@ -59,6 +55,7 @@
 		12751A3417C1FA0800A57258 /* logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 12751A3317C1FA0800A57258 /* logo-white.png */; };
 		12759AC418092CE400EA2D1A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12759AC318092CE400EA2D1A /* CoreMIDI.framework */; };
 		1276FE57181B617300BB1976 /* background_visualizer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1276FE56181B617300BB1976 /* background_visualizer@2x.png */; };
+		1276FE5A181C6A1D00BB1976 /* CSMomentaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1276FE59181C6A1D00BB1976 /* CSMomentaryButton.m */; };
 		127DBD3317A76D16007C68FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD3217A76D16007C68FF /* Cocoa.framework */; };
 		127DBD5017A81437007C68FF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127DBD4F17A81437007C68FF /* AudioToolbox.framework */; };
 		1291C76517BB423D0055761E /* LinearAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1291C76417BB423D0055761E /* LinearAnalyzer.m */; };
@@ -119,9 +116,6 @@
 		12393FDA18187F7D000F4BF3 /* volumeKnob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volumeKnob_dial@2x.png"; sourceTree = "<group>"; };
 		12393FDB18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volumeKnob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
 		12393FDC18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volumeKnob_outerRing_full@2x.png"; sourceTree = "<group>"; };
-		12393FDD18187F7D000F4BF3 /* wire_connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wire_connected@2x.png"; sourceTree = "<group>"; };
-		12393FDE18187F7D000F4BF3 /* wire_in@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wire_in@2x.png"; sourceTree = "<group>"; };
-		12393FDF18187F7D000F4BF3 /* wire_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wire_out@2x.png"; sourceTree = "<group>"; };
 		123940031818849C000F4BF3 /* CSToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSToggleButton.h; path = ../CSToggleButton.h; sourceTree = "<group>"; };
 		123940041818849C000F4BF3 /* CSToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSToggleButton.m; path = ../CSToggleButton.m; sourceTree = "<group>"; };
 		12394006181887B3000F4BF3 /* button_play_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_play_selected@2x.png"; sourceTree = "<group>"; };
@@ -156,8 +150,6 @@
 		12528702180F9F2A0025D405 /* PatchCabler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatchCabler.m; path = ../PatchCabler.m; sourceTree = "<group>"; };
 		12528704180F9F7D0025D405 /* PatchCableEndpoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatchCableEndpoint.h; path = ../PatchCableEndpoint.h; sourceTree = "<group>"; };
 		12528705180F9F7D0025D405 /* PatchCableEndpoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatchCableEndpoint.m; path = ../PatchCableEndpoint.m; sourceTree = "<group>"; };
-		125287191810D3A00025D405 /* CSPopupButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSPopupButton.h; path = CSControls/CSPopupButton.h; sourceTree = "<group>"; };
-		1252871A1810D3A00025D405 /* CSPopupButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSPopupButton.m; path = CSControls/CSPopupButton.m; sourceTree = "<group>"; };
 		126C4D5F17B29F8700598323 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = LeapSDK/lib/libLeap.dylib; sourceTree = "<group>"; };
 		126C4D6517B29FCB00598323 /* Leap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Leap.h; path = LeapSDK/include/Leap.h; sourceTree = "<group>"; };
 		126C4D6617B29FCB00598323 /* LeapMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LeapMath.h; path = LeapSDK/include/LeapMath.h; sourceTree = "<group>"; };
@@ -168,6 +160,8 @@
 		12751A3317C1FA0800A57258 /* logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-white.png"; path = "img/logo-white.png"; sourceTree = SOURCE_ROOT; };
 		12759AC318092CE400EA2D1A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		1276FE56181B617300BB1976 /* background_visualizer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_visualizer@2x.png"; sourceTree = "<group>"; };
+		1276FE58181C6A1D00BB1976 /* CSMomentaryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSMomentaryButton.h; path = CSControls/CSMomentaryButton.h; sourceTree = "<group>"; };
+		1276FE59181C6A1D00BB1976 /* CSMomentaryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSMomentaryButton.m; path = CSControls/CSMomentaryButton.m; sourceTree = "<group>"; };
 		127DBD2E17A76D16007C68FF /* Syntheremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syntheremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		127DBD3217A76D16007C68FF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		127DBD3517A76D16007C68FF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -254,9 +248,6 @@
 				12393FDA18187F7D000F4BF3 /* volumeKnob_dial@2x.png */,
 				12393FDB18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png */,
 				12393FDC18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png */,
-				12393FDD18187F7D000F4BF3 /* wire_connected@2x.png */,
-				12393FDE18187F7D000F4BF3 /* wire_in@2x.png */,
-				12393FDF18187F7D000F4BF3 /* wire_out@2x.png */,
 			);
 			path = images;
 			sourceTree = SOURCE_ROOT;
@@ -306,10 +297,10 @@
 				123940041818849C000F4BF3 /* CSToggleButton.m */,
 				12C4E07D1818AD1100B59ACE /* CSRadioButtonSet.h */,
 				12C4E07E1818AD1100B59ACE /* CSRadioButtonSet.m */,
-				125287191810D3A00025D405 /* CSPopupButton.h */,
-				1252871A1810D3A00025D405 /* CSPopupButton.m */,
 				12F427B8181A0A13006B12A7 /* DetuneDial.h */,
 				12F427B9181A0A13006B12A7 /* DetuneDial.m */,
+				1276FE58181C6A1D00BB1976 /* CSMomentaryButton.h */,
+				1276FE59181C6A1D00BB1976 /* CSMomentaryButton.m */,
 			);
 			name = CSControls;
 			sourceTree = "<group>";
@@ -515,9 +506,6 @@
 				12393FFD18187F7D000F4BF3 /* volumeKnob_dial@2x.png in Resources */,
 				12393FFE18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png in Resources */,
 				12393FFF18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png in Resources */,
-				1239400018187F7D000F4BF3 /* wire_connected@2x.png in Resources */,
-				1239400118187F7D000F4BF3 /* wire_in@2x.png in Resources */,
-				1239400218187F7D000F4BF3 /* wire_out@2x.png in Resources */,
 				12394008181887B3000F4BF3 /* button_play_selected@2x.png in Resources */,
 				12394009181887B3000F4BF3 /* button_play@2x.png in Resources */,
 				1239401C18188C0B000F4BF3 /* button_clear_selected@2x.png in Resources */,
@@ -565,13 +553,13 @@
 				12B0FE681809CE410019EBC4 /* MidiParser.m in Sources */,
 				12B0FE6B180A19A50019EBC4 /* NoiseGenerator.m in Sources */,
 				12B0FE6E180A1A5A0019EBC4 /* SampleProvider.m in Sources */,
+				1276FE5A181C6A1D00BB1976 /* CSMomentaryButton.m in Sources */,
 				12C4033C180B8A7400FB384A /* Mixer.m in Sources */,
 				125286E3180EE76C0025D405 /* CSKnob.m in Sources */,
 				125286F2180F3F780025D405 /* CSControl.m in Sources */,
 				125286F5180F3FA40025D405 /* CSFader.m in Sources */,
 				12528703180F9F2B0025D405 /* PatchCabler.m in Sources */,
 				12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */,
-				1252871B1810D3A10025D405 /* CSPopupButton.m in Sources */,
 				12F427BA181A0A13006B12A7 /* DetuneDial.m in Sources */,
 				12277C461814522400388277 /* PolarAnalyzer.m in Sources */,
 				12277C5518148D0F00388277 /* LeapCursorOverlay.m in Sources */,

@@ -20,7 +20,6 @@
 
 #import "CSKnob.h"
 #import "CSFader.h"
-#import "CSPopupButton.h"
 #import "CSToggleButton.h"
 #import "CSRadioButtonSet.h"
 #import "LeapCursorOverlay.h"
