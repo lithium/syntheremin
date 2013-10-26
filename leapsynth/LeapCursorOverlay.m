@@ -40,19 +40,27 @@
 //    [[NSBezierPath bezierPathWithRect:cursorFrame] stroke];
     
     // draw left hand
-//    NSBezierPath *leftDotPath = [[NSBezierPath alloc] init];
-//    int left_radius = (leftHand.z * (kHandRadiusMax - kHandRadiusMin)) + kHandRadiusMin;
-//    int left_x = cursorFrame.origin.x + leftHand.x * (cursorFrame.size.width/2 - left_radius);
-//    int left_y = cursorFrame.origin.y + leftHand.y * (cursorFrame.size.height - left_radius);    
-//    [leftDotPath appendBezierPathWithOvalInRect:NSMakeRect(left_x,left_y,left_radius,left_radius)];
-//    [leftDotColor set];
-//    [leftDotPath fill];
-    NSBezierPath *levelPath = [[NSBezierPath alloc] init];
-    [levelPath appendBezierPathWithRect:NSMakeRect(cursorFrame.origin.x, cursorFrame.origin.y,
-                                                   cursorFrame.size.width/2,
-                                                   cursorFrame.size.height*leftHand.y)];
+    NSBezierPath *leftDotPath = [[NSBezierPath alloc] init];
+    int left_radius = (leftHand.z * (kHandRadiusMax - kHandRadiusMin)) + kHandRadiusMin;
+    int left_x = cursorFrame.origin.x + leftHand.x * (cursorFrame.size.width/2 - left_radius);
+    int left_y = cursorFrame.origin.y + leftHand.y * (cursorFrame.size.height - left_radius);    
+    [leftDotPath appendBezierPathWithOvalInRect:NSMakeRect(left_x,left_y,left_radius,left_radius)];
+    
+    left_y += left_radius/2;
+    left_x += left_radius/2;
+    [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x, left_y)];
+    [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2, left_y)];
+
     [leftDotColor set];
-    [levelPath fill];
+    [leftDotPath stroke];
+    
+    
+//    NSBezierPath *levelPath = [[NSBezierPath alloc] init];
+//    [levelPath appendBezierPathWithRect:NSMakeRect(cursorFrame.origin.x, cursorFrame.origin.y,
+//                                                   cursorFrame.size.width/2,
+//                                                   cursorFrame.size.height*leftHand.y)];
+//    [leftDotColor set];
+//    [levelPath fill];
     
     //draw right hand
     NSBezierPath *rightDotPath = [[NSBezierPath alloc] init];
