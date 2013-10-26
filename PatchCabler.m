@@ -42,34 +42,62 @@
 //        orig.x += 5;
 //        [cablePath lineToPoint:orig];
         
-//        if ([endpoint cablerEdge] == kEdgeRight) {
+
+        //draw the stem
+        if ([endpoint cablerEdge] == kEdgeLeft) {
             orig.x += 4;
-//        }
+            orig.y += [endpoint size].height/2;
+
+            [cablePath moveToPoint:NSMakePoint(0, orig.y)];
+            [cablePath lineToPoint:NSMakePoint(orig.x, orig.y)];
+        } else if ([endpoint cablerEdge] == kEdgeRight) {
+            orig.x += [endpoint size].width-4;
+            orig.y += [endpoint size].height/2;
+
+            [cablePath moveToPoint:NSMakePoint([self bounds].size.width, orig.y)];
+            [cablePath lineToPoint:NSMakePoint(orig.x, orig.y)];
+
+        } else if ([endpoint cablerEdge] == kEdgeBottom) {
+            orig.x += [endpoint size].width/2;
+            orig.y += [endpoint size].height/2-4;
+
+            [cablePath moveToPoint:NSMakePoint(orig.x, 0)];
+            [cablePath lineToPoint:NSMakePoint(orig.x, orig.y)];
+
+        } else {
+            [cablePath moveToPoint:orig];
+        }
+        [[endpoint color] set];
+        [cablePath stroke];
 
         
-        if ([endpoint endpointType] == kOutputPatchEndpoint ||
-            [endpoint connectedTo] != nil ||
-            [endpoint isDragging])
+        
+        
+        if ([endpoint endpointType] == kOutputPatchEndpoint &&
+            ([endpoint connectedTo] != nil || [endpoint isDragging]))
         {
             
-            orig.y += [endpoint size].height/2;
-            loc.y += [endpoint size].height/2;
+//            loc.y += [endpoint size].height/2;
+            loc.y += [endpoint size].height-4;
+
             
-//            loc.x += [endpoint cablerEdge] == kEdgeLeft ? -5 : 5;
             if ([endpoint cablerEdge] == kEdgeLeft) {
-                loc.x += 5;
+                
+                loc.x += [endpoint size].width/2;
+
             }
             else if ([endpoint cablerEdge] == kEdgeRight) {
-                orig.x += kOutputEndpointWidth;
-                loc.x += kOutputEndpointWidth+2;
+                orig.x += [endpoint size].width;
+                loc.x += [endpoint size].width-4;
             }
             
-            [cablePath moveToPoint:orig];
             [cablePath lineToPoint:loc];
+            
         }
         
         [[endpoint color] set];
         [cablePath stroke];
+
 
     }];
 
@@ -132,8 +160,6 @@
             NSPointInRect(dragLocation,[target frame]) &&
             [target endpointType] == kInputPatchEndpoint)
         {
-            NSLog(@"target %@ sender %@", targetParts, senderParts);
-
             PatchCableEndpoint *source = (PatchCableEndpoint*)sender;
             [source setConnectedTo:target];
             [target setConnectedTo:source];

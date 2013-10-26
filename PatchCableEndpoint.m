@@ -96,14 +96,31 @@
     connectedTo = target;
     isConnected = (target != nil);
     isDragging = NO;
-    if (!isConnected) {
-        [self setFrameOrigin:origin];        
-    } else {
-        [self setFrameOrigin:[target origin]];
+    
+    if (endpointType == kOutputPatchEndpoint) {
+        if (!isConnected) {
+            [self setFrameOrigin:origin];
+        } else {
+            
+            double x = [target origin].x;
+            double y = [target origin].y + size.height/2;
+            if ([target cablerEdge] == kEdgeRight) {
+                y -= _padding;
+                x -= _padding;
+            }
+            else
+            if ([target cablerEdge] == kEdgeLeft) {
+                y -= _padding;
+                x += _padding;
+            }
+
+            [self setFrameOrigin:NSMakePoint(x,y)];
+
+        }
     }
 }
 
-- (NSPoint)origin 
+- (NSPoint)origin
 {
     return origin;
 }
@@ -142,6 +159,14 @@
                                                         kOutputEndpointWidth,
                                                         kOutputEndpointHeight)];
     } else {
+        [path appendBezierPathWithArcWithCenter:NSMakePoint(bounds.size.width/2, bounds.size.height/2)
+                                         radius:bounds.size.width/2-_padding
+                                     startAngle:90
+                                       endAngle:270
+                                      clockwise:YES];
+//        [path appendBezierPathWithOvalInRect:NSMakeRect(_padding,_padding,
+//                                                        kInputEndpointWidth,
+//                                                        kInputEndpointHeight)];
 //        [path appendBezierPathWithOvalInRect:NSMakeRect(_padding, _padding,
 //                                                        kInputEndpointWidth, kInputEndpointWidth)];
         

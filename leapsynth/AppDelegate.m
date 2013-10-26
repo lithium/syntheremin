@@ -201,53 +201,53 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                               onEdge:kEdgeLeft
                           withOffset:300
                            withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                                                         green:139/255.0
+                                                          blue:89/255.0
                                                          alpha:1.0]];
     
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"osc:0:modulate"
                               onEdge:kEdgeLeft
                           withOffset:250
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:76/255.0
+                                                         green:76/255.0
+                                                          blue:79/255.0
                                                          alpha:1.0]];
 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"osc:1:output"
                               onEdge:kEdgeLeft
                           withOffset:190
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:157/255.0
+                                                         green:104/255.0
+                                                          blue:104/255.0
                                                          alpha:1.0]];
     
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"osc:1:modulate"
                               onEdge:kEdgeLeft
                           withOffset:140
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:76/255.0
+                                                         green:76/255.0
+                                                          blue:79/255.0
                                                          alpha:1.0]];
     
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"osc:2:output"
                               onEdge:kEdgeLeft
                           withOffset:80
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:88/255.0
+                                                         green:138/255.0
+                                                          blue:122/255.0
                                                          alpha:1.0]];
     
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"osc:2:modulate"
                               onEdge:kEdgeLeft
                           withOffset:40
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:76/255.0
+                                                         green:76/255.0
+                                                          blue:79/255.0
                                                          alpha:1.0]];
     //vcas
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
@@ -281,9 +281,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                     andParameterName:@"mixer::modulate"
                               onEdge:kEdgeBottom
                           withOffset:260
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:76/255.0
+                                                         green:76/255.0
+                                                          blue:79/255.0
                                                          alpha:1.0]];
     
     
@@ -292,9 +292,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                     andParameterName:@"noise:0:output"
                               onEdge:kEdgeRight
                           withOffset:-50
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:139/255.0
+                                                         green:139/255.0
+                                                          blue:176/255.0
                                                          alpha:1.0]];
 
     
@@ -305,9 +305,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                     andParameterName:@"vcf:0:output"
                               onEdge:kEdgeRight
                           withOffset:300
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:90/255.0
+                                                         green:67/255.0
+                                                          blue:98/255.0
                                                          alpha:1.0]];
 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
@@ -322,9 +322,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                     andParameterName:@"vcf:0:modulate"
                               onEdge:kEdgeRight
                           withOffset:235
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:76/255.0
+                                                         green:76/255.0
+                                                          blue:79/255.0
                                                          alpha:1.0]];
 
     
@@ -333,17 +333,17 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                     andParameterName:@"adsr:0:output"
                               onEdge:kEdgeRight
                           withOffset:190
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:118/255.0
+                                                         green:134/255.0
+                                                          blue:120/255.0
                                                          alpha:1.0]];
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"adsr:1:output"
                               onEdge:kEdgeRight
                           withOffset:80
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:91/255.0
+                                                         green:94/255.0
+                                                          blue:51/255.0
                                                          alpha:1.0]];
 
     
