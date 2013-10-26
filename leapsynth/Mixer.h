@@ -21,4 +21,6 @@
 - (SampleProvider*)inputAtIndex:(int)index;
 - (void)removeInput:(SampleProvider*)source;
 
+- (int)inputCount;
+
 @end

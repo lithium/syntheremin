@@ -24,8 +24,10 @@
     double sample = 0;
     int count = 0;
     for (SampleProvider *source in inputs) {
-        if ([source level] == 0) 
+        if ([source isKindOfClass:[Mixer class]] &&
+            [(Mixer*)source inputCount] < 1) {
             continue;
+        }
         sample += [source getSample];
         count++;
     }
@@ -47,5 +49,8 @@
 {
     [inputs removeObject:source];
 }
-
+- (int)inputCount
+{
+    return [inputs count];
+}
 @end
