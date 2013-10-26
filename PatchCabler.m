@@ -38,11 +38,6 @@
 
 
     
-//        [cablePath moveToPoint:orig];
-//        orig.x += 5;
-//        [cablePath lineToPoint:orig];
-        
-
         //draw the stem
         if ([endpoint cablerEdge] == kEdgeLeft) {
             orig.x += 4;
@@ -79,36 +74,51 @@
             NSPoint final;
         
             // calculate final point
-            if ([endpoint cablerEdge] == kEdgeLeft) {
+            float d = (loc.y+[endpoint size].height/2) - orig.y;
+            
+            if ([endpoint connectedTo] && [[endpoint connectedTo] cablerEdge] == kEdgeRight) {
+                final = NSMakePoint(loc.x + 4,
+                                    loc.y + [endpoint size].height/2);
+            }
+            else
+            if ([endpoint connectedTo] && [[endpoint connectedTo] cablerEdge] == kEdgeLeft) {
+                final = NSMakePoint(loc.x + [endpoint size].width - 4,
+                                    loc.y + [endpoint size].height/2);
+            }
+            else
+            if (fabs(d) < 4) {
+                final = NSMakePoint(loc.x + 4,
+                                    loc.y + [endpoint size].height/2);
+            } else
+            if (d < 0) {
                 final = NSMakePoint(loc.x + [endpoint size].width/2,
                                     loc.y + [endpoint size].height-4);
             }
-            else if ([endpoint cablerEdge] == kEdgeRight) {
-                final = NSMakePoint(loc.x + [endpoint size].width-4,
-                                    loc.y + [endpoint size].height-4);
+            else {
+                final = NSMakePoint(loc.x + [endpoint size].width/2,
+                                    loc.y+4);
             }
-            
-            
-            
-//            if ([endpoint cablerEdge] == kEdgeLeft || [endpoint cablerEdge] == kEdgeRight) {
-//            }
 
             
 
+            // add any necessary midpoints
             if ([endpoint connectedTo]) {
                 int connectedEdge = [[endpoint connectedTo] cablerEdge];
                 if (connectedEdge == kEdgeLeft || connectedEdge == kEdgeRight) {
+                    double h = orig.y / [self bounds].size.height;
+
                     if (connectedEdge == [endpoint cablerEdge]) {
                         //connected to same edge
                         double x = connectedEdge == kEdgeLeft ? 100 : [self bounds].size.width-100;
+                        x += 70*h;
                         [cablePath lineToPoint:NSMakePoint(x, orig.y)];
                         [cablePath lineToPoint:NSMakePoint(x, final.y)];
                     
                     } else {
                         //connected to opposite edge
-                        double x = (final.x - orig.x) / 2; // midpoint
-                        double h = orig.y / [self bounds].size.height;
-                        x += 40*h;
+                        double x = fabs((final.x - orig.x) / 2); // midpoint
+                        x += 70 *h;
+                        
                         NSPoint mid = NSMakePoint(x, orig.y);
                         [cablePath lineToPoint:mid];
                         [cablePath lineToPoint:NSMakePoint(mid.x, final.y)];
@@ -116,19 +126,21 @@
                     }
                 }
                 else {
+                    //connected to adjacent edge
                     [cablePath lineToPoint:NSMakePoint(final.x, orig.y)];
-                    
                 }
 
                 
                 
             }
             else {
+                // being dragged
                 [cablePath lineToPoint:NSMakePoint(final.x, orig.y)];
                 
             }
 
 
+            //connect to final point
             [cablePath lineToPoint:final];
             
         }

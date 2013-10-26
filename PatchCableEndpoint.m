@@ -114,11 +114,21 @@
             double x = [target origin].x;
             double y = [target origin].y + size.height/2;
             
-            if (connectedCount == 2) {
-                y += 5;
-            }
-            if (connectedCount == 3) {
-                y -= 5;
+            if ([[self target] cablerEdge] == kEdgeRight || [[self target] cablerEdge] == kEdgeLeft) {
+                if (connectedCount == 2) {
+                    y += 5;
+                }
+                if (connectedCount == 3) {
+                    y -= 5;
+                }
+            } else {
+                if (connectedCount == 2) {
+                    x += 5;
+                }
+                if (connectedCount == 3) {
+                    x -= 5;
+                }
+
             }
 
             if ([target cablerEdge] == kEdgeRight) {
