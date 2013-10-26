@@ -75,6 +75,9 @@
     [self setParameterName:name];
     [self setColor:aColor];
 
+    if (type == kInputPatchEndpoint) {
+        inputs = [[NSMutableArray alloc] init];
+    }
     return self;
 }
 
@@ -106,7 +109,7 @@
             [self setFrameOrigin:origin];
         } else {
             
-            int connectedCount = [self target]->_connectedCount;
+            int connectedCount = [[self target]->inputs count];
 
             double x = [target origin].x;
             double y = [target origin].y + size.height/2;
@@ -210,18 +213,21 @@
 
     if (endpointType == kInputPatchEndpoint) 
     {
-        if (isConnected) {
+        for (PatchCableEndpoint *endpoint in inputs) {
+            [endpoint setFrameOrigin:[endpoint origin]];
+            
             if (delegate) {
-                [delegate endpointReleased:connectedTo fromEndpoint:self];
+                [delegate endpointReleased:[endpoint connectedTo] fromEndpoint:endpoint];
             }
-            [[self target] setConnectedTo:nil];
-            [self setConnectedTo:nil];
-            _connectedCount = 0;
         }
-    } 
+        [inputs removeAllObjects];
+    }
     else if (endpointType == kOutputPatchEndpoint) 
     {
-        [self setFrameOrigin:origin];        
+        [self setFrameOrigin:origin];
+        if ([self target]) {
+            [[self target]->inputs removeObject:self];
+        }
         isDragging = YES;
     }
     
@@ -236,18 +242,12 @@
     
     isDragging = NO;
     
-    if (delegate) {
+    if (isConnected && delegate) {
         [delegate endpointReleased:self fromEndpoint:connectedTo];
     }
 
-    if (!isConnected) {
-        [self setFrameOrigin:origin];
-        if ([self target]) {
-            [self target]->_connectedCount--;
-            [[self target] setConnectedTo:nil];
-        }
-        [self setConnectedTo:nil];
-    }
+    [self setFrameOrigin:origin];
+    [self setConnectedTo:nil];
     [[self superview] setNeedsDisplay:YES];
 
 }

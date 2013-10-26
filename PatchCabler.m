@@ -170,21 +170,35 @@
 {  
     PatchCableEndpoint *source = [endpoints objectForKey:sourceName];
     PatchCableEndpoint *target = [endpoints objectForKey:targetName ];
-    [source setConnectedTo:target];
-    [target setConnectedTo:source];
+    [self connect_endpoints:source :target];
     [self setNeedsDisplay:YES];
-    
+
 }
 - (void)disconnectEndpoints:(NSString*)sourceName :(NSString*)targetName
 {
     PatchCableEndpoint *source = [endpoints objectForKey:sourceName];
     PatchCableEndpoint *target = [endpoints objectForKey:targetName ];
-    [source setConnectedTo:nil];
-    [target setConnectedTo:nil];
+    [self disconnect_endpoints:source :target];
+
     [self setNeedsDisplay:YES];
 
 }
 
+- (void)connect_endpoints:(PatchCableEndpoint*)source :(PatchCableEndpoint*)target
+{
+    [source setConnectedTo:target];
+    
+    if (target && ![target->inputs containsObject:source]) {
+        [target->inputs addObject:source];
+    }
+}
+- (void)disconnect_endpoints:(PatchCableEndpoint*)source :(PatchCableEndpoint*)target
+{
+    if (target && source && [target endpointType] == kInputPatchEndpoint)
+        [target->inputs removeObject:source];
+    
+    [source setConnectedTo:nil];
+}
 - (void)endpointDragged:(id)sender toLocation:(NSPoint)dragLocation
 {
     dragLocation = [self convertPoint:dragLocation fromView:nil];
@@ -198,15 +212,11 @@
             NSPointInRect(dragLocation,[target frame]) &&
             [target endpointType] == kInputPatchEndpoint)
         {
-            PatchCableEndpoint *source = (PatchCableEndpoint*)sender;
-            PatchCableEndpoint *te = (PatchCableEndpoint*)target;
-            te->_connectedCount++;
-
-            [source setConnectedTo:target];
-            [target setConnectedTo:source];
             
+            [self connect_endpoints:sender :target];
+
             if (delegate) {
-                [delegate patchConnected:source :target];
+                [delegate patchConnected:sender :target];
             }
             
         }
@@ -214,8 +224,9 @@
 }
 - (void)endpointReleased:(id)sender fromEndpoint:(id)connectedTo
 {
+    [self disconnect_endpoints:connectedTo :sender];
     if (delegate) {
-        [delegate patchDisconnected:sender :connectedTo];
+        [delegate patchDisconnected:connectedTo :sender];
     }
 
 }

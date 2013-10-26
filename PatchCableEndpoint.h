@@ -44,7 +44,6 @@ enum {
     BOOL isConnected;
     __weak id connectedTo;
 
-
     NSPoint clickLocation;
     NSPoint dragOrigin;
     NSPoint origin;
@@ -53,7 +52,8 @@ enum {
     
     @public
     
-        int _connectedCount;
+    
+    NSMutableArray *inputs; // the output endpoints that are connected to us
 }
 
 @property NSColor *color;
