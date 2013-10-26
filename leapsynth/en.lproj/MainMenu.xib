@@ -183,17 +183,6 @@
                                             <rect key="frame" x="11" y="592" width="938" height="117"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
-                                        <button verticalHuggingPriority="750" id="5253">
-                                            <rect key="frame" x="20" y="665" width="80" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="switch" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5254">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="switchToTheremin:" target="494" id="5256"/>
-                                            </connections>
-                                        </button>
                                         <customView id="5004" customClass="CSKnob">
                                             <rect key="frame" x="679" y="178" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -555,6 +544,16 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <customView id="9iW-hy-zKy" customClass="CSMomentaryButton">
+                                            <rect key="frame" x="20" y="665" width="59" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="clear"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="switchToTheremin:" target="494" id="Pve-zk-pPN"/>
+                                            </connections>
+                                        </customView>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -573,27 +572,19 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </customView>
                                         <customView id="0RD-aX-70v" customClass="CSMomentaryButton">
-                                            <rect key="frame" x="140" y="650" width="59" height="22"/>
+                                            <rect key="frame" x="20" y="665" width="59" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="clear"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="switchToSynth:" target="494" id="f7L-Z5-B67"/>
+                                            </connections>
                                         </customView>
                                         <customView id="5257" customClass="LeapCursorOverlay">
                                             <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
-                                        <button verticalHuggingPriority="750" id="5250">
-                                            <rect key="frame" x="20" y="665" width="80" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="switch" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5251">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="switchToSynth:" target="494" id="5252"/>
-                                            </connections>
-                                        </button>
                                         <box autoresizesSubviews="NO" title="Looper" boxType="custom" borderType="none" titlePosition="noTitle" id="4677">
                                             <rect key="frame" x="43" y="34" width="249" height="86"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
