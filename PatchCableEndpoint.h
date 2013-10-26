@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#define kEndpointWidth 32
-#define kEndpointHeight 32
+
+#define kOutputEndpointWidth 13
+#define kOutputEndpointHeight 13
+
+#define kInputEndpointWidth 13
+#define kInputEndpointHeight 25
 
 enum {
     kInputPatchEndpoint=0,
@@ -33,6 +37,7 @@ enum {
 {
     int endpointType;
     
+    int _padding;
     
     NSImage *image;    
     
@@ -42,8 +47,11 @@ enum {
     NSPoint clickLocation;
     NSPoint dragOrigin;
     NSPoint origin;
+    
+    NSSize size;
 }
 
+@property NSColor *color;
 @property BOOL isDragging;
 @property int endpointType;
 @property NSString *parameterName;
@@ -52,6 +60,7 @@ enum {
 @property (weak) id <PatchCableEndpointDelegate> delegate;
 @property (weak) id connectedTo;
 
+@property (readonly) NSSize size;
 - (NSPoint)origin;
 - (PatchCableEndpoint*)target;
 
@@ -59,6 +68,7 @@ enum {
            andName:(NSString*)name
             onEdge:(int)edge
         withOffset:(double)offset
+         withColor:(NSColor*)color
       parentBounds:(NSRect)bounds
                   ;
 

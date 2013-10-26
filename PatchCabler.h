@@ -26,11 +26,12 @@
 
 - (void)addEndpoint:(PatchCableEndpoint *)endpoint;
 
-- (void)addEndpointWithType:(int)endpointType 
-          andParameterName:(NSString*)name
-                    onEdge:(int)cablerEdge
-                withOffset:(double)edgeOffset
-                          ;
+- (void)addEndpointWithType:(int)endpointType
+           andParameterName:(NSString*)name
+                     onEdge:(int)cablerEdge
+                 withOffset:(double)edgeOffset
+                  withColor:(NSColor*)color
+                           ;
 
 - (void)connectEndpoints:(NSString*)sourceName :(NSString*)targetName;
 - (void)disconnectEndpoints:(NSString*)sourceName :(NSString*)targetName;

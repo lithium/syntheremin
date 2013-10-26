@@ -15,6 +15,9 @@
 @synthesize edgeOffset;
 @synthesize isDragging;
 @synthesize delegate;
+@synthesize size;
+@synthesize color;
+
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -30,36 +33,47 @@
            andName:(NSString*)name
             onEdge:(int)edge
         withOffset:(double)offset
+         withColor:(NSColor*)aColor
       parentBounds:(NSRect)bounds
 {
+    _padding = 4;
+    size = NSMakeSize(kOutputEndpointWidth+_padding*2, kOutputEndpointHeight+_padding*2);
+    if (type == kInputPatchEndpoint) {
+        size = NSMakeSize(kInputEndpointWidth+_padding*2, kInputEndpointHeight+_padding*2);
+    }
+
+#define kStemLength 20
     
     double x,y;
     switch (edge) {
         case kEdgeLeft:
-            x = 0;
+            x = kStemLength;
             y = offset > 0 ? offset : bounds.size.height+offset;
             break;
         case kEdgeTop:
             x = offset > 0 ? offset : bounds.size.width+offset;
-            y = bounds.size.height-kEndpointHeight;
+            y = bounds.size.height-size.height - kStemLength;
             break;
         case kEdgeRight:
-            x = bounds.size.width-kEndpointWidth;
+            x = bounds.size.width-size.width - kStemLength;
             y = offset > 0 ? offset : bounds.size.height+offset;
             break;
         case kEdgeBottom:
             x = offset > 0 ? offset : bounds.size.width+offset;
-            y = 0;
+            y = kStemLength;
             break;
     }
     origin = NSMakePoint(x,y);
-    self = [self initWithFrame:NSMakeRect(x, y, kEndpointWidth, kEndpointHeight)];
+    
+
+    self = [self initWithFrame:NSMakeRect(x, y, size.width, size.height)];
 
     
     [self setCablerEdge:edge];
     [self setEdgeOffset:offset];
     [self setEndpointType:type];
     [self setParameterName:name];
+    [self setColor:aColor];
 
     return self;
 }
@@ -70,9 +84,9 @@
 {
     endpointType = newEndpointType;
     if (endpointType == kOutputPatchEndpoint) {
-        image = [NSImage imageNamed:@"patch_endpoint_output.png"];
+        image = [NSImage imageNamed:@"wire_out"];
     } else {
-        image = [NSImage imageNamed:@"patch_endpoint_input.png"];
+        image = [NSImage imageNamed:@"wire_in"];
     }
 }
 
@@ -105,27 +119,42 @@
     double rads = M_PI/2;
     switch (cablerEdge) {
         case kEdgeLeft:
-            rads = 0;
+            rads = M_PI;
             break;
         case kEdgeTop:
             rads = 1.5*M_PI;
             break;
         case kEdgeRight:
-            rads = M_PI;
+            rads = 0;
             break;
         case kEdgeBottom:
-            rads = M_PI/2;
+            rads = 1.5*M_PI;
             break;
     }
     [rotate rotateByRadians:rads];
     [rotate translateXBy:-(bounds.size.width/2) yBy:-(bounds.size.height/2)];
     [rotate concat];
 
+    NSBezierPath *path = [[NSBezierPath alloc] init];
     
-    [image drawInRect:bounds
-             fromRect:NSMakeRect(0, 0, [image size].width, [image size].height)
-            operation:NSCompositeSourceOver
-             fraction:1.0];
+    if (endpointType == kOutputPatchEndpoint) {
+        [path appendBezierPathWithOvalInRect:NSMakeRect(_padding, _padding,
+                                                        kOutputEndpointWidth,
+                                                        kOutputEndpointHeight)];
+    } else {
+//        [path appendBezierPathWithOvalInRect:NSMakeRect(_padding, _padding,
+//                                                        kInputEndpointWidth, kInputEndpointWidth)];
+        
+    }
+    [color set];
+    
+    [path setLineWidth:4];
+    [path stroke];
+//    [image drawInRect:bounds
+//             fromRect:NSMakeRect(0, 0, [image size].width, [image size].height)
+//            operation:NSCompositeSourceOver
+//             fraction:1.0];
+    
     [context restoreGraphicsState];
     
 }
