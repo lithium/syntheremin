@@ -46,7 +46,7 @@
 @synthesize polarAnalyzer;
 @synthesize wave_osc_0;
 @synthesize noleap_label;
-
+@synthesize fullscreenAnalyzer;
 
 
 @synthesize window = _window;
@@ -70,12 +70,22 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {            
+    [_window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+    
+    [_window setBackgroundColor:[NSColor colorWithSRGBRed:39/255.0 green:39.0/255.0 blue:44/255.0 alpha:1.0]];
 
-    //we want to quit on window close
+    // quit on window close
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:_window];
     
     
-    //so we get keyUp/keyDown events
+    // watch for full screen
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidEnterFullScreen:) name:NSWindowDidEnterFullScreenNotification object:_window];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillEnterFullScreen:) name:NSWindowWillEnterFullScreenNotification object:_window];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillExitFullScreen:) name:NSWindowWillExitFullScreenNotification object:_window];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidExitFullScreen:) name:NSWindowDidExitFullScreenNotification object:_window];
+
+    
+    // get keyUp/keyDown events
     [_window makeFirstResponder:self];
     
     
@@ -138,11 +148,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     }
     //hardcode classic theremin
     [[synth mixer] setModulator:leapModulator[1]];
-//    [leapModulator[1] setInverted:YES];
     equalTempered = NO;
     
     [[synth vcf] setModulator:leapModulator[4]];
 
+    
     //listen to any available midi devices
     [self performSelectorInBackground:@selector(initializeMidi) withObject:nil];
     
@@ -154,7 +164,40 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [synth stop];
     [NSApp terminate:self];
 }
+- (void)windowWillEnterFullScreen:(NSNotification *)notification
+{
+    [[tabView animator] setAlphaValue:0.0];
+    [[fullscreenAnalyzer animator] setAlphaValue:1.0];
+    
+    [synth setAnalyzerDelegate:fullscreenAnalyzer];
+    lastAnalyzer = currentAnalyzer;
+    currentAnalyzer = fullscreenAnalyzer;
+}
 
+
+- (void)windowDidEnterFullScreen:(NSNotification *)notification
+{
+    savedFrame = [_window frame];
+    NSRect newFrame = [[NSScreen mainScreen] frame];
+    [_window setFrame:newFrame display:YES];
+    [fullscreenAnalyzer setFrameSize:NSMakeSize(newFrame.size.width, newFrame.size.height)];
+    [fullscreenAnalyzer setFrameOrigin:NSMakePoint(0,0)];
+}
+- (void)windowWillExitFullScreen:(NSNotification *)notification
+{
+    [[tabView animator] setAlphaValue:1.0];
+    [[fullscreenAnalyzer animator] setAlphaValue:0.0];
+    
+
+}
+- (void)windowDidExitFullScreen:(NSNotification *)notification
+{
+    [_window setFrame:savedFrame display:YES];
+    [synth setAnalyzerDelegate:lastAnalyzer];
+    currentAnalyzer = lastAnalyzer;
+    lastAnalyzer = fullscreenAnalyzer;
+
+}
 
 - (void)initializeMidi
 {    
@@ -351,12 +394,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)noteOn
 {        
     [synth noteOn];
-    [polarAnalyzer shedRipple];
+    [currentAnalyzer shedRipple];
 }
 
 - (void)noteOff
 {
-    [polarAnalyzer shedRipple];
+    [currentAnalyzer shedRipple];
     [synth noteOff];
 }
 
@@ -673,19 +716,30 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)menuClearPatch:(id)sender {
     [synth setDefaults];
 }
+
 - (IBAction)switchToSynth:(id)sender {
+    lastAnalyzer = currentAnalyzer;
+    currentAnalyzer = linearAnalyzer;
+
     [synth setAnalyzerDelegate:linearAnalyzer];
     [tabView selectTabViewItemAtIndex:0];
 }
 
+
 - (IBAction)switchToTheremin:(id)sender {
+    lastAnalyzer = currentAnalyzer;
+    currentAnalyzer = polarAnalyzer;
+    
     [synth setAnalyzerDelegate:polarAnalyzer];
     [tabView selectTabViewItemAtIndex:1];
 }
+
+
 - (IBAction)changeTuning:(id)sender {
     tuningType = [sender doubleValue];
     
     [cursorOverlay setDrawGrid:(tuningType)];
 //    NSLog(@"tuning %d", tuning);
 }
+
 @end

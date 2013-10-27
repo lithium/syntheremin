@@ -55,7 +55,9 @@ enum {
  
     LeapModulator *leapModulator[6];
     
-    
+    NSRect savedFrame;
+    id currentAnalyzer;
+    id lastAnalyzer;
     int tuningType;
 }
 
@@ -130,7 +132,7 @@ enum {
 @property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
 @property (weak) IBOutlet LinearAnalyzer *linearAnalyzer;
 @property (weak) IBOutlet PolarAnalyzer *polarAnalyzer;
-
+@property (weak) IBOutlet PolarAnalyzer *fullscreenAnalyzer;
 
 @property (weak) IBOutlet CSRadioButtonSet *wave_osc_0;
 

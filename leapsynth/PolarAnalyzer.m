@@ -114,6 +114,16 @@
 
 }
 
+- (void) setFrameSize:(NSSize)newSize
+{
+    [super setFrameSize:newSize];
+    
+    NSRect bounds = NSMakeRect(0,0,newSize.width, newSize.height);
+    for (Waveform *ripple in ripples)
+    {
+        [ripple setBounds:bounds];
+    }
+}
 
 
 - (void) receiveSamples :(id)sender :(short *)samples :(int)numSamples
