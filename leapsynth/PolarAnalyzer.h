@@ -9,8 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import "synth.h"
 
-#define kMaxRipples 10
-#define kMinSecondsBetweenRipples 0.050
+#define kMaxRipples 15
+#define kMinSecondsBetweenRipples 0.250
+#define kMaxSecondsBetweenRipples 2
+#define kRandSecondsBetweenShed 3
 
 @interface Waveform : NSObject
 {

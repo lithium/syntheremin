@@ -123,6 +123,11 @@
     firstRipple->samplesInBuffer = numSamples;
     firstRipple->frequency = [sender frequencyInHz];
 
+    CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
+    if (now - lastRippleTime > kMaxSecondsBetweenRipples+arc4random_uniform(kRandSecondsBetweenShed)) {
+        [self shedRipple];
+    }
+
     [self setNeedsDisplay:true];
 }
 
