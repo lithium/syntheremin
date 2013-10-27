@@ -23,6 +23,8 @@ typedef struct Point3 {
 }
 
 @property BOOL drawGrid;
+@property BOOL leftHandVisible;
+@property BOOL rightHandVisible;
 
 - (void) setLeftHand:(CGFloat)x :(CGFloat)y :(CGFloat)z;
 - (void) setRightHand:(CGFloat)x :(CGFloat)y :(CGFloat)z;

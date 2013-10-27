@@ -10,6 +10,8 @@
 
 @implementation LeapCursorOverlay
 @synthesize drawGrid;
+@synthesize leftHandVisible;
+@synthesize rightHandVisible;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -24,6 +26,9 @@
                                  topPadding, 
                                  [self bounds].size.width-sidePadding*2,
                                  [self bounds].size.height-topPadding*2);
+        
+        [self setLeftHandVisible:YES];
+        [self setRightHandVisible:YES];
     }
     
     return self;
@@ -34,53 +39,50 @@
     NSGraphicsContext *ctx = [NSGraphicsContext currentContext];
     [ctx saveGraphicsState];
     
-//    NSRect bounds = [self bounds];
-    
-    [[NSColor blackColor] set];
+//    [[NSColor blackColor] set];
 //    [[NSBezierPath bezierPathWithRect:cursorFrame] stroke];
     
     // draw left hand
-    NSBezierPath *leftDotPath = [[NSBezierPath alloc] init];
-    int left_radius = (leftHand.z * (kHandRadiusMax - kHandRadiusMin)) + kHandRadiusMin;
-    int left_x = cursorFrame.origin.x + leftHand.x * (cursorFrame.size.width/2 - left_radius);
-    int left_y = cursorFrame.origin.y + leftHand.y * (cursorFrame.size.height - left_radius);    
-    [leftDotPath appendBezierPathWithOvalInRect:NSMakeRect(left_x,left_y,left_radius,left_radius)];
-    
-    left_y += left_radius/2;
-    left_x += left_radius/2;
-    [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x, left_y)];
-    [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2, left_y)];
+    if (leftHandVisible) {
+        
+        NSBezierPath *leftDotPath = [[NSBezierPath alloc] init];
+        int left_radius = (leftHand.z * (kHandRadiusMax - kHandRadiusMin)) + kHandRadiusMin;
+        int left_x = cursorFrame.origin.x + leftHand.x * (cursorFrame.size.width/2 - left_radius);
+        int left_y = cursorFrame.origin.y + leftHand.y * (cursorFrame.size.height - left_radius);    
+        [leftDotPath appendBezierPathWithOvalInRect:NSMakeRect(left_x,left_y,left_radius,left_radius)];
+        
+        left_y += left_radius/2;
+        left_x += left_radius/2;
+        [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x, left_y)];
+        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2, left_y)];
 
-    [leftDotColor set];
-    [leftDotPath stroke];
+        [leftDotColor set];
+        [leftDotPath stroke];
+    }
+
     
-    
-//    NSBezierPath *levelPath = [[NSBezierPath alloc] init];
-//    [levelPath appendBezierPathWithRect:NSMakeRect(cursorFrame.origin.x, cursorFrame.origin.y,
-//                                                   cursorFrame.size.width/2,
-//                                                   cursorFrame.size.height*leftHand.y)];
-//    [leftDotColor set];
-//    [levelPath fill];
     
     //draw right hand
-    NSBezierPath *rightDotPath = [[NSBezierPath alloc] init];
-    int right_radius = (rightHand.z * (kHandRadiusMax - kHandRadiusMin)) + kHandRadiusMin;
-    int right_x = cursorFrame.origin.x + (rightHand.x * (cursorFrame.size.width/2 - right_radius)) + (cursorFrame.size.width/2);
-    int right_y = cursorFrame.origin.y + rightHand.y * (cursorFrame.size.height-right_radius);    
-    [rightDotPath appendBezierPathWithOvalInRect:NSMakeRect(right_x,right_y,right_radius,right_radius)];
-    
-    right_y += right_radius/2;
-    right_x += right_radius/2;
-    [rightDotPath moveToPoint:NSMakePoint(right_x, cursorFrame.origin.y)];
-    [rightDotPath lineToPoint:NSMakePoint(right_x, cursorFrame.origin.y+cursorFrame.size.height)];
+    if (rightHandVisible) {
+        NSBezierPath *rightDotPath = [[NSBezierPath alloc] init];
+        int right_radius = (rightHand.z * (kHandRadiusMax - kHandRadiusMin)) + kHandRadiusMin;
+        int right_x = cursorFrame.origin.x + (rightHand.x * (cursorFrame.size.width/2 - right_radius)) + (cursorFrame.size.width/2);
+        int right_y = cursorFrame.origin.y + rightHand.y * (cursorFrame.size.height-right_radius);    
+        [rightDotPath appendBezierPathWithOvalInRect:NSMakeRect(right_x,right_y,right_radius,right_radius)];
+        
+        right_y += right_radius/2;
+        right_x += right_radius/2;
+        [rightDotPath moveToPoint:NSMakePoint(right_x, cursorFrame.origin.y)];
+        [rightDotPath lineToPoint:NSMakePoint(right_x, cursorFrame.origin.y+cursorFrame.size.height)];
 
-    if ([self drawGrid]) {
-        [rightDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2, right_y)];
-        [rightDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width, right_y)];
+        if ([self drawGrid]) {
+            [rightDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2, right_y)];
+            [rightDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width, right_y)];
 
+        }
+        [rightDotColor set];
+        [rightDotPath stroke];
     }
-    [rightDotColor set];
-    [rightDotPath stroke];
 
 
     if ([self drawGrid]) {

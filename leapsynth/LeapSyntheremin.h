@@ -13,11 +13,11 @@
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)normal;
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal;
 
-//    - (void)leftHandGone:(int32_t)hand_id;
-//    - (void)rightHandGone:(int32_t)hand_id;
+- (void)leftHandGone:(int32_t)hand_id;
+- (void)rightHandGone:(int32_t)hand_id;
 
-- (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
-- (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
+//- (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
+//- (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture;
 
 - (void)leftHandOpened:(LeapHand *)hand;
 - (void)leftHandClosed:(LeapHand *)hand;

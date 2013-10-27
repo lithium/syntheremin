@@ -572,7 +572,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
     [cursorOverlay setLeftHand:normal.x :normal.y :normal.z];
-    
+    [cursorOverlay setLeftHandVisible:YES];
+
     [leapModulator[0] setLevel:normal.x];
     [leapModulator[1] setLevel:normal.y];
     [leapModulator[2] setLevel:normal.z];
@@ -585,6 +586,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
     [cursorOverlay setRightHand:normal.x :normal.y :normal.z];
+    [cursorOverlay setRightHandVisible:YES];
+
     
     [leapModulator[3] setLevel:normal.x];
     [leapModulator[4] setLevel:normal.y];
@@ -633,11 +636,13 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
 
 }
-- (void)leftHandTap:(LeapHand *)hand :(LeapGesture *)gesture
-{   
-}
-- (void)rightHandTap:(LeapHand *)hand :(LeapGesture *)gesture
+- (void)leftHandGone:(int32_t)hand_id
 {
+    [cursorOverlay setLeftHandVisible:NO];
+}
+- (void)rightHandGone:(int32_t)hand_id
+{
+    [cursorOverlay setRightHandVisible:NO];
 }
 - (void)onConnect
 {

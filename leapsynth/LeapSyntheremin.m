@@ -65,15 +65,14 @@
                 //unknown hand assign it.
                 if ([pos x] < 0.5) {
                     leftHandId = hand_id;
-                    leftFound = true;
                 } else {
                     rightHandId = hand_id;
-                    rightFound = true;
                 }
             }
             
             int fingerCount = [[hand pointables] count];
             if (hand_id == leftHandId) {
+                leftFound = true;
 
                 LeapVector *normalPos = [LeapSyntheremin normalizePositionForLeftHand:pos];
                 if ([delegate respondsToSelector:@selector(leftHandMotion::)]) {
@@ -85,18 +84,17 @@
                     leftHandOpen = NO;
                     if ([delegate respondsToSelector:@selector(leftHandClosed:)]) 
                         [delegate leftHandClosed:hand];
-//                    NSLog(@"left hand closed");
                 }
                 else if (!leftHandOpen && fingerCount > 1) {
                     leftHandOpen = YES;
                     if ([delegate respondsToSelector:@selector(leftHandOpened:)])
                         [delegate leftHandOpened:hand];
-//                    NSLog(@"left hand opened %d", fingerCount);
 
                 }
             }
             else if (hand_id == rightHandId) {
-                
+                rightFound = true;
+
                 //track tip position for right hand
                 pos = [[[hand pointables] frontmost] stabilizedTipPosition];
                 pos = [[frame interactionBox] normalizePoint:pos clamp:YES];
@@ -106,18 +104,16 @@
                 if ([delegate respondsToSelector:@selector(rightHandMotion::)]) {
                     [delegate rightHandMotion:hand :normalPos];
                 }
+                
                 if (rightHandOpen && fingerCount < 2) {
                     rightHandOpen = NO;
                     if ([delegate respondsToSelector:@selector(rightHandClosed:)]) 
                         [delegate rightHandClosed:hand];
-                    //                    NSLog(@"right hand closed");
                 }
                 else if (!rightHandOpen && fingerCount > 1) {
                     rightHandOpen = YES;
                     if ([delegate respondsToSelector:@selector(rightHandOpened:)])
                         [delegate rightHandOpened:hand];
-                    //                    NSLog(@"right hand opened %d", fingerCount);
-                    
                 }
 
             }
@@ -125,23 +121,18 @@
     }
     
     
-//    if (leftHandId != -1 && !leftFound) {
-//        if ([delegate respondsToSelector:@selector(leftHandGone:)]) {
-//            [delegate leftHandGone:leftHandId];
-//        }
-//        leftHandId = -1;
-//    }
-//    if (rightHandId != -1 && !rightFound) {
-//        if ([delegate respondsToSelector:@selector(rightHandGone:)]) {
-//            [delegate rightHandGone:rightHandId];
-//        }
-//        rightHandId = -1;
-//    }
-
-    
-//    NSLog(@"Frame id: %lld, timestamp: %lld, hands: %ld, fingers: %ld, tools: %ld, gestures: %ld",
-//          [frame id], [frame timestamp], [[frame hands] count],
-//          [[frame fingers] count], [[frame tools] count], [[frame gestures:nil] count]);
+    if (leftHandId != -1 && !leftFound) {
+        if ([delegate respondsToSelector:@selector(leftHandGone:)]) {
+            [delegate leftHandGone:leftHandId];
+        }
+        leftHandId = -1;
+    }
+    if (rightHandId != -1 && !rightFound) {
+        if ([delegate respondsToSelector:@selector(rightHandGone:)]) {
+            [delegate rightHandGone:rightHandId];
+        }
+        rightHandId = -1;
+    }
 
     
 //    NSArray *gestures = [frame gestures:nil];

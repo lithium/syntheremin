@@ -547,6 +547,10 @@
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5257" customClass="LeapCursorOverlay">
                                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftHandVisible" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rightHandVisible" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kaj-YT-a99" customClass="CSRadioButtonSet">
                                                     <rect key="frame" x="330" y="659" width="188" height="45"/>
