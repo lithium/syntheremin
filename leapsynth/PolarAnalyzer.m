@@ -44,7 +44,15 @@
 - (NSBezierPath *)bezierPath
 {
     NSBezierPath *path = [[NSBezierPath alloc] init];
+    NSShadow *shadow = [[NSShadow alloc] init];
+    
+    
     [path setLineWidth:3.0];
+    
+    [shadow setShadowBlurRadius:10];
+    [shadow setShadowOffset:NSMakeSize(0,0)];
+    [shadow setShadowColor:[NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0]];
+    
     
     
     long samplesPerPeriod = kSampleRate/frequency;
@@ -70,6 +78,8 @@
         }
     }
     [path closePath];
+    [shadow set];
+    
     return path;
 }
 
