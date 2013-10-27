@@ -12,9 +12,6 @@
 @synthesize cursorOverlay;
 @synthesize linearAnalyzer;
 @synthesize patchCabler;
-@synthesize looper_level;
-@synthesize looper_play;
-@synthesize looper_record;
 
 @synthesize lfo_freq;
 @synthesize lfo_level;
@@ -93,7 +90,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     //set up synth delegates
     [synth setPatchDelegate:self];
-    [[synth looper] setDelegate:self];
 
 
     //KVO for outlets
@@ -403,19 +399,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
  * Delegate Callbacks
  */
 
-//looper delegate
-- (void) samplesPlayed :(short *)samples :(int)numSamples
-{
-    @autoreleasepool {
-        [looper_level setIntValue:[looper_level intValue]+numSamples];
-    }
-}
-- (void) loopReset
-{
-    @autoreleasepool {
-        [looper_level setIntValue:0];
-    }
-}
 
 
 //midi delegate
@@ -625,47 +608,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
  * IB Actions
  */
 
-- (IBAction)toggleLooperRecord:(id)sender {
-    int state = [looper_record state];
-    if (state) {
-        [looper_level setIntValue:0];
-        [looper_level setMaxValue:1000000];
-        [looper_level setCriticalValue:0.1];
-        [[synth looper] recordNewLoop];
-    } else {
-        [looper_level setIntValue:0];
-        [looper_level setMaxValue:0];
-        [looper_level setCriticalValue:0];
-        [[synth looper] stopRecording];
-    }
-
-}
-- (IBAction)toggleLooperPlay:(id)sender {
-
-    int state = [looper_play state];
-    if (state) {
-        [looper_level setIntValue:0];
-        [looper_level setMaxValue:[[synth looper] longestLoopSize]];
-        [looper_level setCriticalValue:0];
-        [[synth looper] playAll];
-    } else {
-        [looper_level setIntValue:0];
-        [looper_level setMaxValue:0];
-        [looper_level setCriticalValue:0];
-        [[synth looper] stopPlayback];
-    }
-        
-}
-
-
-
-- (IBAction)clickLooperUndo:(id)sender {
-    [[synth looper] undoLastLoop];
-}
-
-- (IBAction)clickLooperClear:(id)sender {
-    [[synth looper] clearAllLoops];
-}
 
 
 

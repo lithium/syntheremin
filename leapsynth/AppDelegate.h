@@ -12,7 +12,6 @@
 #import "Synth.h"
 #import "LeapSyntheremin.h"
 #import "AudioQueueSynth.h"
-#import "Looper.h"
 #import "MidiParser.h"
 #import "LinearAnalyzer.h"
 #import "PatchCabler.h"
@@ -32,11 +31,11 @@ enum {
     kTuningHarmonicMinor=3,
 };
 
-@interface AppDelegate : NSResponder  <NSApplicationDelegate, 
-                                    LeapSynthereminDelegate,
-                                    PatchCablerDelegate,
-                                    SynthPatchDelegate,
-                                    LoopDelegate> 
+@interface AppDelegate : NSResponder <NSApplicationDelegate
+                                     ,LeapSynthereminDelegate
+                                     ,PatchCablerDelegate
+                                     ,SynthPatchDelegate
+                                     >
 {
     AudioQueueSynth *synth;
     
@@ -69,14 +68,6 @@ enum {
 @property (weak) IBOutlet NSTextField *noleap_label;
 
 
-//looper interface
-@property (weak) IBOutlet NSButton *looper_record;
-@property (weak) IBOutlet NSButton *looper_play;
-@property (weak) IBOutlet NSLevelIndicator *looper_level;
-- (IBAction)toggleLooperRecord:(id)sender;
-- (IBAction)toggleLooperPlay:(id)sender;
-- (IBAction)clickLooperUndo:(id)sender;
-- (IBAction)clickLooperClear:(id)sender;
 
 
 //controls

@@ -465,67 +465,6 @@
                                                 <action selector="changeDetuneControl:" target="494" id="gJM-4r-v19"/>
                                             </connections>
                                         </customView>
-                                        <box autoresizesSubviews="NO" title="Looper" boxType="custom" borderType="none" titlePosition="noTitle" id="s11-Fq-hoj">
-                                            <rect key="frame" x="43" y="34" width="249" height="86"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="249" height="86"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" id="fcu-U8-rLM">
-                                                        <rect key="frame" x="56" y="45" width="53" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aIV-3z-WTg">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="toggleLooperPlay:" target="494" id="ZnP-wY-dZ1"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="P9d-zR-cbP">
-                                                        <rect key="frame" x="12" y="41" width="39" height="38"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="round" bezelStyle="circular" imagePosition="above" alignment="left" borderStyle="border" imageScaling="proportionallyDown" id="cvQ-yk-fWC">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                            <font key="font" metaFont="label"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="toggleLooperRecord:" target="494" id="seW-m1-9kU"/>
-                                                        </connections>
-                                                    </button>
-                                                    <levelIndicator verticalHuggingPriority="750" id="bl8-nv-hzm">
-                                                        <rect key="frame" x="18" y="26" width="217" height="16"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <levelIndicatorCell key="cell" alignment="left" doubleValue="100" maxValue="2000" criticalValue="100" levelIndicatorStyle="continuousCapacity" id="ErZ-Bc-Vgn"/>
-                                                    </levelIndicator>
-                                                    <button verticalHuggingPriority="750" id="P3Q-LX-w7F">
-                                                        <rect key="frame" x="118" y="53" width="52" height="19"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="roundRect" title="Undo" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JXf-hA-8Kr">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="clickLooperUndo:" target="494" id="vTh-QC-U7A"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" id="XxP-xo-Xso">
-                                                        <rect key="frame" x="183" y="53" width="52" height="19"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="roundRect" title="Clear" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LQm-nl-7cR">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="clickLooperClear:" target="494" id="u3m-9X-HPG"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
                                         <textField verticalHuggingPriority="750" id="E0d-tf-bsd">
                                             <rect key="frame" x="674" y="37" width="166" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
@@ -585,67 +524,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
-                                        <box autoresizesSubviews="NO" title="Looper" boxType="custom" borderType="none" titlePosition="noTitle" id="4677">
-                                            <rect key="frame" x="43" y="34" width="249" height="86"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="249" height="86"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" id="4678">
-                                                        <rect key="frame" x="56" y="45" width="53" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4679">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="toggleLooperPlay:" target="494" id="4685"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="4680">
-                                                        <rect key="frame" x="12" y="41" width="39" height="38"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="round" bezelStyle="circular" imagePosition="above" alignment="left" borderStyle="border" imageScaling="proportionallyDown" id="4681">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                            <font key="font" metaFont="label"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="toggleLooperRecord:" target="494" id="4683"/>
-                                                        </connections>
-                                                    </button>
-                                                    <levelIndicator verticalHuggingPriority="750" id="4686">
-                                                        <rect key="frame" x="18" y="26" width="217" height="16"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <levelIndicatorCell key="cell" alignment="left" doubleValue="100" maxValue="2000" criticalValue="100" levelIndicatorStyle="continuousCapacity" id="4687"/>
-                                                    </levelIndicator>
-                                                    <button verticalHuggingPriority="750" id="4689">
-                                                        <rect key="frame" x="118" y="53" width="52" height="19"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="roundRect" title="Undo" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4690">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="clickLooperUndo:" target="494" id="4693"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" id="4691">
-                                                        <rect key="frame" x="183" y="53" width="52" height="19"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="roundRect" title="Clear" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4692">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="clickLooperClear:" target="494" id="4695"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
                                         <customView id="kaj-YT-a99" customClass="CSRadioButtonSet">
                                             <rect key="frame" x="330" y="659" width="188" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -675,7 +553,6 @@
                 <outlet property="adsr_release_1" destination="5010" id="5200"/>
                 <outlet property="adsr_sustain_0" destination="5016" id="5195"/>
                 <outlet property="adsr_sustain_1" destination="5008" id="5199"/>
-                <outlet property="clickLooperClear" destination="4691" id="4694"/>
                 <outlet property="cursorOverlay" destination="5257" id="5258"/>
                 <outlet property="filter_cutoff" destination="5026" id="5190"/>
                 <outlet property="filter_resonance" destination="5024" id="5191"/>
@@ -683,9 +560,6 @@
                 <outlet property="lfo_level" destination="5032" id="5188"/>
                 <outlet property="lfo_shape" destination="5278" id="5283"/>
                 <outlet property="linearAnalyzer" destination="5264" id="5265"/>
-                <outlet property="looper_level" destination="4686" id="4688"/>
-                <outlet property="looper_play" destination="4678" id="4684"/>
-                <outlet property="looper_record" destination="4680" id="4682"/>
                 <outlet property="mixer_level" destination="5182" id="5201"/>
                 <outlet property="noise_level" destination="5028" id="5189"/>
                 <outlet property="noise_type" destination="5280" id="5284"/>
