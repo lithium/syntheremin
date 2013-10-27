@@ -538,9 +538,13 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         default:
             return;
     }
-    
     noteNumber += (kNotesPerOctave*keyboardCurrentOctave);
-    [self noteOn:noteNumber withVelocity:64 onChannel:0];    
+
+    
+    if (noteNumber == currentNoteNumber)
+        return;
+    
+    [self noteOn:noteNumber withVelocity:64 onChannel:0];
 
 }
 - (void)keyUp:(NSEvent*)theEvent
