@@ -210,13 +210,21 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     status = MIDIClientCreate(CFSTR("Syntheremin"), NULL, NULL, &midiClient);
     status = MIDIInputPortCreate(midiClient, CFSTR("Input"), handle_midi_input, (__bridge void*)self, &midiInput);
     long num_midi = MIDIGetNumberOfDevices();
+    bool foundAnything=NO;
     for (long i=0; i < num_midi; i++) {
         MIDIEndpointRef src = MIDIGetSource(i);
         CFStringRef srcName;
         MIDIObjectGetStringProperty(src, kMIDIPropertyName, &srcName);
+        if (srcName)
+            foundAnything=YES;
         status = MIDIPortConnectSource(midiInput, src, NULL);
     }
     
+    
+    if (foundAnything) {
+        [midiConnectedLabel setHidden:NO];
+        [midiConnected setToggled:YES];
+    }
 
 }
 
@@ -640,6 +648,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 {
     [leapConnectedLabel setHidden:YES];
     [leapConnected setToggled:NO];
+    
+    [synth setLevel:1.0];
 }
 
 - (void)leftHandOpened:(LeapHand *)hand
