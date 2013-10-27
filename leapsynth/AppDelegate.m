@@ -506,6 +506,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     char key = [[theEvent characters] characterAtIndex:0];
     int noteNumber;
     switch (key) {
+        case '\e': //escape
+            if (([_window styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask) {
+                [_window toggleFullScreen:self];
+            }
+            return;
         case 'a': noteNumber = 40; break;
         case 'w': noteNumber = 41; break;
         case 's': noteNumber = 42; break;
@@ -529,6 +534,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
             return;
         case 'x':
             keyboardCurrentOctave++;
+            return;
+        default:
             return;
     }
     
