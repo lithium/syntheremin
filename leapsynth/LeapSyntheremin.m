@@ -58,8 +58,7 @@
     if ([[frame hands] count] != 0) {
         for (LeapHand *hand in [frame hands]) {
             int32_t hand_id = [hand id];
-//            LeapVector *pos = [hand stabilizedPalmPosition];
-            LeapVector *pos = [[[hand pointables] frontmost] stabilizedTipPosition];
+            LeapVector *pos = [hand stabilizedPalmPosition];
             pos = [[frame interactionBox] normalizePoint:pos clamp:YES];
 
             if (hand_id != leftHandId && hand_id != rightHandId) {
@@ -75,6 +74,7 @@
             
             int fingerCount = [[hand pointables] count];
             if (hand_id == leftHandId) {
+
                 LeapVector *normalPos = [LeapSyntheremin normalizePositionForLeftHand:pos];
                 if ([delegate respondsToSelector:@selector(leftHandMotion::)]) {
                     [delegate leftHandMotion:hand :normalPos];
@@ -96,6 +96,11 @@
                 }
             }
             else if (hand_id == rightHandId) {
+                
+                //track tip position for right hand
+                pos = [[[hand pointables] frontmost] stabilizedTipPosition];
+                pos = [[frame interactionBox] normalizePoint:pos clamp:YES];
+
                 LeapVector *normalPos = [LeapSyntheremin normalizePositionForRightHand:pos];
 
                 if ([delegate respondsToSelector:@selector(rightHandMotion::)]) {
