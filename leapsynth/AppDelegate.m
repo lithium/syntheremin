@@ -535,8 +535,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         [synth setFrequencyInHz:freq];
     }
     else {
-//    if (equalTempered) {
-        int octave = round(normal.y * 3);
+        int octave = MIN(3.0, floor(normal.y * 4));
         int noteNumber = kMiddleC+octave*12;
         
         int quadrant = (int)floor(normal.x*8);

@@ -94,7 +94,7 @@
         }
         
         x = cursorFrame.origin.x + cursorFrame.size.width/2;
-        step = cursorFrame.size.height / 4;
+        step = round(cursorFrame.size.height / 4);
         for (y=cursorFrame.origin.y; y <= cursorFrame.origin.y+cursorFrame.size.height; y += step) {
             [gridPath moveToPoint:NSMakePoint(x,y)];
             [gridPath lineToPoint:NSMakePoint(x+cursorFrame.size.width/2,y)];
