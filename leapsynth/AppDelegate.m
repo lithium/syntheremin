@@ -147,10 +147,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         leapModulator[i] = [[LeapModulator alloc] init];
     }
     //hardcode classic theremin
-    [[synth mixer] setModulator:leapModulator[1]];
+//    [[synth mixer] setModulator:leapModulator[1]];
     equalTempered = NO;
-    
-    [[synth vcf] setModulator:leapModulator[4]];
+//    [[synth vcf] setModulator:leapModulator[0]];
 
     
     //listen to any available midi devices
@@ -567,6 +566,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [leapModulator[0] setLevel:normal.x];
     [leapModulator[1] setLevel:normal.y];
     [leapModulator[2] setLevel:normal.z];
+
+    
+    //hardcode classic theremin
+    [synth setLevel:normal.y];
+    
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
@@ -576,9 +580,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [leapModulator[4] setLevel:normal.y];
     [leapModulator[5] setLevel:normal.z];
     
-
-// middle C = note 40
-    
+    //hardcode classic theremin
 #define kMiddleC 40
 
     

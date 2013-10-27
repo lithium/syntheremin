@@ -58,12 +58,19 @@
 @autoreleasepool {
         
     [mixer getSamples:samples :numSamples];
+    [self applyLevel:samples :numSamples];
     if (analyzerDelegate && [analyzerDelegate respondsToSelector:@selector(receiveSamples:::)]) {
         [analyzerDelegate receiveSamples:self :samples :numSamples];
     }
     return numSamples;
     
 }
+}
+- (void)applyLevel:(short *)samples :(int)numSamples
+{
+    for (int i=0; i < numSamples; i++) {
+        samples[i] *= [self level];
+    }
 }
 
 - (void)noteOn
