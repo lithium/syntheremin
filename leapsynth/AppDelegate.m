@@ -639,6 +639,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)leftHandGone:(int32_t)hand_id
 {
     [cursorOverlay setLeftHandVisible:NO];
+    
+    [synth setLevel:1.0];
+    [synth setFrequencyInHz:0];
 }
 - (void)rightHandGone:(int32_t)hand_id
 {
@@ -648,6 +651,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 {
     [leapConnectedLabel setHidden:NO];
     [leapConnected setToggled:YES];
+    
 }
 - (void)onDisconnect
 {
