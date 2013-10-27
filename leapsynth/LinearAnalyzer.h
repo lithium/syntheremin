@@ -21,6 +21,6 @@
 @property BOOL drawAxis;
 
 - (void) receiveSamples:(id)sender :(short *)samples :(int)numSamples;
-
+- (void)shedRipple;
 
 @end

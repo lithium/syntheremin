@@ -96,5 +96,9 @@
     [self setNeedsDisplay:true];
 }
 
+- (void)shedRipple
+{
+    
+}
 
 @end
