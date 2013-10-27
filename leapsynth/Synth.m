@@ -15,6 +15,7 @@
 @synthesize vcf;
 @synthesize lfo;
 @synthesize noise;
+@synthesize frequencyInHz;
 
 - (id)init
 {
@@ -57,8 +58,8 @@
 @autoreleasepool {
         
     [mixer getSamples:samples :numSamples];
-    if (analyzerDelegate && [analyzerDelegate respondsToSelector:@selector(receiveSamples::)]) {
-        [analyzerDelegate receiveSamples:samples :numSamples];
+    if (analyzerDelegate && [analyzerDelegate respondsToSelector:@selector(receiveSamples:::)]) {
+        [analyzerDelegate receiveSamples:self :samples :numSamples];
     }
     return numSamples;
     
@@ -81,6 +82,7 @@
 
 - (void)setFrequencyInHz:(double)freqInHz
 {
+    frequencyInHz = freqInHz;
     for (int i=0; i < kNumOscillators; i++) {
         [oscN[i] setFrequencyInHz:freqInHz];
     }
@@ -292,4 +294,5 @@
     [self connectPatch:@"osc:0:output" :@"vca:2:input"];
     [vcaN[2] setLevel:0.5];
 }
+
 @end

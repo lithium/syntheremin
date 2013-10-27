@@ -19,7 +19,7 @@
 #define kNumEnvelopes 2
 
 @protocol AnalyzerDelegate <NSObject>
-- (void) receiveSamples :(short *)samples :(int)numSamples;
+- (void) receiveSamples :(id)sender :(short *)samples :(int)numSamples;
 @end
 
 @protocol SynthPatchDelegate <NSObject>
@@ -50,11 +50,14 @@
 @property (readonly) Oscillator *lfo;
 @property (readonly) NoiseGenerator *noise;
 
+@property (readonly) double frequencyInHz;
+
 - (Vca *)vcaN:(int)i;
 - (Adsr *)adsrN:(int)i;
 - (Vco *)oscN:(int)i;
 
 - (int)getSamples :(short *)samples :(int)numSamples;
+
 
 - (void)setFrequencyInHz:(double)freqInHz;
 - (void)noteOn;

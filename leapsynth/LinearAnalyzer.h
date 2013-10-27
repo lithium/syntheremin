@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Synth.h"
 
-
-@interface LinearAnalyzer : NSView
+@interface LinearAnalyzer : NSView <AnalyzerDelegate>
 {
     int samplesInBuffer;
     NSMutableData *buffer;
@@ -20,7 +20,7 @@
 
 @property BOOL drawAxis;
 
-- (void) receiveSamples :(short *)samples :(int)numSamples;
+- (void) receiveSamples:(id)sender :(short *)samples :(int)numSamples;
 
 
 @end

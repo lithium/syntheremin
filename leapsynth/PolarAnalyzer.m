@@ -30,6 +30,7 @@
     newWaveform->minRadius = minRadius;
     newWaveform->maxRadius = maxRadius;
     newWaveform->bounds = bounds;
+    newWaveform->frequency = frequency;
     return newWaveform;
 }
 
@@ -45,10 +46,18 @@
     NSBezierPath *path = [[NSBezierPath alloc] init];
     [path setLineWidth:3.0];
     
+    
+    long samplesPerPeriod = kSampleRate/frequency;
+    int numSamples = samplesInBuffer - (samplesInBuffer % samplesPerPeriod);
+
+    
     NSPoint center = NSMakePoint(bounds.size.width/2, bounds.size.height/2);
     short *samples = (short*)[buffer bytes];
-    double step = (2*M_PI)/samplesInBuffer;
-    for (int i=0; i < samplesInBuffer; i++) {
+    
+    double radsRange = 2*M_PI;///6 * 5;
+    
+    double step = radsRange/numSamples;
+    for (int i=0; i < numSamples; i++) {
         short sample = samples[i];
         double normal = (double)(sample-SHRT_MIN)/(double)(SHRT_MAX-SHRT_MIN);
         double phi = i*step;
@@ -107,11 +116,13 @@
 
 
 
-- (void) receiveSamples :(short *)samples :(int)numSamples
+- (void) receiveSamples :(id)sender :(short *)samples :(int)numSamples
 {
     Waveform *firstRipple = [ripples objectAtIndex:0];
     [firstRipple->buffer replaceBytesInRange:NSMakeRange(0,numSamples*sizeof(short)) withBytes:samples];
     firstRipple->samplesInBuffer = numSamples;
+    firstRipple->frequency = [sender frequencyInHz];
+
     [self setNeedsDisplay:true];
 }
 

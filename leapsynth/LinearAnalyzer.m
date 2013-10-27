@@ -89,7 +89,7 @@
     
 }
 
-- (void) receiveSamples :(short *)samples :(int)numSamples
+- (void) receiveSamples:(id)sender :(short *)samples :(int)numSamples
 {
     [buffer replaceBytesInRange:NSMakeRange(0,numSamples*sizeof(short)) withBytes:samples];
     samplesInBuffer = numSamples;

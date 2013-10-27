@@ -21,6 +21,7 @@
     double minRadius;
     double maxRadius;
     NSRect bounds;
+    double frequency;
 }
 @property NSRect bounds;
 @property double minRadius;
@@ -39,6 +40,6 @@
     CFAbsoluteTime lastRippleTime;
 }
 
-- (void)receiveSamples :(short *)samples :(int)numSamples;
+- (void)receiveSamples:(id)sender :(short *)samples :(int)numSamples;
 - (void)shedRipple;
 @end
