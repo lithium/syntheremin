@@ -182,20 +182,20 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [_window setFrame:newFrame display:YES];
     [fullscreenAnalyzer setFrameSize:NSMakeSize(newFrame.size.width, newFrame.size.height)];
     [fullscreenAnalyzer setFrameOrigin:NSMakePoint(0,0)];
+    
+    [NSCursor setHiddenUntilMouseMoves:YES];
 }
 - (void)windowWillExitFullScreen:(NSNotification *)notification
 {
     [[tabView animator] setAlphaValue:1.0];
     [[fullscreenAnalyzer animator] setAlphaValue:0.0];
-    
-
+    [synth setAnalyzerDelegate:lastAnalyzer];
+    currentAnalyzer = lastAnalyzer;
+    lastAnalyzer = fullscreenAnalyzer;
 }
 - (void)windowDidExitFullScreen:(NSNotification *)notification
 {
     [_window setFrame:savedFrame display:YES];
-    [synth setAnalyzerDelegate:lastAnalyzer];
-    currentAnalyzer = lastAnalyzer;
-    lastAnalyzer = fullscreenAnalyzer;
 
 }
 
