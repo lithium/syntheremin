@@ -23,6 +23,7 @@
 #import "CSRadioButtonSet.h"
 #import "LeapCursorOverlay.h"
 #import "LeapModulator.h"
+#import "CSOnOffLabel.h"
 
 enum {
     kTuningNone=0,
@@ -67,7 +68,6 @@ enum {
 
 
 
-@property (weak) IBOutlet NSTextField *noleap_label;
 
 
 
@@ -135,6 +135,12 @@ enum {
 @property (weak) IBOutlet PolarAnalyzer *fullscreenAnalyzer;
 
 @property (weak) IBOutlet CSRadioButtonSet *wave_osc_0;
+
+
+@property (weak) IBOutlet NSTextField *midiConnectedLabel;
+@property (weak) IBOutlet NSTextField *leapConnectedLabel;
+@property (weak) IBOutlet CSOnOffLabel *midiConnected;
+@property (weak) IBOutlet CSOnOffLabel *leapConnected;
 
 - (IBAction)changeTuning:(id)sender;
 

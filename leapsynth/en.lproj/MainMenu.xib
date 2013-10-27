@@ -163,386 +163,408 @@
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-JG-GP5" customClass="PolarAnalyzer">
                         <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </customView>
-                    <tabView fixedFrame="YES" drawsBackground="NO" type="noTabsNoBorder" initialItem="5246" translatesAutoresizingMaskIntoConstraints="NO" id="5244">
-                        <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <tabViewItems>
-                            <tabViewItem label="Synth" identifier="1" id="5245">
-                                <view key="view" id="5248">
-                                    <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <imageView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5268">
-                                            <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="background_controls" id="5269"/>
-                                        </imageView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4991" customClass="PatchCabler">
-                                            <rect key="frame" x="316" y="125" width="327" height="459"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5264" customClass="LinearAnalyzer">
-                                            <rect key="frame" x="11" y="592" width="938" height="117"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5004" customClass="CSKnob">
-                                            <rect key="frame" x="679" y="178" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:attackTimeInMs"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="5000"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5115"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5006" customClass="CSKnob">
-                                            <rect key="frame" x="732" y="178" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:decayTimeInMs"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="5000"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5121"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5008" customClass="CSKnob">
-                                            <rect key="frame" x="784" y="178" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:sustainLevel"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5127"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5010" customClass="CSKnob">
-                                            <rect key="frame" x="837" y="178" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:releaseTimeInMs"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="5000"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5117"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5014" customClass="CSKnob">
-                                            <rect key="frame" x="679" y="287" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:attackTimeInMs"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                    <real key="value" value="0.0"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="5000"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5120"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5015" customClass="CSKnob">
-                                            <rect key="frame" x="732" y="287" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:decayTimeInMs"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="5000"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5128"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5016" customClass="CSKnob">
-                                            <rect key="frame" x="784" y="287" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:sustainLevel"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5130"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5017" customClass="CSKnob">
-                                            <rect key="frame" x="837" y="287" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:releaseTimeInMs"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="5000"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5132"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5024" customClass="CSKnob">
-                                            <rect key="frame" x="790" y="377" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vcf:0:resonance"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5133"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5026" customClass="CSKnob">
-                                            <rect key="frame" x="692" y="377" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vcf:0:cutoffFrequencyInHz"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="10000"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5116"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5030" customClass="CSKnob">
-                                            <rect key="frame" x="217" y="490" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="lfo:0:frequencyInHz"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                    <real key="value" value="20"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5125"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5032" customClass="CSKnob">
-                                            <rect key="frame" x="262" y="489" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="lfo:0:level"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5134"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5028" customClass="CSKnob">
-                                            <rect key="frame" x="813" y="500" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="noise:0:level"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5124"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5182" customClass="CSKnob">
-                                            <rect key="frame" x="538" y="49" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="mixer::level"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5183"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4993" customClass="CSFader">
-                                            <rect key="frame" x="361" y="37" width="44" height="80"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:0:level"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5118"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4995" customClass="CSFader">
-                                            <rect key="frame" x="420" y="36" width="44" height="80"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:1:level"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5119"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4997" customClass="CSFader">
-                                            <rect key="frame" x="474" y="36" width="44" height="80"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:2:level"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5131"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5270" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="31" y="364" width="188" height="45"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:0:waveShape"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5273"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5274" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="31" y="256" width="188" height="45"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:1:waveShape"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5275"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5276" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="31" y="140" width="188" height="45"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:2:waveShape"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5277"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5278" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="26" y="489" width="188" height="45"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="lfo:0:waveShape"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5279"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5280" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="671" y="500" width="134" height="42"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="noise_white,noise_pink"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="noise:0:noiseType"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeControl:" target="494" id="5282"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbE-yF-0UX" customClass="DetuneDial">
-                                            <rect key="frame" x="227" y="384" width="85" height="37"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:0:detuneInCents"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeDetuneControl:" target="494" id="adj-uc-yDA"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnV-Fl-6FN" customClass="DetuneDial">
-                                            <rect key="frame" x="227" y="279" width="85" height="37"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:1:detuneInCents"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeDetuneControl:" target="494" id="lFQ-lv-7xw"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHR-Fl-fX0" customClass="DetuneDial">
-                                            <rect key="frame" x="227" y="159" width="85" height="37"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:2:detuneInCents"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeDetuneControl:" target="494" id="gJM-4r-v19"/>
-                                            </connections>
-                                        </customView>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0d-tf-bsd">
-                                            <rect key="frame" x="674" y="37" width="166" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Leap Motion detected." id="QIo-nC-Fj1">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ni7-2y-duq">
-                                            <rect key="frame" x="672" y="73" width="166" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Midi Devices Connected" id="LHn-tE-bdu">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iW-hy-zKy" customClass="CSMomentaryButton">
-                                            <rect key="frame" x="20" y="665" width="59" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="clear"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="switchToTheremin:" target="494" id="Pve-zk-pPN"/>
-                                            </connections>
-                                        </customView>
-                                    </subviews>
-                                </view>
-                            </tabViewItem>
-                            <tabViewItem label="Theremin" identifier="2" id="5246">
-                                <view key="view" ambiguous="YES" id="5247">
-                                    <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <imageView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMU-Gg-QQ1">
-                                            <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="background_visualizer" id="lf5-VD-2ij"/>
-                                        </imageView>
-                                        <customView canDrawConcurrently="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3193" customClass="PolarAnalyzer">
+                        <subviews>
+                            <tabView fixedFrame="YES" drawsBackground="NO" type="noTabsNoBorder" initialItem="5246" translatesAutoresizingMaskIntoConstraints="NO" id="5244">
+                                <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="Synth" identifier="1" id="5245">
+                                        <view key="view" ambiguous="YES" id="5248">
                                             <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0RD-aX-70v" customClass="CSMomentaryButton">
-                                            <rect key="frame" x="20" y="665" width="59" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="clear"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="switchToSynth:" target="494" id="f7L-Z5-B67"/>
-                                            </connections>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5257" customClass="LeapCursorOverlay">
+                                            <subviews>
+                                                <imageView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5268">
+                                                    <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="background_controls" id="5269"/>
+                                                </imageView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4991" customClass="PatchCabler">
+                                                    <rect key="frame" x="316" y="125" width="327" height="459"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5264" customClass="LinearAnalyzer">
+                                                    <rect key="frame" x="11" y="592" width="938" height="117"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5004" customClass="CSKnob">
+                                                    <rect key="frame" x="679" y="178" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:attackTimeInMs"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="5000"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5115"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5006" customClass="CSKnob">
+                                                    <rect key="frame" x="732" y="178" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:decayTimeInMs"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="5000"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5121"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5008" customClass="CSKnob">
+                                                    <rect key="frame" x="784" y="178" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:sustainLevel"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5127"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5010" customClass="CSKnob">
+                                                    <rect key="frame" x="837" y="178" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:releaseTimeInMs"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="5000"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5117"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5014" customClass="CSKnob">
+                                                    <rect key="frame" x="679" y="287" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:attackTimeInMs"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="5000"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5120"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5015" customClass="CSKnob">
+                                                    <rect key="frame" x="732" y="287" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:decayTimeInMs"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="5000"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5128"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5016" customClass="CSKnob">
+                                                    <rect key="frame" x="784" y="287" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:sustainLevel"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5130"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5017" customClass="CSKnob">
+                                                    <rect key="frame" x="837" y="287" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:releaseTimeInMs"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="5000"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5132"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5024" customClass="CSKnob">
+                                                    <rect key="frame" x="790" y="377" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vcf:0:resonance"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5133"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5026" customClass="CSKnob">
+                                                    <rect key="frame" x="692" y="377" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vcf:0:cutoffFrequencyInHz"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="10000"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5116"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5030" customClass="CSKnob">
+                                                    <rect key="frame" x="217" y="490" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="lfo:0:frequencyInHz"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5125"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5032" customClass="CSKnob">
+                                                    <rect key="frame" x="262" y="489" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="lfo:0:level"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5134"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5028" customClass="CSKnob">
+                                                    <rect key="frame" x="813" y="500" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="noise:0:level"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5124"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5182" customClass="CSKnob">
+                                                    <rect key="frame" x="538" y="49" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="mixer::level"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5183"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4993" customClass="CSFader">
+                                                    <rect key="frame" x="361" y="37" width="44" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:0:level"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5118"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4995" customClass="CSFader">
+                                                    <rect key="frame" x="420" y="36" width="44" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:1:level"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5119"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4997" customClass="CSFader">
+                                                    <rect key="frame" x="474" y="36" width="44" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:2:level"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5131"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5270" customClass="CSRadioButtonSet">
+                                                    <rect key="frame" x="31" y="364" width="188" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:0:waveShape"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5273"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5274" customClass="CSRadioButtonSet">
+                                                    <rect key="frame" x="31" y="256" width="188" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:1:waveShape"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5275"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5276" customClass="CSRadioButtonSet">
+                                                    <rect key="frame" x="31" y="140" width="188" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:2:waveShape"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5277"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5278" customClass="CSRadioButtonSet">
+                                                    <rect key="frame" x="26" y="489" width="188" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="lfo:0:waveShape"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5279"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5280" customClass="CSRadioButtonSet">
+                                                    <rect key="frame" x="671" y="500" width="134" height="42"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="noise_white,noise_pink"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="noise:0:noiseType"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeControl:" target="494" id="5282"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbE-yF-0UX" customClass="DetuneDial">
+                                                    <rect key="frame" x="227" y="384" width="85" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:0:detuneInCents"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeDetuneControl:" target="494" id="adj-uc-yDA"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnV-Fl-6FN" customClass="DetuneDial">
+                                                    <rect key="frame" x="227" y="279" width="85" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:1:detuneInCents"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeDetuneControl:" target="494" id="lFQ-lv-7xw"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHR-Fl-fX0" customClass="DetuneDial">
+                                                    <rect key="frame" x="227" y="159" width="85" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:2:detuneInCents"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeDetuneControl:" target="494" id="gJM-4r-v19"/>
+                                                    </connections>
+                                                </customView>
+                                                <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0d-tf-bsd">
+                                                    <rect key="frame" x="755" y="47" width="153" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Leap Motion Connected" id="QIo-nC-Fj1">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iW-hy-zKy" customClass="CSMomentaryButton">
+                                                    <rect key="frame" x="20" y="665" width="59" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="clear"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="switchToTheremin:" target="494" id="Pve-zk-pPN"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hFm-Op-zt4" customClass="CSOnOffLabel">
+                                                    <rect key="frame" x="715" y="79" width="31" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="midi"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="midiToggled:" target="494" id="U7W-3m-Nf0"/>
+                                                    </connections>
+                                                </customView>
+                                                <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ni7-2y-duq">
+                                                    <rect key="frame" x="755" y="86" width="166" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Midi Devices Connected" id="LHn-tE-bdu">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiU-bQ-H64" customClass="CSOnOffLabel">
+                                                    <rect key="frame" x="715" y="40" width="31" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="midi"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="leapToggled:" target="494" id="0m7-hr-maP"/>
+                                                    </connections>
+                                                </customView>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Theremin" identifier="2" id="5246">
+                                        <view key="view" id="5247">
                                             <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        </customView>
-                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kaj-YT-a99" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="330" y="659" width="188" height="45"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="changeTuning:" target="494" id="xnF-Iy-dyf"/>
-                                            </connections>
-                                        </customView>
-                                    </subviews>
-                                </view>
-                            </tabViewItem>
-                        </tabViewItems>
-                    </tabView>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <imageView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMU-Gg-QQ1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="background_visualizer" id="lf5-VD-2ij"/>
+                                                </imageView>
+                                                <customView canDrawConcurrently="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3193" customClass="PolarAnalyzer">
+                                                    <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0RD-aX-70v" customClass="CSMomentaryButton">
+                                                    <rect key="frame" x="20" y="665" width="59" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="clear"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="switchToSynth:" target="494" id="f7L-Z5-B67"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5257" customClass="LeapCursorOverlay">
+                                                    <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kaj-YT-a99" customClass="CSRadioButtonSet">
+                                                    <rect key="frame" x="330" y="659" width="188" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="changeTuning:" target="494" id="xnF-Iy-dyf"/>
+                                                    </connections>
+                                                </customView>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
+                        </subviews>
+                    </customView>
                 </subviews>
             </view>
         </window>
@@ -561,10 +583,14 @@
                 <outlet property="filter_cutoff" destination="5026" id="5190"/>
                 <outlet property="filter_resonance" destination="5024" id="5191"/>
                 <outlet property="fullscreenAnalyzer" destination="4Vg-JG-GP5" id="e9a-qm-24u"/>
+                <outlet property="leapConnected" destination="oiU-bQ-H64" id="mpJ-fu-N6W"/>
+                <outlet property="leapConnectedLabel" destination="E0d-tf-bsd" id="uP1-jk-k2C"/>
                 <outlet property="lfo_freq" destination="5030" id="5187"/>
                 <outlet property="lfo_level" destination="5032" id="5188"/>
                 <outlet property="lfo_shape" destination="5278" id="5283"/>
                 <outlet property="linearAnalyzer" destination="5264" id="5265"/>
+                <outlet property="midiConnected" destination="hFm-Op-zt4" id="5Co-Ds-Dfz"/>
+                <outlet property="midiConnectedLabel" destination="Ni7-2y-duq" id="meE-SM-t0z"/>
                 <outlet property="mixer_level" destination="5182" id="5201"/>
                 <outlet property="noise_level" destination="5028" id="5189"/>
                 <outlet property="noise_type" destination="5280" id="5284"/>

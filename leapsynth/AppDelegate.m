@@ -45,9 +45,11 @@
 
 @synthesize polarAnalyzer;
 @synthesize wave_osc_0;
-@synthesize noleap_label;
 @synthesize fullscreenAnalyzer;
-
+@synthesize midiConnectedLabel;
+@synthesize leapConnectedLabel;
+@synthesize midiConnected;
+@synthesize leapConnected;
 
 @synthesize window = _window;
 
@@ -631,11 +633,13 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (void)onConnect
 {
-    [noleap_label setHidden:YES];
+    [leapConnectedLabel setHidden:NO];
+    [leapConnected setToggled:YES];
 }
 - (void)onDisconnect
 {
-    [noleap_label setHidden:NO];
+    [leapConnectedLabel setHidden:YES];
+    [leapConnected setToggled:NO];
 }
 
 - (void)leftHandOpened:(LeapHand *)hand
