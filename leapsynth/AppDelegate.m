@@ -723,8 +723,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [openPanel setAllowsOtherFileTypes:NO];
 
     if ([openPanel runModal] == NSOKButton && [[openPanel URLs] count]) {
+        
         NSURL *url = [[openPanel URLs] objectAtIndex:0];
         [self loadPatchFromURL:url];
+        
+        [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:url];
     }
 }
 - (IBAction)menuSavePatch:(id)sender {
@@ -754,6 +757,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (IBAction)menuClearPatch:(id)sender {
     [synth setDefaults];
+}
+
+- (void)application:(NSApplication*)sender openFiles:(NSArray*)filenames
+{
+    [self loadPatchFromURL:[NSURL fileURLWithPath:[filenames objectAtIndex:0]]];
 }
 
 - (IBAction)switchToSynth:(id)sender {
