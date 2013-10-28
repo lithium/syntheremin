@@ -9,6 +9,9 @@
 #import "PatchCabler.h"
 
 @implementation PatchCabler
+{
+    NSColor *_shadowColor;
+}
 @synthesize delegate;
 
 - (id)initWithFrame:(NSRect)frame
@@ -16,6 +19,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         endpoints = [[NSMutableDictionary alloc] init];
+        _shadowColor = [NSColor colorWithSRGBRed:60/255.0 green:104/255.0 blue:205/255.0 alpha:1.0];
+        
+
     }
     
     return self;
@@ -133,12 +139,13 @@
 
                 //draw a glow
                 NSShadow *shadow = [[NSShadow alloc] init];
-                [shadow setShadowBlurRadius:3];
+                [shadow setShadowBlurRadius:6];
                 [shadow setShadowOffset:NSMakeSize(0,0)];
-                [shadow setShadowColor:[endpoint color]];
+                [shadow setShadowColor:_shadowColor];
                 [shadow set];
 
                 
+
             }
             else {
                 // being dragged

@@ -10,6 +10,10 @@
 
 
 @implementation PatchCableEndpoint
+{
+    NSColor *_shadowColor;
+}
+
 @synthesize parameterName;
 @synthesize cablerEdge;
 @synthesize edgeOffset;
@@ -24,6 +28,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setEndpointType:kOutputPatchEndpoint];
+        _shadowColor = [NSColor colorWithSRGBRed:60/255.0 green:104/255.0 blue:205/255.0 alpha:1.0];
 
     }
     
@@ -203,12 +208,23 @@
     [color set];
     
     [path setLineWidth:4];
-    [path stroke];
+    
+
     
     if (connectedTo) {
+        NSShadow *shadow = [[NSShadow alloc] init];
+        [shadow setShadowBlurRadius:5];
+        [shadow setShadowOffset:NSMakeSize(0,0)];
+        [shadow setShadowColor:_shadowColor];
+        [shadow set];
+        [path stroke];
+
         [orbImage drawInRect:NSMakeRect(_padding, _padding,
                                         kOutputEndpointWidth,
                                         kOutputEndpointHeight)];
+    } else {
+        [path stroke];
+
     }
 
     [context restoreGraphicsState];
