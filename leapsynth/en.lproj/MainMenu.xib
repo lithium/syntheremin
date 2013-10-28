@@ -170,7 +170,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Synth" identifier="1" id="5245">
-                                        <view key="view" ambiguous="YES" id="5248">
+                                        <view key="view" id="5248">
                                             <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -180,7 +180,7 @@
                                                     <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="background_controls" id="5269"/>
                                                 </imageView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4991" customClass="PatchCabler">
-                                                    <rect key="frame" x="316" y="125" width="327" height="459"/>
+                                                    <rect key="frame" x="317" y="125" width="325" height="459"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5264" customClass="LinearAnalyzer">
@@ -188,7 +188,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5004" customClass="CSKnob">
-                                                    <rect key="frame" x="679" y="178" width="50" height="50"/>
+                                                    <rect key="frame" x="674" y="145" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:attackTimeInMs"/>
@@ -201,7 +201,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5006" customClass="CSKnob">
-                                                    <rect key="frame" x="732" y="178" width="50" height="50"/>
+                                                    <rect key="frame" x="732" y="145" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:decayTimeInMs"/>
@@ -214,7 +214,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5008" customClass="CSKnob">
-                                                    <rect key="frame" x="784" y="178" width="50" height="50"/>
+                                                    <rect key="frame" x="790" y="145" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:sustainLevel"/>
@@ -224,7 +224,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5010" customClass="CSKnob">
-                                                    <rect key="frame" x="837" y="178" width="50" height="50"/>
+                                                    <rect key="frame" x="848" y="145" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:releaseTimeInMs"/>
@@ -237,7 +237,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5014" customClass="CSKnob">
-                                                    <rect key="frame" x="679" y="287" width="50" height="50"/>
+                                                    <rect key="frame" x="674" y="256" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:attackTimeInMs"/>
@@ -253,7 +253,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5015" customClass="CSKnob">
-                                                    <rect key="frame" x="732" y="287" width="50" height="50"/>
+                                                    <rect key="frame" x="732" y="256" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:decayTimeInMs"/>
@@ -266,7 +266,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5016" customClass="CSKnob">
-                                                    <rect key="frame" x="784" y="287" width="50" height="50"/>
+                                                    <rect key="frame" x="790" y="256" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:sustainLevel"/>
@@ -276,7 +276,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5017" customClass="CSKnob">
-                                                    <rect key="frame" x="837" y="287" width="50" height="50"/>
+                                                    <rect key="frame" x="848" y="256" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:0:releaseTimeInMs"/>
@@ -289,7 +289,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5024" customClass="CSKnob">
-                                                    <rect key="frame" x="790" y="377" width="50" height="50"/>
+                                                    <rect key="frame" x="800" y="371" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vcf:0:resonance"/>
@@ -299,7 +299,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5026" customClass="CSKnob">
-                                                    <rect key="frame" x="692" y="377" width="50" height="50"/>
+                                                    <rect key="frame" x="705" y="371" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vcf:0:cutoffFrequencyInHz"/>
@@ -312,7 +312,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5030" customClass="CSKnob">
-                                                    <rect key="frame" x="217" y="490" width="50" height="50"/>
+                                                    <rect key="frame" x="213" y="483" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="lfo:0:frequencyInHz"/>
@@ -325,7 +325,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5032" customClass="CSKnob">
-                                                    <rect key="frame" x="262" y="489" width="50" height="50"/>
+                                                    <rect key="frame" x="264" y="483" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="lfo:0:level"/>
@@ -335,7 +335,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5028" customClass="CSKnob">
-                                                    <rect key="frame" x="813" y="500" width="50" height="50"/>
+                                                    <rect key="frame" x="667" y="483" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="noise:0:level"/>
@@ -345,7 +345,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5182" customClass="CSKnob">
-                                                    <rect key="frame" x="538" y="49" width="50" height="50"/>
+                                                    <rect key="frame" x="548" y="47" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="mixer::level"/>
@@ -355,7 +355,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4993" customClass="CSFader">
-                                                    <rect key="frame" x="361" y="37" width="44" height="80"/>
+                                                    <rect key="frame" x="349" y="37" width="44" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:0:level"/>
@@ -365,7 +365,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4995" customClass="CSFader">
-                                                    <rect key="frame" x="420" y="36" width="44" height="80"/>
+                                                    <rect key="frame" x="412" y="37" width="44" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:1:level"/>
@@ -375,7 +375,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4997" customClass="CSFader">
-                                                    <rect key="frame" x="474" y="36" width="44" height="80"/>
+                                                    <rect key="frame" x="477" y="37" width="44" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="vca:2:level"/>
@@ -385,7 +385,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5270" customClass="CSRadioButtonSet">
-                                                    <rect key="frame" x="31" y="364" width="188" height="45"/>
+                                                    <rect key="frame" x="26" y="385" width="188" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
@@ -396,7 +396,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5274" customClass="CSRadioButtonSet">
-                                                    <rect key="frame" x="31" y="256" width="188" height="45"/>
+                                                    <rect key="frame" x="26" y="273" width="188" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
@@ -407,7 +407,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5276" customClass="CSRadioButtonSet">
-                                                    <rect key="frame" x="31" y="140" width="188" height="45"/>
+                                                    <rect key="frame" x="26" y="162" width="188" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
@@ -418,7 +418,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5278" customClass="CSRadioButtonSet">
-                                                    <rect key="frame" x="26" y="489" width="188" height="45"/>
+                                                    <rect key="frame" x="26" y="486" width="188" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
@@ -429,7 +429,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5280" customClass="CSRadioButtonSet">
-                                                    <rect key="frame" x="671" y="500" width="134" height="42"/>
+                                                    <rect key="frame" x="757" y="487" width="134" height="42"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="noise_white,noise_pink"/>
@@ -440,7 +440,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbE-yF-0UX" customClass="DetuneDial">
-                                                    <rect key="frame" x="227" y="384" width="85" height="37"/>
+                                                    <rect key="frame" x="223" y="388" width="85" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:0:detuneInCents"/>
@@ -450,7 +450,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnV-Fl-6FN" customClass="DetuneDial">
-                                                    <rect key="frame" x="227" y="279" width="85" height="37"/>
+                                                    <rect key="frame" x="223" y="277" width="85" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:1:detuneInCents"/>
@@ -460,7 +460,7 @@
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHR-Fl-fX0" customClass="DetuneDial">
-                                                    <rect key="frame" x="227" y="159" width="85" height="37"/>
+                                                    <rect key="frame" x="223" y="166" width="85" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:2:detuneInCents"/>
@@ -479,10 +479,10 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iW-hy-zKy" customClass="CSMomentaryButton">
-                                                    <rect key="frame" x="20" y="665" width="59" height="22"/>
+                                                    <rect key="frame" x="20" y="665" width="131" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="clear"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="showVisualizer"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="switchToTheremin:" target="494" id="Pve-zk-pPN"/>
@@ -521,7 +521,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="Theremin" identifier="2" id="5246">
-                                        <view key="view" id="5247">
+                                        <view key="view" ambiguous="YES" id="5247">
                                             <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -535,13 +535,23 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0RD-aX-70v" customClass="CSMomentaryButton">
-                                                    <rect key="frame" x="20" y="665" width="59" height="22"/>
+                                                    <rect key="frame" x="20" y="665" width="131" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="clear"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="showControls"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="switchToSynth:" target="494" id="f7L-Z5-B67"/>
+                                                    </connections>
+                                                </customView>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xlu-cb-gej" customClass="CSMomentaryButton">
+                                                    <rect key="frame" x="160" y="665" width="100" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="fullScreen"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="toggleFullScreen:" target="371" id="VLt-nG-9Sv"/>
                                                     </connections>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5257" customClass="LeapCursorOverlay">
@@ -553,7 +563,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kaj-YT-a99" customClass="CSRadioButtonSet">
-                                                    <rect key="frame" x="330" y="659" width="188" height="45"/>
+                                                    <rect key="frame" x="40" y="40" width="188" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
