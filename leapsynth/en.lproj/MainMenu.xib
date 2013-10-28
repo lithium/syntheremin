@@ -116,9 +116,19 @@
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="296">
                         <items>
-                            <menuItem title="Fullscreen" keyEquivalent="f" id="2160">
+                            <menuItem title="Show Visualizer" keyEquivalent="1" id="2160">
                                 <connections>
-                                    <action selector="toggleFullScreen:" target="371" id="2161"/>
+                                    <action selector="switchToTheremin:" target="494" id="7zv-PO-DWA"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Synth Controls" keyEquivalent="2" id="Yrl-bW-YIQ">
+                                <connections>
+                                    <action selector="switchToSynth:" target="494" id="tfp-4z-Oep"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Fullscreen" keyEquivalent="f" id="uzG-8w-Mdz">
+                                <connections>
+                                    <action selector="toggleFullScreen:" target="371" id="RcB-Ml-yQH"/>
                                 </connections>
                             </menuItem>
                         </items>
