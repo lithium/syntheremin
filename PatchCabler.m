@@ -124,7 +124,7 @@
                     } else {
                         //connected to opposite edge
                         double x = fabs((final.x - orig.x) / 2); // midpoint
-                        x += 70 *h;
+                        x += connectedEdge == kEdgeLeft ? 70 : 90 *h;
                         
                         NSPoint mid = NSMakePoint(x, orig.y);
                         [cablePath lineToPoint:mid];
