@@ -49,6 +49,7 @@ enum {
     NSPoint origin;
     
     NSSize size;
+    NSImage *orbImage;
     
     @public
     

@@ -24,6 +24,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setEndpointType:kOutputPatchEndpoint];
+
     }
     
     return self;
@@ -40,6 +41,8 @@
     size = NSMakeSize(kOutputEndpointWidth+_padding*2, kOutputEndpointHeight+_padding*2);
     if (type == kInputPatchEndpoint) {
         size = NSMakeSize(kInputEndpointWidth+_padding*2, kInputEndpointHeight+_padding*2);
+    } else {
+        orbImage = [NSImage imageNamed:@"connected_glowingOrb"];
     }
 
 #define kStemLength 20
@@ -207,6 +210,12 @@
 //            operation:NSCompositeSourceOver
 //             fraction:1.0];
     
+    if (connectedTo) {
+        [orbImage drawInRect:NSMakeRect(_padding, _padding,
+                                        kOutputEndpointWidth,
+                                        kOutputEndpointHeight)];
+    }
+
     [context restoreGraphicsState];
     
 }
