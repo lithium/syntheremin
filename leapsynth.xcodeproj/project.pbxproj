@@ -31,8 +31,6 @@
 		12393FF518187F7D000F4BF3 /* knob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD218187F7D000F4BF3 /* knob_dial@2x.png */; };
 		12393FF618187F7D000F4BF3 /* knob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */; };
 		12393FF718187F7D000F4BF3 /* knob_outerRing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD418187F7D000F4BF3 /* knob_outerRing_full@2x.png */; };
-		12393FF818187F7D000F4BF3 /* midi_connected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD518187F7D000F4BF3 /* midi_connected@2x.png */; };
-		12393FF918187F7D000F4BF3 /* midi_disconnected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD618187F7D000F4BF3 /* midi_disconnected@2x.png */; };
 		12393FFA18187F7D000F4BF3 /* slider_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD718187F7D000F4BF3 /* slider_background@2x.png */; };
 		12393FFB18187F7D000F4BF3 /* slider_glow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD818187F7D000F4BF3 /* slider_glow@2x.png */; };
 		12393FFC18187F7D000F4BF3 /* slider_handle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD918187F7D000F4BF3 /* slider_handle@2x.png */; };
@@ -137,8 +135,6 @@
 		12393FD218187F7D000F4BF3 /* knob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_dial@2x.png"; sourceTree = "<group>"; };
 		12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
 		12393FD418187F7D000F4BF3 /* knob_outerRing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_outerRing_full@2x.png"; sourceTree = "<group>"; };
-		12393FD518187F7D000F4BF3 /* midi_connected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "midi_connected@2x.png"; sourceTree = "<group>"; };
-		12393FD618187F7D000F4BF3 /* midi_disconnected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "midi_disconnected@2x.png"; sourceTree = "<group>"; };
 		12393FD718187F7D000F4BF3 /* slider_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider_background@2x.png"; sourceTree = "<group>"; };
 		12393FD818187F7D000F4BF3 /* slider_glow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider_glow@2x.png"; sourceTree = "<group>"; };
 		12393FD918187F7D000F4BF3 /* slider_handle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider_handle@2x.png"; sourceTree = "<group>"; };
@@ -269,8 +265,6 @@
 				12393FDC18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png */,
 				122C800F181DE72300505CAF /* leapmotion_connected@2x.png */,
 				122C8010181DE72300505CAF /* leapmotion_disconnected@2x.png */,
-				12393FD518187F7D000F4BF3 /* midi_connected@2x.png */,
-				12393FD618187F7D000F4BF3 /* midi_disconnected@2x.png */,
 				122C8013181DE74F00505CAF /* connected_glowingOrb@2x.png */,
 			);
 			path = images;
@@ -539,8 +533,6 @@
 				12393FF618187F7D000F4BF3 /* knob_outerRing_empty@2x.png in Resources */,
 				12393FF718187F7D000F4BF3 /* knob_outerRing_full@2x.png in Resources */,
 				122C8011181DE72300505CAF /* leapmotion_connected@2x.png in Resources */,
-				12393FF818187F7D000F4BF3 /* midi_connected@2x.png in Resources */,
-				12393FF918187F7D000F4BF3 /* midi_disconnected@2x.png in Resources */,
 				122C800E181DE66A00505CAF /* button_fullScreen@2x.png in Resources */,
 				122C800D181DE66A00505CAF /* button_fullScreen_selected@2x.png in Resources */,
 				12393FFA18187F7D000F4BF3 /* slider_background@2x.png in Resources */,
