@@ -139,8 +139,8 @@ enum {
 
 @property (weak) IBOutlet NSTextField *midiConnectedLabel;
 @property (weak) IBOutlet NSTextField *leapConnectedLabel;
-@property (weak) IBOutlet CSOnOffLabel *midiConnected;
 @property (weak) IBOutlet CSOnOffLabel *leapConnected;
+@property (weak) IBOutlet NSTextField *leapDisconnectedLabel;
 
 - (IBAction)changeTuning:(id)sender;
 

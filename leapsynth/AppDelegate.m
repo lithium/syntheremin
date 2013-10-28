@@ -48,9 +48,8 @@
 @synthesize fullscreenAnalyzer;
 @synthesize midiConnectedLabel;
 @synthesize leapConnectedLabel;
-@synthesize midiConnected;
 @synthesize leapConnected;
-
+@synthesize leapDisconnectedLabel;
 @synthesize window = _window;
 
 
@@ -223,7 +222,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     if (foundAnything) {
         [midiConnectedLabel setHidden:NO];
-        [midiConnected setToggled:YES];
     }
 
 }
@@ -650,12 +648,14 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)onConnect
 {
     [leapConnectedLabel setHidden:NO];
+    [leapDisconnectedLabel setHidden:YES];
     [leapConnected setToggled:YES];
     
 }
 - (void)onDisconnect
 {
     [leapConnectedLabel setHidden:YES];
+    [leapDisconnectedLabel setHidden:NO];
     [leapConnected setToggled:NO];
     
     [synth setLevel:1.0];
