@@ -16,4 +16,6 @@
 
 -(void)setButtonNames:(NSString*)names;
 -(void)buttonToggled:(id)sender;
+
+-(void)clearSelection;
 @end

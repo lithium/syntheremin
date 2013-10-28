@@ -60,4 +60,16 @@
     int senderTag = [sender tag];
     [self setDoubleValue:senderTag];
 }
+-(void)clearSelection
+{
+    value = -1;
+    int c = [buttons count];
+    for (int i=0; i < c; i++) {
+        CSToggleButton *button = [buttons objectAtIndex:i];
+        button->toggled = NO;
+    }
+
+    [self setNeedsDisplay:YES];
+}
+
 @end

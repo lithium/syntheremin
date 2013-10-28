@@ -50,6 +50,9 @@
 @synthesize leapConnectedLabel;
 @synthesize leapConnected;
 @synthesize leapDisconnectedLabel;
+@synthesize tuningScale;
+@synthesize tunedButton;
+
 @synthesize window = _window;
 
 
@@ -609,8 +612,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         
         int scales[3][6] = {
             {2,4,5,7,9,11},  // major
-            {2,3,5,6,9,10},  // blues
             {2,3,5,7,8,11},  // harmonic minor
+            {2,3,5,6,9,10},  // blues
 //            {2,3,5,7,8,10},  // natural minor
         };
         
@@ -772,10 +775,28 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 
 - (IBAction)changeTuning:(id)sender {
-    tuningType = [sender doubleValue];
+    tuningType = [sender doubleValue]+1;
+    tunedButton->toggled = YES;
+    [tunedButton setNeedsDisplay:YES];
     
-    [cursorOverlay setDrawGrid:(tuningType)];
+    [cursorOverlay setDrawGrid:YES];
 //    NSLog(@"tuning %d", tuning);
+}
+
+- (IBAction)toggledTuned:(id)sender {
+    BOOL toggled = tuningType != 0;
+
+    if (toggled) {
+        [tuningScale clearSelection];
+        tuningType = 0;
+        tunedButton->toggled = NO;
+    } else {
+        tuningType = 1;
+        [tuningScale setDoubleValue:0];
+        tunedButton->toggled = YES;
+    }
+    [cursorOverlay setDrawGrid:tuningType];
+
 }
 
 @end

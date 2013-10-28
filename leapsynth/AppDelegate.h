@@ -28,8 +28,9 @@
 enum {
     kTuningNone=0,
     kTuningMajor=1,
-    kTuningBlues=2,
-    kTuningHarmonicMinor=3,
+    kTuningHarmonicMinor=2,
+    kTuningBlues=3,
+
 };
 
 @interface AppDelegate : NSResponder <NSApplicationDelegate
@@ -143,5 +144,8 @@ enum {
 @property (weak) IBOutlet NSTextField *leapDisconnectedLabel;
 
 - (IBAction)changeTuning:(id)sender;
+- (IBAction)toggledTuned:(id)sender;
+@property (weak) IBOutlet CSRadioButtonSet *tuningScale;
+@property (weak) IBOutlet CSToggleButton *tunedButton;
 
 @end

@@ -170,7 +170,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Synth" identifier="1" id="5245">
-                                <view key="view" ambiguous="YES" id="5248">
+                                <view key="view" id="5248">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -520,7 +520,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Theremin" identifier="2" id="5246">
-                                <view key="view" id="5247">
+                                <view key="view" ambiguous="YES" id="5247">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -562,13 +562,27 @@
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kaj-YT-a99" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="40" y="40" width="188" height="45"/>
+                                            <rect key="frame" x="103" y="40" width="315" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="majorScale,minorScale,bluesScale"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="doubleValue">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="changeTuning:" target="494" id="xnF-Iy-dyf"/>
+                                            </connections>
+                                        </customView>
+                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vbj-Q3-kmM" customClass="CSToggleButton">
+                                            <rect key="frame" x="40" y="40" width="64" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="tuned"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="toggled" value="NO"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="toggledTuned:" target="494" id="A5y-N3-YTm"/>
                                             </connections>
                                         </customView>
                                     </subviews>
@@ -614,6 +628,8 @@
                 <outlet property="synthAnalyzer" destination="3193" id="4992"/>
                 <outlet property="tabView" destination="5244" id="5249"/>
                 <outlet property="toggleButton" destination="5270" id="5271"/>
+                <outlet property="tunedButton" destination="Vbj-Q3-kmM" id="DZr-UZ-SFY"/>
+                <outlet property="tuningScale" destination="kaj-YT-a99" id="nXl-YZ-gLS"/>
                 <outlet property="vca_level_0" destination="4993" id="5202"/>
                 <outlet property="vca_level_1" destination="4995" id="5203"/>
                 <outlet property="vca_level_2" destination="4997" id="5204"/>
