@@ -14,19 +14,25 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        knobImage = [NSImage imageNamed:@"knob_dial"];
-        trackImage = [NSImage imageNamed:@"knob_outerRing_empty"];
-        fillImage = [NSImage imageNamed:@"knob_outerRing_full"];
-
-        knobSize = [knobImage size];
-        trackSize = [trackImage size];
 
         minValue = 0;
         maxValue = 1.0;
         
+        [self setImageName:@"knob"];
     }
     
     return self;
+}
+
+- (void)setImageName:(NSString*)imageName
+{
+    knobImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@_dial", imageName]];
+    trackImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@_outerRing_empty", imageName]];
+    fillImage = [NSImage imageNamed:[NSString stringWithFormat:@"%@_outerRing_full", imageName]];
+    
+    knobSize = [knobImage size];
+    trackSize = [trackImage size];
+
 }
 
 - (void)drawRect:(NSRect)dirtyRect

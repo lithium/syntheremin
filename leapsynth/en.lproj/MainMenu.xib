@@ -170,7 +170,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Synth" identifier="1" id="5245">
-                                <view key="view" id="5248">
+                                <view key="view" ambiguous="YES" id="5248">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -345,10 +345,11 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5182" customClass="CSKnob">
-                                            <rect key="frame" x="548" y="47" width="50" height="50"/>
+                                            <rect key="frame" x="541" y="37" width="68" height="68"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="mixer::level"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="volumeKnob"/>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="changeControl:" target="494" id="5183"/>
@@ -520,7 +521,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Theremin" identifier="2" id="5246">
-                                <view key="view" ambiguous="YES" id="5247">
+                                <view key="view" id="5247">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>

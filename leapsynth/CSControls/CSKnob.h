@@ -32,4 +32,6 @@
     BOOL dragIsCoarse;
 }
 
+
+-(void)setImageName:(NSString*)name;
 @end
