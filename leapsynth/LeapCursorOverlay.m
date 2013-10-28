@@ -19,9 +19,10 @@
     if (self) {
         leftDotColor = [NSColor colorWithSRGBRed:48/255.0 green:176/255.0 blue:196/255.0 alpha:0.6];
         rightDotColor = [NSColor colorWithSRGBRed:195/255.0 green:50/255.0 blue:62/255.0 alpha:0.6];
-        
-        double sidePadding = 10;//[self bounds].size.width/10;
-        double topPadding = 10;//[self bounds].size.height/10;
+        gridColor = [NSColor colorWithSRGBRed:21/255.0 green:21/255.0 blue:21/255.0 alpha:1.0];
+
+        double sidePadding = 23;//[self bounds].size.width/10;
+        double topPadding = 23;//[self bounds].size.height/10;
         cursorFrame = NSMakeRect(sidePadding, 
                                  topPadding, 
                                  [self bounds].size.width-sidePadding*2,
@@ -90,19 +91,19 @@
         double step = cursorFrame.size.width/2 / 8;
         double x;
         double y;
-        for (x=cursorFrame.origin.x + cursorFrame.size.width/2; x <= cursorFrame.origin.x+cursorFrame.size.width; x += step) {
+        for (x=cursorFrame.origin.x+step + cursorFrame.size.width/2; x < cursorFrame.origin.x+cursorFrame.size.width; x += step) {
             [gridPath moveToPoint:NSMakePoint(x,cursorFrame.origin.y)];
             [gridPath lineToPoint:NSMakePoint(x,cursorFrame.origin.y+cursorFrame.size.height)];
         }
         
         x = cursorFrame.origin.x + cursorFrame.size.width/2;
         step = round(cursorFrame.size.height / 4);
-        for (y=cursorFrame.origin.y; y <= cursorFrame.origin.y+cursorFrame.size.height; y += step) {
+        for (y=cursorFrame.origin.y+step; y < cursorFrame.origin.y+cursorFrame.size.height; y += step) {
             [gridPath moveToPoint:NSMakePoint(x,y)];
             [gridPath lineToPoint:NSMakePoint(x+cursorFrame.size.width/2,y)];
         }
 
-        [[NSColor blackColor] set];
+        [gridColor set];
         [gridPath stroke];
     }
     

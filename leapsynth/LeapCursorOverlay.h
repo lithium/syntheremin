@@ -20,6 +20,7 @@ typedef struct Point3 {
     NSColor *leftDotColor,*rightDotColor;
     Point3 leftHand,rightHand;
     NSRect cursorFrame;
+    NSColor *gridColor;
 }
 
 @property BOOL drawGrid;
