@@ -238,7 +238,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"lfo:0:output"
                               onEdge:kEdgeLeft
-                          withOffset:410
+                          withOffset:420
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:85/255.0
                                                           blue:131/255.0
@@ -248,7 +248,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"osc:0:output"
                               onEdge:kEdgeLeft
-                          withOffset:300
+                          withOffset:310
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:139/255.0
                                                           blue:89/255.0
@@ -257,7 +257,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"osc:0:modulate"
                               onEdge:kEdgeLeft
-                          withOffset:250
+                          withOffset:240
                            withColor:[NSColor colorWithSRGBRed:76/255.0
                                                          green:76/255.0
                                                           blue:79/255.0
@@ -266,7 +266,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"osc:1:output"
                               onEdge:kEdgeLeft
-                          withOffset:190
+                          withOffset:200
                            withColor:[NSColor colorWithSRGBRed:157/255.0
                                                          green:104/255.0
                                                           blue:104/255.0
@@ -275,7 +275,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"osc:1:modulate"
                               onEdge:kEdgeLeft
-                          withOffset:140
+                          withOffset:130
                            withColor:[NSColor colorWithSRGBRed:76/255.0
                                                          green:76/255.0
                                                           blue:79/255.0
@@ -284,7 +284,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"osc:2:output"
                               onEdge:kEdgeLeft
-                          withOffset:80
+                          withOffset:90
                            withColor:[NSColor colorWithSRGBRed:88/255.0
                                                          green:138/255.0
                                                           blue:122/255.0
@@ -293,7 +293,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"osc:2:modulate"
                               onEdge:kEdgeLeft
-                          withOffset:40
+                          withOffset:20
                            withColor:[NSColor colorWithSRGBRed:76/255.0
                                                          green:76/255.0
                                                           blue:79/255.0
@@ -302,7 +302,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:0:input"
                               onEdge:kEdgeBottom
-                          withOffset:50
+                          withOffset:40
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:85/255.0
                                                           blue:131/255.0
@@ -311,7 +311,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:1:input"
                               onEdge:kEdgeBottom
-                          withOffset:105
+                          withOffset:103
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:85/255.0
                                                           blue:131/255.0
@@ -320,7 +320,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:2:input"
                               onEdge:kEdgeBottom
-                          withOffset:160
+                          withOffset:166
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:85/255.0
                                                           blue:131/255.0
@@ -329,7 +329,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"mixer::modulate"
                               onEdge:kEdgeBottom
-                          withOffset:260
+                          withOffset:273
                            withColor:[NSColor colorWithSRGBRed:76/255.0
                                                          green:76/255.0
                                                           blue:79/255.0
@@ -340,7 +340,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"noise:0:output"
                               onEdge:kEdgeRight
-                          withOffset:-50
+                          withOffset:420
                            withColor:[NSColor colorWithSRGBRed:139/255.0
                                                          green:139/255.0
                                                           blue:176/255.0
@@ -353,7 +353,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"vcf:0:output"
                               onEdge:kEdgeRight
-                          withOffset:300
+                          withOffset:310
                            withColor:[NSColor colorWithSRGBRed:90/255.0
                                                          green:67/255.0
                                                           blue:98/255.0
@@ -362,7 +362,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vcf:0:input"
                               onEdge:kEdgeRight
-                          withOffset:270
+                          withOffset:275
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:85/255.0
                                                           blue:131/255.0
@@ -370,7 +370,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vcf:0:modulate"
                               onEdge:kEdgeRight
-                          withOffset:235
+                          withOffset:239
                            withColor:[NSColor colorWithSRGBRed:76/255.0
                                                          green:76/255.0
                                                           blue:79/255.0
@@ -381,7 +381,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"adsr:0:output"
                               onEdge:kEdgeRight
-                          withOffset:190
+                          withOffset:200
                            withColor:[NSColor colorWithSRGBRed:118/255.0
                                                          green:134/255.0
                                                           blue:120/255.0
@@ -389,7 +389,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kOutputPatchEndpoint 
                     andParameterName:@"adsr:1:output"
                               onEdge:kEdgeRight
-                          withOffset:80
+                          withOffset:90
                            withColor:[NSColor colorWithSRGBRed:91/255.0
                                                          green:94/255.0
                                                           blue:51/255.0
