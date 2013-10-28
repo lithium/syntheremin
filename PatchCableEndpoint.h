@@ -11,8 +11,8 @@
 #define kOutputEndpointWidth 13
 #define kOutputEndpointHeight 13
 
-#define kInputEndpointWidth 13
-#define kInputEndpointHeight 25
+#define kInputEndpointWidth 21
+#define kInputEndpointHeight 21
 
 enum {
     kInputPatchEndpoint=0,

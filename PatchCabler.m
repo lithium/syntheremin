@@ -55,7 +55,7 @@
 
         } else if ([endpoint cablerEdge] == kEdgeBottom) {
             orig.x += [endpoint size].width/2;
-            orig.y += [endpoint size].height/2-4;
+            orig.y += 4;
 
             [cablePath moveToPoint:NSMakePoint(orig.x, 0)];
             [cablePath lineToPoint:NSMakePoint(orig.x, orig.y)];

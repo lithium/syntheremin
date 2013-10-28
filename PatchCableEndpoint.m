@@ -135,12 +135,17 @@
             }
 
             if ([target cablerEdge] == kEdgeRight) {
-                y -= _padding;
-                x -= _padding;
+                y -= 7;
+                x += _padding;
             }
             else
             if ([target cablerEdge] == kEdgeLeft) {
-                y -= _padding;
+                y -= 7;
+                x += _padding;
+            }
+            else
+            if ([target cablerEdge] == kEdgeBottom) {
+                y -= 7;
                 x += _padding;
             }
 
@@ -193,22 +198,12 @@
                                          radius:bounds.size.width/2-_padding
                                      startAngle:90
                                        endAngle:270
-                                      clockwise:YES];
-//        [path appendBezierPathWithOvalInRect:NSMakeRect(_padding,_padding,
-//                                                        kInputEndpointWidth,
-//                                                        kInputEndpointHeight)];
-//        [path appendBezierPathWithOvalInRect:NSMakeRect(_padding, _padding,
-//                                                        kInputEndpointWidth, kInputEndpointWidth)];
-        
+                                      clockwise:YES];        
     }
     [color set];
     
     [path setLineWidth:4];
     [path stroke];
-//    [image drawInRect:bounds
-//             fromRect:NSMakeRect(0, 0, [image size].width, [image size].height)
-//            operation:NSCompositeSourceOver
-//             fraction:1.0];
     
     if (connectedTo) {
         [orbImage drawInRect:NSMakeRect(_padding, _padding,
