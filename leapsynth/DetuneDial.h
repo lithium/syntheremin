@@ -10,7 +10,7 @@
 
 @interface DetuneDial : CSControl
 {
-    
+    NSColor *_color;
     NSRect _octaveRect, _centsRect;
     NSDictionary *_textAttributes;
     

@@ -33,8 +33,8 @@
 - (void)setToggled:(BOOL)flag 
 {
     toggled = flag;
-    [self setNeedsDisplay:YES];
     [self performAction];
+    [self setNeedsDisplay:YES];
 }
     
 

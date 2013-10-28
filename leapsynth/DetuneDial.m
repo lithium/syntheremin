@@ -15,12 +15,14 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _font = [NSFont fontWithName:@"Helvetica" size:22.0];
+        _font = [NSFont fontWithName:@"Helvetica Neue Bold" size:20.0];
+        _color = [NSColor colorWithSRGBRed:0 green:102/255.0 blue:1.0 alpha:1.0];
         
         NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
         [style setAlignment:NSCenterTextAlignment];
         _textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
             style, NSParagraphStyleAttributeName,
+           _color, NSForegroundColorAttributeName,
             _font, NSFontAttributeName,
          nil];
 
@@ -47,12 +49,13 @@
     int octave = (int)floor(self.doubleValue);
     int cents = (int)floor((self.doubleValue - octave)*100);
     
-    [[NSString stringWithFormat:@"%02d", octave] drawInRect:_octaveRect withAttributes:_textAttributes];
+    [_color set];
+    [[NSString stringWithFormat:@"%02d", octave] drawInRect:_octaveRect withAttributes:_textAttributes ];
     [[NSString stringWithFormat:@"%02d", cents] drawInRect:_centsRect withAttributes:_textAttributes];
     
-    NSBezierPath *path = [NSBezierPath alloc];
-    [path appendBezierPathWithRect:[self bounds]];
-    [path stroke];
+//    NSBezierPath *path = [NSBezierPath alloc];
+//    [path appendBezierPathWithRect:[self bounds]];
+//    [path stroke];
     
     [context restoreGraphicsState];
 }
