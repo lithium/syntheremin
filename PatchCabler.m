@@ -25,10 +25,11 @@
 {
     NSGraphicsContext *context = [NSGraphicsContext currentContext];
     
-    [context saveGraphicsState];
     
     [endpoints enumerateKeysAndObjectsUsingBlock:^(id parameterName, id endpoint, BOOL *stop)
     {
+        [context saveGraphicsState];
+
         NSBezierPath *cablePath = [[NSBezierPath alloc] init];
         [cablePath setLineWidth:4];
 
@@ -130,7 +131,13 @@
                     [cablePath lineToPoint:NSMakePoint(final.x, orig.y)];
                 }
 
-                
+                //draw a glow
+                NSShadow *shadow = [[NSShadow alloc] init];
+                [shadow setShadowBlurRadius:3];
+                [shadow setShadowOffset:NSMakeSize(0,0)];
+                [shadow setShadowColor:[endpoint color]];
+                [shadow set];
+
                 
             }
             else {
@@ -142,17 +149,18 @@
 
             //connect to final point
             [cablePath lineToPoint:final];
-            
+
+
         }
         
         [[endpoint color] set];
         [cablePath stroke];
 
+        [context restoreGraphicsState];
 
     }];
 
 
-    [context restoreGraphicsState];
 }
 
 
