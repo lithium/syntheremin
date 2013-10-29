@@ -307,7 +307,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:0:input"
                               onEdge:kEdgeBottom
-                          withOffset:40
+                          withOffset:35
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:85/255.0
                                                           blue:131/255.0
@@ -316,7 +316,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:1:input"
                               onEdge:kEdgeBottom
-                          withOffset:103
+                          withOffset:92
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:85/255.0
                                                           blue:131/255.0
@@ -325,7 +325,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"vca:2:input"
                               onEdge:kEdgeBottom
-                          withOffset:166
+                          withOffset:149
                            withColor:[NSColor colorWithSRGBRed:150/255.0
                                                          green:85/255.0
                                                           blue:131/255.0
@@ -334,7 +334,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"mixer::modulate"
                               onEdge:kEdgeBottom
-                          withOffset:273
+                          withOffset:260
                            withColor:[NSColor colorWithSRGBRed:76/255.0
                                                          green:76/255.0
                                                           blue:79/255.0
