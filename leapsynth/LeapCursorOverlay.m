@@ -158,12 +158,14 @@
     leftHand.x = x;
     leftHand.y = y;
     leftHand.z = z;
+        [self setNeedsDisplay:YES];
 }
 - (void) setRightHand:(CGFloat)x :(CGFloat)y :(CGFloat)z
 {
     rightHand.x = x;
     rightHand.y = y;
     rightHand.z = z;
+    [self setNeedsDisplay:YES];
 }
 
 @end
