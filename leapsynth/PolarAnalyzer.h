@@ -14,6 +14,11 @@
 #define kMaxSecondsBetweenRipples 2
 #define kRandSecondsBetweenShed 3
 
+
+#define kZoomRatio 1.5  // desample ratio
+#define kNumSamplesPerRipple 2000
+
+
 @interface Waveform : NSObject
 {
     @public
@@ -37,6 +42,8 @@
 @interface PolarAnalyzer : NSView <AnalyzerDelegate>
 {
     NSColor *waveColor;
+    
+    NSMutableData *sampleBuffer;
     
     NSMutableArray *ripples;
     CFAbsoluteTime lastRippleTime;
