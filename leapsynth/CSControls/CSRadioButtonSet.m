@@ -36,6 +36,7 @@
     int i=0;
     NSRect bounds = [self bounds];
     NSArray *names = [firstName componentsSeparatedByString:@","];
+    double padding = 2;
     double step = bounds.size.width / [names count];
     for (NSString *name in names) {
         NSRect frame = NSMakeRect(x, 0, step, bounds.size.height);

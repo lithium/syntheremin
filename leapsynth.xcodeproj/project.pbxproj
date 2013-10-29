@@ -27,6 +27,9 @@
 		122C8022181DE7BE00505CAF /* button_minorScale@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C801A181DE7BE00505CAF /* button_minorScale@2x.png */; };
 		122C8023181DE7BE00505CAF /* button_tuned_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C801B181DE7BE00505CAF /* button_tuned_selected@2x.png */; };
 		122C8024181DE7BE00505CAF /* button_tuned@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C801C181DE7BE00505CAF /* button_tuned@2x.png */; };
+		122C802818201B3800505CAF /* cutoffKnob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802518201B3800505CAF /* cutoffKnob_dial@2x.png */; };
+		122C802918201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802618201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png */; };
+		122C802A18201B3800505CAF /* cutoffKnob_outerRing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802718201B3800505CAF /* cutoffKnob_outerRing_full@2x.png */; };
 		12393FE018187F7D000F4BF3 /* background_controls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FBC18187F7D000F4BF3 /* background_controls@2x.png */; };
 		12393FF518187F7D000F4BF3 /* knob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD218187F7D000F4BF3 /* knob_dial@2x.png */; };
 		12393FF618187F7D000F4BF3 /* knob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */; };
@@ -131,6 +134,9 @@
 		122C801A181DE7BE00505CAF /* button_minorScale@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_minorScale@2x.png"; sourceTree = "<group>"; };
 		122C801B181DE7BE00505CAF /* button_tuned_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_tuned_selected@2x.png"; sourceTree = "<group>"; };
 		122C801C181DE7BE00505CAF /* button_tuned@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_tuned@2x.png"; sourceTree = "<group>"; };
+		122C802518201B3800505CAF /* cutoffKnob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_dial@2x.png"; sourceTree = "<group>"; };
+		122C802618201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
+		122C802718201B3800505CAF /* cutoffKnob_outerRing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_outerRing_full@2x.png"; sourceTree = "<group>"; };
 		12393FBC18187F7D000F4BF3 /* background_controls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_controls@2x.png"; sourceTree = "<group>"; };
 		12393FD218187F7D000F4BF3 /* knob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_dial@2x.png"; sourceTree = "<group>"; };
 		12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
@@ -251,6 +257,9 @@
 		12393FBB18187F7D000F4BF3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				122C802518201B3800505CAF /* cutoffKnob_dial@2x.png */,
+				122C802618201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png */,
+				122C802718201B3800505CAF /* cutoffKnob_outerRing_full@2x.png */,
 				12393FBD18187F7D000F4BF3 /* buttons */,
 				12393FBC18187F7D000F4BF3 /* background_controls@2x.png */,
 				1276FE56181B617300BB1976 /* background_visualizer@2x.png */,
@@ -514,6 +523,7 @@
 				122C8020181DE7BE00505CAF /* button_majorScale@2x.png in Resources */,
 				12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */,
 				12BB469317A9890D009D7B5C /* InfoPlist.strings in Resources */,
+				122C802A18201B3800505CAF /* cutoffKnob_outerRing_full@2x.png in Resources */,
 				12BB469B17A98979009D7B5C /* Credits.rtf in Resources */,
 				122C801F181DE7BE00505CAF /* button_majorScale_selected@2x.png in Resources */,
 				12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */,
@@ -541,10 +551,12 @@
 				12393FFC18187F7D000F4BF3 /* slider_handle@2x.png in Resources */,
 				12393FFD18187F7D000F4BF3 /* volumeKnob_dial@2x.png in Resources */,
 				12393FFE18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png in Resources */,
+				122C802918201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png in Resources */,
 				12393FFF18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png in Resources */,
 				122C8014181DE74F00505CAF /* connected_glowingOrb@2x.png in Resources */,
 				122C801D181DE7BE00505CAF /* button_bluesScale_selected@2x.png in Resources */,
 				1239401E18188C0B000F4BF3 /* button_noise_pink_selected@2x.png in Resources */,
+				122C802818201B3800505CAF /* cutoffKnob_dial@2x.png in Resources */,
 				1239401F18188C0B000F4BF3 /* button_noise_pink@2x.png in Resources */,
 				1239402018188C0B000F4BF3 /* button_noise_white_selected@2x.png in Resources */,
 				1239402118188C0B000F4BF3 /* button_noise_white@2x.png in Resources */,

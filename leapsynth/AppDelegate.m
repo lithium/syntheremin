@@ -244,9 +244,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
                     andParameterName:@"lfo:0:output"
                               onEdge:kEdgeLeft
                           withOffset:420
-                           withColor:[NSColor colorWithSRGBRed:150/255.0
-                                                         green:85/255.0
-                                                          blue:131/255.0
+                           withColor:[NSColor colorWithSRGBRed:67/255.0
+                                                         green:67/255.0
+                                                          blue:103/255.0
                                                          alpha:1.0]];
 
     //oscilattors
