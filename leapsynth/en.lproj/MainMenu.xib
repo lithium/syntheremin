@@ -198,7 +198,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5004" customClass="CSKnob">
-                                            <rect key="frame" x="654" y="152" width="50" height="50"/>
+                                            <rect key="frame" x="654" y="153" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:attackTimeInMs"/>
@@ -211,7 +211,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5006" customClass="CSKnob">
-                                            <rect key="frame" x="724" y="152" width="50" height="50"/>
+                                            <rect key="frame" x="724" y="153" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:decayTimeInMs"/>
@@ -224,7 +224,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5008" customClass="CSKnob">
-                                            <rect key="frame" x="797" y="152" width="50" height="50"/>
+                                            <rect key="frame" x="797" y="153" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:sustainLevel"/>
@@ -234,7 +234,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5010" customClass="CSKnob">
-                                            <rect key="frame" x="868" y="152" width="50" height="50"/>
+                                            <rect key="frame" x="868" y="153" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="adsr:1:releaseTimeInMs"/>
@@ -451,7 +451,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbE-yF-0UX" customClass="DetuneDial">
-                                            <rect key="frame" x="223" y="388" width="85" height="39"/>
+                                            <rect key="frame" x="223" y="387" width="85" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="parameter" value="osc:0:detuneInCents"/>
