@@ -138,11 +138,11 @@
                 }
 
                 //draw a glow
-                NSShadow *shadow = [[NSShadow alloc] init];
-                [shadow setShadowBlurRadius:6];
-                [shadow setShadowOffset:NSMakeSize(0,0)];
-                [shadow setShadowColor:_shadowColor];
-                [shadow set];
+//                NSShadow *shadow = [[NSShadow alloc] init];
+//                [shadow setShadowBlurRadius:6];
+//                [shadow setShadowOffset:NSMakeSize(0,0)];
+//                [shadow setShadowColor:_shadowColor];
+//                [shadow set];
 
                 
 

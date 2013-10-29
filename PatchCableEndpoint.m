@@ -208,23 +208,20 @@
     [color set];
     
     [path setLineWidth:4];
-    
+    [path stroke];
+
 
     
     if (connectedTo) {
-        NSShadow *shadow = [[NSShadow alloc] init];
-        [shadow setShadowBlurRadius:5];
-        [shadow setShadowOffset:NSMakeSize(0,0)];
-        [shadow setShadowColor:_shadowColor];
-        [shadow set];
-        [path stroke];
+//        NSShadow *shadow = [[NSShadow alloc] init];
+//        [shadow setShadowBlurRadius:5];
+//        [shadow setShadowOffset:NSMakeSize(0,0)];
+//        [shadow setShadowColor:_shadowColor];
+//        [shadow set];
 
         [orbImage drawInRect:NSMakeRect(_padding, _padding,
                                         kOutputEndpointWidth,
                                         kOutputEndpointHeight)];
-    } else {
-        [path stroke];
-
     }
 
     [context restoreGraphicsState];
