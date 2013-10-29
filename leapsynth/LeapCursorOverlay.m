@@ -61,7 +61,7 @@
         x = cursorFrame.origin.x + cursorFrame.size.width/2;
         step = round(cursorFrame.size.height / 4);
         for (y=cursorFrame.origin.y+step; y < cursorFrame.origin.y+cursorFrame.size.height; y += step) {
-            [gridPath moveToPoint:NSMakePoint(x,y)];
+            [gridPath moveToPoint:NSMakePoint(x+6,y)];
             [gridPath lineToPoint:NSMakePoint(x+cursorFrame.size.width/2,y)];
         }
         
@@ -83,14 +83,14 @@
         [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x, left_y)];
         [leftDotPath lineToPoint:NSMakePoint(left_x-left_radius/2, left_y)];
         [leftDotPath moveToPoint:NSMakePoint(left_x+left_radius/2, left_y)];
-        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+2, left_y)];
+        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+3, left_y)];
         
         //left hash
         [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x, left_y-7)];
         [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x, left_y+7)];
         //right hash
-        [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+2, left_y-7)];
-        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+2, left_y+7)];
+        [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+3, left_y-7)];
+        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+3, left_y+7)];
 
         
         
@@ -106,22 +106,38 @@
     if (rightHandVisible) {
         NSBezierPath *rightDotPath = [[NSBezierPath alloc] init];
         int right_radius = 25; //(rightHand.z * (kHandRadiusMax - kHandRadiusMin)) + kHandRadiusMin;
-        int right_x = cursorFrame.origin.x + (rightHand.x * (cursorFrame.size.width/2 - right_radius)) + (cursorFrame.size.width/2);
+        int right_x = cursorFrame.origin.x + (rightHand.x * (cursorFrame.size.width/2 - right_radius - 6 - 6)) + (cursorFrame.size.width/2)+6+3;
         int right_y = cursorFrame.origin.y + rightHand.y * (cursorFrame.size.height-right_radius);    
         [rightDotPath appendBezierPathWithOvalInRect:NSMakeRect(right_x,right_y,right_radius,right_radius)];
         
         right_y += right_radius/2;
         right_x += right_radius/2;
-        [rightDotPath moveToPoint:NSMakePoint(right_x, cursorFrame.origin.y)];
+        [rightDotPath moveToPoint:NSMakePoint(right_x, cursorFrame.origin.y+2)];
         [rightDotPath lineToPoint:NSMakePoint(right_x, right_y-right_radius/2)];
         [rightDotPath moveToPoint:NSMakePoint(right_x, right_y+right_radius/2)];
-        [rightDotPath lineToPoint:NSMakePoint(right_x, cursorFrame.origin.y+cursorFrame.size.height)];
+        [rightDotPath lineToPoint:NSMakePoint(right_x, cursorFrame.origin.y+cursorFrame.size.height-2)];
+
+        //top hash
+        [rightDotPath moveToPoint:NSMakePoint(right_x-7, cursorFrame.origin.y+cursorFrame.size.height-2)];
+        [rightDotPath lineToPoint:NSMakePoint(right_x+7, cursorFrame.origin.y+cursorFrame.size.height-2)];
+        //bottom hash
+        [rightDotPath moveToPoint:NSMakePoint(right_x-7, cursorFrame.origin.y+2)];
+        [rightDotPath lineToPoint:NSMakePoint(right_x+7, cursorFrame.origin.y+2)];
+
 
         if ([self drawGrid]) {
-            [rightDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2, right_y)];
+            [rightDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+6+2, right_y)];
             [rightDotPath lineToPoint:NSMakePoint(right_x-right_radius/2, right_y)];
             [rightDotPath moveToPoint:NSMakePoint(right_x+right_radius/2, right_y)];
-            [rightDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width, right_y)];
+            [rightDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width-2, right_y)];
+            
+            //left hash
+            [rightDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+6+2, right_y-7)];
+            [rightDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+6+2, right_y+7)];
+            //right hash
+            [rightDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width-2, right_y-7)];
+            [rightDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width-2, right_y+7)];
+
 
         }
         [rightDotColor set];

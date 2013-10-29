@@ -180,7 +180,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Synth" identifier="1" id="5245">
-                                <view key="view" ambiguous="YES" id="5248">
+                                <view key="view" id="5248">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -531,7 +531,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Theremin" identifier="2" id="5246">
-                                <view key="view" id="5247">
+                                <view key="view" ambiguous="YES" id="5247">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -540,19 +540,17 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="background_visualizer" id="lf5-VD-2ij"/>
                                         </imageView>
+                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5257" customClass="LeapCursorOverlay">
+                                            <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="leftHandVisible" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="rightHandVisible" value="NO"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </customView>
                                         <customView canDrawConcurrently="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3193" customClass="PolarAnalyzer">
                                             <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5257" customClass="LeapCursorOverlay">
-                                                    <rect key="frame" x="-6" y="0.0" width="960" height="720"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftHandVisible" value="NO"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rightHandVisible" value="NO"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </customView>
-                                            </subviews>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0RD-aX-70v" customClass="CSMomentaryButton">
                                             <rect key="frame" x="20" y="678" width="131" height="22"/>
