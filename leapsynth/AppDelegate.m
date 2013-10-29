@@ -39,8 +39,12 @@
 
 @synthesize osc_shape_0;
 @synthesize osc_shape_1;
-@synthesize tabView;
 @synthesize osc_shape_2;
+@synthesize osc_detune_0;
+@synthesize osc_detune_1;
+@synthesize osc_detune_2;
+
+@synthesize tabView;
 
 
 @synthesize polarAnalyzer;
@@ -133,12 +137,13 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [[synth adsrN:1] addObserver:self forKeyPath:@"releaseTimeInMs" options:0 context:(__bridge void *)adsr_release_1];
 
     [[synth oscN:0] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_0];
+    [[synth oscN:0] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_0];
 //    [[synth oscN:0] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_0];
     [[synth oscN:1] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_1];
-//    [[synth oscN:1] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_1];
+    [[synth oscN:1] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_1];
 //    [[synth oscN:1] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_1];
     [[synth oscN:2] addObserver:self forKeyPath:@"waveShape" options:0 context:(__bridge void *)osc_shape_2];
-//    [[synth oscN:2] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_2];
+    [[synth oscN:2] addObserver:self forKeyPath:@"detuneInCents" options:0 context:(__bridge void *)osc_detune_2];
 //    [[synth oscN:2] addObserver:self forKeyPath:@"range" options:0 context:(__bridge void *)osc_range_2];
     
     [self initializePatchCabler];
@@ -506,7 +511,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     CSControl *control = (__bridge CSControl *)context;
 //    NSLog(@"%@[%@] = %@", keyPath, context, value);
-    [control setDoubleValue:[value doubleValue]];
+    if ([keyPath isEqualToString:@"detuneInCents"]) {
+        [control setDoubleValue:-[value doubleValue]/100];
+    } else {
+        [control setDoubleValue:[value doubleValue]];
+    }
 
 }
 

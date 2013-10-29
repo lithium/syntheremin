@@ -24,6 +24,7 @@
 #import "LeapCursorOverlay.h"
 #import "LeapModulator.h"
 #import "CSOnOffLabel.h"
+#import "DetuneDial.h"
 
 enum {
     kTuningNone=0,
@@ -125,6 +126,9 @@ enum {
 @property (weak) IBOutlet CSRadioButtonSet *osc_shape_0;
 @property (weak) IBOutlet CSRadioButtonSet *osc_shape_1;
 @property (weak) IBOutlet CSRadioButtonSet *osc_shape_2;
+@property (weak) IBOutlet DetuneDial *osc_detune_0;
+@property (weak) IBOutlet DetuneDial *osc_detune_1;
+@property (weak) IBOutlet DetuneDial *osc_detune_2;
 
 @property (weak) IBOutlet NSTabView *tabView;
 - (IBAction)switchToSynth:(id)sender;
