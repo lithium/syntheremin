@@ -499,7 +499,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iW-hy-zKy" customClass="CSMomentaryButton">
-                                            <rect key="frame" x="20" y="665" width="131" height="22"/>
+                                            <rect key="frame" x="20" y="678" width="131" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="showVisualizer"/>
@@ -555,7 +555,7 @@
                                             </subviews>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0RD-aX-70v" customClass="CSMomentaryButton">
-                                            <rect key="frame" x="20" y="665" width="131" height="22"/>
+                                            <rect key="frame" x="20" y="678" width="131" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="showControls"/>
@@ -565,7 +565,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xlu-cb-gej" customClass="CSMomentaryButton">
-                                            <rect key="frame" x="160" y="665" width="100" height="22"/>
+                                            <rect key="frame" x="161" y="678" width="100" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="fullScreen"/>
