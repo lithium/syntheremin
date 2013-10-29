@@ -62,8 +62,7 @@
     NSPoint center = NSMakePoint(bounds.size.width/2, bounds.size.height/2);
     short *samples = (short*)[buffer bytes];
     
-    double radsRange = 2*M_PI;///6 * 5;
-    
+    double radsRange = 2*M_PI;
     double step = radsRange/numSamples;
     for (int i=0; i < numSamples; i++) {
         short sample = samples[i];
