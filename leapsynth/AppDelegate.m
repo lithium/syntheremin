@@ -334,7 +334,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [patchCabler addEndpointWithType:kInputPatchEndpoint 
                     andParameterName:@"mixer::modulate"
                               onEdge:kEdgeBottom
-                          withOffset:260
+                          withOffset:265
                            withColor:[NSColor colorWithSRGBRed:76/255.0
                                                          green:76/255.0
                                                           blue:79/255.0

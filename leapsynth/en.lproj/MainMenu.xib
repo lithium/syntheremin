@@ -396,7 +396,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5270" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="26" y="385" width="176" height="45"/>
+                                            <rect key="frame" x="30" y="383" width="160" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
@@ -407,7 +407,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5274" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="26" y="273" width="176" height="45"/>
+                                            <rect key="frame" x="30" y="272" width="160" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
@@ -418,7 +418,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5276" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="26" y="162" width="176" height="45"/>
+                                            <rect key="frame" x="30" y="161" width="160" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
@@ -429,7 +429,7 @@
                                             </connections>
                                         </customView>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5278" customClass="CSRadioButtonSet">
-                                            <rect key="frame" x="26" y="494" width="176" height="45"/>
+                                            <rect key="frame" x="30" y="493" width="160" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonNames" value="square,sine,sawtooth,triangle"/>
