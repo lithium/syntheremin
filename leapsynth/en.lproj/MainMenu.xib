@@ -180,7 +180,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Synth" identifier="1" id="5245">
-                                <view key="view" id="5248">
+                                <view key="view" ambiguous="YES" id="5248">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -531,7 +531,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Theremin" identifier="2" id="5246">
-                                <view key="view" ambiguous="YES" id="5247">
+                                <view key="view" id="5247">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -631,6 +631,9 @@
                 <outlet property="mixer_level" destination="5182" id="5201"/>
                 <outlet property="noise_level" destination="5028" id="5189"/>
                 <outlet property="noise_type" destination="5280" id="5284"/>
+                <outlet property="osc_detune_0" destination="fbE-yF-0UX" id="mgN-Xn-TGg"/>
+                <outlet property="osc_detune_1" destination="tnV-Fl-6FN" id="CQb-kq-wmd"/>
+                <outlet property="osc_detune_2" destination="DHR-Fl-fX0" id="lUS-3m-mj9"/>
                 <outlet property="osc_shape_0" destination="5270" id="5285"/>
                 <outlet property="osc_shape_1" destination="5274" id="5286"/>
                 <outlet property="osc_shape_2" destination="5276" id="5287"/>
