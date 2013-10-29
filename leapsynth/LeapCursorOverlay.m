@@ -9,6 +9,10 @@
 #import "LeapCursorOverlay.h"
 
 @implementation LeapCursorOverlay
+{
+    double sidePadding,topPadding;
+    double offset;
+}
 @synthesize drawGrid;
 @synthesize leftHandVisible;
 @synthesize rightHandVisible;
@@ -21,11 +25,13 @@
         rightDotColor = [NSColor colorWithSRGBRed:195/255.0 green:50/255.0 blue:62/255.0 alpha:0.6];
         gridColor = [NSColor colorWithSRGBRed:21/255.0 green:21/255.0 blue:21/255.0 alpha:1.0];
 
-        double sidePadding = 23;//[self bounds].size.width/10;
-        double topPadding = 23;//[self bounds].size.height/10;
-        cursorFrame = NSMakeRect(sidePadding, 
+        
+        offset = 13;
+        sidePadding = 23;//[self bounds].size.width/10;
+        topPadding = 23;//[self bounds].size.height/10;
+        cursorFrame = NSMakeRect(13,
                                  topPadding, 
-                                 [self bounds].size.width-sidePadding*2,
+                                 [self bounds].size.width-13-23,
                                  [self bounds].size.height-topPadding*2);
         
         [self setLeftHandVisible:YES];
@@ -77,8 +83,17 @@
         [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x, left_y)];
         [leftDotPath lineToPoint:NSMakePoint(left_x-left_radius/2, left_y)];
         [leftDotPath moveToPoint:NSMakePoint(left_x+left_radius/2, left_y)];
-        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2, left_y)];
+        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+2, left_y)];
+        
+        //left hash
+        [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x, left_y-7)];
+        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x, left_y+7)];
+        //right hash
+        [leftDotPath moveToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+2, left_y-7)];
+        [leftDotPath lineToPoint:NSMakePoint(cursorFrame.origin.x+cursorFrame.size.width/2+2, left_y+7)];
 
+        
+        
         [leftDotColor set];
         [leftDotPath stroke];
         [[leftDotColor colorWithAlphaComponent:0.4] set];
