@@ -49,6 +49,14 @@
             [_tutorialText setFrame:NSMakeRect(20,10,285,24)];
             break;
             
+        case 4:
+            [self setFrameOrigin:NSMakePoint(75,50)];
+            [_backgroundImage setFrameSize:NSMakeSize(333,60)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"popover_createPatches"]];
+            [_tutorialText setTitleWithMnemonic:@"Tune to a scale to play melodies"];
+            [_tutorialText setFrame:NSMakeRect(20,20,333,30)];
+            break;
+
         default:
             [self tutorialComplete];
             break;
