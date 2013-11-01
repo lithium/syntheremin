@@ -43,18 +43,18 @@
             
         case 3:
             [self setFrameOrigin:NSMakePoint(50,620)];
-            [_backgroundImage setFrameSize:NSMakeSize(285,55)];
+            [_backgroundImage setFrameSize:NSMakeSize(275,55)];
             [_backgroundImage setImage:[NSImage imageNamed:@"popover_showControls"]];
-            [_tutorialText setTitleWithMnemonic:@"Click to view Synth controls"];
-            [_tutorialText setFrame:NSMakeRect(20,10,285,24)];
+            [_tutorialText setTitleWithMnemonic:@"Click for synthesizer controls"];
+            [_tutorialText setFrame:NSMakeRect(10,10,285,24)];
             break;
             
         case 4:
-            [self setFrameOrigin:NSMakePoint(75,50)];
-            [_backgroundImage setFrameSize:NSMakeSize(333,60)];
+            [self setFrameOrigin:NSMakePoint(20,40)];
+            [_backgroundImage setFrameSize:NSMakeSize(275,60)];
             [_backgroundImage setImage:[NSImage imageNamed:@"popover_createPatches"]];
-            [_tutorialText setTitleWithMnemonic:@"Tune to a scale to play melodies"];
-            [_tutorialText setFrame:NSMakeRect(20,20,333,30)];
+            [_tutorialText setTitleWithMnemonic:@"Tune to your favorite mode"];
+            [_tutorialText setFrame:NSMakeRect(13,22,333,30)];
             break;
 
         default:
