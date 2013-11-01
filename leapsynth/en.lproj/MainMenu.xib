@@ -180,7 +180,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Synth" identifier="1" id="5245">
-                                <view key="view" ambiguous="YES" id="5248">
+                                <view key="view" id="5248">
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5268">
@@ -530,7 +530,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Theremin" identifier="2" id="5246">
-                                <view key="view" id="5247">
+                                <view key="view" ambiguous="YES" id="5247">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -664,12 +664,12 @@
                     <imageView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLZ-2H-w1I">
                         <rect key="frame" x="0.0" y="0.0" width="395" height="175"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="popover_background" id="IUH-66-fYP"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="popover_background" id="IUH-66-fYP"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESK-ZW-7IT">
                         <rect key="frame" x="15" y="20" width="365" height="135"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="jcc-uE-fEl">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="jcc-uE-fEl">
                             <font key="font" size="20" name="HelveticaNeue-Light"/>
                             <string key="title">Place Leap Motion directly in front of you.   
 
@@ -683,6 +683,7 @@ Hold your hands approximately 10cm above the leap motion.</string>
             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="backgroundImage" destination="CLZ-2H-w1I" id="Y4Q-da-Fky"/>
                 <outlet property="tutorialText" destination="ESK-ZW-7IT" id="ieb-7X-Mq7"/>
             </connections>
         </box>

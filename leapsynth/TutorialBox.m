@@ -41,6 +41,14 @@
             [_tutorialText setTitleWithMnemonic:@"To play Syntheremin:\nMove your left palm up and down for volume, tuck your thumb.\nPoint with ONE finger on your right hand and move it side to side for pitch."];
             break;
             
+        case 3:
+            [self setFrameOrigin:NSMakePoint(50,620)];
+            [_backgroundImage setFrameSize:NSMakeSize(285,55)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"popover_showControls"]];
+            [_tutorialText setTitleWithMnemonic:@"Click to view Synth controls"];
+            [_tutorialText setFrame:NSMakeRect(20,10,285,24)];
+            break;
+            
         default:
             [self tutorialComplete];
             break;

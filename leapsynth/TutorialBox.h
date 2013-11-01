@@ -19,6 +19,7 @@
 @property (weak) id  <TutorialDelegate> delegate;
 @property int tutorialStep;
 @property (weak) IBOutlet NSTextField *tutorialText;
+@property (weak) IBOutlet NSImageView *backgroundImage;
 
 - (void)nextStep;
 @end

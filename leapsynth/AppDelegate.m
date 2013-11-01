@@ -549,18 +549,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 //first responder events
-- (void)mouseUp:(NSEvent *)theEvent
-{
-    if (inTutorial) {
-        [self nextTutorialStep];
-    }
-}
 - (void)keyDown:(NSEvent*)theEvent
 {
-    if (inTutorial) {
-        return;
-    }
-    
     char key = [[theEvent characters] characterAtIndex:0];
     int noteNumber;
     switch (key) {
@@ -620,13 +610,15 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
-    if (inTutorial) {
-        return;
-    }
 
     [cursorOverlay setLeftHand:normal.x :normal.y :normal.z];
     [cursorOverlay setLeftHandVisible:YES];
 
+    if (inTutorial) {
+        return;
+    }
+
+    
     [leapModulator[0] setLevel:normal.x];
     [leapModulator[1] setLevel:normal.y];
     [leapModulator[2] setLevel:normal.z];
@@ -638,12 +630,13 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
-    if (inTutorial) {
-        return;
-    }
 
     [cursorOverlay setRightHand:normal.x :normal.y :normal.z];
     [cursorOverlay setRightHandVisible:YES];
+
+    if (inTutorial) {
+        return;
+    }
 
     
     [leapModulator[3] setLevel:normal.x];
