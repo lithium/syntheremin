@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+
+
+
 @implementation AppDelegate
 @synthesize cursorOverlay;
 @synthesize linearAnalyzer;
@@ -164,6 +167,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     //listen to any available midi devices
     [self performSelectorInBackground:@selector(initializeMidi) withObject:nil];
     
+    
+    [self switchToTheremin:nil];
+    
+    [self startTutorial];
+
 }
 
 
@@ -402,8 +410,29 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
     
     
-    [self switchToTheremin:nil];
+}
+
+- (void)startTutorial
+{
+    inTutorial = YES;
+    [_tutorialBox setDelegate:self];
+    [self nextTutorialStep];
     
+    NSView *content = [_window contentView];
+    [_tutorialBox setFrameOrigin:NSMakePoint([content bounds].size.width/2 - [_tutorialBox bounds].size.width/2,
+                                             [content bounds].size.height/2 - [_tutorialBox bounds].size.height/2)];
+    [content addSubview:_tutorialBox];
+    
+    [_window makeFirstResponder:_tutorialBox];
+}
+- (void)nextTutorialStep
+{
+    [_tutorialBox nextStep];
+}
+- (void)tutorialComplete
+{
+    inTutorial = NO;
+    [_window makeFirstResponder:self];
 }
 
 - (void)noteOn
@@ -519,9 +548,19 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
-//window key events
+//first responder events
+- (void)mouseUp:(NSEvent *)theEvent
+{
+    if (inTutorial) {
+        [self nextTutorialStep];
+    }
+}
 - (void)keyDown:(NSEvent*)theEvent
 {
+    if (inTutorial) {
+        return;
+    }
+    
     char key = [[theEvent characters] characterAtIndex:0];
     int noteNumber;
     switch (key) {
@@ -581,6 +620,10 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
+    if (inTutorial) {
+        return;
+    }
+
     [cursorOverlay setLeftHand:normal.x :normal.y :normal.z];
     [cursorOverlay setLeftHandVisible:YES];
 
@@ -595,6 +638,10 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
+    if (inTutorial) {
+        return;
+    }
+
     [cursorOverlay setRightHand:normal.x :normal.y :normal.z];
     [cursorOverlay setRightHandVisible:YES];
 
