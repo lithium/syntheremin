@@ -15,6 +15,12 @@
 @end
 
 @interface TutorialBox : NSBox
+{
+    double _leftMin,_leftMax;
+    double _rightMin,_rightMax;
+    
+    BOOL _leftDone,_rightDone;
+}
 
 @property (weak) id  <TutorialDelegate> delegate;
 @property int tutorialStep;
@@ -22,4 +28,7 @@
 @property (weak) IBOutlet NSImageView *backgroundImage;
 
 - (void)nextStep;
+-(void)rightHandMotion:(double)x :(double)y :(double)z;
+-(void)leftHandMotion:(double)x :(double)y :(double)z;
+
 @end

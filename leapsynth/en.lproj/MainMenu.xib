@@ -121,7 +121,7 @@
                                     <action selector="switchToTheremin:" target="494" id="7zv-PO-DWA"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Show Synth Controls" keyEquivalent="2" id="Yrl-bW-YIQ">
+                            <menuItem title="Show Controls" keyEquivalent="2" id="Yrl-bW-YIQ">
                                 <connections>
                                     <action selector="switchToSynth:" target="494" id="tfp-4z-Oep"/>
                                 </connections>
@@ -180,7 +180,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Synth" identifier="1" id="5245">
-                                <view key="view" id="5248">
+                                <view key="view" ambiguous="YES" id="5248">
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5268">
@@ -530,7 +530,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Theremin" identifier="2" id="5246">
-                                <view key="view" ambiguous="YES" id="5247">
+                                <view key="view" id="5247">
                                     <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>

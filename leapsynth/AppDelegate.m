@@ -615,6 +615,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [cursorOverlay setLeftHandVisible:YES];
 
     if (inTutorial) {
+        [_tutorialBox leftHandMotion:normal.x :normal.y :normal.z];
         return;
     }
 
@@ -635,6 +636,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [cursorOverlay setRightHandVisible:YES];
 
     if (inTutorial) {
+        [_tutorialBox rightHandMotion:normal.x :normal.y :normal.z];
         return;
     }
 
