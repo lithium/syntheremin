@@ -25,15 +25,17 @@
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    if (_tutorialStep == 3) {
-        
-    }
-    else {
-        [self nextStep];
-    }
+    [self nextStep];
 }
 - (void)keyDown:(NSEvent *)theEvent
 {
+    char key = [[theEvent characters] characterAtIndex:0];
+    if (key == '\e') {
+        [self tutorialComplete];
+        return;
+    }
+    
+    
     [self nextStep];
 }
 -(void)rightHandMotion:(double)x :(double)y :(double)z
@@ -93,9 +95,13 @@
     if (_tutorialStep == 3) {
         [self nextStep];
     }
+
 }
 -(void)switchToTheremin
 {
+    if (_tutorialStep == 4) {
+        [self nextStep];
+    }
 }
 
 - (void)nextStep
@@ -108,7 +114,13 @@
                                              superBounds.size.height/2 - [self bounds].size.height/2)];
             break;
         case 2:
-            [_tutorialText setTitleWithMnemonic:@"To play Syntheremin:\nMove your left palm up and down for volume, tuck your thumb.\nPoint with ONE finger on your right hand and move it side to side for pitch."];
+            
+            [self setFrameSize:NSMakeSize(389,169)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,389,169)];
+
+            [_tutorialText setTitleWithMnemonic:@"To play Syntheremin:\nCup your left hand and move it up and down for volume.\n\nPoint with ONE finger on your right hand and move it left to right for pitch."];
+            [_tutorialText setFrame:NSMakeRect(10,10,359,149)];
+
             break;
             
         case 3:
@@ -120,18 +132,26 @@
             break;
             
         case 4:
-            [self setFrame:NSMakeRect(360,460,275,60)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,275,60)];
+            if (_delegate && [_delegate respondsToSelector:@selector(switchToSynth:)]) {
+                [_delegate switchToSynth:self];
+            }
+
+            [self setFrame:NSMakeRect(360,460,315,60)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,315,60)];
             [_backgroundImage setImage:[NSImage imageNamed:@"popover_createPatches"]];
             [_tutorialText setTitleWithMnemonic:@"Drag endpoints to create Patches"];
-            [_tutorialText setFrame:NSMakeRect(13,25,250,30)];
+            [_tutorialText setFrame:NSMakeRect(13,0,315,31)];
             break;
 
         case 5:
-            [self setFrame:NSMakeRect(20,60,275,60)];
+            if (_delegate && [_delegate respondsToSelector:@selector(switchToTheremin:)]) {
+                [_delegate switchToTheremin:self];
+            }
+
+            [self setFrame:NSMakeRect(120,60,275,60)];
             [_backgroundImage setFrame:NSMakeRect(0,0,275,60)];
             [_backgroundImage setImage:[NSImage imageNamed:@"popover_createPatches"]];
-            [_tutorialText setTitleWithMnemonic:@"Tune to your favorite mode"];
+            [_tutorialText setTitleWithMnemonic:@"Play in your favorite mode"];
             [_tutorialText setFrame:NSMakeRect(13,25,250,30)];
             break;
 

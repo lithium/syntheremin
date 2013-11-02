@@ -11,6 +11,8 @@
 @protocol TutorialDelegate <NSObject>
 
 -(void)tutorialComplete;
+-(IBAction)switchToTheremin:(id)sender;
+-(IBAction)switchToSynth:(id)sender;
 
 @end
 
