@@ -31,4 +31,6 @@
 -(void)rightHandMotion:(double)x :(double)y :(double)z;
 -(void)leftHandMotion:(double)x :(double)y :(double)z;
 
+-(void)switchToSynth;
+-(void)switchToTheremin;
 @end

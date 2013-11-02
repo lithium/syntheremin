@@ -17,6 +17,8 @@
     if (self) {
         _leftMin = 1.0;
         _leftMax = 0.0;
+        _rightMin = 1.0;
+        _rightMax = 0.0;
     }
     return self;
 }
@@ -86,6 +88,15 @@
 
 }
 
+-(void)switchToSynth
+{
+    if (_tutorialStep == 3) {
+        [self nextStep];
+    }
+}
+-(void)switchToTheremin
+{
+}
 
 - (void)nextStep
 {
@@ -101,19 +112,27 @@
             break;
             
         case 3:
-            [self setFrameOrigin:NSMakePoint(50,600)];
+            [self setFrame:NSMakeRect(50,620,275,55)];
             [_backgroundImage setFrame:NSMakeRect(0,0,275,55)];
             [_backgroundImage setImage:[NSImage imageNamed:@"popover_showControls"]];
             [_tutorialText setTitleWithMnemonic:@"Click for synthesizer controls"];
-            [_tutorialText setFrame:NSMakeRect(10,10,275,24)];
+            [_tutorialText setFrame:NSMakeRect(10,10,250,24)];
             break;
             
         case 4:
-            [self setFrameOrigin:NSMakePoint(20,40)];
-            [_backgroundImage setFrameSize:NSMakeSize(275,60)];
+            [self setFrame:NSMakeRect(360,460,275,60)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,275,60)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"popover_createPatches"]];
+            [_tutorialText setTitleWithMnemonic:@"Drag endpoints to create Patches"];
+            [_tutorialText setFrame:NSMakeRect(13,25,250,30)];
+            break;
+
+        case 5:
+            [self setFrame:NSMakeRect(20,60,275,60)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,275,60)];
             [_backgroundImage setImage:[NSImage imageNamed:@"popover_createPatches"]];
             [_tutorialText setTitleWithMnemonic:@"Tune to your favorite mode"];
-            [_tutorialText setFrame:NSMakeRect(13,22,333,30)];
+            [_tutorialText setFrame:NSMakeRect(13,25,250,30)];
             break;
 
         default:

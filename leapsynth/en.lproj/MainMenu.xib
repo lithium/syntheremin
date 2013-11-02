@@ -654,22 +654,22 @@
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
         <menuItem title="Modulation Type" tag="13" id="3573"/>
-        <box autoresizesSubviews="NO" title="Tutorial" borderType="none" titlePosition="noTitle" id="F0O-xF-Eoc" customClass="TutorialBox">
-            <rect key="frame" x="0.0" y="0.0" width="395" height="175"/>
+        <box autoresizesSubviews="NO" title="Tutorial" boxType="custom" borderType="line" titlePosition="noTitle" id="F0O-xF-Eoc" customClass="TutorialBox">
+            <rect key="frame" x="0.0" y="0.0" width="389" height="169"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView">
-                <rect key="frame" x="0.0" y="0.0" width="395" height="175"/>
+                <rect key="frame" x="1" y="1" width="387" height="167"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <imageView focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLZ-2H-w1I">
-                        <rect key="frame" x="0.0" y="0.0" width="395" height="175"/>
+                        <rect key="frame" x="0.0" y="-8" width="395" height="175"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="popover_background" id="IUH-66-fYP"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ESK-ZW-7IT">
-                        <rect key="frame" x="15" y="20" width="365" height="135"/>
+                        <rect key="frame" x="17" y="12" width="361" height="135"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="jcc-uE-fEl">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" id="jcc-uE-fEl">
                             <font key="font" size="20" name="HelveticaNeue-Light"/>
                             <string key="title">Place Leap Motion directly in front of you.   
 
@@ -680,7 +680,7 @@ Hold your hands approximately 10cm above the leap motion.</string>
                     </textField>
                 </subviews>
             </view>
-            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+            <color key="borderColor" red="0.91675866168478259" green="0.22241414320598196" blue="0.16391940271801453" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="backgroundImage" destination="CLZ-2H-w1I" id="Y4Q-da-Fky"/>

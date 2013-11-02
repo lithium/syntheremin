@@ -818,6 +818,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)switchToSynth:(id)sender {
     lastAnalyzer = currentAnalyzer;
     currentAnalyzer = linearAnalyzer;
+    
+    [_tutorialBox switchToSynth];
 
     [synth setAnalyzerDelegate:linearAnalyzer];
     [tabView selectTabViewItemAtIndex:0];
@@ -827,6 +829,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)switchToTheremin:(id)sender {
     lastAnalyzer = currentAnalyzer;
     currentAnalyzer = polarAnalyzer;
+    
+    [_tutorialBox switchToTheremin];
     
     [synth setAnalyzerDelegate:polarAnalyzer];
     [tabView selectTabViewItemAtIndex:1];
