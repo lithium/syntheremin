@@ -97,6 +97,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
     
     // get keyUp/keyDown events
+    keyboardCurrentOctave = 1;
     [_window makeFirstResponder:self];
     
     
