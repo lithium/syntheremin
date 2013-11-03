@@ -25,6 +25,7 @@
 #import "LeapModulator.h"
 #import "CSOnOffLabel.h"
 #import "DetuneDial.h"
+#import "TutorialBox.h"
 
 enum {
     kTuningNone=0,
@@ -38,6 +39,7 @@ enum {
                                      ,LeapSynthereminDelegate
                                      ,PatchCablerDelegate
                                      ,SynthPatchDelegate
+                                     ,TutorialDelegate
                                      >
 {
     AudioQueueSynth *synth;
@@ -53,15 +55,13 @@ enum {
     
     int keyboardCurrentOctave;
     
-    bool paramNoteOn;
-    BOOL equalTempered;
- 
-    LeapModulator *leapModulator[6];
     
     NSRect savedFrame;
     id currentAnalyzer;
     id lastAnalyzer;
     int tuningType;
+    
+    BOOL inTutorial;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -151,5 +151,8 @@ enum {
 - (IBAction)toggledTuned:(id)sender;
 @property (weak) IBOutlet CSRadioButtonSet *tuningScale;
 @property (weak) IBOutlet CSToggleButton *tunedButton;
+
+@property (weak) IBOutlet TutorialBox *tutorialBox;
+@property (weak) IBOutlet NSTextField *tutorialText;
 
 @end

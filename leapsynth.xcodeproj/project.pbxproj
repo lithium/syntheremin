@@ -30,6 +30,10 @@
 		122C802818201B3800505CAF /* cutoffKnob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802518201B3800505CAF /* cutoffKnob_dial@2x.png */; };
 		122C802918201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802618201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png */; };
 		122C802A18201B3800505CAF /* cutoffKnob_outerRing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802718201B3800505CAF /* cutoffKnob_outerRing_full@2x.png */; };
+		122C802E182024F900505CAF /* popover_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802B182024F900505CAF /* popover_background@2x.png */; };
+		122C802F182024F900505CAF /* popover_createPatches@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802C182024F900505CAF /* popover_createPatches@2x.png */; };
+		122C8030182024F900505CAF /* popover_showControls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802D182024F900505CAF /* popover_showControls@2x.png */; };
+		1231E0E3182463CF004D6237 /* TutorialBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1231E0E2182463CF004D6237 /* TutorialBox.m */; };
 		12393FE018187F7D000F4BF3 /* background_controls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FBC18187F7D000F4BF3 /* background_controls@2x.png */; };
 		12393FF518187F7D000F4BF3 /* knob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD218187F7D000F4BF3 /* knob_dial@2x.png */; };
 		12393FF618187F7D000F4BF3 /* knob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */; };
@@ -137,6 +141,11 @@
 		122C802518201B3800505CAF /* cutoffKnob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_dial@2x.png"; sourceTree = "<group>"; };
 		122C802618201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
 		122C802718201B3800505CAF /* cutoffKnob_outerRing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_outerRing_full@2x.png"; sourceTree = "<group>"; };
+		122C802B182024F900505CAF /* popover_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover_background@2x.png"; sourceTree = "<group>"; };
+		122C802C182024F900505CAF /* popover_createPatches@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover_createPatches@2x.png"; sourceTree = "<group>"; };
+		122C802D182024F900505CAF /* popover_showControls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover_showControls@2x.png"; sourceTree = "<group>"; };
+		1231E0E1182463CF004D6237 /* TutorialBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialBox.h; sourceTree = "<group>"; };
+		1231E0E2182463CF004D6237 /* TutorialBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialBox.m; sourceTree = "<group>"; };
 		12393FBC18187F7D000F4BF3 /* background_controls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_controls@2x.png"; sourceTree = "<group>"; };
 		12393FD218187F7D000F4BF3 /* knob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_dial@2x.png"; sourceTree = "<group>"; };
 		12393FD318187F7D000F4BF3 /* knob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "knob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
@@ -257,6 +266,9 @@
 		12393FBB18187F7D000F4BF3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				122C802B182024F900505CAF /* popover_background@2x.png */,
+				122C802C182024F900505CAF /* popover_createPatches@2x.png */,
+				122C802D182024F900505CAF /* popover_showControls@2x.png */,
 				122C802518201B3800505CAF /* cutoffKnob_dial@2x.png */,
 				122C802618201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png */,
 				122C802718201B3800505CAF /* cutoffKnob_outerRing_full@2x.png */,
@@ -406,6 +418,8 @@
 				1291C76417BB423D0055761E /* LinearAnalyzer.m */,
 				12277C441814522400388277 /* PolarAnalyzer.h */,
 				12277C451814522400388277 /* PolarAnalyzer.m */,
+				1231E0E1182463CF004D6237 /* TutorialBox.h */,
+				1231E0E2182463CF004D6237 /* TutorialBox.m */,
 			);
 			path = leapsynth;
 			sourceTree = "<group>";
@@ -522,9 +536,11 @@
 				122C8007181DE66100505CAF /* button_showControls_selected@2x.png in Resources */,
 				122C8020181DE7BE00505CAF /* button_majorScale@2x.png in Resources */,
 				12BB468D17A988E4009D7B5C /* MainMenu.xib in Resources */,
+				122C802E182024F900505CAF /* popover_background@2x.png in Resources */,
 				12BB469317A9890D009D7B5C /* InfoPlist.strings in Resources */,
 				122C802A18201B3800505CAF /* cutoffKnob_outerRing_full@2x.png in Resources */,
 				12BB469B17A98979009D7B5C /* Credits.rtf in Resources */,
+				122C8030182024F900505CAF /* popover_showControls@2x.png in Resources */,
 				122C801F181DE7BE00505CAF /* button_majorScale_selected@2x.png in Resources */,
 				12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */,
 				12751A3417C1FA0800A57258 /* logo-white.png in Resources */,
@@ -551,6 +567,7 @@
 				12393FFC18187F7D000F4BF3 /* slider_handle@2x.png in Resources */,
 				12393FFD18187F7D000F4BF3 /* volumeKnob_dial@2x.png in Resources */,
 				12393FFE18187F7D000F4BF3 /* volumeKnob_outerRing_empty@2x.png in Resources */,
+				122C802F182024F900505CAF /* popover_createPatches@2x.png in Resources */,
 				122C802918201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png in Resources */,
 				12393FFF18187F7D000F4BF3 /* volumeKnob_outerRing_full@2x.png in Resources */,
 				122C8014181DE74F00505CAF /* connected_glowingOrb@2x.png in Resources */,
@@ -591,6 +608,7 @@
 				12EFCD3217AD490200E84D98 /* Synth.m in Sources */,
 				12EFCD3517AD493100E84D98 /* Vcf.m in Sources */,
 				126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */,
+				1231E0E3182463CF004D6237 /* TutorialBox.m in Sources */,
 				122C8002181DD3B700505CAF /* CSOnOffLabel.m in Sources */,
 				1291C76517BB423D0055761E /* LinearAnalyzer.m in Sources */,
 				12C3940A1807598B0035BEFF /* AudioQueueSynth.m in Sources */,

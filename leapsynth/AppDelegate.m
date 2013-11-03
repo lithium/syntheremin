@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+
+
+
 @implementation AppDelegate
 @synthesize cursorOverlay;
 @synthesize linearAnalyzer;
@@ -148,22 +151,34 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     [self initializePatchCabler];
 
-    //have synth re-set defaults so KVO can update outlets
-    [synth setDefaults];
-        
-        
-    for (int i=0; i < 6; i++) {
-        leapModulator[i] = [[LeapModulator alloc] init];
-    }
-    //hardcode classic theremin
-//    [[synth mixer] setModulator:leapModulator[1]];
-    equalTempered = NO;
-//    [[synth vcf] setModulator:leapModulator[0]];
+    
+    
+    //set up our default patch
+    [[synth oscN:0] setWaveShape:kWaveSine];
+    [[synth vcaN:2] setLevel:0.8];
+    [synth connectPatch:@"osc:0:output" :@"vca:2:input"];
+
+    [[synth oscN:1] setWaveShape:kWaveSine];
+    [[synth oscN:1] setDetuneInCents:-5];
+    [[synth vcaN:1] setLevel:0.5];
+    [synth connectPatch:@"osc:1:output" :@"vca:1:input"];
+
+    [[synth oscN:2] setWaveShape:kWaveSine];
+    [[synth oscN:2] setDetuneInCents:-1200];
+    [[synth vcaN:0] setLevel:0.8];
+    [synth connectPatch:@"osc:2:output" :@"vca:0:input"];
+
+    [[synth mixer] setLevel:0.8];
+    [synth connectPatch:@"adsr:1:output" :@"mixer::modulate"];
 
     
     //listen to any available midi devices
     [self performSelectorInBackground:@selector(initializeMidi) withObject:nil];
     
+    
+    [self switchToTheremin:nil];
+    
+    [self startTutorial];
 }
 
 
@@ -402,8 +417,29 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
     
     
-    [self switchToTheremin:nil];
+}
+
+- (void)startTutorial
+{
+    inTutorial = YES;
+    [_tutorialBox setDelegate:self];
+    [self nextTutorialStep];
     
+    NSView *content = [_window contentView];
+    [_tutorialBox setFrameOrigin:NSMakePoint([content bounds].size.width/2 - [_tutorialBox bounds].size.width/2,
+                                             [content bounds].size.height/2 - [_tutorialBox bounds].size.height/2)];
+    [content addSubview:_tutorialBox];
+    
+    [_window makeFirstResponder:_tutorialBox];
+}
+- (void)nextTutorialStep
+{
+    [_tutorialBox nextStep];
+}
+- (void)tutorialComplete
+{
+    inTutorial = NO;
+    [_window makeFirstResponder:self];
 }
 
 - (void)noteOn
@@ -519,7 +555,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
-//window key events
+//first responder events
 - (void)keyDown:(NSEvent*)theEvent
 {
     char key = [[theEvent characters] characterAtIndex:0];
@@ -581,29 +617,31 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
+
     [cursorOverlay setLeftHand:normal.x :normal.y :normal.z];
     [cursorOverlay setLeftHandVisible:YES];
 
-    [leapModulator[0] setLevel:normal.x];
-    [leapModulator[1] setLevel:normal.y];
-    [leapModulator[2] setLevel:normal.z];
+    if (inTutorial) {
+        [_tutorialBox leftHandMotion:normal.x :normal.y :normal.z];
+        return;
+    }
 
     
-    //hardcode classic theremin
     [synth setLevel:normal.y];
     
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
+
     [cursorOverlay setRightHand:normal.x :normal.y :normal.z];
     [cursorOverlay setRightHandVisible:YES];
 
+    if (inTutorial) {
+        [_tutorialBox rightHandMotion:normal.x :normal.y :normal.z];
+        return;
+    }
+
     
-    [leapModulator[3] setLevel:normal.x];
-    [leapModulator[4] setLevel:normal.y];
-    [leapModulator[5] setLevel:normal.z];
-    
-    //hardcode classic theremin
 #define kMiddleC 40
 
     
@@ -713,11 +751,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [synth applyParameter:param :-value*100];
 }
 
-- (IBAction)toggleTuned:(id)sender {
-    NSButton *button = sender;
-    equalTempered = [button state];
-}
-
 - (IBAction)menuNewPatch:(id)sender {
     [synth setDefaults];
     currentPatchUrl = nil;
@@ -776,6 +809,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)switchToSynth:(id)sender {
     lastAnalyzer = currentAnalyzer;
     currentAnalyzer = linearAnalyzer;
+    
+    [_tutorialBox switchToSynth];
 
     [synth setAnalyzerDelegate:linearAnalyzer];
     [tabView selectTabViewItemAtIndex:0];
@@ -785,6 +820,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (IBAction)switchToTheremin:(id)sender {
     lastAnalyzer = currentAnalyzer;
     currentAnalyzer = polarAnalyzer;
+    
+    [_tutorialBox switchToTheremin];
     
     [synth setAnalyzerDelegate:polarAnalyzer];
     [tabView selectTabViewItemAtIndex:1];
