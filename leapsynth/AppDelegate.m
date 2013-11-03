@@ -195,12 +195,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [synth setAnalyzerDelegate:fullscreenAnalyzer];
     lastAnalyzer = currentAnalyzer;
     currentAnalyzer = fullscreenAnalyzer;
+    savedFrame = [_window frame];
 }
 
 
 - (void)windowDidEnterFullScreen:(NSNotification *)notification
 {
-    savedFrame = [_window frame];
     NSRect newFrame = [[NSScreen mainScreen] frame];
     [_window setFrame:newFrame display:YES];
     [fullscreenAnalyzer setFrameSize:NSMakeSize(newFrame.size.width, newFrame.size.height)];
