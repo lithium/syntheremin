@@ -55,10 +55,6 @@ enum {
     
     int keyboardCurrentOctave;
     
-    bool paramNoteOn;
-    BOOL equalTempered;
- 
-    LeapModulator *leapModulator[6];
     
     NSRect savedFrame;
     id currentAnalyzer;
