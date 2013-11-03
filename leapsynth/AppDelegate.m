@@ -154,6 +154,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     
     //set up our default patch
+    [synth setDefaults];
     [[synth oscN:0] setWaveShape:kWaveSine];
     [[synth vcaN:2] setLevel:0.8];
     [synth connectPatch:@"osc:0:output" :@"vca:2:input"];

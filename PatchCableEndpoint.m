@@ -117,7 +117,7 @@
             [self setFrameOrigin:origin];
         } else {
             
-            int connectedCount = [[self target]->inputs count];
+            int connectedCount = MAX(1,[[self target]->inputs count]);
             [self setConnectionCount:connectedCount];
         }
     }
