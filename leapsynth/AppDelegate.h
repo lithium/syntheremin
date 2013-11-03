@@ -61,7 +61,6 @@ enum {
     id lastAnalyzer;
     int tuningType;
     
-    BOOL inTutorial;
     BOOL _completedTutorial;
 }
 
@@ -97,6 +96,7 @@ enum {
 - (IBAction)menuSavePatchAs:(id)sender;
 - (IBAction)menuClearPatch:(id)sender;
 
+- (IBAction)startTutorial:(id)sender;
 
 
 

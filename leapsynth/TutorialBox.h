@@ -35,4 +35,5 @@
 
 -(void)switchToSynth;
 -(void)switchToTheremin;
+-(void)startTutorial;
 @end

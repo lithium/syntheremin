@@ -110,14 +110,16 @@
     NSRect superBounds = [content frame];
     switch (++_tutorialStep) {
         case 1:
+            [self setFrameSize:NSMakeSize(395,175)];
             [self setFrameOrigin:NSMakePoint(superBounds.size.width/2 - [self bounds].size.width/2,
                                              superBounds.size.height/2 - [self bounds].size.height/2)];
-            break;
-        case 2:
             
-            [self setFrameSize:NSMakeSize(389,169)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,389,169)];
-
+            [_backgroundImage setFrame:NSMakeRect(0,0,395,175)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"popover_background"]];
+            [_tutorialText setTitleWithMnemonic:@"Place Leap Motion directly in front of you.\n\nHold your hands approximately 10cm above the leap motion."];
+            break;
+            
+        case 2:
             [_tutorialText setTitleWithMnemonic:@"To play Syntheremin:\nCup your left hand and move it up and down for volume.\n\nPoint with ONE finger on your right hand and move it left to right for pitch."];
             [_tutorialText setFrame:NSMakeRect(10,10,359,149)];
 
@@ -162,6 +164,11 @@
 }
 
 
+- (void)startTutorial
+{
+    _tutorialStep = 0;
+    [self nextStep];
+}
 
 - (void)tutorialComplete
 {

@@ -184,7 +184,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [self loadApplicationState];
 
     if (!_completedTutorial) {
-        [self startTutorial];
+        [self startTutorial:nil];
     }
 }
 
@@ -427,18 +427,17 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
 }
 
-- (void)startTutorial
+- (IBAction)startTutorial:(id)sender;
 {
-    inTutorial = YES;
+    [self switchToTheremin:nil];
     [_tutorialBox setDelegate:self];
-    [self nextTutorialStep];
     
     NSView *content = [_window contentView];
-    [_tutorialBox setFrameOrigin:NSMakePoint([content bounds].size.width/2 - [_tutorialBox bounds].size.width/2,
-                                             [content bounds].size.height/2 - [_tutorialBox bounds].size.height/2)];
     [content addSubview:_tutorialBox];
     
     [_window makeFirstResponder:_tutorialBox];
+    [_tutorialBox startTutorial];
+
 }
 - (void)nextTutorialStep
 {
@@ -446,7 +445,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (void)tutorialComplete
 {
-    inTutorial = NO;
     _completedTutorial = YES;
     [_window makeFirstResponder:self];
 }
@@ -659,10 +657,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [cursorOverlay setLeftHand:normal.x :normal.y :normal.z];
     [cursorOverlay setLeftHandVisible:YES];
 
-    if (inTutorial) {
-        [_tutorialBox leftHandMotion:normal.x :normal.y :normal.z];
-        return;
-    }
+    [_tutorialBox leftHandMotion:normal.x :normal.y :normal.z];
 
     
     [synth setLevel:normal.y];
@@ -674,10 +669,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [cursorOverlay setRightHand:normal.x :normal.y :normal.z];
     [cursorOverlay setRightHandVisible:YES];
 
-    if (inTutorial) {
-        [_tutorialBox rightHandMotion:normal.x :normal.y :normal.z];
-        return;
-    }
+    [_tutorialBox rightHandMotion:normal.x :normal.y :normal.z];
 
     
 #define kMiddleC 40

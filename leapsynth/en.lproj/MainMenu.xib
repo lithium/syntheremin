@@ -131,6 +131,13 @@
                                     <action selector="toggleFullScreen:" target="371" id="RcB-Ml-yQH"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="kkY-mx-6o6"/>
+                            <menuItem title="Tutorial" id="Fku-Cl-hp5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="startTutorial:" target="494" id="j3o-Q9-76x"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
