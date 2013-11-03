@@ -177,7 +177,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     
     [self switchToTheremin:nil];
-    
+    [self noteOn];
+
     
     [self loadApplicationState];
 
@@ -822,6 +823,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         [tuningScale clearSelection];
         tuningType = 0;
         tunedButton->toggled = NO;
+        [self noteOn];
     } else {
         tuningType = 1;
         [tuningScale setDoubleValue:0];
