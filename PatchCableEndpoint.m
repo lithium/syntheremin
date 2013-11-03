@@ -199,19 +199,26 @@
     NSBezierPath *path = [[NSBezierPath alloc] init];
     
     if (endpointType == kOutputPatchEndpoint) {
-        if (connectedTo && _connectionCount == 2) {
+        if (connectedTo && _connectionCount > 1) {
+            int start,end;
+            BOOL clockwise;
+            
+            if (_connectionCount == 2) {
+                start=18;
+                end=270;
+                clockwise=YES;
+            } else if (_connectionCount == 3) {
+                start=345;
+                end=90;
+                clockwise=NO;
+            }
+            
+            
             [path appendBezierPathWithArcWithCenter:NSMakePoint(bounds.size.width/2, bounds.size.height/2)
                                              radius:kOutputEndpointWidth/2
-                                         startAngle:18
-                                           endAngle:270
-                                          clockwise:YES];
-
-        } else if (connectedTo && _connectionCount == 3) {
-            [path appendBezierPathWithArcWithCenter:NSMakePoint(bounds.size.width/2, bounds.size.height/2)
-                                             radius:kOutputEndpointWidth/2
-                                         startAngle:345
-                                           endAngle:90
-                                          clockwise:NO];
+                                         startAngle:start
+                                           endAngle:end
+                                          clockwise:clockwise];
         }
         else {
             [path appendBezierPathWithOvalInRect:NSMakeRect(_padding, _padding,
