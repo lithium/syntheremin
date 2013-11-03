@@ -221,7 +221,10 @@
 
         [orbImage drawInRect:NSMakeRect(_padding, _padding,
                                         kOutputEndpointWidth,
-                                        kOutputEndpointHeight)];
+                                        kOutputEndpointHeight)
+                    fromRect:NSMakeRect(0,0,[orbImage size].width, [orbImage size].height)
+                   operation:NSCompositeSourceOver
+                    fraction:1.0];
     }
 
     [context restoreGraphicsState];
