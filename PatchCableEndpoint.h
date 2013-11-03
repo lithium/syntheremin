@@ -53,6 +53,7 @@ enum {
     
     @public
     
+    int _connectionCount;
     
     NSMutableArray *inputs; // the output endpoints that are connected to us
 }

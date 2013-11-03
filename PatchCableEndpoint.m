@@ -122,6 +122,7 @@
             double x = [target origin].x;
             double y = [target origin].y + size.height/2;
             
+            _connectionCount = connectedCount;
             if ([[self target] cablerEdge] == kEdgeRight || [[self target] cablerEdge] == kEdgeLeft) {
                 if (connectedCount == 2) {
                     y += 5;
@@ -131,10 +132,11 @@
                 }
             } else {
                 if (connectedCount == 2) {
-                    x += 5;
+                    x -= 5;
                 }
                 if (connectedCount == 3) {
-                    x -= 5;
+                    x += 5;
+
                 }
 
             }
@@ -195,9 +197,25 @@
     NSBezierPath *path = [[NSBezierPath alloc] init];
     
     if (endpointType == kOutputPatchEndpoint) {
-        [path appendBezierPathWithOvalInRect:NSMakeRect(_padding, _padding,
-                                                        kOutputEndpointWidth,
-                                                        kOutputEndpointHeight)];
+        if (connectedTo && _connectionCount == 2) {
+            [path appendBezierPathWithArcWithCenter:NSMakePoint(bounds.size.width/2, bounds.size.height/2)
+                                             radius:kOutputEndpointWidth/2
+                                         startAngle:18
+                                           endAngle:270
+                                          clockwise:YES];
+
+        } else if (connectedTo && _connectionCount == 3) {
+            [path appendBezierPathWithArcWithCenter:NSMakePoint(bounds.size.width/2, bounds.size.height/2)
+                                             radius:kOutputEndpointWidth/2
+                                         startAngle:345
+                                           endAngle:90
+                                          clockwise:NO];
+        }
+        else {
+            [path appendBezierPathWithOvalInRect:NSMakeRect(_padding, _padding,
+                                                            kOutputEndpointWidth,
+                                                            kOutputEndpointHeight)];
+        }
     } else {
         [path appendBezierPathWithArcWithCenter:NSMakePoint(bounds.size.width/2, bounds.size.height/2)
                                          radius:bounds.size.width/2-_padding
@@ -213,18 +231,15 @@
 
     
     if (connectedTo) {
-//        NSShadow *shadow = [[NSShadow alloc] init];
-//        [shadow setShadowBlurRadius:5];
-//        [shadow setShadowOffset:NSMakeSize(0,0)];
-//        [shadow setShadowColor:_shadowColor];
-//        [shadow set];
-
-        [orbImage drawInRect:NSMakeRect(_padding, _padding,
-                                        kOutputEndpointWidth,
-                                        kOutputEndpointHeight)
-                    fromRect:NSMakeRect(0,0,[orbImage size].width, [orbImage size].height)
-                   operation:NSCompositeSourceOver
-                    fraction:1.0];
+        
+        if (_connectionCount == 1) {
+            [orbImage drawInRect:NSMakeRect(_padding, _padding,
+                                            kOutputEndpointWidth,
+                                            kOutputEndpointHeight)
+                        fromRect:NSMakeRect(0,0,[orbImage size].width, [orbImage size].height)
+                       operation:NSCompositeSourceOver
+                        fraction:1.0];
+        }
     }
 
     [context restoreGraphicsState];

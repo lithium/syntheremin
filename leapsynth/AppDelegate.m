@@ -669,7 +669,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 - (void)rightHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
-
+    
     [cursorOverlay setRightHand:normal.x :normal.y :normal.z];
     [cursorOverlay setRightHandVisible:YES];
 
