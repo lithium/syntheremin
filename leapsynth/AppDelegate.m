@@ -178,12 +178,18 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     [self switchToTheremin:nil];
     
-    [self startTutorial];
+    
+    [self loadApplicationState];
+
+    if (!_completedTutorial) {
+        [self startTutorial];
+    }
 }
 
 
 - (void)windowWillClose:(NSNotification *)notification
 {
+    [self saveApplicationState];
     [synth stop];
     [NSApp terminate:self];
 }
@@ -439,6 +445,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)tutorialComplete
 {
     inTutorial = NO;
+    _completedTutorial = YES;
     [_window makeFirstResponder:self];
 }
 
@@ -489,11 +496,39 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 
+- (NSURL*)applicationSupportPlistURL
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSURL *support_dir = [[NSURL fileURLWithPath:[paths objectAtIndex:0]] URLByAppendingPathComponent:@"Syntheremin"];
+                           
+    [[NSFileManager defaultManager] createDirectoryAtURL:support_dir
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:nil];
+    
+    return [support_dir URLByAppendingPathComponent:@"Syntheremin.plist"];
+}
+
+- (void)loadApplicationState
+{
+    NSDictionary *state = [NSDictionary dictionaryWithContentsOfURL:[self applicationSupportPlistURL]];
+
+    _completedTutorial = (BOOL)[state objectForKey:@"completedTutorial"];
+}
+- (void)saveApplicationState
+{
+    NSMutableDictionary *state = [NSMutableDictionary dictionaryWithCapacity:2];
+    [state setObject:[NSNumber numberWithBool:_completedTutorial] forKey:@"completedTutorial"];
+    
+    [state writeToURL:[self applicationSupportPlistURL] atomically:YES];
+}
+
+
+
+
 /*
  * Delegate Callbacks
  */
-
-
 
 #pragma mark Midi Delegate
 - (void)noteOn:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel

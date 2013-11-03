@@ -62,6 +62,7 @@ enum {
     int tuningType;
     
     BOOL inTutorial;
+    BOOL _completedTutorial;
 }
 
 @property (assign) IBOutlet NSWindow *window;
