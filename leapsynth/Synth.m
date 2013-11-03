@@ -292,13 +292,13 @@
     }
     
     for (int i=0; i < kNumMixers; i++) {
-        [vcaN[i] setLevel:0];
+        [vcaN[i] setLevel:0.5];
     }
     
-    [mixer setLevel:0.35];
+    [mixer setLevel:0.7];
     [self clearPatches];
     
-    [self connectPatch:@"osc:0:output" :@"vca:2:input"];
+//    [self connectPatch:@"osc:0:output" :@"vca:2:input"];
     [vcaN[2] setLevel:0.5];
 }
 
