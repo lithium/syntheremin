@@ -17,6 +17,7 @@
 
 @interface Vcf : Mixer {
     double resonance, cutoff, cutoffFrequencyInHz;
+    double depth;
 
     double x, r, p, k, y1, y2, y3, y4, oldx, oldy1, oldy2, oldy3;
 }
@@ -26,6 +27,7 @@
 
 - (void)setCutoffFrequencyInHz:(double)cutoff;
 - (void)setResonance:(double)resonance;
+- (void)setDepth:(double)depth;
 
 - (double)getSample;
 @end

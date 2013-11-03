@@ -15,6 +15,8 @@
 {
     if (self) {
         self = [super init];
+        
+        depth = 1.0;
     }
     return self;
 }
@@ -29,6 +31,11 @@
 {
     resonance = value;
     [self recalculate];
+}
+
+- (void)setDepth:(double)value
+{
+    depth = value;
 }
 
 
@@ -67,7 +74,7 @@
     short sample = (short)(ds * SHRT_MAX);
     cutoff = cutoffFrequencyInHz;
     if (modulator) {
-        cutoff *= pow(2.0, [self getModulationSample]);
+        cutoff *= pow(2.0, depth*[self getModulationSample]);
     }    
     [self recalculate];
     short newSample = [self processSample:sample];
@@ -76,6 +83,7 @@
 - (void)updatePropertyList:(NSMutableDictionary*)props
 {
     [super updatePropertyList:props];
+    [props setObject:[NSNumber numberWithDouble:depth] forKey:@"depth"];
     [props setObject:[NSNumber numberWithDouble:resonance] forKey:@"resonance"];
     [props setObject:[NSNumber numberWithDouble:cutoffFrequencyInHz] forKey:@"cutoffFrequencyInHz"];
 }
