@@ -74,9 +74,15 @@ enum {
 
 
 
-//controls
+/*
+ * Control Actions
+ */
+
 - (IBAction)changeControl:(id)sender;
 - (IBAction)changeDetuneControl:(id)sender;
+- (IBAction)switchToSynth:(id)sender;
+- (IBAction)switchToTheremin:(id)sender;
+- (IBAction)changeTuning:(id)sender;
 - (IBAction)toggleTuned:(id)sender;
 
 
@@ -131,8 +137,6 @@ enum {
 @property (weak) IBOutlet DetuneDial *osc_detune_2;
 
 @property (weak) IBOutlet NSTabView *tabView;
-- (IBAction)switchToSynth:(id)sender;
-- (IBAction)switchToTheremin:(id)sender;
 
 @property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
 @property (weak) IBOutlet LinearAnalyzer *linearAnalyzer;
@@ -147,8 +151,6 @@ enum {
 @property (weak) IBOutlet CSOnOffLabel *leapConnected;
 @property (weak) IBOutlet NSTextField *leapDisconnectedLabel;
 
-- (IBAction)changeTuning:(id)sender;
-- (IBAction)toggledTuned:(id)sender;
 @property (weak) IBOutlet CSRadioButtonSet *tuningScale;
 @property (weak) IBOutlet CSToggleButton *tunedButton;
 

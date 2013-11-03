@@ -495,7 +495,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 
 
-//midi delegate
+#pragma mark Midi Delegate
 - (void)noteOn:(UInt8)noteNumber withVelocity:(UInt8)velocity onChannel:(UInt8)channel
 {
     [synth setFrequencyInHz:[MidiParser frequencyFromNoteNumber:noteNumber]];
@@ -513,7 +513,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 }
 
 
-//patch cabler delegate, ui events
+#pragma mark PatchCabler Delegate
 - (void)patchConnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target
 {
     NSLog(@"connect: %@ -> %@", [source parameterName], [target parameterName]);
@@ -526,7 +526,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
-//synth patch delegate, model events
+#pragma mark Synth Patching Delegate
 - (void)connectPatch:(NSString *)sourceName :(NSString *)targetName
 {
     [patchCabler connectEndpoints:sourceName :targetName];
@@ -555,7 +555,10 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 }
 
-//first responder events
+
+
+
+#pragma mark First responder Events
 - (void)keyDown:(NSEvent*)theEvent
 {
     char key = [[theEvent characters] characterAtIndex:0];
@@ -610,10 +613,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 
 
-/*
- * LeapSyntheremin delegate
- */
 
+#pragma mark LeapSyntheremin Delegate
 
 - (void)leftHandMotion:(LeapHand *)hand :(LeapVector *)normal
 {
@@ -732,12 +733,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 
 
 
-/*
- * IB Actions
- */
 
-
-
+#pragma mark Control Actions
 
 - (IBAction)changeControl:(id)sender {
     double value = [sender doubleValue];
@@ -750,6 +747,57 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     NSString *param = [sender valueForKey:@"parameter"];
     [synth applyParameter:param :-value*100];
 }
+
+- (IBAction)switchToSynth:(id)sender {
+    lastAnalyzer = currentAnalyzer;
+    currentAnalyzer = linearAnalyzer;
+    
+    [_tutorialBox switchToSynth];
+    
+    [synth setAnalyzerDelegate:linearAnalyzer];
+    [tabView selectTabViewItemAtIndex:0];
+}
+
+
+- (IBAction)switchToTheremin:(id)sender {
+    lastAnalyzer = currentAnalyzer;
+    currentAnalyzer = polarAnalyzer;
+    
+    [_tutorialBox switchToTheremin];
+    
+    [synth setAnalyzerDelegate:polarAnalyzer];
+    [tabView selectTabViewItemAtIndex:1];
+}
+
+
+- (IBAction)changeTuning:(id)sender {
+    tuningType = [sender doubleValue]+1;
+    tunedButton->toggled = YES;
+    [tunedButton setNeedsDisplay:YES];
+    
+    [cursorOverlay setDrawGrid:YES];
+    //    NSLog(@"tuning %d", tuning);
+}
+
+- (IBAction)toggleTuned:(id)sender
+{
+    BOOL toggled = tuningType != 0;
+    
+    if (toggled) {
+        [tuningScale clearSelection];
+        tuningType = 0;
+        tunedButton->toggled = NO;
+    } else {
+        tuningType = 1;
+        [tuningScale setDoubleValue:0];
+        tunedButton->toggled = YES;
+    }
+    [cursorOverlay setDrawGrid:tuningType];
+    
+}
+
+
+#pragma mark Menu Actions
 
 - (IBAction)menuNewPatch:(id)sender {
     [synth setDefaults];
@@ -804,53 +852,6 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)application:(NSApplication*)sender openFiles:(NSArray*)filenames
 {
     [self loadPatchFromURL:[NSURL fileURLWithPath:[filenames objectAtIndex:0]]];
-}
-
-- (IBAction)switchToSynth:(id)sender {
-    lastAnalyzer = currentAnalyzer;
-    currentAnalyzer = linearAnalyzer;
-    
-    [_tutorialBox switchToSynth];
-
-    [synth setAnalyzerDelegate:linearAnalyzer];
-    [tabView selectTabViewItemAtIndex:0];
-}
-
-
-- (IBAction)switchToTheremin:(id)sender {
-    lastAnalyzer = currentAnalyzer;
-    currentAnalyzer = polarAnalyzer;
-    
-    [_tutorialBox switchToTheremin];
-    
-    [synth setAnalyzerDelegate:polarAnalyzer];
-    [tabView selectTabViewItemAtIndex:1];
-}
-
-
-- (IBAction)changeTuning:(id)sender {
-    tuningType = [sender doubleValue]+1;
-    tunedButton->toggled = YES;
-    [tunedButton setNeedsDisplay:YES];
-    
-    [cursorOverlay setDrawGrid:YES];
-//    NSLog(@"tuning %d", tuning);
-}
-
-- (IBAction)toggledTuned:(id)sender {
-    BOOL toggled = tuningType != 0;
-
-    if (toggled) {
-        [tuningScale clearSelection];
-        tuningType = 0;
-        tunedButton->toggled = NO;
-    } else {
-        tuningType = 1;
-        [tuningScale setDoubleValue:0];
-        tunedButton->toggled = YES;
-    }
-    [cursorOverlay setDrawGrid:tuningType];
-
 }
 
 @end
