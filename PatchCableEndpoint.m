@@ -118,48 +118,50 @@
         } else {
             
             int connectedCount = [[self target]->inputs count];
-
-            double x = [target origin].x;
-            double y = [target origin].y + size.height/2;
-            
-            _connectionCount = connectedCount;
-            if ([[self target] cablerEdge] == kEdgeRight || [[self target] cablerEdge] == kEdgeLeft) {
-                if (connectedCount == 2) {
-                    y += 5;
-                }
-                if (connectedCount == 3) {
-                    y -= 5;
-                }
-            } else {
-                if (connectedCount == 2) {
-                    x -= 5;
-                }
-                if (connectedCount == 3) {
-                    x += 5;
-
-                }
-
-            }
-
-            if ([target cablerEdge] == kEdgeRight) {
-                y -= 7;
-                x += _padding;
-            }
-            else
-            if ([target cablerEdge] == kEdgeLeft) {
-                y -= 7;
-                x += _padding;
-            }
-            else
-            if ([target cablerEdge] == kEdgeBottom) {
-                y -= 7;
-                x += _padding;
-            }
-
-            [self setFrameOrigin:NSMakePoint(x,y)];
-
+            [self setConnectionCount:connectedCount];
         }
     }
+}
+
+- (void)setConnectionCount:(int)connectionCount
+{
+    _connectionCount = connectionCount;
+    double x = [[self target] origin].x;
+    double y = [[self target] origin].y + size.height/2;
+    int edge = [[self target] cablerEdge];
+    
+    if (edge == kEdgeRight || edge == kEdgeLeft) {
+        if (_connectionCount == 2) {
+            y += 5;
+        }
+        if (_connectionCount == 3) {
+            y -= 5;
+        }
+    } else {
+        if (_connectionCount == 2) {
+            x -= 5;
+        }
+        if (_connectionCount == 3) {
+            x += 5;
+            
+        }
+    }
+    
+    if (edge == kEdgeRight) {
+        y -= 7;
+        x += _padding;
+    }
+    else if (edge == kEdgeLeft) {
+        y -= 7;
+        x += _padding;
+    }
+    else if (edge == kEdgeBottom) {
+        y -= 7;
+        x += _padding;
+    }
+    
+    [self setFrameOrigin:NSMakePoint(x,y)];
+
 }
 
 - (NSPoint)origin

@@ -57,6 +57,7 @@ enum {
     
     NSMutableArray *inputs; // the output endpoints that are connected to us
 }
+- (void)setConnectionCount:(int)connectionCount;
 
 @property NSColor *color;
 @property BOOL isDragging;

@@ -137,12 +137,6 @@
                     [cablePath lineToPoint:NSMakePoint(final.x, orig.y)];
                 }
 
-                //draw a glow
-//                NSShadow *shadow = [[NSShadow alloc] init];
-//                [shadow setShadowBlurRadius:6];
-//                [shadow setShadowOffset:NSMakeSize(0,0)];
-//                [shadow setShadowColor:_shadowColor];
-//                [shadow set];
 
                 
 
@@ -223,6 +217,10 @@
 {
     if (target && source && [target endpointType] == kInputPatchEndpoint)
         [target->inputs removeObject:source];
+    
+    for (int i=0; i < [target->inputs count]; i++) {
+        [[target->inputs objectAtIndex:i] setConnectionCount:i+1];
+    }
     
     [source setConnectedTo:nil];
 }
