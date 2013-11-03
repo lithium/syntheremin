@@ -8,6 +8,11 @@
 
 #import "PolarAnalyzer.h"
 
+@implementation Ripple
+
+
+@end
+
 @implementation Waveform
 @synthesize minRadius;
 
@@ -40,21 +45,13 @@
 - (NSRect)bounds { return bounds; }
 - (void)setBounds:(NSRect)newBounds
 {
-    maxRadius = newBounds.size.height/3;
+    maxRadius = newBounds.size.height/4;
     bounds = newBounds;
 }
 - (NSBezierPath *)bezierPath
 {
     NSBezierPath *path = [[NSBezierPath alloc] init];
-    NSShadow *shadow = [[NSShadow alloc] init];
-    
-    
     [path setLineWidth:3.0];
-    
-    [shadow setShadowBlurRadius:10];
-    [shadow setShadowOffset:NSMakeSize(0,0)];
-    [shadow setShadowColor:[NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0]];
-    
     
     
     long samplesPerPeriod = kSampleRate/frequency;
@@ -83,7 +80,6 @@
         }
     }
     [path closePath];
-    [shadow set];
     
     return path;
 }
@@ -103,8 +99,6 @@
 -(void)reduceSamples:(short*)samples :(int)numSamples :(int)zoomRatio
 {
     samplesInBuffer = numSamples / zoomRatio;
-//    buffer = [buffer initWithCapacity:samplesInBuffer*sizeof(short)];
-    
     @synchronized (buffer) {
     
         short *sampleBuffer = (short*)[buffer bytes];
@@ -124,8 +118,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        ripples = [[NSMutableArray alloc] initWithCapacity:1];
-        [ripples addObject:[[Waveform alloc] initWithBounds:[self bounds]]];
+        firstRipple = [[Waveform alloc] initWithBounds:[self bounds]];
+        ripples = [[NSMutableArray alloc] initWithCapacity:kMaxRipples];
 
         waveColor = [NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0];
         
@@ -139,27 +133,49 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     NSGraphicsContext *ctx = [NSGraphicsContext currentContext];
-    [ctx saveGraphicsState];
+    NSRect bounds = [self bounds];
 
-    @synchronized(ripples) {
-        
     
-        int i=0;
-        for (Waveform *ripple in ripples) 
-        {
-            NSBezierPath *path = [ripple bezierPath];
-            double alpha = 1.0 - (ripple->baseRadius+ripple->minRadius) / (ripple->bounds.size.width/4);
-            [[waveColor colorWithAlphaComponent:alpha] set];
-            [path stroke];
-            if (i++ > 0) {
-                ripple->baseRadius += 2+5*alpha;
-            }
+    NSShadow *shadow = [[NSShadow alloc] init];
+    [shadow setShadowBlurRadius:10];
+    [shadow setShadowOffset:NSMakeSize(0,0)];
+    [shadow setShadowColor:[NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0]];
+
+    
+    NSMutableArray *ripplesToDiscard = [NSMutableArray array];
+    CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
+    @synchronized(ripples) {
+        for (Ripple *ripple in ripples) {
+            CFAbsoluteTime age = (now - ripple->created);
+
+            [ctx saveGraphicsState];
             
+            NSAffineTransform *trans = [[NSAffineTransform alloc] init];
+            [trans translateXBy:bounds.size.width/2 yBy:bounds.size.height/2];
+            [trans scaleBy:1.0+5*age];
+            [trans translateXBy:-(bounds.size.width/2) yBy:-(bounds.size.height/2)];
+            [trans concat];
+            
+            [[waveColor colorWithAlphaComponent:1.0 - (age)] set];
+            [ripple->path stroke];
+
+            [ctx restoreGraphicsState];
+            
+            
+            if (age > 3) {
+                [ripplesToDiscard addObject:ripple];
+            }
         }
-        
+        [ripples removeObjectsInArray:ripplesToDiscard];
     }
     
+    [ctx saveGraphicsState];
+    NSBezierPath *path = [firstRipple bezierPath];
+    [waveColor set];
+    [shadow set];
+    [path stroke];
     [ctx restoreGraphicsState];
+    
 
 }
 
@@ -168,10 +184,7 @@
     [super setFrameSize:newSize];
     
     NSRect bounds = NSMakeRect(0,0,newSize.width, newSize.height);
-    for (Waveform *ripple in ripples)
-    {
-        [ripple setBounds:bounds];
-    }
+    [firstRipple setBounds:bounds];
 }
 
 
@@ -179,14 +192,13 @@
 {
     double freq = [sender frequencyInHz];
 
-//    if (freq == 0)
-//        return;
+    if (freq == 0)
+        return;
     
     [sampleBuffer appendBytes:samples length:numSamples*sizeof(short)];
     
     
     if ([sampleBuffer length] >= kNumSamplesPerRipple*sizeof(short)) {
-        Waveform *firstRipple = [ripples objectAtIndex:0];
         [firstRipple reduceSamples:samples :numSamples :kZoomRatio];
         firstRipple->frequency = [sender frequencyInHz];
         
@@ -217,19 +229,16 @@
 }
 
 - (void)shedRipple
-{    
-//    CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
-//    if (now - lastRippleTime < kMinSecondsBetweenRipples) {
-//        return;
-//    }
-//    lastRippleTime = now;
-//    @synchronized(ripples) {
-//
-//        Waveform *newRipple = [[ripples objectAtIndex:0] copy];
-//        [ripples addObject:newRipple];
-//        if ([ripples count] > kMaxRipples) {
-//            [ripples removeObjectAtIndex:1];
-//        }
-//    }
+{
+    @synchronized(ripples) {
+        Ripple *ripple = [[Ripple alloc] init];
+        ripple->path =[firstRipple bezierPath];
+        ripple->created = CFAbsoluteTimeGetCurrent();
+        [ripples addObject:ripple];
+        
+        if ([ripples count] > kMaxRipples) {
+            [ripples removeObjectAtIndex:0];
+        }
+    }
 }
 @end

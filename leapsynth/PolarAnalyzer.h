@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "synth.h"
 
-#define kMaxRipples 5
+#define kMaxRipples 8
 #define kMinSecondsBetweenRipples 0.250
 #define kMaxSecondsBetweenRipples 2
 #define kRandSecondsBetweenShed 3
@@ -39,13 +39,22 @@
 @end
 
 
+@interface Ripple : NSObject{
+    @public
+    NSBezierPath *path;
+    CFAbsoluteTime created;
+}
+@end
+
 @interface PolarAnalyzer : NSView <AnalyzerDelegate>
 {
     NSColor *waveColor;
     
     NSMutableData *sampleBuffer;
     
+    Waveform *firstRipple;
     NSMutableArray *ripples;
+    
     CFAbsoluteTime lastRippleTime;
 }
 
