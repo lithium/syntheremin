@@ -202,12 +202,33 @@
         if (connectedTo && _connectionCount > 1) {
             int start,end;
             BOOL clockwise;
-            
-            if (_connectionCount == 2) {
+
+            if (_connectionCount == 2 && cablerEdge == kEdgeRight) {
+                start=75;
+                end=180;
+                clockwise=NO;
+            }
+            else if (_connectionCount == 2) {
                 start=18;
                 end=270;
                 clockwise=YES;
-            } else if (_connectionCount == 3) {
+            }
+            else if (_connectionCount == 3 && cablerEdge == kEdgeLeft && [[self target] cablerEdge] == kEdgeBottom) {
+                start=180;
+                end=270;
+                clockwise=NO;
+            }
+            else if (_connectionCount == 3 && cablerEdge == kEdgeRight && [[self target] cablerEdge] == kEdgeBottom) {
+                start=0;
+                end=105;
+                clockwise=NO;
+            }
+            else if (_connectionCount == 3 && cablerEdge == kEdgeRight && [[self target] cablerEdge] == kEdgeRight) {
+                start=180;
+                end=285;
+                clockwise=NO;
+            }
+            else {
                 start=345;
                 end=90;
                 clockwise=NO;
