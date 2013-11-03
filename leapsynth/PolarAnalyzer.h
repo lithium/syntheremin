@@ -9,9 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import "synth.h"
 
-#define kMaxRipples 8
-#define kMinSecondsBetweenRipples 0.250
-#define kMaxSecondsBetweenRipples 2
+#define kMaxRipples 5
+
+#define kMaxSecondsBetweenRipples 0.5
+#define kMinSecondsBetweenRipples 0.200
 #define kRandSecondsBetweenShed 3
 
 

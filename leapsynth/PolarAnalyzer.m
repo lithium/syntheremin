@@ -45,7 +45,7 @@
 - (NSRect)bounds { return bounds; }
 - (void)setBounds:(NSRect)newBounds
 {
-    maxRadius = newBounds.size.height/4;
+    maxRadius = newBounds.size.height/5;
     bounds = newBounds;
 }
 - (NSBezierPath *)bezierPath
@@ -137,7 +137,7 @@
 
     
     NSShadow *shadow = [[NSShadow alloc] init];
-    [shadow setShadowBlurRadius:10];
+    [shadow setShadowBlurRadius:5];
     [shadow setShadowOffset:NSMakeSize(0,0)];
     [shadow setShadowColor:[NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0]];
 
@@ -157,6 +157,7 @@
             [trans concat];
             
             [[waveColor colorWithAlphaComponent:1.0 - (age)] set];
+            [shadow set];
             [ripple->path stroke];
 
             [ctx restoreGraphicsState];
@@ -169,6 +170,8 @@
         [ripples removeObjectsInArray:ripplesToDiscard];
     }
     
+    [shadow setShadowBlurRadius:10];
+
     [ctx saveGraphicsState];
     NSBezierPath *path = [firstRipple bezierPath];
     [waveColor set];
@@ -192,8 +195,11 @@
 {
     double freq = [sender frequencyInHz];
 
-    if (freq == 0)
+    if (freq == 0) {
+        [self setNeedsDisplay:true];
+
         return;
+    }
     
     [sampleBuffer appendBytes:samples length:numSamples*sizeof(short)];
     
@@ -210,29 +216,33 @@
             [sampleBuffer setLength:leftover];
         }
         
+        
+        CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
+        if (now - lastRippleTime > kMaxSecondsBetweenRipples+arc4random_uniform(kRandSecondsBetweenShed))
+        {
+            [self shedRipple];
+        }
+
+        
         [self setNeedsDisplay:true];
     }
-    
-    
-    
-//    Waveform *firstRipple = [ripples objectAtIndex:0];
-//    [firstRipple->buffer replaceBytesInRange:NSMakeRange(0,numSamples*sizeof(short)) withBytes:samples];
-//    firstRipple->samplesInBuffer = numSamples;
-//    firstRipple->frequency = [sender frequencyInHz];
-//
-//    CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
-//    if (now - lastRippleTime > kMaxSecondsBetweenRipples+arc4random_uniform(kRandSecondsBetweenShed)) {
-//        [self shedRipple];
-//    }
 
-//    [self setNeedsDisplay:true];
+    
 }
 
 - (void)shedRipple
 {
+    CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
+
+    if (lastRippleTime && (now - lastRippleTime) < kMinSecondsBetweenRipples) {
+        return;
+    }
+    lastRippleTime = now;
+    
     @synchronized(ripples) {
         Ripple *ripple = [[Ripple alloc] init];
         ripple->path =[firstRipple bezierPath];
+        [ripple->path setLineWidth:1.0];
         ripple->created = CFAbsoluteTimeGetCurrent();
         [ripples addObject:ripple];
         
