@@ -28,24 +28,24 @@
 
         
         [glowBottom lockFocus];
-        [glow compositeToPoint:NSMakePoint(0,0) 
-                      fromRect:NSMakeRect(0,0,
-                                          glowSize.width,glowSize.height/2)
-                     operation:NSCompositeSourceOver];
+        [glow drawAtPoint:NSMakePoint(0,0)
+                 fromRect:NSMakeRect(0,0,glowSize.width,glowSize.height/2)
+                operation:NSCompositeSourceOver
+                 fraction:1.0];
         [glowBottom unlockFocus];
 
         [glowTop lockFocus];
-        [glow compositeToPoint:NSMakePoint(0,0) 
-                      fromRect:NSMakeRect(0,glowSize.height/2,
-                                          glowSize.width,glowSize.height/2)
-                     operation:NSCompositeSourceOver];
+        [glow drawAtPoint:NSMakePoint(0,0)
+                 fromRect:NSMakeRect(0,glowSize.height/2,glowSize.width,glowSize.height/2)
+                operation:NSCompositeSourceOver
+                 fraction:1.0];
         [glowTop unlockFocus];
         
         [glowCenter lockFocus];
-        [glow compositeToPoint:NSMakePoint(0,0)
-                      fromRect:NSMakeRect(0,glowSize.height/2,
-                                          glowSize.width,2)
-                     operation:NSCompositeSourceOver];
+        [glow drawAtPoint:NSMakePoint(0,0)
+                 fromRect:NSMakeRect(0,glowSize.height/2,glowSize.width,2)
+                operation:NSCompositeSourceOver
+                 fraction:1.0];
         [glowCenter unlockFocus];
 
         knobWidth = [knobImage size].width;
