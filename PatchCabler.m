@@ -117,7 +117,7 @@
                     if (connectedEdge == [endpoint cablerEdge]) {
                         //connected to same edge
                         double x = connectedEdge == kEdgeLeft ? 100 : [self bounds].size.width-100;
-                        x += 70*h;
+                        x += 50*h;
                         [cablePath lineToPoint:NSMakePoint(x, orig.y)];
                         [cablePath lineToPoint:NSMakePoint(x, final.y)];
                     
