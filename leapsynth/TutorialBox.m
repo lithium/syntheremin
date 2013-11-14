@@ -110,27 +110,23 @@
     NSRect superBounds = [content frame];
     switch (++_tutorialStep) {
         case 1:
-            [self setFrameSize:NSMakeSize(395,175)];
+            [self setFrameSize:NSMakeSize(496,305)];
             [self setFrameOrigin:NSMakePoint(superBounds.size.width/2 - [self bounds].size.width/2,
                                              superBounds.size.height/2 - [self bounds].size.height/2)];
             
-            [_backgroundImage setFrame:NSMakeRect(0,0,395,175)];
-            [_backgroundImage setImage:[NSImage imageNamed:@"popover_background"]];
-            [_tutorialText setTitleWithMnemonic:@"Place Leap Motion directly in front of you.\n\nHold your hands approximately 10cm above the leap motion."];
+            [_backgroundImage setFrame:NSMakeRect(0,0,496,305)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"tutorial-1"]];
             break;
             
         case 2:
-            [_tutorialText setTitleWithMnemonic:@"To play Syntheremin:\nCup your left hand and move it up and down for volume.\n\nPoint with ONE finger on your right hand and move it left to right for pitch."];
-            [_tutorialText setFrame:NSMakeRect(10,10,359,149)];
-
+            [_backgroundImage setFrame:NSMakeRect(0,0,496,305)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"tutorial-2"]];
             break;
             
         case 3:
-            [self setFrame:NSMakeRect(50,620,275,55)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,275,55)];
-            [_backgroundImage setImage:[NSImage imageNamed:@"popover_showControls"]];
-            [_tutorialText setTitleWithMnemonic:@"Click for synthesizer controls"];
-            [_tutorialText setFrame:NSMakeRect(10,10,250,24)];
+            [self setFrame:NSMakeRect(50,620,397,70)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,397,70)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"tutorial-controls"]];
             break;
             
         case 4:
@@ -138,11 +134,9 @@
                 [_delegate switchToSynth:self];
             }
 
-            [self setFrame:NSMakeRect(360,460,315,60)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,315,60)];
-            [_backgroundImage setImage:[NSImage imageNamed:@"popover_createPatches"]];
-            [_tutorialText setTitleWithMnemonic:@"Drag endpoints to create Patches"];
-            [_tutorialText setFrame:NSMakeRect(13,0,315,31)];
+            [self setFrame:NSMakeRect(360,460,347,70)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,347,70)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"tutorial-patches"]];
             break;
 
         case 5:
@@ -150,11 +144,9 @@
                 [_delegate switchToTheremin:self];
             }
 
-            [self setFrame:NSMakeRect(120,60,275,60)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,275,60)];
-            [_backgroundImage setImage:[NSImage imageNamed:@"popover_createPatches"]];
-            [_tutorialText setTitleWithMnemonic:@"Play in your favorite mode"];
-            [_tutorialText setFrame:NSMakeRect(13,25,250,30)];
+            [self setFrame:NSMakeRect(120,60,278,67)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,278,67)];
+            [_backgroundImage setImage:[NSImage imageNamed:@"tutorial-mode"]];
             break;
 
         default:
