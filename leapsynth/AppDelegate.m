@@ -488,11 +488,24 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     NSURL *patch_dir = [[NSURL URLWithString:[docs_dir objectAtIndex:0]] URLByAppendingPathComponent:@"Syntheremin"];
     NSString *path = [patch_dir absoluteString];
     
-    [[NSFileManager defaultManager] createDirectoryAtPath:path
-                              withIntermediateDirectories:YES 
-                                               attributes:nil 
-                                                    error:nil];
-    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:path]) {
+        NSError *error;
+        NSString *defaultPatchDir = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Patches"];
+        NSArray *defaultPatchNames = [fileManager contentsOfDirectoryAtPath:defaultPatchDir error:&error];
+        [fileManager createDirectoryAtPath:path
+               withIntermediateDirectories:YES
+                                attributes:nil
+                                     error:nil];
+        
+        for (NSString *patchName in defaultPatchNames) {
+            [fileManager copyItemAtPath:[defaultPatchDir stringByAppendingPathComponent:patchName]
+                                 toPath:[path stringByAppendingPathComponent:patchName]
+                                 error:&error];
+            if (error)
+                NSLog(@"err copying %@", error);
+        }
+    }
     return [NSURL fileURLWithPath:path isDirectory:YES];
 }
 
@@ -842,6 +855,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [openPanel setAllowsMultipleSelection:NO];
     [openPanel setAllowedFileTypes:[NSArray arrayWithObject:@"csp"]];
     [openPanel setAllowsOtherFileTypes:NO];
+    [openPanel setDirectoryURL:[self patchDirectoryURL]];
 
     if ([openPanel runModal] == NSOKButton && [[openPanel URLs] count]) {
         
