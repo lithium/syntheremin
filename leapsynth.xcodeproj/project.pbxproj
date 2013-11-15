@@ -30,6 +30,9 @@
 		122C802818201B3800505CAF /* cutoffKnob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802518201B3800505CAF /* cutoffKnob_dial@2x.png */; };
 		122C802918201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802618201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png */; };
 		122C802A18201B3800505CAF /* cutoffKnob_outerRing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122C802718201B3800505CAF /* cutoffKnob_outerRing_full@2x.png */; };
+		12304FF91836A8DA00D9012B /* 8-Bit Chord.csp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12304FEF1836A85900D9012B /* 8-Bit Chord.csp */; };
+		12304FFA1836A8DA00D9012B /* Major Saw.csp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12304FF01836A85900D9012B /* Major Saw.csp */; };
+		12304FFB1836A8DA00D9012B /* Syntheremin.csp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12304FF11836A85900D9012B /* Syntheremin.csp */; };
 		1231E0E3182463CF004D6237 /* TutorialBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1231E0E2182463CF004D6237 /* TutorialBox.m */; };
 		12393FE018187F7D000F4BF3 /* background_controls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FBC18187F7D000F4BF3 /* background_controls@2x.png */; };
 		12393FF518187F7D000F4BF3 /* knob_dial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12393FD218187F7D000F4BF3 /* knob_dial@2x.png */; };
@@ -65,7 +68,7 @@
 		125286F5180F3FA40025D405 /* CSFader.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F4180F3FA40025D405 /* CSFader.m */; };
 		12528703180F9F2B0025D405 /* PatchCabler.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528702180F9F2A0025D405 /* PatchCabler.m */; };
 		12528706180F9F7D0025D405 /* PatchCableEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 12528705180F9F7D0025D405 /* PatchCableEndpoint.m */; };
-		126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
+		126C4D6917B29FE300598323 /* libLeap.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6A17B29FE900598323 /* libLeap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 126C4D5F17B29F8700598323 /* libLeap.dylib */; };
 		126C4D6D17B2B04B00598323 /* LeapSyntheremin.m in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6C17B2B04B00598323 /* LeapSyntheremin.m */; };
 		126C4D6E17B2B42F00598323 /* LeapObjectiveC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 126C4D6817B29FCB00598323 /* LeapObjectiveC.mm */; };
@@ -104,14 +107,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		126C4D6217B29F9400598323 /* CopyFiles */ = {
+		12304FF81836A8BD00D9012B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Patches;
+			dstSubfolderSpec = 7;
+			files = (
+				12304FF91836A8DA00D9012B /* 8-Bit Chord.csp in CopyFiles */,
+				12304FFA1836A8DA00D9012B /* Major Saw.csp in CopyFiles */,
+				12304FFB1836A8DA00D9012B /* Syntheremin.csp in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		126C4D6217B29F9400598323 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				126C4D6917B29FE300598323 /* libLeap.dylib in CopyFiles */,
+				126C4D6917B29FE300598323 /* libLeap.dylib in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -143,6 +159,9 @@
 		122C802518201B3800505CAF /* cutoffKnob_dial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_dial@2x.png"; sourceTree = "<group>"; };
 		122C802618201B3800505CAF /* cutoffKnob_outerRing_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_outerRing_empty@2x.png"; sourceTree = "<group>"; };
 		122C802718201B3800505CAF /* cutoffKnob_outerRing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cutoffKnob_outerRing_full@2x.png"; sourceTree = "<group>"; };
+		12304FEF1836A85900D9012B /* 8-Bit Chord.csp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "8-Bit Chord.csp"; sourceTree = "<group>"; };
+		12304FF01836A85900D9012B /* Major Saw.csp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Major Saw.csp"; sourceTree = "<group>"; };
+		12304FF11836A85900D9012B /* Syntheremin.csp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Syntheremin.csp; sourceTree = "<group>"; };
 		1231E0E1182463CF004D6237 /* TutorialBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialBox.h; sourceTree = "<group>"; };
 		1231E0E2182463CF004D6237 /* TutorialBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialBox.m; sourceTree = "<group>"; };
 		12393FBC18187F7D000F4BF3 /* background_controls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_controls@2x.png"; sourceTree = "<group>"; };
@@ -267,6 +286,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12304FEE1836A85900D9012B /* Patches */ = {
+			isa = PBXGroup;
+			children = (
+				12304FEF1836A85900D9012B /* 8-Bit Chord.csp */,
+				12304FF01836A85900D9012B /* Major Saw.csp */,
+				12304FF11836A85900D9012B /* Syntheremin.csp */,
+			);
+			name = Patches;
+			path = ../Patches;
+			sourceTree = "<group>";
+		};
 		12393FBB18187F7D000F4BF3 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +471,7 @@
 		127DBD3917A76D16007C68FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				12304FEE1836A85900D9012B /* Patches */,
 				12751A3317C1FA0800A57258 /* logo-white.png */,
 				12B235D717C0698D00FA7E5C /* syntheremin.icns */,
 				12BB469917A98979009D7B5C /* Credits.rtf */,
@@ -506,7 +537,8 @@
 				127DBD2A17A76D16007C68FF /* Sources */,
 				127DBD2B17A76D16007C68FF /* Frameworks */,
 				127DBD2C17A76D16007C68FF /* Resources */,
-				126C4D6217B29F9400598323 /* CopyFiles */,
+				126C4D6217B29F9400598323 /* Copy Files */,
+				12304FF81836A8BD00D9012B /* CopyFiles */,
 			);
 			buildRules = (
 			);
