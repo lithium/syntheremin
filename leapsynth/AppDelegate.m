@@ -624,10 +624,10 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
         case ';': noteNumber = 56; break;
         case '\'': noteNumber = 57; break;
         case 'z': 
-            keyboardCurrentOctave--;
+            keyboardCurrentOctave = MAX(0, --keyboardCurrentOctave);
             return;
         case 'x':
-            keyboardCurrentOctave++;
+            keyboardCurrentOctave = MIN(3, ++keyboardCurrentOctave);
             return;
         default:
             return;
