@@ -565,14 +565,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 #pragma mark PatchCabler Delegate
 - (void)patchConnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target
 {
-    NSLog(@"connect: %@ -> %@", [source parameterName], [target parameterName]);
     [synth connectPatch:[source parameterName] :[target parameterName]];
 }
 - (void)patchDisconnected:(PatchCableEndpoint *)source :(PatchCableEndpoint *)target
 {
-    NSLog(@"disconnect %@ -> %@", [source parameterName], [target parameterName]);
     [synth disconnectPatch:[source parameterName] :[target parameterName]];
-
 }
 
 #pragma mark Synth Patching Delegate
