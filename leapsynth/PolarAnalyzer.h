@@ -12,7 +12,7 @@
 #define kMaxRipples 5
 
 #define kMaxSecondsBetweenRipples 0.5
-#define kMinSecondsBetweenRipples 0.200
+#define kMinSecondsBetweenRipples 0.800
 #define kRandSecondsBetweenShed 3
 
 
@@ -57,6 +57,8 @@
     NSMutableArray *ripples;
     
     CFAbsoluteTime lastRippleTime;
+    BOOL silent;
+
 }
 
 - (void)receiveSamples:(id)sender :(short *)samples :(int)numSamples;

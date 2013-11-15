@@ -169,16 +169,17 @@
         }
         [ripples removeObjectsInArray:ripplesToDiscard];
     }
-    
+
     [shadow setShadowBlurRadius:10];
 
-    [ctx saveGraphicsState];
-    NSBezierPath *path = [firstRipple bezierPath];
-    [waveColor set];
-    [shadow set];
-    [path stroke];
-    [ctx restoreGraphicsState];
-    
+    if (!silent) {
+        [ctx saveGraphicsState];
+        NSBezierPath *path = [firstRipple bezierPath];
+        [waveColor set];
+        [shadow set];
+        [path stroke];
+        [ctx restoreGraphicsState];
+    }
 
 }
 
@@ -193,13 +194,26 @@
 
 - (void) receiveSamples :(id)sender :(short *)samples :(int)numSamples
 {
-    double freq = [sender frequencyInHz];
-
-    if (freq == 0) {
+//    double freq = [sender frequencyInHz];
+//
+//    if (freq == 0) {
+//        [self setNeedsDisplay:true];
+//        return;
+//    }
+    
+    short max = 0;
+    for (int i=0; i < numSamples; i++) {
+        if (samples[i] > max) {
+            max = samples[i];
+            break;
+        }
+    }
+    if (max == 0) {
+        silent = YES;
         [self setNeedsDisplay:true];
-
         return;
     }
+    silent = NO;
     
     [sampleBuffer appendBytes:samples length:numSamples*sizeof(short)];
     
