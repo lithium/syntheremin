@@ -58,11 +58,7 @@
 		1239402A18188C0B000F4BF3 /* button_triangle_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401818188C0B000F4BF3 /* button_triangle_selected@2x.png */; };
 		1239402B18188C0B000F4BF3 /* button_triangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1239401918188C0B000F4BF3 /* button_triangle@2x.png */; };
 		123B53BE1815ADDC00FB9065 /* LeapModulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 123B53BD1815ADDC00FB9065 /* LeapModulator.m */; };
-		1245EF23183587B7006A27D9 /* tutorial-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1245EF1E183587B7006A27D9 /* tutorial-1@2x.png */; };
-		1245EF24183587B7006A27D9 /* tutorial-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1245EF1F183587B7006A27D9 /* tutorial-2@2x.png */; };
 		1245EF25183587B7006A27D9 /* tutorial-controls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1245EF20183587B7006A27D9 /* tutorial-controls@2x.png */; };
-		1245EF26183587B7006A27D9 /* tutorial-mode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1245EF21183587B7006A27D9 /* tutorial-mode@2x.png */; };
-		1245EF27183587B7006A27D9 /* tutorial-patches@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1245EF22183587B7006A27D9 /* tutorial-patches@2x.png */; };
 		125286E3180EE76C0025D405 /* CSKnob.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286E2180EE76C0025D405 /* CSKnob.m */; };
 		125286F2180F3F780025D405 /* CSControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F1180F3F780025D405 /* CSControl.m */; };
 		125286F5180F3FA40025D405 /* CSFader.m in Sources */ = {isa = PBXBuildFile; fileRef = 125286F4180F3FA40025D405 /* CSFader.m */; };
@@ -200,11 +196,7 @@
 		1239401918188C0B000F4BF3 /* button_triangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_triangle@2x.png"; sourceTree = "<group>"; };
 		123B53BC1815ADDC00FB9065 /* LeapModulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeapModulator.h; path = ../LeapModulator.h; sourceTree = "<group>"; };
 		123B53BD1815ADDC00FB9065 /* LeapModulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeapModulator.m; path = ../LeapModulator.m; sourceTree = "<group>"; };
-		1245EF1E183587B7006A27D9 /* tutorial-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-1@2x.png"; sourceTree = "<group>"; };
-		1245EF1F183587B7006A27D9 /* tutorial-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-2@2x.png"; sourceTree = "<group>"; };
 		1245EF20183587B7006A27D9 /* tutorial-controls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-controls@2x.png"; sourceTree = "<group>"; };
-		1245EF21183587B7006A27D9 /* tutorial-mode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-mode@2x.png"; sourceTree = "<group>"; };
-		1245EF22183587B7006A27D9 /* tutorial-patches@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial-patches@2x.png"; sourceTree = "<group>"; };
 		125286E1180EE76C0025D405 /* CSKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSKnob.h; path = CSControls/CSKnob.h; sourceTree = "<group>"; };
 		125286E2180EE76C0025D405 /* CSKnob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSKnob.m; path = CSControls/CSKnob.m; sourceTree = "<group>"; };
 		125286F0180F3F780025D405 /* CSControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSControl.h; path = CSControls/CSControl.h; sourceTree = "<group>"; };
@@ -389,11 +381,7 @@
 				12CF979E185BF9AA00030099 /* CARD8@2x.png */,
 				12CF979F185BF9AA00030099 /* CARD9@2x.png */,
 				12CF97A0185BF9AA00030099 /* CARD10@2x.png */,
-				1245EF1E183587B7006A27D9 /* tutorial-1@2x.png */,
-				1245EF1F183587B7006A27D9 /* tutorial-2@2x.png */,
 				1245EF20183587B7006A27D9 /* tutorial-controls@2x.png */,
-				1245EF21183587B7006A27D9 /* tutorial-mode@2x.png */,
-				1245EF22183587B7006A27D9 /* tutorial-patches@2x.png */,
 			);
 			path = tutorial;
 			sourceTree = "<group>";
@@ -616,10 +604,8 @@
 				12BB469317A9890D009D7B5C /* InfoPlist.strings in Resources */,
 				122C802A18201B3800505CAF /* cutoffKnob_outerRing_full@2x.png in Resources */,
 				12BB469B17A98979009D7B5C /* Credits.rtf in Resources */,
-				1245EF23183587B7006A27D9 /* tutorial-1@2x.png in Resources */,
 				12CF97A9185BF9AA00030099 /* CARD9@2x.png in Resources */,
 				122C801F181DE7BE00505CAF /* button_majorScale_selected@2x.png in Resources */,
-				1245EF24183587B7006A27D9 /* tutorial-2@2x.png in Resources */,
 				12B235D817C0698D00FA7E5C /* syntheremin.icns in Resources */,
 				12751A3417C1FA0800A57258 /* logo-white.png in Resources */,
 				12C4032F180B2CDA00FB384A /* saw.png in Resources */,
@@ -635,14 +621,12 @@
 				12CF97A5185BF9AA00030099 /* CARD5@2x.png in Resources */,
 				12CF97AA185BF9AA00030099 /* CARD10@2x.png in Resources */,
 				122C8023181DE7BE00505CAF /* button_tuned_selected@2x.png in Resources */,
-				1245EF26183587B7006A27D9 /* tutorial-mode@2x.png in Resources */,
 				122C800A181DE66100505CAF /* button_showVisualizer@2x.png in Resources */,
 				122C8022181DE7BE00505CAF /* button_minorScale@2x.png in Resources */,
 				12CF97A8185BF9AA00030099 /* CARD8@2x.png in Resources */,
 				12393FF518187F7D000F4BF3 /* knob_dial@2x.png in Resources */,
 				12393FF618187F7D000F4BF3 /* knob_outerRing_empty@2x.png in Resources */,
 				12393FF718187F7D000F4BF3 /* knob_outerRing_full@2x.png in Resources */,
-				1245EF27183587B7006A27D9 /* tutorial-patches@2x.png in Resources */,
 				122C8011181DE72300505CAF /* leapmotion_connected@2x.png in Resources */,
 				12CF97A4185BF9AA00030099 /* CARD4@2x.png in Resources */,
 				122C800E181DE66A00505CAF /* button_fullScreen@2x.png in Resources */,
