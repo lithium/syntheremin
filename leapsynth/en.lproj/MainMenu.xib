@@ -177,24 +177,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="O7E-4J-PF8" userLabel="Full Screen View">
+                    <box autoresizesSubviews="NO" fixedFrame="YES" borderWidth="0.0" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="O7E-4J-PF8" userLabel="Full Screen View">
                         <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="958" height="704"/>
+                            <rect key="frame" x="0.0" y="0.0" width="960" height="705"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-JG-GP5" customClass="PolarAnalyzer">
-                                    <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
+                                    <rect key="frame" x="0.0" y="1" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 </customView>
                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fn4-BP-APh" customClass="LeapCursorOverlay">
-                                    <rect key="frame" x="0.0" y="0.0" width="960" height="720"/>
+                                    <rect key="frame" x="0.0" y="1" width="960" height="720"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="leftHandVisible" value="NO"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="rightHandVisible" value="NO"/>
                                     </userDefinedRuntimeAttributes>
+                                </customView>
+                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRV-w6-kZN" customClass="CSMomentaryButton">
+                                    <rect key="frame" x="161" y="679" width="100" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="fullScreen"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="toggleFullScreen:" target="371" id="ltd-sE-kbJ"/>
+                                    </connections>
                                 </customView>
                             </subviews>
                         </view>
@@ -650,6 +660,7 @@
                 <outlet property="adsr_sustain_0" destination="5016" id="5195"/>
                 <outlet property="adsr_sustain_1" destination="5008" id="5199"/>
                 <outlet property="cursorOverlay" destination="5257" id="5258"/>
+                <outlet property="exitFullscreenButton" destination="GRV-w6-kZN" id="Gve-Ev-c5Z"/>
                 <outlet property="filter_cutoff" destination="5026" id="5190"/>
                 <outlet property="filter_resonance" destination="5024" id="5191"/>
                 <outlet property="fullscreenAnalyzer" destination="4Vg-JG-GP5" id="e9a-qm-24u"/>

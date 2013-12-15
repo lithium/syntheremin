@@ -50,6 +50,7 @@
 @synthesize tabView;
 @synthesize fullscreenView;
 @synthesize thereminView;
+@synthesize exitFullscreenButton;
 
 @synthesize polarAnalyzer;
 @synthesize wave_osc_0;
@@ -219,7 +220,11 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     
     [cursorOverlay removeFromSuperviewWithoutNeedingDisplay];
     [cursorOverlay setFrame:newRect];
+    [cursorOverlay setDrawGrid:NO];
     [fullscreenView addSubview:cursorOverlay];
+    
+    
+    [exitFullscreenButton setFrameOrigin:NSMakePoint(10,10)];
     
     [NSCursor setHiddenUntilMouseMoves:YES];
 }
@@ -240,6 +245,9 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     [cursorOverlay setFrame:NSMakeRect(0,0,
                                        [thereminView frame].size.width,
                                        [thereminView frame].size.height)];
+    [cursorOverlay setDrawGrid:tuningType];
+    
+
     [thereminView addSubview:cursorOverlay];
 
 }

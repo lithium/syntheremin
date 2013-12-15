@@ -21,6 +21,7 @@
 #import "CSFader.h"
 #import "CSToggleButton.h"
 #import "CSRadioButtonSet.h"
+#import "CSMomentaryButton.h"
 #import "LeapCursorOverlay.h"
 #import "LeapModulator.h"
 #import "CSOnOffLabel.h"
@@ -140,6 +141,7 @@ enum {
 @property (weak) IBOutlet NSTabView *tabView;
 @property (weak) IBOutlet NSBox *fullscreenView;
 @property (weak) IBOutlet NSView *thereminView;
+@property (weak) IBOutlet CSMomentaryButton *exitFullscreenButton;
 
 @property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
 @property (weak) IBOutlet LinearAnalyzer *linearAnalyzer;
