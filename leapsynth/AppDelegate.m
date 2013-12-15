@@ -460,6 +460,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 {
     [currentAnalyzer shedRipple];
     [synth noteOff];
+    [synth setFrequencyInHz:0];
 }
 
 - (BOOL)loadPatchFromURL:(NSURL*)url
@@ -845,6 +846,8 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
     currentPatchUrl = nil;
 }
 - (IBAction)menuOpenPatch:(id)sender {
+    
+    [self noteOff];
     NSOpenPanel *openPanel = [NSOpenPanel openPanel];
     
     [openPanel setCanChooseFiles:YES];
