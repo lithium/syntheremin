@@ -16,8 +16,8 @@
 #define kRandSecondsBetweenShed 3
 
 
-#define kZoomRatio 1.5  // desample ratio
-#define kNumSamplesPerRipple 2000
+#define kZoomRatio 2
+#define kNumSamplesPerRipple 2500
 
 
 @interface Waveform : NSObject
