@@ -61,6 +61,11 @@
 
             
     }
+
+    //not sure why this occurs but it can...
+    if (samplesPerPeriod == 0)
+        return 0;
+
     sampleStep = (sampleStep+1) % samplesPerPeriod;
     return value*[self level];
 }
