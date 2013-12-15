@@ -113,6 +113,10 @@
 
 
 @implementation PolarAnalyzer
+{
+    NSShadow *shadow;
+    
+}
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -124,6 +128,11 @@
         waveColor = [NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0];
         
         sampleBuffer = [[NSMutableData alloc] initWithCapacity:kSampleRate*sizeof(short)];
+        
+        shadow = [[NSShadow alloc] init];
+        [shadow setShadowBlurRadius:10];
+        [shadow setShadowOffset:NSMakeSize(0,0)];
+        [shadow setShadowColor:[NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0]];
 
     }
     
@@ -135,13 +144,6 @@
     NSGraphicsContext *ctx = [NSGraphicsContext currentContext];
     NSRect bounds = [self bounds];
 
-    
-    NSShadow *shadow = [[NSShadow alloc] init];
-    [shadow setShadowBlurRadius:5];
-    [shadow setShadowOffset:NSMakeSize(0,0)];
-    [shadow setShadowColor:[NSColor colorWithSRGBRed:255/255.0 green:160/255.0 blue:0/255.0 alpha:1.0]];
-
-    
     NSMutableArray *ripplesToDiscard = [NSMutableArray array];
     CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
     @synchronized(ripples) {
@@ -157,7 +159,7 @@
             [trans concat];
             
             [[waveColor colorWithAlphaComponent:1.0 - (age)] set];
-            [shadow set];
+//            [shadow set];
             [ripple->path stroke];
 
             [ctx restoreGraphicsState];
@@ -170,7 +172,6 @@
         [ripples removeObjectsInArray:ripplesToDiscard];
     }
 
-    [shadow setShadowBlurRadius:10];
 
     if (!silent) {
         [ctx saveGraphicsState];
