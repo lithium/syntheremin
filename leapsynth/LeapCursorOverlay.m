@@ -41,6 +41,16 @@
     return self;
 }
 
+- (void)setFrame:(NSRect)frameRect
+{
+    [super setFrame:frameRect];
+    cursorFrame = NSMakeRect(13,
+                             topPadding,
+                             [self bounds].size.width-13-23,
+                             [self bounds].size.height-topPadding*2);
+
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     NSGraphicsContext *ctx = [NSGraphicsContext currentContext];

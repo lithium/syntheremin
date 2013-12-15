@@ -11,7 +11,7 @@
 
 
 #define kLinearAnalyzerZoomRatio 2
-#define kLinearAnalyzerSamplesPerRipple 2500
+#define kLinearAnalyzerSamplesPerRipple 1500
 
 @interface LinearAnalyzer : NSView <AnalyzerDelegate>
 {

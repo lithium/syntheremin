@@ -138,11 +138,15 @@ enum {
 @property (weak) IBOutlet DetuneDial *osc_detune_2;
 
 @property (weak) IBOutlet NSTabView *tabView;
+@property (weak) IBOutlet NSBox *fullscreenView;
+@property (weak) IBOutlet NSView *thereminView;
 
 @property (weak) IBOutlet LeapCursorOverlay *cursorOverlay;
 @property (weak) IBOutlet LinearAnalyzer *linearAnalyzer;
 @property (weak) IBOutlet PolarAnalyzer *polarAnalyzer;
 @property (weak) IBOutlet PolarAnalyzer *fullscreenAnalyzer;
+
+
 
 @property (weak) IBOutlet CSRadioButtonSet *wave_osc_0;
 

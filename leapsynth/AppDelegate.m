@@ -48,7 +48,8 @@
 @synthesize osc_detune_2;
 
 @synthesize tabView;
-
+@synthesize fullscreenView;
+@synthesize thereminView;
 
 @synthesize polarAnalyzer;
 @synthesize wave_osc_0;
@@ -199,7 +200,7 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)windowWillEnterFullScreen:(NSNotification *)notification
 {
     [[tabView animator] setAlphaValue:0.0];
-    [[fullscreenAnalyzer animator] setAlphaValue:1.0];
+    [[fullscreenView animator] setAlphaValue:1.0];
     
     [synth setAnalyzerDelegate:fullscreenAnalyzer];
     lastAnalyzer = currentAnalyzer;
@@ -212,15 +213,21 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 {
     NSRect newFrame = [[NSScreen mainScreen] frame];
     [_window setFrame:newFrame display:YES];
-    [fullscreenAnalyzer setFrameSize:NSMakeSize(newFrame.size.width, newFrame.size.height)];
-    [fullscreenAnalyzer setFrameOrigin:NSMakePoint(0,0)];
+    NSRect newRect = NSMakeRect(0,0,newFrame.size.width, newFrame.size.height);
+    [fullscreenView setFrame:newRect];
+    [fullscreenAnalyzer setFrame:newRect];
+    
+    [cursorOverlay removeFromSuperviewWithoutNeedingDisplay];
+    [cursorOverlay setFrame:newRect];
+    [fullscreenView addSubview:cursorOverlay];
     
     [NSCursor setHiddenUntilMouseMoves:YES];
 }
 - (void)windowWillExitFullScreen:(NSNotification *)notification
 {
     [[tabView animator] setAlphaValue:1.0];
-    [[fullscreenAnalyzer animator] setAlphaValue:0.0];
+    [[fullscreenView animator] setAlphaValue:0.0];
+    
     [synth setAnalyzerDelegate:lastAnalyzer];
     currentAnalyzer = lastAnalyzer;
     lastAnalyzer = fullscreenAnalyzer;
@@ -228,6 +235,12 @@ static void handle_midi_input (const MIDIPacketList *list, void *inputUserdata, 
 - (void)windowDidExitFullScreen:(NSNotification *)notification
 {
     [_window setFrame:savedFrame display:YES];
+    
+    [cursorOverlay removeFromSuperviewWithoutNeedingDisplay];
+    [cursorOverlay setFrame:NSMakeRect(0,0,
+                                       [thereminView frame].size.width,
+                                       [thereminView frame].size.height)];
+    [thereminView addSubview:cursorOverlay];
 
 }
 
