@@ -9,13 +9,19 @@
 #import <Cocoa/Cocoa.h>
 #import "Synth.h"
 
+
+#define kLinearAnalyzerZoomRatio 2
+#define kLinearAnalyzerSamplesPerRipple 2500
+
 @interface LinearAnalyzer : NSView <AnalyzerDelegate>
 {
-    int samplesInBuffer;
     NSMutableData *buffer;
-    NSColor *waveColor,*majorAxisColor,*minorAxisColor;
+    NSBezierPath *wavePath;
 
+    NSColor *waveColor,*majorAxisColor,*minorAxisColor;
     
+    NSBezierPath *minorAxisPath;
+    NSBezierPath *majorAxisPath;
 }
 
 @property BOOL drawAxis;
