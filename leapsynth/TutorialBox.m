@@ -110,21 +110,28 @@
     NSRect superBounds = [content frame];
     switch (++_tutorialStep) {
         case 1: //welcome
-            [self setFrameSize:NSMakeSize(496,305)];
+            [self setFrameSize:NSMakeSize(475,245)];
             [self setFrameOrigin:NSMakePoint(superBounds.size.width/2 - [self bounds].size.width/2,
                                              superBounds.size.height/2 - [self bounds].size.height/2)];
             
-            [_backgroundImage setFrame:NSMakeRect(0,0,496,305)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,475,245)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD1"]];
             break;
             
         case 2: //to begin, place hands above
+            [self setFrameSize:NSMakeSize(496,305)];
+            [self setFrameOrigin:NSMakePoint(superBounds.size.width/2 - [self bounds].size.width/2,
+                                             superBounds.size.height/2 - [self bounds].size.height/2)];
             [_backgroundImage setFrame:NSMakeRect(0,0,496,305)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD2"]];
             break;
             
         case 3: // how to play
-            [_backgroundImage setFrame:NSMakeRect(0,0,496,305)];
+            [self setFrameSize:NSMakeSize(475,292)];
+            [self setFrameOrigin:NSMakePoint(superBounds.size.width/2 - [self bounds].size.width/2,
+                                             superBounds.size.height/2 - [self bounds].size.height/2)];
+
+            [_backgroundImage setFrame:NSMakeRect(0,0,475,292)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD3"]];
             break;
             
@@ -135,11 +142,11 @@
             break;
 
         case 5: //patches
-            [self setFrameSize:NSMakeSize(496,305)];
+            [self setFrameSize:NSMakeSize(475,219)];
             [self setFrameOrigin:NSMakePoint(superBounds.size.width/2 - [self bounds].size.width/2,
                                              superBounds.size.height/2 - [self bounds].size.height/2)];
 
-            [_backgroundImage setFrame:NSMakeRect(0,0,496,305)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,475,219)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD4"]];
             
             if (_delegate && [_delegate respondsToSelector:@selector(switchToSynth:)]) {
@@ -148,26 +155,26 @@
             break;
             
         case 6: //lfo
-            [self setFrame:NSMakeRect(60,550,355,130)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,355,130)];
+            [self setFrame:NSMakeRect(60,550,425,169)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,425,169)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD5"]];
             break;
             
         case 7: //osc
-            [self setFrame:NSMakeRect(70,435,355,120)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,355,120)];
+            [self setFrame:NSMakeRect(75,440,425,138)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,425,138)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD6"]];
             break;
             
         case 8: // noise
-            [self setFrame:NSMakeRect(550,540,355,120)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,355,120)];
+            [self setFrame:NSMakeRect(250,550,425,143)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,425,143)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD7"]];
             break;
             
         case 9: // adsr
-            [self setFrame:NSMakeRect(550,320,355,190)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,355,190)];
+            [self setFrame:NSMakeRect(250,330,425,170)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,425,170)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD8"]];
             break;
 
@@ -176,17 +183,17 @@
                 [_delegate switchToTheremin:self];
             }
 
-            [self setFrame:NSMakeRect(120,60,355,110)];
-            [_backgroundImage setFrame:NSMakeRect(0,0,355,110)];
+            [self setFrame:NSMakeRect(120,60,425,120)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,425,120)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD9"]];
             break;
             
         case 11:
-            [self setFrameSize:NSMakeSize(355,112)];
+            [self setFrameSize:NSMakeSize(475,186)];
             [self setFrameOrigin:NSMakePoint(superBounds.size.width/2 - [self bounds].size.width/2,
                                              superBounds.size.height/2 - [self bounds].size.height/2)];
             
-            [_backgroundImage setFrame:NSMakeRect(0,0,355,112)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,475,186)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD10"]];
             break;
 
