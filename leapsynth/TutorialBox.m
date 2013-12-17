@@ -189,11 +189,11 @@
             break;
             
         case 11:
-            [self setFrameSize:NSMakeSize(475,186)];
+            [self setFrameSize:NSMakeSize(355,112)];
             [self setFrameOrigin:NSMakePoint(superBounds.size.width/2 - [self bounds].size.width/2,
                                              superBounds.size.height/2 - [self bounds].size.height/2)];
             
-            [_backgroundImage setFrame:NSMakeRect(0,0,475,186)];
+            [_backgroundImage setFrame:NSMakeRect(0,0,355,112)];
             [_backgroundImage setImage:[NSImage imageNamed:@"CARD10"]];
             break;
 
