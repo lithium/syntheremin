@@ -125,7 +125,12 @@
     [patches setObject:targetName forKey:sourceName];
     [patchDelegate connectPatch:sourceName :targetName];
 }
+
 - (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName
+{
+    [self disconnectPatch:sourceName :targetName andRemoveObject:YES];
+}
+- (void)disconnectPatch:(NSString *)sourceName :(NSString *)targetName andRemoveObject:(bool)removeObject
 {
     __weak SampleProvider *source;
     __weak Mixer *target;
@@ -144,7 +149,9 @@
         }
     }
 
-    [patches removeObjectForKey:sourceName];
+    if (removeObject) {
+        [patches removeObjectForKey:sourceName];
+    }
     [patchDelegate disconnectPatch:sourceName :targetName];
 }
 
@@ -152,8 +159,9 @@
 - (void)clearPatches
 {
     [patches enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [self disconnectPatch:key :obj];
+        [self disconnectPatch:key :obj andRemoveObject:NO];
     }];
+    [patches removeAllObjects];
 }
         
 - (NSString*)parsePortName:(NSString*)portString :(__weak id *)outComponent
