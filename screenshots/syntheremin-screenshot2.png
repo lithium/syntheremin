@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style type="text/css">
+        .e-mail:before {
+            content: attr(data-domain) "\0040" attr(data-user);
+            unicode-bidi: bidi-override;
+            direction: rtl;
+        }
+
+        .icon-block .material-icons {
+            font-size: inherit;
+        }
+    </style>
+
+    
+    
+</head>
+
+<body>
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a class="brand-logo" href="#">Wiggins' Resume</a>
+        </div>
+    </nav>
+
+    
+
+<div clss="section no-pad-bot">
+    <div class="container">
+        <h2 class="header center">Matthew Wiggins</h2>
+        <div class="row center">
+            <h5 class="header col s12 light">Full Stack Software Developer</h5>
+        </div>
+        <br> <br>
+    </div>
+</div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">build_circle</i></h2>
+            <h5 class="center">Skills</h5>
+            <p class="light">
+                Experience developing and leading teams of developers in many languages and platforms to deliver projects on time and under budget.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">Experience</h5>
+
+            <p class="light">
+                Over 15 years in software development.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">source</i></h2>
+            <h5 class="center">Portfolio</h5>
+
+            <p class="light">
+                A few brief examples of projects I have done over the years.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+
+
+    <footer class="page-footer light-blue darken-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5>Bio</h5>
+                    <p class="white-text">Over 15 years of experience designing, building, deploying and maintaining applications and enterprise software using:
+                        <br>
+                        Kotlin, Scala, Java, Typescript, Python, Ruby, ObjC, C/C++
+                        <br>
+                        SpringBoot, Django, Rails, Angular, React, iOS, Android, OSX, Qt
+                        <br>
+                        Docker, Ansible, Jenkins, AWS, Heroku
+                    </p>
+                </div>
+                <div class="col l3 s12">
+                    <h5>Social</h5>
+                    <ul>
+                        <li><a class="white-text" target="_blank" href="https://github.com/coffindragger">github.com/coffindragger</a></li>
+                        <li><a class="white-text" target="_blank" href="https://github.com/lithium">github.com/lithium</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li><span class="e-mail" data-user="emuser" data-domain="moc.sniggiwwehttam"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">Made with <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
